@@ -75,19 +75,20 @@ int main(int argc, char *argv[])
   /** Send ciphertext to server **/
   // First sends the length
   
-  int msgsize = strlen(oss.str().c_str());
-  string msglen = to_string(msgsize);
-  cout << msglen << endl;
-  bytes_written = write(sockfd, "500000", miniBufferSize);
+  int msgsize = oss.str().length(); 
+  ostringstream msglen;
+  msglen << msgsize;
+  cout << "Sending ciphertext size = " << msglen.str() << endl;
+  bytes_written = write(sockfd, msglen.str().c_str(), miniBufferSize);
   if (bytes_written < 0)
     error("ERROR writing to socket");
   
-  /*
+  
   // Then sends the whole ciphertext
   bytes_written = write(sockfd, oss.str().c_str(), msgsize);
   if (bytes_written < 0) 
     error("ERROR writing to socket");
-  */
+  
   /** Read ciphertext from server **/
   /*
   // First reads the length

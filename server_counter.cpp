@@ -90,15 +90,18 @@ int main(int argc, char *argv[]){
   
   char* miniBuffer = new char[miniBufferSize];
   bzero(miniBuffer, miniBufferSize);
-  bytes_read = read(newsockfd, miniBuffer, 256);
+  bytes_read = read(newsockfd, miniBuffer, miniBufferSize);
 
   if (bytes_read < 0) error("ERROR reading from socket");
   responseBufferSize = atoi(miniBuffer);
 
-  cout << "Mini buffer size received... " << miniBuffer << endl;
+  cout << "Mini buffer size received... " << responseBufferSize << endl;
   
-  /*
+
   // Then reads the whole ciphertext
+
+  // Increases buffer size just in case
+  responseBufferSize += 10000;
   char* responseBuffer = new char[responseBufferSize];
   bzero(responseBuffer, responseBufferSize);
   bytes_read = -1;
@@ -110,7 +113,6 @@ int main(int argc, char *argv[]){
   istringstream istream;
   istream.str(strBuffer);
   cout << "Cipher buffer received... " << istream.str().size() << endl;
-  */
 
     
   // reconstructing ciphertext
