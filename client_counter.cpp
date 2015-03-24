@@ -25,6 +25,7 @@ ZZX G;
 void setupHE();
 void error(const char* msg);
 void initCounter();
+int sendalldata(int s, char const* buffer, int *len);
 
 int main(int argc, char *argv[])
 {   
@@ -85,9 +86,12 @@ int main(int argc, char *argv[])
   
   
   // Then sends the whole ciphertext
-  bytes_written = write(sockfd, oss.str().c_str(), msgsize);
-  if (bytes_written < 0) 
-    error("ERROR writing to socket");
+  if(sendalldata(sockfd, oss.str().c_str(), &msgsize) == -1) {
+    printf("Solo se enviaron %d bytes por el error!\n", msgsize);
+  }
+  else 
+    printf("Solo se enviaron %d bytes\n", msgsize);
+  //  bytes_written = write(sockfd, oss.str().c_str(), msgsize);
   
   /** Read ciphertext from server **/
   /*
@@ -177,4 +181,25 @@ void setupHE(){
   secretKey->GenSecKey(w); 
   addSome1DMatrices(*secretKey); // compute key-switching matrices that we need
   return;
+}
+
+int sendalldata(int s, char const* buffer,  int *len)
+{
+  int total = 0; // bytes sent
+  int bytesleft = *len; // bytes left to send
+  int n;
+  
+  while(total < *len) {
+    n = send(s, buffer+total, bytesleft, 0);
+    if (n == -1) { break; }
+    total += n;
+    bytesleft -= n;
+  }
+
+  *len = total; 
+
+  if(n == -1) 
+    return -1;
+  else 
+    return 0;
 }
