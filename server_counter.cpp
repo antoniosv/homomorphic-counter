@@ -28,22 +28,11 @@
 #define debugCompare(ea,sk,p,c)
 #endif
 
+int sendalldata(int s, char const* buffer, int *len);
+void error(const char* msg);
+int openSocket();
 
-void error(const char *msg)
-{
-    perror(msg);
-    exit(1);
-}
 
-int openSocket() {
-  int sockfd;
-  sockfd = socket(AF_INET, SOCK_STREAM, 0);
-
-  if (sockfd < 0) 
-       error("ERROR opening socket");
-  return sockfd;
-
-}
 
 int main(int argc, char *argv[]){
   /**  TODO
@@ -117,13 +106,12 @@ int main(int argc, char *argv[]){
   cout << "Cipher buffer received... " << istream.str().size() << endl;
 
     
-  // reconstructing ciphertext
-  /*    
-  FHEPubKey publicKey; // & despues de FHEPubKey
+  // reconstructing ciphertext 
+  /*
+  FHEPubKey& publicKey; // & despues de FHEPubKey
   Ctxt encryptedCounter(publicKey);
   Ctxt encryptedQty(publicKey);
   */
-
     
   // operations on ciphertext
   //  printf("Here is the message: %s\n", buffer); // %s
@@ -135,32 +123,78 @@ int main(int argc, char *argv[]){
   // serialize modified ciphertext
    
   //  cout << "Serializing ciphertext object..." << endl;
-  /*  
-  ostringstream oss;
-  //  ostream << encryptedCounter;
-  oss.str(istream.str());
-  int msglen = strlen(oss.str().c_str());
+  
+   ostringstream oss;
+  // //  ostream << encryptedCounter;
+   oss.str(istream.str());
 
   
-  // send it back to client
+   /* sends the ciphertext it back to client */
+   // First sends back the size
+   int msgsize = oss.str().length();
+   ostringstream msglen;
+   msglen << msgsize;
+   cout << "Sending ciphertext size = " << msglen.str() << endl;
+   bytes_written = write(newsockfd, msglen.str().c_str(), miniBufferSize);
+   if(bytes_written < 0)
+     error("ERROR writing to socket");
+   
   
   //  Ctxt receivedCipher(publicKey);
   //  serialCipher.str(receivedCipher);
 
-  //  cout << "Sending back... " << oss.str() << endl;
-
   try {
-    bytes_written = write(newsockfd, oss.str().c_str(), msglen);
-    //  bytes_written = write(newsockfd, "I gots your message", 18);
-    if(bytes_written <0) error ("ERROR writing to socket");
+    if(sendalldata(newsockfd, oss.str().c_str(), &msgsize) == -1) {
+      cout << "Se enviaron solo " << msgsize << " bytes por el error" << endl;
+    }
+    else
+      cout << "se enviaron los " << msgsize << " bytes del mensaje" << endl;
+	//bytes_written = write(newsockfd, oss.str().c_str(), msglen);	
+	//    if(bytes_written <0) error ("ERROR writing to socket");
   } catch(int e) {
     cout << "Exception has ocurred... Exception no. " << e << endl;
   }
-  */
   
   cout << "closing sockets..." << endl;
   close(newsockfd);
   close(sock);
 
   return 0;   
+}
+
+void error(const char *msg)
+{
+    perror(msg);
+    exit(1);
+}
+
+int openSocket() {
+  int sockfd;
+  sockfd = socket(AF_INET, SOCK_STREAM, 0);
+
+  if (sockfd < 0) 
+       error("ERROR opening socket");
+  return sockfd;
+
+}
+
+int sendalldata(int s, char const* buffer,  int *len)
+{
+  int total = 0; // bytes sent
+  int bytesleft = *len; // bytes left to send
+  int n;
+  
+  while(total < *len) {
+    n = send(s, buffer+total, bytesleft, 0);
+    if (n == -1) { break; }
+    total += n;
+    bytesleft -= n;
+  }
+
+  *len = total; 
+
+  if(n == -1) 
+    return -1;
+  else 
+    return 0;
 }

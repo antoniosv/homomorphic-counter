@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
   //  bytes_written = write(sockfd, oss.str().c_str(), msgsize);
   
   /** Read ciphertext from server **/
-  /*
+  
   // First reads the length
   char* miniBuffer = new char[miniBufferSize];
   bzero(miniBuffer, miniBufferSize);
@@ -103,8 +103,10 @@ int main(int argc, char *argv[])
       error("ERROR reading from socket");
   responseBufferSize = atoi(miniBuffer);
 
+  cout << "Bytes to receive soon... " << miniBuffer << endl;
+  
   // Then reads the whole ciphertext
-  char* responseBuffer = new char[responseBufferSize];
+  /* char* responseBuffer = new char[responseBufferSize];
   bzero(responseBuffer, responseBufferSize);
   bytes_read = read(sockfd, responseBuffer, responseBufferSize);
   if (bytes_read < 0) 
