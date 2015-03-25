@@ -100,14 +100,16 @@ int main(int argc, char *argv[]){
 
   // Then reads the whole ciphertext
 
-  // Increases buffer size just in case
-  responseBufferSize += 10000;
   char* responseBuffer = new char[responseBufferSize];
   bzero(responseBuffer, responseBufferSize);
-  bytes_read = -1;
-  bytes_read = read(newsockfd, responseBuffer, responseBufferSize);
-  if (bytes_read < 0) 
-    error("ERROR reading from socket");
+  bytes_read = 0;
+
+  //  setsockopt(newsockfd, SOL_SOCKET, SO_RCVTIMEO, ...);
+  while(1) {    
+    bytes_read += recv(newsockfd, responseBuffer, responseBufferSize, 0); 
+    cout << "reading " << bytes_read << " out of " << responseBufferSize << endl;
+    if(bytes_read >= responseBufferSize) { break; }      
+  }
 
   string strBuffer((const char*) responseBuffer, bytes_read);
   istringstream istream;
@@ -116,7 +118,7 @@ int main(int argc, char *argv[]){
 
     
   // reconstructing ciphertext
-  /*  
+  /*    
   FHEPubKey publicKey; // & despues de FHEPubKey
   Ctxt encryptedCounter(publicKey);
   Ctxt encryptedQty(publicKey);
@@ -160,8 +162,5 @@ int main(int argc, char *argv[]){
   close(newsockfd);
   close(sock);
 
-  return 0; 
-
-  
+  return 0;   
 }
-

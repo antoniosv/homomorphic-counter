@@ -156,7 +156,7 @@ void setupHE(){
   }
   long m = FindM(k, L, c, p, d, s, 0);
 
-  cerr << "\n\n******** Printing parameters: R=" << R 
+  cerr << "\n******** Printing parameters: R=" << R 
        << ", p=" << p
        << ", r=" << r
        << ", d=" << d
