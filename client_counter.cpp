@@ -27,6 +27,16 @@ void error(const char* msg);
 void initCounter();
 int sendalldata(int s, char const* buffer, int *len);
 
+void writeToFiles(ostringstream& out) {
+  string original = out.str();
+  ofstream myfile;
+  myfile.open("/home/jesus/homomorphic-counter/first.txt");
+  myfile << original;
+  myfile.close();
+
+  cout << "writing to file" << endl;
+}
+
 int main(int argc, char *argv[])
 {   
   int people = 3;
@@ -67,14 +77,13 @@ int main(int argc, char *argv[])
   PlaintextArray counter(ea);  
   counter.encode(people);
   Ctxt& encryptedCounter = *(new Ctxt(*publicKey));  
-  ea.encrypt(encryptedCounter, *publicKey, counter);
- 
+  ea.encrypt(encryptedCounter, *publicKey, counter); 
 
   ostringstream oss;
   oss << encryptedCounter;
 
   /** Send ciphertext to server **/
-  // First sends the length
+  //  First sends the length
   
   int msgsize = oss.str().length(); 
   ostringstream msglen;
@@ -106,24 +115,33 @@ int main(int argc, char *argv[])
   cout << "Bytes to receive soon... " << miniBuffer << endl;
   
   // Then reads the whole ciphertext
-  /* char* responseBuffer = new char[responseBufferSize];
+  char* responseBuffer = new char[responseBufferSize];
   bzero(responseBuffer, responseBufferSize);
-  bytes_read = read(sockfd, responseBuffer, responseBufferSize);
-  if (bytes_read < 0) 
-    error("ERROR reading from socket");
+  bytes_read = 0;
 
+  while(1) {
+    bytes_read += recv(sockfd, responseBuffer, responseBufferSize, 0);
+    cout << "reading " << bytes_read << " out of " << responseBufferSize <<endl;
+    if(bytes_read >= responseBufferSize) { break; }
+  }
 
-  Ctxt& receivedCipher = *(new Ctxt(*publicKey));  
-  istringstream istream;
-  istream.str(responseBuffer);
+  string strBuffer((const char*) responseBuffer, bytes_read);
 
-  istream >> receivedCipher;
+  /* Reconstructing the ciphertext */
+  istringstream istream, teststream;
+  istream.str(strBuffer);
+  cout << "ciphertext buffer received... " << istream.str().size() << endl;
+   
+
+  // Ctxt& receivedCipher = *(new Ctxt(*publicKey));  
+  // istream >> receivedCipher;
   
-  cout << "Printing decrypted ciphertext after reading it..." << endl;
-  PlaintextArray decryptedStream(ea);
-  ea.decrypt(receivedCipher, *secretKey, decryptedStream);
-  decryptedStream.print(cout);
-  */
+  // cout << "Printing decrypted ciphertext after reading it..." << endl;
+  // PlaintextArray decryptedStream(ea);
+  // ea.decrypt(receivedCipher, *secretKey, decryptedStream);
+  // decryptedStream.print(cout);  
+
+  writeToFiles(oss);
 
   close(sockfd);
   return 0;
