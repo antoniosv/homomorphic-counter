@@ -39,7 +39,7 @@ void writeToFiles(ostringstream& out) {
 
 int main(int argc, char *argv[])
 {   
-  int people = 3;
+  int people = 15;
   int sockfd, portno, bytes_read, bytes_written;
   int miniBufferSize = 256, responseBufferSize;
 
@@ -118,14 +118,19 @@ int main(int argc, char *argv[])
   char* responseBuffer = new char[responseBufferSize];
   bzero(responseBuffer, responseBufferSize);
   bytes_read = 0;
-
-  while(1) {
-    bytes_read += recv(sockfd, responseBuffer, responseBufferSize, 0);
-    cout << "reading " << bytes_read << " out of " << responseBufferSize <<endl;
-    if(bytes_read >= responseBufferSize) { break; }
+  int bytes_remaining = responseBufferSize;
+  int this_recv;
+  while(bytes_remaining > 0) {    
+    this_recv = recv(sockfd, responseBuffer+bytes_read, bytes_remaining, 0); 
+    if(this_recv <=0) error("error on receive");
+    else {
+      bytes_remaining -= this_recv;
+      bytes_read += this_recv;
+    }
   }
 
   string strBuffer((const char*) responseBuffer, bytes_read);
+  bzero(responseBuffer, responseBufferSize);
 
   /* Reconstructing the ciphertext */
   istringstream istream, teststream;
@@ -133,13 +138,13 @@ int main(int argc, char *argv[])
   cout << "ciphertext buffer received... " << istream.str().size() << endl;
    
 
-  // Ctxt& receivedCipher = *(new Ctxt(*publicKey));  
-  // istream >> receivedCipher;
+  Ctxt& receivedCipher = *(new Ctxt(*publicKey));  
+  istream >> receivedCipher;
   
-  // cout << "Printing decrypted ciphertext after reading it..." << endl;
-  // PlaintextArray decryptedStream(ea);
-  // ea.decrypt(receivedCipher, *secretKey, decryptedStream);
-  // decryptedStream.print(cout);  
+  cout << "Printing decrypted ciphertext after reading it..." << endl;
+  PlaintextArray decryptedStream(ea);
+  ea.decrypt(receivedCipher, *secretKey, decryptedStream);
+  decryptedStream.print(cout);  
 
   writeToFiles(oss);
 

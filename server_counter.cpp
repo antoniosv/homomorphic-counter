@@ -99,12 +99,16 @@ int main(int argc, char *argv[]){
   char* responseBuffer = new char[responseBufferSize];
   bzero(responseBuffer, responseBufferSize);
   bytes_read = 0;
-
+  int bytes_remaining = responseBufferSize;
+  int this_recv;
   //  setsockopt(newsockfd, SOL_SOCKET, SO_RCVTIMEO, ...);
-  while(1) {    
-    bytes_read += recv(newsockfd, responseBuffer, responseBufferSize, 0); 
-    cout << "reading " << bytes_read << " out of " << responseBufferSize << endl;
-    if(bytes_read >= responseBufferSize) { break; }      
+  while(bytes_remaining > 0) {    
+    this_recv = recv(newsockfd, responseBuffer+bytes_read, bytes_remaining, 0); 
+    if(this_recv <=0) error("error on receive");
+    else {
+      bytes_remaining -= this_recv;
+      bytes_read += this_recv;
+    }
   }
 
   string strBuffer((const char*) responseBuffer, bytes_read);
@@ -139,30 +143,30 @@ int main(int argc, char *argv[]){
   
    /* sends the ciphertext it back to client */
    // First sends back the size
-  //  int msgsize = oss.str().length();
-  //  ostringstream msglen;
-  //  msglen << msgsize;
-  //  cout << "Sending ciphertext size = " << msglen.str() << endl;
-  //  bytes_written = write(newsockfd, msglen.str().c_str(), miniBufferSize);
-  //  if(bytes_written < 0)
-  //    error("ERROR writing to socket");
+   int msgsize = oss.str().length();
+   ostringstream msglen;
+   msglen << msgsize;
+   cout << "Sending ciphertext size = " << msglen.str() << endl;
+   bytes_written = write(newsockfd, msglen.str().c_str(), miniBufferSize);
+   if(bytes_written < 0)
+     error("ERROR writing to socket");
    
   
-  // //  Ctxt receivedCipher(publicKey);
-  // //  serialCipher.str(receivedCipher);
+  //  Ctxt receivedCipher(publicKey);
+  //  serialCipher.str(receivedCipher);
 
-  //  // Then sends the whole ciphertext
-  // try {
-  //   if(sendalldata(newsockfd, oss.str().c_str(), &msgsize) == -1) {
-  //     cout << "Se enviaron solo " << msgsize << " bytes por el error" << endl;
-  //   }
-  //   else
-  //     cout << "se enviaron los " << msgsize << " bytes del mensaje" << endl;
-  // 	//bytes_written = write(newsockfd, oss.str().c_str(), msglen);	
-  // 	//    if(bytes_written <0) error ("ERROR writing to socket");
-  // } catch(int e) {
-  //   cout << "Exception has ocurred... Exception no. " << e << endl;
-  // }
+   // Then sends the whole ciphertext
+  try {
+    if(sendalldata(newsockfd, oss.str().c_str(), &msgsize) == -1) {
+      cout << "Se enviaron solo " << msgsize << " bytes por el error" << endl;
+    }
+    else
+      cout << "se enviaron los " << msgsize << " bytes del mensaje" << endl;
+  	//bytes_written = write(newsockfd, oss.str().c_str(), msglen);	
+  	//    if(bytes_written <0) error ("ERROR writing to socket");
+  } catch(int e) {
+    cout << "Exception has ocurred... Exception no. " << e << endl;
+  }
   
   cout << "closing sockets..." << endl;
   close(newsockfd);
