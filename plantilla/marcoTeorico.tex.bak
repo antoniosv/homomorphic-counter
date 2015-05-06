@@ -1,0 +1,132 @@
+\chapter{Marco Te\'{o}rico}
+\label{marcoTeorico}
+
+\section{Algoritmo de etiquetado}
+Al etiquetar cadenas de texto se asignan etiquetas a las palabras del texto para indicar el tipo de informaci\'{o}n (entidad) presente en cada palabra. De manera que si tenemos una cadena de texto \(x_{1}x_{2}\dots x_{n}\), donde \(x_{i}\) representa a la i-esima palabra de la cadena (ignorando espacios en blanco), al etiquetar la cadena obtenemos \((x_{1}, y_{1}), (x_{2}, y_{2}), \dots, (x_{n}, y_{n})\), donde \(y_{i}\) puede ser cualquiera de las posibles etiquetas \(\{et_{1}, et_{2}, \dots ,et_{k}\}\). En el recuadro 1 se muestra una cadena de texto y en el recuadro 2 se muestra la cadena de texto etiquetada.
+
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, frame=single, title={\textbf{Recuadro 1} \textendash\enspace Cadena de texto}, label=cadenaTexto]
+La UANL festeja su 80 aniversario.
+\end{lstlisting}
+
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, frame=single, title={\textbf{Recuadro 2} \textendash\enspace Cadena de texto etiquetada}, label=cadenaTextoEtiquetada]
+(La, Irrelevante)
+(UANL, Organismo)
+(festeja, Acto)
+(su, Irrelevante)
+(80, Tiempo)
+(aniversario, Tiempo)
+(., Irrelevante)
+\end{lstlisting}
+
+Definimos un trigrama es un grupo de tres palabras \texttt{(u,v,w)} por ejemplo para \texttt{``semaforo descompuesto en la avenida''} tenemos los siguientes trigramas \texttt{(semaforo, descompuesto, en)}, \texttt{(descompuesto, en, la)} y \texttt{(en, la, avenida)}.
+
+Definimos un bigrama es un grupo de dos palabras (u,v) por ejemplo para \texttt{``semaforo descompuesto en la avenida''} tenemos los siguientes bigramas \texttt{(semaforo, descompuesto)}, \texttt{(descompuesto, en)}, \texttt{(en, la)} y \texttt{(la, avenida)}.
+
+Definimos un unigrama es una palabra (u), por ejemplo para \texttt{``semaforo descompuesto en la avenida''} tenemos los siguientes unigramas \texttt{(semaforo)}, \texttt{(descompuesto)}, \texttt{(en)}, \texttt{(la)} y \texttt{(avenida)}.
+
+Un Trigrama de Modelo Oculto de Markov (Trigrama HMM) consiste de un conjunto finito \(V\) de posibles palabras, y un conjunto finito \(K\) de posibles etiquetas, juntos con los siguientes parametros:
+\begin{itemize}
+\item Un parametro \(q(s|u,v)\) por cada trigrama \((u,v,s)\) tal que \(s \in K \cup \{STOP\}\), y \(u,v \in V \cup \{\ast\}\).
+\item Un parametro \(e(x|s)\) por cada \(x \in V, s \in K\).
+\end{itemize}
+
+Teniendo un conjunto de entrenamiento \((x^{(1)}, y^{(1)}) \dots (x^{(m)}, y^{(m)})\), donde cada ejemplo consiste de una palabra \(x^{(i)}\) junto a una etiqueta \(y^{(i)}\). Nuestra tarea es aprender una funci\'{o}n \(f: \chi \rightarrow Y\) que asigna a cada entrada \(x\) una etiqueta \(y\).
+
+Definimos \(S\) como el conjunto de todos los pares de secuencias de palabras y secuencias de etiquetas \(<x_{1} \dots x_{n}, y_{1} \dots y_{n+1}>\) de tal manera que \(n \geq 0\), \(x_{i} \in V\) para \(i = 1 \dots n\), \(y_{i} \in K\) para \(i = 1 \dots n\), y \(y_{n+1} = STOP\). Posteriormente definimos la probabilidad conjunta de cada oraci\'{o}n  \(<x_{1} \dots x_{n}, y_{1} \dots y_{n+1}> \in S\) como:
+\begin{equation} \label{maximumLikelihood}
+p(x_{1} \dots x_{n}, y_{1} \dots y_{n+1}) = \prod_{i=1}^{n+1} q(y_{i}|y_{i-2}, y_{i-1}) \prod_{i=1}^{n}e(x_{i}|y_{i})
+\end{equation} 
+
+Por ejemplo, si tenemos \(n = 3\), \(x_{1} \dots x_{3}\) es igual a la oraci\'{o}n ``Ave. Juarez cerrada'', y \(y_{1} \dots y_{4}\) es igual a la secuencia de tags \{LOC LOC TTERM STOP\}, de la ecuaci\'{o}n ~\ref{maximumLikelihood} obtenemos:\\
+\begin{equation}
+  \begin{split}
+    p(x_{1} \dots x_{n}, y_{1} \dots y_{n+1}) = q(LOC|\ast, \ast) \times q(LOC|\ast, LOC) \times q(TTERM|LOC, LOC)\\ 
+    \times (STOP|LOC, TTERM) \times e(Ave.|LOC) \times e(Juarez|LOC) \times e(cerrada|TTERM)
+  \end{split}
+\end{equation}
+
+Definimos \(c(u,v,w)\) como el n\'{u}mero de veces que el trigrama de etiquetas \((u,v,w)\) aparece en los datos de entrenamiento, por ejemplo: \(c(LOC, LOC, TTERM\).
+
+Definimos \(c(u,v)\) como el n\'{u}mero de veces que el bigrama de etiquetas \(u,v\) aparece en los datos de entrenamiento, por ejemplo: \(c(LOC, LOC)\).
+
+Definimos \(c(u)\) como el n\'{u}mero de veces que el unigrama de etiqueta \(u\) aparece en los datos de entrenamiento, por ejemplo: \(c(LOC)\).
+
+Finalmente definimos \(c(s \leadsto x)\) como el n\'{u}mero de veces que aparece el unigrama de etiquetas \(s\) aparece junto a la palabra \(x\), por ejemplo: \(c( LOC \leadsto Ave.)\).
+
+Dadas las anteriores definiciones, los estimadores de m\'{a}xima verosimilitud quedan de la siguiente manera:\\
+\begin{equation}
+  \begin{split}
+    q(s|u,v) = \frac{c(u,v,s)}{c(u,v)}\\e(x|s) = \frac{c(s \leadsto x)}{c(s)}
+  \end{split}
+\end{equation}
+
+Los parametros definidos para el Trigrama HMM sirven para obtener la secuencia de etiquetas correspondiente a una cadena \(x_{1} \dots x_{n}\) la cual est\'{a} dada por la ecuaci\'{o}n ~\ref{argmax}.
+\begin{equation} \label{argmax}
+arg \smash{\displaystyle max_{y_{1} \dots y_{n+1}}} p(x_{1} \dots x_{n}, y_{1} \dots y_{n+1})
+\end{equation}
+donde \(arg max\) se toma sobre todas las secuencias \(y_{1} \dots y_{n+1}\) de tal manera que \(y_{i} \in K\) para \(i = 1 \dots n\), y \(y_{n+1} = STOP\). Para calcular \(arg max\) se utiliza el Algoritmo Viterbi. Teniendo la secuencia de entrada, para cada \(k \in \{1 \dots n\}\), para cada secuencia \(y_{1} \dots y_{k}\) tal que \(y_{i} \in K\) para \(i = 1 \dots k\), definimos la funci\'{o}n
+\begin{equation}
+r(y_{1} \dots y_{k}) = \prod_{i=1}^{k}q(y_{i}|y_{i-2}, y_{i-1})\prod_{i=1}^{k}e(x_{i}|y_{i})
+\end{equation}
+Cabe mencionar que
+\begin{equation}
+  \begin{split}
+    p(x_{1} \dots x_{n}, y_{1} \dots y_{n+1}) = r(y_{1} \dots y_{n}) \times q(y_{n+1}|y_{n-1},y_{n})\\
+                                              = r(y_{1} \dots y_{n}) \times q(STOP|y_{n-1},y_{n})
+  \end{split}
+\end{equation}
+
+Despu\'{e}s, para cada \(k \in \{1 \dots n\}\), para cada \(u \in K\), \(v \in K\), definimos \(S(k,u,v)\) como el conjunto de secuencias \(y_{1} \dots y_{k}\) tal que \(y_{k-1} = u\), \(y_{k} = v\), y \(y_{i} \in K\) para \(i = 1 \dots k\). As\'{\i} \(S(k,u,v)\) el es conjunto de todas las secuencias de etiquetas de longitud \(k\), las cuales terminan en el bigrama de etiquetas \((u,v)\). Definimos
+\begin{equation}
+  \pi(k,u,v) = \smash{\displaystyle \max_{<y_{i} \dots y_{k}>\in S(k,u,v)}}r(y_{i} \dots y_{k})
+\end{equation}
+como la m\'{a}xima probabilidad para todas las secuencias de longitud \(k\), que terminan en el bigrama \((u,v)\). Ahora se pueden calcular los valores de \(\pi(k,u,v)\) para cada \((k,u,v)\) de manera eficiente. Primero, definimos los casos base
+\begin{equation}
+\pi(0,\ast,\ast) = 1
+\end{equation}
+y
+\begin{equation}
+\pi(0,u,v) = 0
+\end{equation}
+si \(u \neq \ast\) o \(v \neq \ast\). 
+
+Posteriormente de manera recursiva para cada \(k \in \{1 \dots n\}\), para cada \(u \in K\) y \(v \in K\)
+\begin{equation}
+  \pi(k,u,v) = \smash{\displaystyle \max_{w \in K}}(\pi(k-1, w, u) \times q(v|w,u) \times e(x_{k}|v))
+\end{equation}
+
+Luego
+\begin{equation}
+ \smash{\displaystyle \max_{y_{1} \dots y_{n+1}}} p(x_{1} \dots x_{n}, y_{1} \dots y_{n+1}) = \smash{\displaystyle \max_{y_{1} \dots y_{n+1}}} p(x_{1} \dots x_{n}, y_{1} \dots y_{n+1}) \times q(STOP|u,v)
+\end{equation}
+
+Obteniendo 
+\begin{equation} \label{argmaxFinal}
+ arg \smash{\displaystyle \max_{y_{1} \dots y_{n+1}}} p(x_{1} \dots x_{n}, y_{1} \dots y_{n+1})
+\end{equation}
+al guardar los estados previos \(w\) que conducen a las secuencias qu terminanan en \((u,v)\) en la posici\'{o}n \(k\) que obtuvieron la puntuaci\'{o}n m\'{a}s alta en la variable \(bp(k,u,v)\).
+
+El algoritmo ~\ref{algViterbi} muestra el Algoritmo Viterbi que fue explicado anteriormente. Un problema que se presenta con los parametros usados en el Algoritmo Viterbi es cuando aparecen palabras \(x\) que no est\'{a}n en el conjunto de entrenamiento, para las cuales \(e(x|s)\) se vuelve 0 para todas las etiquetas \(s\).
+
+Una forma de evitar este problema es mapear a las palabras que aparecen con menor frecuencia en los datos de entrenamiento y las palabras que no aparecen en los datos de entrenamiento pero si aparecen en los datos de prueba a un peque\~{n}o conjunto de pseudo palabras. En este trabajo las palabras que aparecen menos de 5 veces son mapeadas a pseudo palabras.
+
+\begin{algorithm}
+  \begin{algorithmic}[1]
+    \REQUIRE una oraci\'{o}n \(x_{1} \dots x_{n}\), parametros \(q(s|u,v)\) y \(e(x|s)\).
+    \ENSURE establecer \(\pi(0, \ast, \ast) = 0\) para cada \((u,v)\) tal que \(u \neq \ast\) o \(v \neq \ast \).
+    \FOR {$k = 1 \dots n$}
+    \FOR {$u \in K, v \in K$}
+    \STATE $\pi(k,u,v) = \smash{\displaystyle \max_{w \in K}}(\pi(k-1,w,u) \times q(u|w,u) \times e(x_{k}|v))$
+    \STATE $bp(k,u,v) = arg \smash{\displaystyle \max_{w \in K}}(\pi(k-1,w,u) \times q(u|w,u) \times e(x_{k}|v))$
+    \ENDFOR
+    \ENDFOR
+    \STATE Establecer $(y_{n-1}, y_{n}) = argmax_{(u,v)}(\pi(n,u,v) \times q(STOP|u,v))$
+    \FOR {$k = (n - 2) \dots 1$}
+    \STATE $y_{k} = bp(k+2, y_{k+1}, y_{k+2})$
+    \ENDFOR
+    \RETURN la secuencia de etiquetas $y_{1} \dots y_{n}$
+  \end{algorithmic}
+  \caption{El Algoritmo Viterbi con backpointers}
+  \label{algViterbi}
+\end{algorithm}
+\clearpage

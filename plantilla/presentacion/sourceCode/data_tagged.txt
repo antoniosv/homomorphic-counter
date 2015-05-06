@@ -1,0 +1,12 @@
+ACCIDENTE TTERM
+en LOC
+Bernardo LOC 
+Reyes LOC
+y O
+Madero LOC
+, O
+se O
+envia TTERM
+personal TTERM
+SVT TTERM
+16:36 TIME

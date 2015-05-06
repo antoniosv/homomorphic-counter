@@ -1,0 +1,5 @@
+[ACCIDENTE, TTERM], [en, LOC], [Ave., LOC],
+[Garza, LOC], [Sada, LOC], [sin, TTERM], 
+[lesionados, TTERM], [paramedicos, TTERM], 
+[acuden, TTERM], [6:30, TIME], 
+[pm, TIME], [NL, LOC], [gracias, O]

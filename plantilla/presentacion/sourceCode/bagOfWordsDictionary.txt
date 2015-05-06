@@ -1,0 +1,6 @@
+{
+   "70":1, "80":2, "aniversario":3,
+   "celebra":4, "deportistas":5,
+   "festeja":6, "ITESM":7,
+   "premia":8, "UANL":9
+}

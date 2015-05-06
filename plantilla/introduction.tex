@@ -1,0 +1,66 @@
+\chapter{Introduction}
+\label{intro}
+
+Because of the increasing people's needs, it has become more common to exchange information with our peers. Whether it is our e-mail address or current location, there are many scenarios where it is necessary to pass that information to another point. It becomes an issue when the information is considered to be sensitive, and thus, the confidentiality must be protected, so that no one other than the sender and receiver get to know about it. In order to protect the confidentiality of the information, cryptography could be used via encryption and decryption algorithms. The issue at hand becomes even more interesting when the information that needs to be passed somewhere does not go directly to another person, but is rather stored somewhere by someone in the cloud. The confidentiality is not broken if this scenario were to happen; however, it becomes more complicated if it were wished for the information to be modified while being stored in the cloud. Such goal calls for homomorphic encryption, which is an advanced technique able to modify the already encrypted data without losing its confidentiality.
+
+There are many instances where it is required to send information to someone else. To sign up for a service, for instance. Usually, name and email address are required as basic pieces of information. Depending on the service, telephone number and personal address might also be required. And in such case, the subscriber might actually be worried about how safe his information is being kept. He would feel safer if he had some kind of proof that vouched for the confidentiality of his data. This also affects the service, as less people would sign up for the service if they had no means to protect the data.
+
+Cryptography is the study of ciphers, that is, encryption and decryption algorithms to be used on data. Commonly, these algorithms are used to protect the data from eavesdroppers that try to pry on it. Ciphers can be seen as the means of putting sensitive data into a box with a lock, and only those with the correct key are able to access the contents of the box.
+
+It has become increasingly common to delegate computing tasks to cloud services in order to save resources. For instance, it might be employed when the \textit{owner/company} cannot afford its own data center for its storage and computing needs. This is especially the case when the level of activity is seasonal: this is, during certain times of the year that require more processing and storage than usual. Therefore, a common solution is to make use of cloud storage and computing services. This way, the budget is spent as much as the resources are being employed, while saving configuration and maintenance costs. However, allowing the cloud service to make use of the data has raised concerns on security [reference], since it is hard to trust that the cloud provider will not look at the data and do something with it.
+
+A typical solution to this scenario consists in encrypting the data before storing it in the cloud; therefore, assuring its confidentiality. It is a great solution when it is only needed to read the data, without actually making any changes on it. In order to view the encrypted data, it has to be downloaded and decrypted using the proper secret key. However, when it is required to modify it in some way, it still has to be downloaded and recovered to its plaintext form, before modifying it. Once it has been modified, it has to be re-encrypted and re-uploaded to the cloud, in a potentially slow manner.
+This approach turns out to have high overhead costs [reference] caused by the transfer of the encrypted data back and forth between the \textit{owner/company} and the cloud.
+
+In scenarios where the information is not considered to be sensitive, it would be appropriate to make use of cloud computing services directly, as it would cause no harm to grant access to the data that is to be used if it were to be considered public. However, real life applications often imply sensitive data, and it should not be handled trivially, as there is no telling whether or not there is an eavesdropper listening on the communication lines.
+
+A simple sounding, yet complicated solution to this problem would be to manipulate the encrypted data in some way such that the contents are not revealed, but on decryption, ends up being correct. It had been thought that doing something like that was not possible, as ciphers often consisted of permutations and substitutions. However, an interesting property found in the RSA algorithm proved otherwise [reference]. Such property is called homomorphic, and has since then gone through a lot of research, resulting in many schemes such as [...].
+
+Homomorphic encryption is a cipher that makes use of an homomorphic property in order to alter the data while it is encrypted, by using some operation like addition or multiplication. It has been found that homomorphic encryption is not yet truly usable in real environments, mainly for two reasons: the size  of the keys and the time it takes to decrypt or encrypt [reference].  An implementation of fully homomorphic encryption in the C++ language, HELib, has made an effort to make homomorphic evaluation runs faster.
+
+Motivation
+
+
+\section{Problem Definition}
+
+\section{Motivation}
+
+There are many areas in which homomorphic cryptography could be used, such as the medical, marketing, and financial fields [reference]. Until now, there was no way to make a concrete implementation related to these areas, since most available schemes where either too limited or too slow.  Using HELib, it would be possible to reevaluate and show how feasible an implementation of a real life use case would be. 
+
+
+\section{Hipothesis}
+
+\section{Objectives}
+
+\paragraph{General Objective}
+
+\paragraph{Specific Objectives}
+\begin{enumerate}
+\item Uno
+\item Dos 
+\item Tres
+\end{enumerate}
+
+\section{Study Case}
+
+
+
+
+\section{Estructura de la tesis}
+Esta tesis se compone de los siguientes cap\'{\i}tulos: introducci\'{o}n, marco te\'{o}rico, trabajos relacionados, metodolog\'{\i}a, caso de estudio, experimentos y resultados y conclusiones.
+
+En este cap\'{\i}tulo se plante\'{o} la definici\'{o}n del problema y la motivaci\'{o}n para trabajar con los reportes del CIC para implementar un sistema de detecci\'{o}n de duplicados.
+
+El cap\'{\i}tulo \ref{marcoTeorico} presenta la notaci\'{o}n y las definiciones de conceptos necesarios para familiarizar el lector con el contenido t\'{e}cnico presentado en la tesis.
+
+En el cap\'{\i}tulo \ref{trabajosRelacionados} se presentan algunos trabajos que abordan el tema de la detecci\'{o}n de documentos duplicados y se describe brevemente que m\'{e}todos y que documentos se utilizan para cada trabajo.
+
+El cap\'{\i}tulo \ref{metodologia} presenta el sistema de detecci\'{o}n de duplicados de forma general; se explican cu\'{a}les son los distintos procesos que forman al sistema independientemente del contexto en el que se apliquen.
+
+En el cap\'{\i}tulo \ref{casoDeEstudio} el sistema propuesto se aplica a los reportes ciudadanos del CIC. Aqu\'{\i} se describen las implementaciones de cada uno de los procesos que forman el sistema de detecci\'{o}n de duplicados.
+
+El cap\'{\i}tulo \ref{resultados} presenta los experimentos realizados para probar el funcionamiento del sistema de detecci\'{o}n de duplicados, muestra los resultados de desempe\~{n}o obtenidos y presenta conclusiones en base a esos resultados.
+
+Finalmente en el cap\'{\i}tulo \ref{conclusiones} se presentan las conclusiones generales obtenidas a partir de los resultados del sistema de detecci\'{o}n de duplicados durante las pruebas y se presentan las posibles mejoras que ser\'{a}n incorporadas como trabajos a futuro.
+
+\clearpage

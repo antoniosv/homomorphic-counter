@@ -1,0 +1,25 @@
+all: tesisJorgeCordero.pdf
+
+tesisJorgeCordero.pdf: tesisJorgeCordero.tex bibliografia.bib portillas.tex resumen.tex
+	pdflatex --enable-write18 --shell-scape tesisJorgeCordero
+	bibtex tesisJorgeCordero	
+	makeindex tesisJorgeCordero
+	pdflatex --enable-write18 --shell-scape tesisJorgeCordero
+	pdflatex --enable-write18 --shell-scape tesisJorgeCordero
+
+clean:
+	-rm *~
+	-rm *.aux
+	-rm *.log
+	-rm *.out
+	-rm *.toc
+	-rm *.bbl
+	-rm *.blg
+	-rm *.glo
+	-rm *.idx
+	-rm *.ilg
+	-rm *.ind
+	-rm *.lof
+	-rm *.lot
+	-rm *.nlo
+	-rm tesisJorgeCordero.pdf

@@ -1,0 +1,7 @@
+{
+  "metamodelo": {
+    "organismo": "UANL",
+    "suceso": "festeja",
+    "tiempo": "80 aniversario"
+  }
+}

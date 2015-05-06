@@ -1,0 +1,4 @@
+(semaforo, SUCESO), (no, descompuesto), (funciona, SUCESO)
+(lleva, O) (desde, O), (las, O), (12pm, HORA), (en, O)
+ (la, O) (ave., LUGAR), (Juarez, LUGAR) (y, O), (padre, LUGAR)
+(mier, LUGAR), (favor, O) (de, O) (arreglar, O) 

@@ -1,0 +1,435 @@
+@book{introductionInformationRetrieval,
+author = {{Christopher D. Manning, Prabhakar Raghavan and Hinrich Sch{\"u}tze}},
+title = {{Introduction to Information Retrieval}},
+year = {2008},
+%isbn = {0521865719},
+publisher = {Cambridge University Press},
+}
+
+
+@inproceedings{Broder:2000:IFN:647819.736184,
+ author = {Broder, Andrei Z.},
+ title = {{Identifying and Filtering Near-Duplicate Documents}},
+ booktitle = {Proceedings of the 11th Annual Symposium on Combinatorial Pattern Matching},
+ series = {COM '00},
+ year = {2000},
+ %isbn = {3-540-67633-3},
+ pages = {1--10},
+ numpages = {10},
+ url = {http://dl.acm.org/citation.cfm?id=647819.736184},
+ acmid = {736184},
+ publisher = {Springer-Verlag},
+ address = {London, UK, UK},
+} 
+
+
+@inproceedings{Tao:2013:GDN:2488388.2488499,
+ author = {Tao, Ke and Abel, Fabian and Hauff, Claudia and Houben, Geert-Jan and Gadiraju, Ujwal},
+ title = {{Groundhog Day: Near-duplicate Detection on Twitter}},
+ booktitle = {Proceedings of the 22nd International Conference on World Wide Web},
+ series = {WWW '13},
+ year = {2013},
+ %isbn = {978-1-4503-2035-1},
+ location = {Rio de Janeiro, Brazil},
+ pages = {1273--1284},
+ numpages = {12},
+ url = {http://dl.acm.org/citation.cfm?id=2488388.2488499},
+ acmid = {2488499},
+ publisher = {International World Wide Web Conferences Steering Committee},
+ address = {Republic and Canton of Geneva, Switzerland},
+ keywords = {diversification, duplicate detection, search, twitter},
+} 
+
+@inproceedings{Sankaranarayanan:2009:TNT:1653771.1653781,
+ author = {Sankaranarayanan, Jagan and Samet, Hanan and Teitler, Benjamin E. and Lieberman, Michael D. and Sperling, Jon},
+ title = {{TwitterStand: News in Tweets}},
+ booktitle = {Proceedings of the 17th ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems},
+ series = {GIS '09},
+ year = {2009},
+ %isbn = {978-1-60558-649-6},
+ location = {Seattle, Washington},
+ pages = {42--51},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1653771.1653781},
+ doi = {10.1145/1653771.1653781},
+ acmid = {1653781},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {Twitter, geotagging, news, online clustering},
+} 
+
+@inproceedings{ICWSM124639,
+author = {Puneet Agarwal and Rajgopal Vaithiyanathan and Saurabh Sharma and Gautam Shroff},
+title = {{Catching the Long-Tail: Extracting Local News Events from Twitter}},
+booktitle = {Proceedings of the 6th International AAAI Conference on Weblogs and Social Media},
+year = {2012},
+pages = {379-382},
+url = {https://www.aaai.org/ocs/index.php/ICWSM/ICWSM12/paper/view/4639}
+}
+
+
+@paper{leavingOneOut,
+author = {James R. Nolan},
+title = {{Estimating The True Performance Of Classification-Based NLP Techonology}},
+conference = {Workshop On From Research To Commercial Applications: Making NLP Work In Practice},
+year = {1997},
+}
+
+@incollection{crossValidationMethods,
+year={2009},
+%isbn={978-0-387-35544-3},
+booktitle={Encyclopedia of Database Systems},
+editor={Liu, Ling and Özsu, M.Tamer},
+doi={10.1007/978-0-387-39940-9_565},
+title={{Cross-Validation}},
+url={http://dx.doi.org/10.1007/978-0-387-39940-9_565},
+publisher={Springer US},
+author={Refaeilzadeh, Payam and Tang, Lei and Liu, Huan},
+pages={532-538}
+}
+
+@inproceedings{Davis:2006:RPR:1143844.1143874,
+ author = {Davis, Jesse and Goadrich, Mark},
+ title = {{The Relationship Between Precision-Recall and ROC Curves}},
+ booktitle = {Proceedings of the 23rd International Conference on Machine Learning},
+ series = {ICML '06},
+ year = {2006},
+ %isbn = {1-59593-383-2},
+ location = {Pittsburgh, Pennsylvania},
+ pages = {233--240},
+ numpages = {8},
+ url = {http://doi.acm.org/10.1145/1143844.1143874},
+ doi = {10.1145/1143844.1143874},
+ acmid = {1143874},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+}
+
+@inproceedings{Church:1988:SPP:974235.974260,
+ author = {Church, Kenneth Ward},
+ title = {{A Stochastic Parts Program and Noun Phrase Parser for Unrestricted Text}},
+ booktitle = {Proceedings of the 2nd Conference on Applied Natural Language Processing},
+ series = {ANLC '88},
+ year = {1988},
+ location = {Austin, Texas},
+ pages = {136--143},
+ numpages = {8},
+ url = {http://dx.doi.org/10.3115/974235.974260},
+ doi = {10.3115/974235.974260},
+ acmid = {974260},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+@book{weiss2010text,
+  title={{Text Mining: Predictive Methods for Analyzing Unstructured Information}},
+  author={Weiss, S.M. and Indurkhya, N. and Zhang, T. and Damerau, F.},
+  %isbn={9780387345550},
+  lccn={2004056524},
+  url={http://books.google.com.mx/books?id=NZteXd4qf9sC},
+  year={2010},
+  publisher={Springer}
+}
+
+@misc{cicmtyapi,
+   author = {Centro de Integraci\'{o}n Ciudadana},
+   title = {{CICMty-API}},
+   note = {\url{http://www.developers.cic.mx/api/}}
+}
+
+@misc{tehuancic,
+   title = {{Proyecto-Tehuan}},
+   year = 2013,
+   note = {\url{http://www.tehuan.cic.mx/nuevo-reporte/}}
+}
+
+@misc{python2regex,
+title = {{Regular expressions operations}},
+year = 2014,
+note = {\url{http://docs.python.org/2/library/re.html}}
+}
+
+@misc{xmlTutorial,
+title = {{XML Tutorial}},
+year = 2014,
+note = {\url{http://www.w3schools.com/xml/}}
+}
+
+@misc{jsonDefinition,
+title = {{Introducing JSON}},
+year = 2014,
+note = {\url{http://www.json.org/}}
+}
+
+@article{Karatzoglou:Meyer:Hornik:2006:JSSOBK:v15i09,
+  author={Alexandros Karatzoglou and David Meyer and Kurt Hornik},
+  title={{Support Vector Machines in R}},
+  journal={Journal of Statistical Software},
+  volume={15},
+  number={9},
+  pages={1--28},
+  day={6},
+  month={4},
+  year={2006},
+  CODEN={JSSOBK},
+  ISSN={1548-7660},
+  bibdate={2006-04-06},
+  URL={http://www.jstatsoft.org/v15/i09},
+  accepted={2006-04-06},
+  submitted={2005-10-24},
+}
+
+
+@misc{scikitLearn,
+title = {{scikit-learn, Machine Learning in Python}},
+year = 2014,
+note = {\url{http://scikit-learn.org}}
+}
+
+@book{Duda:2000:PC:954544,
+ author = {Duda, Richard O. and Hart, Peter E. and Stork, David G.},
+ title = {{Pattern Classification (2nd Edition)}},
+ year = {2000},
+ %isbn = {0471056693},
+ publisher = {Wiley-Interscience},
+} 
+
+@inproceedings{Ratinov:2009:DCM:1596374.1596399,
+ author = {Ratinov, Lev and Roth, Dan},
+ title = {{Design Challenges and Misconceptions in Named Entity Recognition}},
+ booktitle = {Proceedings of the Thirteenth Conference on Computational Natural Language Learning},
+ series = {CoNLL '09},
+ year = {2009},
+ %isbn = {978-1-932432-29-9},
+ location = {Boulder, Colorado},
+ pages = {147--155},
+ numpages = {9},
+ url = {http://dl.acm.org/citation.cfm?id=1596374.1596399},
+ acmid = {1596399},
+ publisher = {Association for Computational Linguistics},
+ address = {Stroudsburg, PA, USA},
+} 
+
+@article{Dingare:2005:SIN:1071496.1071504,
+ author = {Dingare, Shipra and Nissim, Malvina and Finkel, Jenny and Manning, Christopher and Grover, Claire},
+ title = {A System for Identifying Named Entities in Biomedical Text: How Results from Two Evaluations Reflect on Both the System and the Evaluations},
+ journal = {Comp. Funct. Genomics},
+ issue_date = {February 2005},
+ volume = {6},
+ number = {1-2},
+ month = feb,
+ year = {2005},
+ issn = {1531-6912},
+ pages = {77--85},
+ numpages = {9},
+ url = {http://dx.doi.org/10.1002/cfg.v6:1/2},
+ doi = {10.1002/cfg.v6:1/2},
+ acmid = {1071504},
+ publisher = {John Wiley and Sons Ltd.},
+ address = {Chichester, UK},
+ keywords = {automatic named entity recognition, manual annotation of biomedical texts},
+} 
+
+@misc{stanfordNer,
+title = {{Stanford NER}},
+year = 2014,
+note = {\url{http://nlp.stanford.edu/ner/}}
+}
+
+@misc{spanishDataConnl,
+title = {{Spanish Data of the CoNLL 2002 Shared Task with POS tags}},
+year = 2002,
+note = {\url{http://www.lsi.upc.edu/~nlp/tools/nerc/nerc.html}}
+}
+
+@misc{nltkPython,
+title = {{NLTK Python}},
+year = 2014,
+note = {\url{http://nltk.org/index.html}}
+}
+
+@misc{libreriaJsonPython,
+title = {{Librer\'{\i}a para codificar y decodificar texto en formato JSON para el lenguaje de programaci\'{o}n Python}},
+year = 2014,
+note = {\url{http://docs.python.org/2/library/json.html}}
+}
+
+@inproceedings{Manku:2007:DNW:1242572.1242592,
+ author = {Manku, Gurmeet Singh and Jain, Arvind and Das Sarma, Anish},
+ title = {{Detecting Near-duplicates for Web Crawling}},
+ booktitle = {Proceedings of the 16th International Conference on World Wide Web},
+ series = {WWW '07},
+ year = {2007},
+ %isbn = {978-1-59593-654-7},
+ location = {Banff, Alberta, Canada},
+ pages = {141--150},
+ numpages = {10},
+ url = {http://doi.acm.org/10.1145/1242572.1242592},
+ doi = {10.1145/1242572.1242592},
+ acmid = {1242592},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ keywords = {fingerprint, hamming distance, near-duplicate, search, similarity, sketch, web crawl, web document},
+} 
+
+@article{Bikel:1999:ALW:309497.309508,
+ author = {Bikel, Daniel M. and Schwartz, Richard and Weischedel, Ralph M.},
+ title = {{An Algorithm That Learns What's in a Name}},
+ journal = {Machine Learning},
+ issue_date = {Feb. 1999},
+ volume = {34},
+ number = {1-3},
+ month = feb,
+ year = {1999},
+ issn = {0885-6125},
+ pages = {211--231},
+ numpages = {21},
+ url = {http://dx.doi.org/10.1023/A:1007558221122},
+ doi = {10.1023/A:1007558221122},
+ acmid = {309508},
+ publisher = {Kluwer Academic Publishers},
+ address = {Hingham, MA, USA},
+ keywords = {hidden Markov models, named entity extraction},
+} 
+
+@article{levenshtein1966bcc,
+  added-at = {2008-03-15T10:37:17.000+0100},
+  author = {Levenshtein, VI},
+  biburl = {http://www.bibsonomy.org/bibtex/21a29b294552edb63828d57f3495e2eb2/brightbyte},
+  interhash = {55f7ad93fcb9ae3ed999afaa6e24937d},
+  intrahash = {1a29b294552edb63828d57f3495e2eb2},
+  journal = {Soviet Physics Doklady},
+  keywords = {lexicography similarity},
+  pages = 707,
+  timestamp = {2008-03-15T10:37:17.000+0100},
+  title = {{Binary Codes Capable of Correcting Deletions, Insertions and Reversals}},
+  volume = 10,
+  year = 1966
+}
+
+@article{Hall:1980:ASM:356827.356830,
+ author = {Hall, Patrick A. V. and Dowling, Geoff R.},
+ title = {{Approximate String Matching}},
+ journal = {ACM Comput. Surv.},
+ issue_date = {Dec. 1980},
+ volume = {12},
+ number = {4},
+ month = dec,
+ year = {1980},
+ issn = {0360-0300},
+ pages = {381--402},
+ numpages = {22},
+ url = {http://doi.acm.org/10.1145/356827.356830},
+ doi = {10.1145/356827.356830},
+ acmid = {356830},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+} 
+
+@book{james2013introduction,
+  title={{An Introduction to Statistical Learning: With Applications in R}},
+  author={James, G. and Hastie, T. and Witten, D. and Tibshirani, R.},
+  %isbn={9781461471370},
+  series={Springer Texts in Statistics},
+  url={http://books.google.com.mx/books?id=at1bmAEACAAJ},
+  year={2013},
+  publisher={Springer London, Limited}
+}
+
+@book{bishop2006pattern,
+  title={{Pattern Recognition and Machine Learning}},
+  author={Bishop, C.M.},
+  %isbn={9780387310732},
+  lccn={2006922522},
+  series={Information Science and Statistics},
+  url={http://books.google.com.mx/books?id=kTNoQgAACAAJ},
+  year={2006},
+  publisher={Springer}
+}
+
+@book{hastie2009elements,
+  title={{The Elements of Statistical Learning: Data Mining, Inference, and Prediction (2nd Edition)}},
+  author={Hastie, T. and Tibshirani, R. and Friedman, J.},
+  %isbn={9780387848587},
+  lccn={2008941148},
+  series={Springer Series in Statistics},
+  url={http://books.google.com.mx/books?id=tVIjmNS3Ob8C},
+  year={2009},
+  publisher={Springer}
+}
+
+@book{books/daglib/0029345,
+  added-at = {2012-11-06T00:00:00.000+0100},
+  author = {Sedgewick, Robert and Wayne, Kevin},
+  biburl = {http://www.bibsonomy.org/bibtex/22fde79ee322687a901feb1b1823bb447/dblp},
+  interhash = {552396c14a0129abbe40ca305b4f001b},
+  intrahash = {2fde79ee322687a901feb1b1823bb447},
+  %isbn = {978-0-321-57351-3},
+  keywords = {dblp},
+  pages = {I-XII, 1-955},
+  publisher = {Addison-Wesley},
+  timestamp = {2012-11-06T00:00:00.000+0100},
+  title = {{Algorithms, 4th Edition.}},
+  year = 2011
+}
+
+@misc{palabrasVaciasSnowball,
+howpublished = {\url{http://snowball.tartarus.org/algorithms/spanish/stop.txt}},
+title = {{Palabras vac\'{\i}as en espa\~{n}ol definidas en el proyecto Snowball}},
+year = 2014
+}
+
+@book{Friedl:2002:MRE:863312,
+ author = {Friedl, Jeffrey E. F.},
+ editor = {Oram, Andy},
+ title = {{Mastering Regular Expressions (2nd Edition)}},
+ year = {2002},
+ %isbn = {0596002890},
+ publisher = {O'Reilly \& Associates, Inc.},
+ address = {Sebastopol, CA, USA},
+} 
+
+@book{ross2010first,
+  title={{A first course in probability}},
+  author={Ross, S.M.},
+  %isbn={9780136033134},
+  lccn={2008033720},
+  url={http://books.google.es/books?id=Bc1FAQAAIAAJ},
+  year={2010},
+  publisher={Pearson Prentice Hall}
+}
+
+
+@article{Ponomareva_conditionalrandom,
+  title={Conditional random fields vs. hidden markov models in a biomedical named entity recognition task},
+  author={Ponomareva, Natalia and Rosso, Paolo and Pla, Ferr{\'a}n and Molina, Antonio},
+  journal={Procedings of International Conference Recent Advances in Natural Language Processing, RANLP},
+  pages={479--483},
+  year={2007}
+}
+
+@book{Jurafsky:2000:SLP:555733,
+ author = {Jurafsky, Daniel and Martin, James H.},
+ title = {{Speech and Language Processing: An Introduction to Natural Language Processing, Computational Linguistics, and Speech Recognition}},
+ year = {2000},
+ %isbn = {0130950696},
+ publisher = {Prentice Hall PTR},
+ address = {Upper Saddle River, NJ, USA},
+} 
+
+@article{Esposito:2009:COV:1577069.1755847,
+ author = {Esposito, Roberto and Radicioni, Daniele P.},
+ title = {CarpeDiem: Optimizing the Viterbi Algorithm and Applications to Supervised Sequential Learning},
+ journal = {Journal Machine Learning Research},
+ issue_date = {12/1/2009},
+ volume = {10},
+ month = dec,
+ year = {2009},
+ issn = {1532-4435},
+ pages = {1851--1880},
+ numpages = {30},
+ url = {http://dl.acm.org/citation.cfm?id=1577069.1755847},
+ acmid = {1755847},
+ publisher = {JMLR.org},
+} 
+

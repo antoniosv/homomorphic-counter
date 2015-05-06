@@ -1,0 +1,14 @@
+*uso de la etiqueta O*
+
+Incorporating Non-local Information into Information
+Extraction Systems by Gibbs Sampling
+
+
+*CoNNL*
+2002 español http://www.lsi.upc.edu/~nlp/tools/nerc/nerc.html
+2003 http://www.cnts.ua.ac.be/conll2003/ner/
+
+*software de Ner*
+http://nlp.stanford.edu/software/CRF-NER.shtml
+http://mallet.cs.umass.edu/index.php
+http://nltk.org/

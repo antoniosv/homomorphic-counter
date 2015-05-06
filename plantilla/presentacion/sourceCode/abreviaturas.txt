@@ -1,0 +1,8 @@
+   a., a.c., ant., aux., av., ave., ant., apo., b., blvd., c.,
+   cp., cfe., c.f.e., clin., carr., cam., col., const., c.v.,
+   calz., dr., don., e., esq., f., fr., frac., fracc., gza., g.,
+   hda., heb., h.e.b., h., ind., ing, i., izq., j., jua., l., 
+   lic., libr., ma., mty., m., mtro., mpal., n.l., nl., nte., 
+   ote., pte., profr., prof., prol., priv., p., prot., r., rep.,
+   s.a., s.v.t., sta., s., sto., sr., sra., sept., sec., svt., 
+   sc., t., trasp., u., vo., univ.

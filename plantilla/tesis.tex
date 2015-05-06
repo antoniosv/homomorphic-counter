@@ -1,0 +1,108 @@
+\documentclass{estiloDeTesis}
+\usepackage[sort]{natbib}
+%\renewcommand{\bibAnnoteFile}[1]{%
+%\IfFileExists{#1}{\begin{quotation}\noindent\texts c{Key:} #1\\
+%\textsc{Annotation:}\ \input{#1}\end{quotation}}{}}
+%\renewcommand{\bibAnnote}[2]{%
+%\begin{quotation}\noindent\textsc{Key:} #1\\
+%\textsc{Annotation:}\ #2\end{quotation}}
+
+\usepackage{makeidx}
+\usepackage[breaklinks=true]{hyperref}
+\usepackage{breakcites}
+\hypersetup{breaklinks=true,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\input{spanishAlgorithmic}
+\usepackage{pstricks}
+\usepackage{url}
+\usepackage{doi}
+\usepackage{lscape}
+\usepackage{color}
+\usepackage[pdftex]{graphicx}
+\usepackage{epstopdf}
+\usepackage{epsfig}
+\usepackage{footnote}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage[section]{placeins}
+\usepackage[margin=10pt,font=small,labelfont=bf,labelsep=endash]{caption}
+\usepackage{subcaption}
+\usepackage{listings}
+\def\titulo{T\'{i}tulo}
+\def\autor{Tu nombre}
+\def\matricula{Mat.}
+\def\fecha{Fecha}
+\def\asesor{Tu asesor}
+\def\coasesor{Sinodal 1}
+\def\revisor{Sinodal 2}
+\def\vobo{Dr.\ Arnulfo Trevi\~{n}o Cubero}
+\newcommand{\pname}[1]{{\fontfamily{phv}\selectfont{#1}\fontfamily{cmr}\selectfont}}
+\setcounter{secnumdepth}{5}
+\makeindex
+
+%Paquete para texto de color
+\usepackage{color}
+\definecolor{red}{rgb}{1.0,0,0}
+\definecolor{blue}{rgb}{0,0,1.0}
+\newcommand{\comentario}[1]{\textcolor{red}{\textbf{#1}}} %Comentarios asesor
+\newcommand{\correccion}[1]{\textcolor{black}{\text{#1}}} %Correcciones alumno
+\newcommand{\captionFigureCorrection}{\vspace*{-6mm}}
+\newcommand{\captionSubfigureCorrection}{\vspace*{-5mm}}
+\renewcommand{\tablename}{Cuadro}
+%\usepackage{ulem}
+\usepackage{hhline}
+
+\makeglossary
+\makeindex
+
+\begin{document}
+
+\frontmatter
+\pagestyle{main}
+\include{portillas}
+\include{agradecimientos}
+\include{resumen}
+
+\tableofcontents
+\listoffigures
+\listoftables
+
+%\pagestyle{nom}
+%\renewcommand\nomname{\'{\I}ndice de cuadros}
+%\makenomenclature
+%\printnomenclature[1in]
+\clearpage
+\pagestyle{main}
+\newpage
+%\printglossary
+\mainmatter
+\pagestyle{fime}
+\include{abreviaciones}
+
+% AQUI
+
+\include{introduction}
+\include{background}
+\include{relatedWorks}
+\include{methodology}
+\include{caseStudy}
+\include{experiments}
+%\include{existentes}
+
+%\include{propuesta}
+%\include{evaluacion}
+\include{conclusiones}
+
+\bibliographystyle{plainnat}
+%\bibliographystyle{estiloDeBibliografiaJorge}
+\bibliography{bibliografia}
+
+\appendix
+\include{Apendice}
+
+\printindex{}
+\backmatter
+\pagestyle{main}
+\include{autobiografia}
+\end{document}
