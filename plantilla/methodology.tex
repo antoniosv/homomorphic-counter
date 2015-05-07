@@ -1,13 +1,16 @@
 \chapter{Methodology}
 \label{methodology}
 
-This work looks at a case study which presents an issue directly related to the confidentiality of information when it is being stored in the cloud. It discusses a proposed solution to the problem by employing homomorphic encryption. Then, it describes in a general way the algorithm to reach the solution if it were to be processed on the same machine. Afterwards, it discusses the scenario of using a client-server architecture, and how some decisions were made regarding the communication context. It also discusses some important points on key management, and finally, how the tasks previously mentioned are being split by each component. 
+This work looks at a case study which presents an issue directly related to the confidentiality of information when it is being stored in the cloud. It discusses the situation where it is important to be able securely store a secret value, as well as make modifications on it. A solution to the problem is proposed by employing homomorphic encryption. Then, it describes in a general way a proof of concept as a stand-alone solution. Afterwards, the scenario of using a client-server architecture is considered, discussing some decisions that were made regarding the communication needs. Relevant points on key management are mentioned, and also, how the tasks previously mentioned are being split by each component. 
 
 The methodology in this work describes all the considerations and steps taken to build a solution to the problem analyzed from the case study. As such, the methodology has a very close relationship with the case study. Even though the object of study is the application of homomorphic encryption in the cloud, it is not trivial to find a fitting situation where it can be applied. The search becomes more complex as the limitations of state-of-the-art homomorphic encryption tools are considered. The case study that was thought of is simple enough so that the currently available tools can be used effectively, and complex enough so that applying homomorphic encryption is compelling and better than other alternatives.
 
 \textbf{Case study}
 
 The case study is explained as follows: a household commonly has more than one member, e.g. partner and children. The responsible members of the household (i.e. the parents) might want to keep an eye on the house while being away, especially if children are left behind. They would like to ensure that their children stay inside during this time, and that nobody else, except for a babysitter, enters the house. And if it were the case that somebody got in or out, they would probably wish to be promptly notified of it. This is especially true for the case when they are away for long periods of time, during a vacation, for example. A traditional solution consists in setting up a surveillance system throughout the house, which would certainly work to prevent robbery, but wouldn't necessarily work as a measure to know whether or not the children have left the house. Setting a surveillance system might be too costly for some families, and not be quite adaptive to their needs. It might be more efficient to deploy a system that detects when people enter and exit the building through the main door, and keep a counter of it. The main idea is that the \textit{surveillance count} gets initialized at some point in time, and, as people go in and out, the counter increases or decreases, respectively. Setting up the sensors and other pieces of hardware can be considered as a Do-It-Yourself project, as resources could easily be found. The issue comes out when the recorded data, that is, the counter, is to be accessed remotely via some kind of web application. 
+
+[INSERT SAMPLE FIGURE]
+% pendiente poner imagen
 
 \textbf{Proposed solution}
 
@@ -38,8 +41,9 @@ It is important to note that the library recently started to support multi-threa
 
 The HElib library is an implementation of a homomorphic encryption scheme, and as such, it has certain requirements before it can encrypt data or even generate keys. First of all, it has a list of parameters which must be manually set. Depending on the parameters applied, some aspects that directly affect the keys and ciphertext are altered. The suggested values are used for the majority of the parameters. Altering the values of the parameters could be an interesting way to do experimentation with the key size and computation time required.
 
-The following table briefly describes each parameter used. It does not go into much depth, as those details are mostly pertaining to the algorithms in the library.
+The following table briefly describes each parameter used in HElib. It does not go into much depth, as those details are mostly pertaining to the algorithms in the library.
 
+%\begin{table}
   \begin{tabular}{|l|c|r|}
     \hline 
     R  &     number of rounds &  default=1     \\ \hline
@@ -56,9 +60,8 @@ The following table briefly describes each parameter used. It does not go into m
     gens &   use specified vector of generators & optional \\ \hline
     ords  &  use specified vector of orders & optional \\ \hline
   \end{tabular}
-
- 
- 
+%  \caption{Parameters used for use of HElib}
+%\end{table}
 
 
 \textbf{Key generation and serialization}
@@ -89,12 +92,6 @@ Before proceeding to encrypt the data, it is important to have the public key se
 
 This way, the data of the attributes found in the public key object has been stored as a stream of bytes in a highly portable object from the \textit{ostringstream} class. Using this newly populated object, the public key can be shared using sockets.
 
-\textbf{User registration}
-
-Even though user registration is not part of the planned implementation, it is certainly recommended to consider how to handle different users. There might many more than a couple of households that make use of such a counting service. This is why each householder would have to register his public key and go through some kind of authentication mechanism every time they restart or download the counter data. It is especially important to take the appropriate measures so that somebody else does not reset the counter value of a household that is not theirs, because it would be chaotic when the householder looks at the counter and finds a value that does not represent reality.
-To keep the registration under control, it might be ideal to keep a list of registered users either on a database or just a file for each household which would contain basic pieces of information such as an email address or username, along with the hash value of a password and the appropriate public key for the household that is being registered.
-
-
 \textbf{Encryption of the Counter Value}
 
 In order the protect the value of the counter from being known from other parties, including the server itself, it must be encrypted. This means that an encryption algorithm, provided by the HElib, is to be used on the plaintext that represents the counter. The result of this process is a ciphertext, which, unless provided with the corresponding private key, cannot be brought back to its plaintext form. 
@@ -110,22 +107,6 @@ Following the conventions defined in the HElib, an object from the \textit{Encry
 \end{lstlisting}
 
 This ciphertext can be used in several ways: its value can be modified by adding, substracting or multiplying it by some arbitrary value, it could also be decrypted at any time using the private key, or it could be serialized as it was done with the public key, so another party, e.g. the server, can receive and store it.
-
-\textbf{Software Architecture and Data transmission}
-
-Even though the case study started out considering cloud services, an actual implementation of the application can be addressed with a client-server architecture. The client-server architecture is a popular model that consists of a two parts: a client and a server. Usually, the server just waits for any kind of request from a client to do some kind of task. Meanwhile, the client usually starts some kind of task, but depends on the server to do it completely. Most of the time, the client depends on the server because it might have something that the client does not, like a database.
-
-In this case, the implementation of the counter application is approached using a client-server model. The server represents the cloud service that stores and modifies the encrypted data on request, while the client plays the part of obtaining and encrypting the sensitive data. The client also takes care of tasks such as initializing the homomorphic encryption context, generating the public and private keys, encrypting the data, and serializing the encrypted counter before sending it over to the server. Meanwhile, the server takes care of establishing the communication details via TCP sockets, reconstructing the received ciphertext, and performing operations on it. Although a more secure implementation would consider using the Secure Socket Layer (SSL) over TCP, it was simplified to cover only the details pertaining the use of homomorphic encryption.
-
-Once the user has obtained the initial data, i.e. by counting the number of people currently in the house at a given time, he proceeds to feed the data to the client program, so it is encrypted using the previously generated public key. After the counter data has been encrypted successfully, the data is then sent to the server via sockets. There were two possible protocols that could have been used for this part: UDP and TCP. UDP stands for User Datagram Protocol and is used in conjunction with the Internet Protocol. UDP works best when the data units that are being sent are very small. It is also a little bit problematic considering that it does not reassembles data packets once they have arrived at the destination. The other option that was considered was TCP, which stands for Transmission Control Protocol. It is a little friendlier to use in the sense that it reassembles datagrams in the correct order once they arrive at their destination. However, it adds a little bit of overhead cost since it adds a header section per segment. In the end, it was chosen to use TCP over UDP, especially since it might become complicated to keep track of the order of the data packets.
-
-\textbf{Sending and reading serialized data}
-
-\textbf{Changes in the counter}
-
-Once the initial value of the counter has been received by the server, there are two possible scenarios that could occur next: the value gets viewed by the householder, or a change in the counter occurs. Whenever a significant change is observed by the client program, the change is promptly notified to the server, which could be either positive or negative. When the cloud service receives the value of change, it either adds or subtracts it from the previously stored value. The change is immediately visible to the householder who might wish to know the current value of the counter.
-
-As the implementation of the counter was started before December 2014, bootstrapping was not considered to use. Bootstrapping is an advanced technique in fully homomorphic encryption which allows more homomorphic evaluations to be run on a ciphertext. As it has been mentioned, whenever a homomorphic evaluation is performed on the ciphertext, a small amount of noise is added to it, and after a certain threshold, the ciphertext becomes unusable, in the sense that it no longer decrypts back to the correct value. As an alternative to bootstrapping, however, it is possible to reset the counter, i.e. upload a newly created ciphertext with an initial counter value, so that more homomorphic evaluations can be performed on it. Considering that the operations that will be done most of the time are addition and subtraction, this is not something that will occur often, but eventually will. 
 
 \textbf{Single component operation flow}
 
@@ -144,11 +125,97 @@ Before attempting to break down the whole implementation in two parts: the serve
 	\item Newly decrypted plaintext is printed to verify correct result from operations.
 \end{enumerate}
 
+\textbf{Software Architecture and Data transmission}
+
+Even though the case study started out considering cloud services, an actual implementation of the application can be addressed with a client-server architecture. The client-server architecture is a popular model that consists of a two parts: a client and a server. Usually, the server just waits for any kind of request from a client to do some kind of task. Meanwhile, the client usually starts some kind of task, but depends on the server to do it completely. Most of the time, the client depends on the server because it might have something that the client does not, like a database.
+
+In this case, the implementation of the counter application is approached using a client-server model. The server represents the cloud service that stores and modifies the encrypted data on request, while the client plays the part of obtaining and encrypting the sensitive data. The client also takes care of tasks such as initializing the homomorphic encryption context, generating the public and private keys, encrypting the data, and serializing the encrypted counter before sending it over to the server. Meanwhile, the server takes care of establishing the communication details via TCP sockets, reconstructing the received ciphertext, and performing operations on it. Although a more secure implementation would consider using the Secure Socket Layer (SSL) over TCP, it was simplified to cover only the details pertaining the use of homomorphic encryption.
+
+Once the user has obtained the initial data, i.e. by counting the number of people currently in the house at a given time, he proceeds to feed the data to the client program, so it is encrypted using the previously generated public key. After the counter data has been encrypted successfully, the data is then sent to the server via sockets. There were two possible protocols that could have been used for this part: UDP and TCP. UDP stands for User Datagram Protocol and is used in conjunction with the Internet Protocol. UDP works best when the data units that are being sent are very small. It is also a little bit problematic considering that it does not reassembles data packets once they have arrived at the destination. The other option that was considered was TCP, which stands for Transmission Control Protocol. It is a little friendlier to use in the sense that it reassembles datagrams in the correct order once they arrive at their destination. However, it adds a little bit of overhead cost since it adds a header section per segment. In the end, it was chosen to use TCP over UDP, especially since it might become complicated to keep track of the order of the data packets.
+
+\textbf{Sending and reading serialized data}
+
+The serialized data that is sent through sockets was very large to be done with a single function call, which is why a few considerations have to be made on the implementation. It is recommended to have some kind of supporting function that continuously is attempting to send data to the server, until there are no bytes left.
+
+The following snippet of code shows how the ciphertext is serialized using the \textit{ostringstream} class, and then a function call is made to a supporting function which continuously attemps to send all the remaining bytes to the server. It is relatively simple to keep track of how many bytes are being sent and how many are left, which is why it stops sending data at the appropriate time.
+
+\begin{lstlisting}
+  ostringstream oss;
+  oss << encryptedCounter;
+
+  if(sendalldata(sockfd, oss.str().c_str(), &msgsize) == -1) {
+    printf("ERROR. Only \%d bytes sent!\textbackslash n", msgsize);
+  }
+
+int sendalldata(int s, char const* buffer,  int *len)
+{
+  int total = 0; // bytes sent
+  int bytesleft = *len; // bytes left to send
+  int n;
+  
+  while(total < *len) {
+    n = send(s, buffer+total, bytesleft, 0);
+    if (n == -1) { break; }
+    total += n;
+    bytesleft -= n;
+  }
+  *len = total; 
+  if(n == -1) 
+    return -1;
+  else 
+    return 0;
+}
+\end{lstlisting}
+
+As it cannot be expected that the serialized ciphertext of great size will be succesfully sent with a single send function call, the same goes for the receiving end. Certain measures have to be taken so that all the data is received complete and in the appropriate order.
+
+The following piece of code extracted from the server side of the software goes through the part where the ciphertext is being received after it has been serialized. First of all, a buffer is declared and initialized with the size of the ciphertext, which was previously received. A function called \textit{bzero()} is used to prepare and empty the buffer.  Then, a while loop is done as long as there are bytes remaining to be received. As more iterations go by, more data is appended to the buffer. A couple of variables are used to keep in check how many bytes have been read and how many are still pending to be read.
+
+\begin{lstlisting}
+  char* responseBuffer = new char[responseBufferSize];
+  bzero(responseBuffer, responseBufferSize);
+  bytes_read = 0;
+  int bytes_remaining = responseBufferSize;
+  int this_recv;
+  while(bytes_remaining > 0) {    
+    this_recv = recv(newsockfd, responseBuffer+bytes_read,
+                bytes_remaining, 0); 
+    if(this_recv <=0) error("error on receive");
+    else {
+      bytes_remaining -= this_recv;
+      bytes_read += this_recv;
+    }
+  }
+\end{lstlisting}
+
+\textbf{Reconstructing the ciphertext}
+
+It was mentioned before that serialization allowed persistence and made it easier for object data to be sent via sockets. However, the serialzied objects cannot be used the way they are received. In this case, the ciphertext was serialized before being sent to the server, and once it is properly received, the data must be used to reconstruct the original ciphertext object.
+If this is not done, there is no way to perform operations on the ciphertext, or even decrypt it to know its value.
+
+The following piece of code describes the steps to be taken in order to reconstruct the object that can contain the ciphertext. First of all, the buffer that was previously filled with data is then copied into a string variable, then it goes through a couple of steps so it can be used as a \textit{istringstream} object. The preparation is certainly more complicated, but the reconstruction of the object is quite simple itself. Since HElib is friendly with the \textgreater\textgreater operators, it can be done in one step. This operator basically takes the data from one variable and puts it in another kind of variable, one being a \textit{istringstream} object, and the other a \textit{Ctxt} object.
+
+\begin{lstlisting}
+  string strBuffer((const char*) responseBuffer, bytes_read);
+  istringstream serialCipher;
+  serialCipher.str(strBuffer);
+
+  Ctxt receivedCipher(publicKey);
+  serialCipher >> receivedCipher;
+\end{lstlisting}
+
+
+\textbf{Changes in the counter}
+
+Once the initial value of the counter has been received by the server, there are two possible scenarios that could occur next: the value gets viewed by the householder, or a change in the counter occurs. Whenever a significant change is observed by the client program, the change is promptly notified to the server, which could be either positive or negative. When the cloud service receives the value of change, it either adds or subtracts it from the previously stored value. The change is immediately visible to the householder who might wish to know the current value of the counter.
+
+As the implementation of the counter was started before December 2014, bootstrapping was not considered to use. Bootstrapping is an advanced technique in fully homomorphic encryption which allows more homomorphic evaluations to be run on a ciphertext. As it has been mentioned, whenever a homomorphic evaluation is performed on the ciphertext, a small amount of noise is added to it, and after a certain threshold, the ciphertext becomes unusable, in the sense that it no longer decrypts back to the correct value. As an alternative to bootstrapping, however, it is possible to reset the counter, i.e. upload a newly created ciphertext with an initial counter value, so that more homomorphic evaluations can be performed on it. Considering that the operations that will be done most of the time are addition and subtraction, this is not something that will occur often, but eventually will. 
+
 \textbf{Architecture breakdown}
 
 The proof of concept that makes use of homomorphic encryption ends up being completely linear in the sense that it has no communication at all with different parts of the outside world. The considered case study implies that there is both a household where the counter is initialized and another location where the current counter value can be accessed. Considering this aspect, it makes sense to have a server in the cloud that can be accessed securely which will contain the current value of the counter for each household. This requires the server to store the public key as well, since to be able to modify the ciphertext of the counter data, such a key is needed. 
 
-In the following figure, a breakdown of the client-model architecture employed is depicted. As previously mentioned, the solution is split into two parts: client and server sides. Each side has specific tasks that must be performed independently. The figure was conceived as an attempt to organize the software structure and assign a functionality to one of the components. The client side is in charge of the tasks that are performed at the place where the counter is initialized, i.e. the household. Such tasks include: setting up the parameters and context required by the HElib, generating the set of public and private keys, registering the public key, encrypting the initial counter value, serializing the ciphertext, recording changes in the counter value, and decrypting the received ciphertext. M 
+In the following figure, a breakdown of the client-model architecture employed is depicted. As previously mentioned, the solution is split into two parts: client and server sides. Each side has specific tasks that must be performed independently. The figure was conceived as an attempt to organize the software structure and assign a functionality to one of the components. The client side is in charge of the tasks that are performed at the place where the counter is initialized, i.e. the household. Such tasks include: setting up the parameters and context required by the HElib, generating the set of public and private keys, registering the public key, encrypting the initial counter value, serializing the ciphertext, recording changes in the counter value, and decrypting the received ciphertext. 
 
 \begin{figure}[h!]
   \centering 
@@ -156,11 +223,25 @@ In the following figure, a breakdown of the client-model architecture employed i
   \caption{Architecture breakdown into client and server.}
 \end{figure}
 
+[ADD SEQUENCE DIAGRAM AND DESCRIPTION]
 
-\begin{figure}[h!]
-  \centering
-  \includegraphics[scale=0.7]{counter}
-  \caption{Sequence diagram showing operation under normal conditions}
-\end{figure}
+%\begin{figure}[h!]
+%  \centering
+%  \includegraphics[scale=0.7]{counter}
+%  \caption{Sequence diagram showing operation under normal conditions}
+%\end{figure}
+
+\textbf{Discussion}
+
+The part of user registration is not part of the planned implementation itself, but it is recommended to consider how to handle different users. There might many more than a couple of households that make use of such a counting service. This is why each householder would have to register his public key and go through some kind of authentication mechanism every time they restart or download the counter data. It is especially important to take the appropriate measures so that somebody else does not reset the counter value of a household that is not theirs, because it would be chaotic when the householder looks at the counter and finds a value that does not represent reality.
+To keep the registration under control, it might be ideal to keep a list of registered users either on a database or just a file for each household which would contain basic pieces of information such as an email address or username, along with the hash value of a password and the appropriate public key for the household that is being registered.
+
+There were several problems at this stage that were directly related to the implementation. Th
+e transmission of serialized data between the client and server was especially problematic. The early attempts at sending serialized data to the server were not quite successful. Many different kind of errors were found, and the most common one was related to memory allocation. After going through several trial and error attempts, it was found the errors started appearing as the message got larger. This seemed to be inevitable as the default settings of a TCP blocking socket were not adequate to send large pieces of data. 
+
+After doing the right adjustments, the problem seemed to go away, except that \textit{the result was not quite as expected}. It was known inmediately that something was up with the received ciphertext, as it could not decrypt properly. It helped to look at the data that the server received, and it was quite evident that it was not complete. Indeed, only certain fragments of the ciphertext were received successfully, which led to an incorrect decryption. Several adjustments were made to the process of receiving data, so that a couple of control variables were used to keep in check how many bytes were being received. It was set so that it would only stop reading data from the client until all of the bytes had been read and assembled in a buffer. Both the functionalities of reading and writing the ciphertext on a socket were relatively more complicated considering that was done without the support of a framework that specialized on it.
+
+In summary, a description of the case study was given, a solution based on homomorphic encryption was proposed to tackle the problem found in the case study, details of the HElib were discussed, and all of the relevant considerations pertaining to the implementation were explained. These considerations took on points such as the parameters and context, key generation and serialization, software architecture, transmission of serialized data, reconstruction of the ciphertext, and dealing with changes of the counter. 
+
 
 \clearpage

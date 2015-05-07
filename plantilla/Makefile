@@ -1,4 +1,4 @@
-B1;2802;0call: tesis.pdf
+#B1;2802;0call: tesis.pdf
 
 tesis.pdf: tesis.tex bibliografia.bib portillas.tex resumen.tex
 	pdflatex --enable-write18 --shell-scape tesis
