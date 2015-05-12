@@ -12,50 +12,48 @@ A level-1 auxiliary file: methodology.aux
 A level-1 auxiliary file: caseStudy.aux
 A level-1 auxiliary file: experiments.aux
 A level-1 auxiliary file: conclusiones.aux
-The style file: plainnat.bst
+The style file: plain.bst
 A level-1 auxiliary file: Apendice.aux
 A level-1 auxiliary file: autobiografia.aux
-I found no \citation commands---while reading file tesis.aux
 Database file #1: bibliografia.bib
-You've used 0 entries,
-            2823 wiz_defined-function locations,
-            654 strings with 5512 characters,
-and the built_in function-call counts, 33 in all, are:
-= -- 0
-> -- 0
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            534 strings with 4738 characters,
+and the built_in function-call counts, 888 in all, are:
+= -- 78
+> -- 28
 < -- 0
-+ -- 0
-- -- 0
-* -- 2
-:= -- 10
-add.period$ -- 0
-call.type$ -- 0
-change.case$ -- 0
++ -- 12
+- -- 8
+* -- 36
+:= -- 162
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 13
 chr.to.int$ -- 0
-cite$ -- 0
-duplicate$ -- 0
-empty$ -- 1
-format.name$ -- 0
-if$ -- 1
-int.to.chr$ -- 1
-int.to.str$ -- 1
-missing$ -- 0
-newline$ -- 8
-num.names$ -- 0
-pop$ -- 0
+cite$ -- 4
+duplicate$ -- 48
+empty$ -- 89
+format.name$ -- 8
+if$ -- 187
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 8
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 31
 preamble$ -- 1
-purify$ -- 0
+purify$ -- 12
 quote$ -- 0
-skip$ -- 1
+skip$ -- 24
 stack$ -- 0
-substring$ -- 0
-swap$ -- 0
+substring$ -- 20
+swap$ -- 4
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 0
+type$ -- 8
 warning$ -- 0
-while$ -- 0
-width$ -- 0
-write$ -- 7
-(There was 1 error message)
+while$ -- 8
+width$ -- 5
+write$ -- 43
