@@ -37,41 +37,57 @@ It is assumed at all times that Eve has access to the communication lines, and c
 
 The nature of the encryption and decryption can be classified in two broad categories: symmetric and asymmetric key encryption. \cite{CryptoKeys} describes both categories by looking at the keys used. In \textbf{symmetric encryption}, the key used for encryption is virtually the same used in decryption. Therefore, key distribution has to be done before the tranmission of the messages. The key length has a direct impact on the security offered by the encryption algorithm. Meanwhile, \textbf{asymmetric encryption} employs two different keys: public and private. The public key is closely tied to the receiver, and it is used for encryption of the data. It is called public because it is available for general use; therefore, Alice can use Bob's public key to send him messages. On the other hand, the private is kept secret from the outside world, and is only available by an authorized person. The public and private keys always come in pairs, and this is because while the public key is used to encrypt data; its counterpart, the private key, is used to decrypt the data. 
 
-\begin{comment}
-\textbf{Security in the Cloud}
+\textbf{Number theory: Groups, Rings}
 
-The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. 
 
-\textit{Cloud storage}
+\textbf{Services in the cloud}
 
-\textit{Proof of storage}
-
-\textit{Cloud Computing}
+The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. As Xu et al. in \cite{cryptoeprint:2011:574} point out, cloud storage services, such as Dropbox, Skydrive, Google Drive, and Amazon S3 have become very popular in recent years. As the use of these services become more common, more sensitive information is kept in the cloud, such as emails, health records, private videos and photos, company finance data, government documents, etc. 
 
 Li, Jin et. al \cite{cryptoeprint:2009:593} introduce cloud computing as a new term that views computing as an utility which enables convenient, on-demand access to computing resources that can be rapidly deployed with minimal management overhead and great efficiency. Cloud computing has the potential to benefit its users in avoiding large capital expenditure used for deployment and management of both software and hardware, such as setting up a data center. 
 
-\textit{Key management}}
+All of these services are opening up a new era powered by the software as a service (SaaS) computing architecture. One of the main advantages of storing this information in the cloud is that the owners are relieved from the burden of data storage and maintenance at all times. There are many plans that adjust to the on-demand needs of the owner of the data, which is way less costly than building and maintaining a whole data center. This implies that the clients of these services can expect to gain reliability and availability from having the data stored remotely. On the other hand, the data is necessarily brought out of their control and protectio. This becomes a risk for the owner of the data, since the information stored in the cloud could potentially be accessed by unauthorized individuals, such as competitors or malicious attackers. There also exists the possibility that the information stored could be tampered in some way, thus compromising its integrity. Therefore, the computing and storage service providers are usually not trusted completely, which is why it has been difficult for the public and organizations to fully adopt the use of these services.
+
+The aforementioned issue brings up the need of having a mechanism that verifies that a cloud provider is storing the whole database intact, even the portions that are rarely accessed. Ateniese et al. \cite{cryptoeprint:2014:886} point out that, fortunately, a series of \textit{proofs-of-storage} protocols have been proposed to solve this problem related to data integrity. Xu et al. \cite{cryptoeprint:2014:395} define a proof of storage (POR or PDP) as a cryptographic tool, which enables a data owner or third party auditor to audit integrity of data stored remotely in a cloud storage server, without keeping a local copy of data or downloading data back during auditing. In other words, applying a proof of storage in a cloud server can guarantee that the data has not been tampered with; and in the event that it is, most likely the service could be held liable for damages to the data. A huge advantage of using a proof of storage is that the data does not have to be downloaded to confirm its integrity, which makes it ideal to make use of it routinely. 
+
+One of the simplest use cases for cloud computing is when a user independent from the cloud wants to store some data in it for later retrieval. In this simple case, data confidentiality and integrity can be trivially ensured. For that, typical cryptography primitives can be usedby encrypting the user's data before it is sent for storage in the cloud. To ensure confidentiality, the key used for encryption is kept secret from the cloud provider. However, real life applications are not as simple. Damgard et al. \cite{cryptoeprint:2013:629} mentions that the cloud is more than a storage medium; in particular, computation over the stored data is outsourced to the cloud. Sometimes it might even be distributed among distinct cloud servers geographically apart, operated by different parties. Wang et al \cite{cryptoeprint:2009:081} describe the nature of the problem at length, because usually a cloud service is not solely restricted as a data warehouse. The data stored in the cloud may be frequently updated by the users, including insertion, deletion, modification, appending, reordering, etc. This kind of complex scenario is what makes the use of traditional cryptographic primitives so difficult to adapt, especially because the data is not stored in a single cloud server, but is instead redundantly stored in multiple physical locations to further reduce the data integrity threats. Therefore, making use of cloud services highly improve data avalability and storage flexibility, data confidentiality and integrity is put at risk.
 
 
-\textbf{Secure computation}
+\textit{Key management}
 
-\textit{Multiparty computation}
-
-\textit{Introduction to homomorphic cryptography}
-
+\textbf{Secure multiparty computation}
 
 \textbf{Homomorphic Encryption}
 
 \textit{Intro}
 
+\textit{Mathematical things}
+
+According to P{\"o}tzelsberger \cite{potzelsberger2013kv},  \textit{homomorphic cryptosystem} is a cryptosystem whose encryption function is a homomorphism, and thus preserves group operations performed on ciphertexts. Arithmetic addition and multiplication are the two group operations considered.  A homomorphic encryption is additive if:
+
+\begin{equation}
+\epsilon(x+y) = \epsilon(x)\otimes \epsilon(y)
+\end{equation}
+
+where \epsilon denotes an encryption function, \otimes denotes an operation depending the used cipher and x and y are plaintext messages. A homomorphic encryption is multiplicative if:
+
+\begin{equation}
+\epsilon(x \cdot y) = \epsilon(x) \otimes \epsilon(y)
+\end{equation}
+
+where again \epsilon denotes an encryption function, \otimes denotes an operation depending on the used cipher and x and y are plaintext messages.
+
 \textit{Classification}
 
-\textit{Mathematical things}
+Homomorphic encryption schemes are classified in two broad groups
+
+
+\textit{Applications}
 
 \textit{Intro to lattice-based crypto}
 
 \textit{BGV scheme}
 
-\end{comment}
+
 
 \clearpage
