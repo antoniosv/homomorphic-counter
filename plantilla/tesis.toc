@@ -12,5 +12,5 @@
 \contentsline {section}{\numberline {1.5}Study Case}{4}{section.1.5}
 \contentsline {section}{\numberline {1.6}Estructura de la tesis}{4}{section.1.6}
 \contentsline {chapter}{\numberline {2}Background}{6}{chapter.2}
-\contentsline {chapter}{\numberline {3}Trabajos Relacionados}{14}{chapter.3}
-\contentsline {chapter}{\numberline {4}Methodology}{15}{chapter.4}
+\contentsline {chapter}{\numberline {3}Trabajos Relacionados}{18}{chapter.3}
+\contentsline {chapter}{\numberline {4}Methodology}{19}{chapter.4}
