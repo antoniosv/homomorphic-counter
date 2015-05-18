@@ -1,7 +1,7 @@
 \chapter{Background}
 \label{background}
 
-\textbf{Information Security and Data Confidentiality}
+\section{Information Security and Data Confidentiality}
 
 Information security is a broad topic that covers many different aspects, from which two of them are particularly important for this work: confidentiality and authentication. There are some aspects from cryptography that would be relevant to review, such as asymmetric and symmetric cryptography, as well as the concepts: plaintext, ciphertext and key. A brief description of cloud computing and its relevant aspects are to be described, and how can secure computations have an impact on it. Finally, the concept of homomorphic encryption will be explained, noting the mathematical properties and its categories of somewhat homomorphic encryption and fully homomorphic encryption, as well as possible applications of this type of encryption.
 
@@ -11,7 +11,7 @@ Seen from a general perspective, Whitman and Herbert describe security as ``the 
 
 This definition introduces two relevant concepts in the previous definition, namely: information and confidentiality. RFC 2828 defines information as ``facts and ideas, whichcan be represented (encoded) as various forms of data,'' and data as ``information in a specific physical representation, usually a sequence of symbols that have meaning: especially a representation of information that can be processed or produced by a computer.'' Although both terms have different connotations depending on what it represents, both words are used interchangeably in this work. Now that information has been described as a concept, confidentiality can be introduced. More specifically, data confidentiality refers to the assurance that private or confidential information is not made available or disclosed to unauthorized individuals \cite{CryptoStallings}. This term is closely related to \textit{privacy}, which gives individuals the control of what information related to them may be accessed or stored by whom. Loss of confidentiality would imply unathorized access or disclosure of information.
 
-\textbf{Cryptography Concepts}
+\section{Cryptography Concepts}
 
 Cryptography is the study of protecting data and communications. It involves communicating messages or information between two or more parties by changing the appearance of the messages, so that it becomes very difficult for unauthorized parties to intercept or interfere with the transmission of the information \cite{IntroCryptoMath}. Cryptography should not be confused with cryptology, because even though they overlap with each other, cryptology includes cryptanalysis as well. 
 
@@ -24,12 +24,12 @@ Before a message is sent from Alice to Bob or viceversa, the sender \textit{encr
 
 As Stanoyevitch \cite{IntroCryptoMath} describes it on his Introduction to Cryptography book, the above scheme would make up a cryptosystem, since it makes of cryptographic algorithms. As it has been hinted, such a cryptosystem has two parts: encryption, which is done by the sender as means of putting or transforming the actual \textbf{plaintext} into \textbf{ciphertext}, and \textbf{decryption}, which is done once the message has been received at the other end and has the purpose of translating the ciphertext back into the original plaintext message. Both encryption and decryption are usually done using a \textbf{key}, and it is intended that only the sender and receiver learn of the nature and value of the key. 
 
-Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a five-tuple (P, C, K, E, D), where the following conditions are satisfied:
+Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a five-tuple ($\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D}$), where the following conditions are satisfied:
 \begin{enumerate}
-\item P is a finite set of possible plaintexts;
-\item C is a finite set of possible plaintexts;
-\item K, the keyspae, is a set of possible keys;
-\item For each K \epsilon K, there is an encryption rule $e_{k} : P \rightarrow C and d_{k} : C \rightarrow P$ are functions such that $d_{k}(e_{k}(x)) = x$ for every plaintext element x \epsilon P.
+\item $\mathcal{P}$ is a finite set of possible plaintexts;
+\item $\mathcal{C}$ is a finite set of possible plaintexts;
+\item $\mathcal{K}$, the keyspace, is a set of possible keys;
+\item For each $K \in \mathcal{K}$ there is an \textit{encryption rule} $ e_{K} \in \mathcal{E}$  and a corresponding \textit{decryption rule} $ d_{K} \in \mathcal{D}$. Each $e_{K}: \mathcal{P} \rightarrow \mathcal{C}$ and $d_{K}: \mathcal{C} \rightarrow \mathcal{P}$ are functions such that $d_{k}(e_{K}(x))$ for every plaintext element $x \in \mathcal{P}$.
 \end{enumerate}
 
 [INSERT BOB-ALICE-EVE DRAWING]
@@ -47,10 +47,129 @@ It is assumed at all times that Eve has access to the communication lines, and c
 
 The nature of the encryption and decryption can be classified in two broad categories: symmetric and asymmetric key encryption. \cite{CryptoKeys} describes both categories by looking at the keys used. In \textbf{symmetric encryption}, the key used for encryption is virtually the same used in decryption. Therefore, key distribution has to be done before the tranmission of the messages. The key length has a direct impact on the security offered by the encryption algorithm. Meanwhile, \textbf{asymmetric encryption} employs two different keys: public and private. The public key is closely tied to the receiver, and it is used for encryption of the data. It is called public because it is available for general use; therefore, Alice can use Bob's public key to send him messages. On the other hand, the private is kept secret from the outside world, and is only available by an authorized person. The public and private keys always come in pairs, and this is because while the public key is used to encrypt data; its counterpart, the private key, is used to decrypt the data. 
 
-\textbf{Number theory: Groups, Rings}
+\section{Introduction to Number theory}
 
+In other to understand more topics pertaining cryptosystems, number theory and its notation, as well as some relevant theorems must be introduced. Number theory consists of the study of the properties of whole numbers, and it is considered to be inextricably linked to cryptography \cite{stark1970introduction}. Wiley \& Sons \cite{2008algorithm} introduces number theory and most of its relevant aspects in his Algorithm Design book. The information is briefly summarized as follows.
 
-\textbf{Services in the cloud}
+\subsection{Fundamental Theorems}
+
+Given positive integers $a$ and $b$, we use the notation 
+\begin{equation}
+a|b
+\end{equation}
+to indicate that $a$ \textbf{divides} $b$, that is, $b$ is a multiple of $a$. If $a|b$, then we know that there is some integer $k$, such that $b=ak$. From this definition, the following properties are found:
+
+\textbf{Theorem on Divisibility}: \textit{Let a, b and c be arbitrary integers. Then}
+\begin{itemize}
+\item If $a|b$ and $b|c$, then $a|c$.
+\item If $a|b$ and $a|c$, then $a|(ib+jc)$, for all integers $i$ and $j$.
+\item If $a|b$ and $b|a$, then $a=b$ or $a= -b$.
+\end{itemize}
+
+An integer $p$ is said to be \textbf{prime} if $p\geq 2$ and its only divisors are the trivial divisors $1$ and $p$. Therefore, in the case $p$ is a prime, $p|q$ implies $d=1$ or $d=p$. An integer greater than 2 that is not prime is said to be \textbf{composite}. Also, two integers which only share a common divisor of 1 are considered to be \textbf{relatively prime}.
+
+\textbf{Fundamental Theorem of Arithmetic}:\textit{Let $n > 1$ be an integer. Then there is a unique set of prime numbers $\{p_{1}, \dots p_{k}\}$ and positive integer exponents  $\{e_{1}, \dots , e_{k}\}$, such that}
+
+\begin{equation}
+n = p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}
+\end{equation}
+
+The above product $p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}$ is the prime decomposition of $n$. In other words, any positive integer is made up of the product between two prime numbers.   
+
+\subsection{Modular Arithmetic}
+
+The remainder of $a$ when divided by $n$ is expressed as $a \mod n$, that is:
+
+\begin{equation}
+  r = a \mod n
+\end{equation}
+
+which means that there is some integer $q$, such that
+
+\begin{equation}
+  a = qn + r
+\end{equation}
+
+The remainder $r$ is resulting from $a \mod n$ is always an integer in the set $\{0, 1, 2, \dots, n-1\}$, even when $a$ is negative. 
+
+\textbf{Congruence} modulo $n$ is a relevant concept to mention as well. If
+\begin{equation}
+  a \mod n = b \mod n,
+\end{equation}
+
+then we say that $a$ is \textbf{congruent} to $b$ modulo $n$, so it can bet written in this way:
+\begin{equation}
+a \mod n \equiv b \pmod n
+\end{equation}
+
+Therefore, if $a \equiv b \mod n$, then $a-b=kn$ for some integer $k$. 
+
+Having explained the residue and modulo operation, a very convenient notation, called the set of residues, can be introduced. Let $Z_{n}$ denote the set of nonnegative integers less than $n$:
+\begin{equation}
+Z_{n} = \{0,1,\cdots, (n-1)\}
+\end{equation} 
+
+The set $Z_{n}$ is also called the set of \textbf{residues} modulo $n$, because if $b=a \mod n$, $b$ is sometimes called the \textbf{residue} of $a$ modulo $n$. The notation $Z_{n}$ represents the integers between 0 and $n-1$. Thus, when it says that ``Let $a$ be a member of $Z_{n}$'', it really means the same thing as ``Let $a$ be an integer between 0 and $n-1$.''
+
+Modular arithmetic in $Z_{n}$, where operations on the elements of $Z_{n}$ are performed $\mod n$, show properties similar to those in traditional arithmetic, such as the \textbf{associativity}, \textbf{commutativity}, \textbf{distributivity} of addition and multiplication, and the existence of identity elements 0 and 1 for addition and multiplication, respectively. However, other operations such as division and exponentiation, behave very differently than they do for normal arithmetic.
+
+Every element $x$ in $Z_{n}$ has an \textbf{additive inverse}, that is, for each $x \in Z_{n}$, there is a $y \in Z_{n}$ such that $x + y \mod n = 0$. In other words, it means there is an element $a'$ that multiplies $a$ modulo $n$ which equals 1.  A \textbf{multiplicative inverse} of $x$ is an element $z^{-1} \in Z_{n}$ such that $xx^-1 \equiv 1 \mod n$. As well as in regular arithmetic, 0 does not have a multiplicative inverse in $Z_{n}$. There are some nonzero elements that do not have a multiplicative inverse in $Z_{n}$. However, for every $n$ that is prime, every element $x \ne 0$ of $Z_{n}$ has a multiplicative inverse.
+
+\subsection{Order and Generators}
+
+Given a prime $p$ and an integer $a$ between 1 and $p-1$, the \textbf{order} of $a$ is the smallest exponent $e > 1 $ such that
+\begin{equation}
+  a^{e} \equiv 1 mod q
+\end{equation}
+
+A \textbf{generator}, or primitive root, of $Z_{p}$ is an element $g$ of $Z_{p}$ with order $p-1$. It is called a generator, because the repeated exponentiation of it can generate all the elements in $Z_{p}^{*}$. $Z_{p}^{*}$ is a subset of $Z_{p}$, defined to be the set of integers between 1 and $n$ that are relatively prime to $n$. 
+
+\textbf{Theorem on generators}: \textit{If $p$ is a prime, then set $Z_{p}$ has $\phi(p-1)$ generators}. 
+
+\subsection{Other relevant points on modular arithmetic}
+
+Cliff and Ken \cite{cs21math19notes} review a several important concepts regarding modular arithmetic, and are thus listed as follows:
+
+\begin{itemize}
+\item \textit{Fermat's Little Theorem}
+\textit Let $p$ be a prime, and let $x$ be an integer such that $x \mod p \ne 0$. In other words, that $p$ does not divide the integer $x$. Then
+
+\begin{equation}
+x^{p-1} \equiv 1 \pmod{n}
+\end{equation}
+
+\item \textit{Euclid's Division Theorem}. For every integer $m$ and positive integer $n$, there exist unique integers $q$ and $r$ such that $m=nq+r$ and $0 \leq r < n$. By definition, $r$ is equal to $m \mod n$.
+
+\item \textit{Adding multiples of n does not change values mod n}. That is, $i \mod n= (i+kn) \mod n$ for any integer $k$.
+
+\item Mods (by $n$) can be taken anywhere in calculation, so long as we take the final result $\mod n$
+
+\item \textit{Commutative, associative, and distributive laws}. Addition and multiplication mod $n$ satisfy the commutative and associative laws, and multiplication distributes over addition.
+
+\item The expression ``$x \in Z_{n}$'' is used to mean that $x$ is a variable that can take on any of the integral values between 0 and $n-1$.
+\end{itemize}
+
+\section{Abstract Algebra: Groups and Rings}
+
+Stallings \cite{CryptoStallings} describes groups and rings as some of the fundamental elements of a branch of mathematics known as abstract algebra. In abstract algebra, the focus is mostly on whose elements can be operated algebraically; in other words, how can two elements of a set be combined to obtain a third element in the set. The nature of the set is defined by by the operations that can be performed on the elements of the set. It has been chosen that, by convention, the two main classes of operations on set elements is usually the same as the notation for addition and multiplication on traditional arithmetic. However, in abstract algebra, there is not really a limitation to just that.
+
+\subsection{Groups}
+
+A \textbf{group} G, denoted by $\{ G, \cdot \}$ is a set of elements with a binary operation, which is denoted by the operator $\cdot$. This operator is generic, and can refer not only to multiplication, but also to addition or some other mathematical operation. It associates to each ordered pair $(a, b)$ of elements in G an element $(a \cdot b)$ in G, such that the following axioms are followed:
+
+\begin{tabular}{ l c r }
+  \hline
+  Closure: & If $a$ and $b$ belong to $G$, then $a \cdot b$ is also in $G$. \\ \hline
+  Associative & $a \cdot (b \cdot c) = (a \cdot b) \cdot c $ for all $a$, $b$, $c$ in $G$. \\ \hline
+  Identity element & There is an element $e$ in $G$ such that $a \cdot e = e = e \cdot a = a$ for all $a$ in $G$. \\ \hline
+  Inverse element & For each $a$ in $G$ there is an element $a'$ in G such that $a \cdot a' = a' \cdot a = e$ \\ \hline
+\end{tabular}
+ 
+\subsection{Rings}
+
+\subsection{Homomorphisms}
+
+\section{Services in the cloud}
 
 The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. As Xu et al. in \cite{cryptoeprint:2011:574} point out, cloud storage services, such as Dropbox, Skydrive, Google Drive, and Amazon S3 have become very popular in recent years. As the use of these services become more common, more sensitive information is kept in the cloud, such as emails, health records, private videos and photos, company finance data, government documents, etc. 
 
@@ -64,11 +183,11 @@ One of the simplest use cases for cloud computing is when a user independent fro
 
 In order to tackle these issues, there have been many attempts to make cloud services, especially cloud computing, more secure. These attempts are very different in nature, though very similar regarding its goals. These are \textit{secure multi-party computation} and \textit{homomorphic encryption}. David, Nishimaki, et al. \cite{cryptoeprint:2015:135} describes secure multiparty computation (MPC) as the means to allow mutually distrustful parties to compute functions on private data that they hold, without revealing data to each other. There are many methods and approaches proposed to perform secure multiparty computation, although only recent attempts are considered to be efficient enough for application. On the other hand, homomorphic encryption is based on the idea of performing computations on the ciphertext that has gone through an encryption algorithm, without having to decrypt it beforehand. This detail makes homomorphic encryption a good technique for cloud services, since only one authorized user is able to decrypt the ciphertext after the necessary computations have been performed on it.
 
-\textbf{Homomorphic Encryption}
+\section{Homomorphic Encryption}
 
-\textit{Intro}
+\subsection{Intro}
 
-\textit{Mathematical things}
+\subsection{Mathematical things}
 
 According to P{\"o}tzelsberger \cite{potzelsberger2013kv},  \textit{homomorphic cryptosystem} is a cryptosystem whose encryption function is a homomorphism, and thus preserves group operations performed on ciphertexts. Arithmetic addition and multiplication are the two group operations considered.  A homomorphic encryption is additive if:
 
@@ -76,15 +195,15 @@ According to P{\"o}tzelsberger \cite{potzelsberger2013kv},  \textit{homomorphic 
 \epsilon(x+y) = \epsilon(x)\otimes \epsilon(y)
 \end{equation}
 
-where \epsilon denotes an encryption function, \otimes denotes an operation depending the used cipher and x and y are plaintext messages. A homomorphic encryption is multiplicative if:
+where $\epsilon$ denotes an encryption function, $\otimes$ denotes an operation depending the used cipher and x and y are plaintext messages. A homomorphic encryption is multiplicative if:
 
 \begin{equation}
 \epsilon(x \cdot y) = \epsilon(x) \otimes \epsilon(y)
 \end{equation}
 
-where again \epsilon denotes an encryption function, \otimes denotes an operation depending on the used cipher and x and y are plaintext messages.
+where again $\epsilon$ denotes an encryption function, $\otimes$ denotes an operation depending on the used cipher and x and y are plaintext messages.
 
-\textit{Classification}
+\subsection{Classification}
 
 Homomorphic encryption schemes are classified in two broad groups, depending on how they are defined, namely: partially homomorphic and fully homomorphic. 
 
@@ -103,10 +222,10 @@ As it was previously mentioned, various individuals and corporations are hesitan
   The above example is just the tip of the iceberg. There is a lot of contextual information that can be retrieved from the user to gain insight on his interests and current status, without him having to be active. For example, he could be suscribed to a service that sends alerts to his smartphone whenever he is walking nearby a shop that could be of his interest. Geolocation and user profile are pieces of information that are considered to be private, the user might not subscribe to the service if it just shared around his information. If, however, he is guaranteed that his information is being kept encrypted, and that it stays that way whenever a computation is made to see if there is a nearby store of his interest, then he might not be as reluctant to make use of the service. The applications on advertising using homomorphic encryption are diverse, because there are pieces of data that can be obtained passively, such as the user's geolocation or browsing habits.
 \item[Electronic Voting] Although not necessarily related to cloud computing, electronic voting is another area where homomorphic encryption can to make such voting scheme feasible and convenient. Voting could be done from anywhere as long as the participant is provided with Internet access. Simply put, homomorphic encryption can be used to hide the content of a ballot by calculating the total number of votes, without having to decrypt any of the ballots. However, electronic voting is not as trivial as it seems, because apart of confidentiality, there are other security parameters that are equally important, such as: correctness of the tally, democracy, robustness, verifiability, fairness, and verifiable participation. Therefore, applying homomorphic encryption would only satisfy one of the many requirements for electronic voting to be feasible.
 \item[Data mining] Closely related to advertisement, data mining has several issues on privacy. Using homomorphic encryption would mean that certain sensitive attributes of customers data can be protected from unauthorized parties. Yang, Zhong and Wright \cite{YangZhongWright} have proposed a solution that allows a data miner to compute frequencies of values or tuples of values in the customers' data in a privacy preserving manner. The advantage of this solution is that, unlike other existing attempts to make data mining more private, is that this solution is both fully private and fully accurate, without compromising one in exchange of the other.
-\item{Biometric Authentication} Biometric authentication is an area of application quite different from the rest. This is because biometric data is assumed to be public, since fingerprints virtually on every object touched by a person. Therefore, according to P{\"o}tzelsberger \cite{potzelsberger2013kv}, what is considered to be private is the relationship between the biometric data and the person from whom it comes. It can be applied on the scenario where the user tries to authenticate using one of his biometric features: the biometric feature would be stored and encrypted before it looks for a match in the database. The homomorphic evaluation would consist in the comparison between the user's biometric feature and all of the existing rows in the database. Traditional cryptographic would not be appropriate for this task, since biometric data can vary slightly each time, so an exact match would not work out. Assuming that the biometric feature is stored as a binary string, the homomorphic evaluation would consist in computing the Hamming distance between two feature vectors, and a predefined threshold to achieve the comparison. This is how the biometric data itself can stay public, but the relationship of whom it belongs to is kept private.
+\item[Biometric Authentication] Biometric authentication is an area of application quite different from the rest. This is because biometric data is assumed to be public, since fingerprints virtually on every object touched by a person. Therefore, according to P{\"o}tzelsberger \cite{potzelsberger2013kv}, what is considered to be private is the relationship between the biometric data and the person from whom it comes. It can be applied on the scenario where the user tries to authenticate using one of his biometric features: the biometric feature would be stored and encrypted before it looks for a match in the database. The homomorphic evaluation would consist in the comparison between the user's biometric feature and all of the existing rows in the database. Traditional cryptographic would not be appropriate for this task, since biometric data can vary slightly each time, so an exact match would not work out. Assuming that the biometric feature is stored as a binary string, the homomorphic evaluation would consist in computing the Hamming distance between two feature vectors, and a predefined threshold to achieve the comparison. This is how the biometric data itself can stay public, but the relationship of whom it belongs to is kept private.
 \end{description}
 
-\textit{BGV scheme}
+\section{BGV scheme}
 
 
 

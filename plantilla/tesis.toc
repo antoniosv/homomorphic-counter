@@ -1,7 +1,6 @@
-\select@language {spanish}
-\contentsline {chapter}{Resumen}{\es@scroman {v}}{chapter*.2}
-\contentsline {paragraph}{\numberline {0.0.0.0.1}Objetivos y m\'{e}todo de estudio:}{\es@scroman {v}}{paragraph.0.0.0.0.1}
-\contentsline {paragraph}{\numberline {0.0.0.0.2}Contribuciones y conclusiones:}{\es@scroman {v}}{paragraph.0.0.0.0.2}
+\contentsline {chapter}{Resumen}{v}{chapter*.2}
+\contentsline {paragraph}{\numberline {0.0.0.0.1}Objetivos y m\'{e}todo de estudio:}{v}{paragraph.0.0.0.0.1}
+\contentsline {paragraph}{\numberline {0.0.0.0.2}Contribuciones y conclusiones:}{v}{paragraph.0.0.0.0.2}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Problem Definition}{3}{section.1.1}
 \contentsline {section}{\numberline {1.2}Motivation}{3}{section.1.2}
@@ -12,5 +11,22 @@
 \contentsline {section}{\numberline {1.5}Study Case}{4}{section.1.5}
 \contentsline {section}{\numberline {1.6}Estructura de la tesis}{4}{section.1.6}
 \contentsline {chapter}{\numberline {2}Background}{6}{chapter.2}
-\contentsline {chapter}{\numberline {3}Trabajos Relacionados}{18}{chapter.3}
-\contentsline {chapter}{\numberline {4}Methodology}{19}{chapter.4}
+\contentsline {section}{\numberline {2.1}Information Security and Data Confidentiality}{6}{section.2.1}
+\contentsline {section}{\numberline {2.2}Cryptography Concepts}{7}{section.2.2}
+\contentsline {section}{\numberline {2.3}Introduction to Number theory}{11}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Fundamental Theorems}{11}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}Modular Arithmetic}{12}{subsection.2.3.2}
+\contentsline {subsection}{\numberline {2.3.3}Order and Generators}{14}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}Other relevant points on modular arithmetic}{14}{subsection.2.3.4}
+\contentsline {section}{\numberline {2.4}Abstract Algebra: Groups and Rings}{15}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Groups}{15}{subsection.2.4.1}
+\contentsline {subsection}{\numberline {2.4.2}Rings}{16}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Homomorphisms}{16}{subsection.2.4.3}
+\contentsline {section}{\numberline {2.5}Services in the cloud}{16}{section.2.5}
+\contentsline {section}{\numberline {2.6}Homomorphic Encryption}{19}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Intro}{19}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Mathematical things}{19}{subsection.2.6.2}
+\contentsline {subsection}{\numberline {2.6.3}Classification}{19}{subsection.2.6.3}
+\contentsline {section}{\numberline {2.7}BGV scheme}{23}{section.2.7}
+\contentsline {chapter}{\numberline {3}Trabajos Relacionados}{24}{chapter.3}
+\contentsline {chapter}{\numberline {4}Methodology}{25}{chapter.4}

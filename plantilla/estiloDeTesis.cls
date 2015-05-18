@@ -1,7 +1,7 @@
 \NeedsTeXFormat{LaTeX2e}[1995/12/01]
 \ProvidesClass{fime}
 \LoadClass[12pt,oneside]{book}
-\usepackage[spanish]{babel}
+%\usepackage[spanish]{babel}
 \usepackage[numbers,sort]{natbib}
 \usepackage{multirow}
 \usepackage[ansinew]{inputenc}
