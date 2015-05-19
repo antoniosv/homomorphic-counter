@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: tesis.aux
+A level-1 auxiliary file: portillas.aux
+A level-1 auxiliary file: agradecimientos.aux
+A level-1 auxiliary file: resumen.aux
+A level-1 auxiliary file: abreviaciones.aux
+A level-1 auxiliary file: introduction.aux
+A level-1 auxiliary file: background.aux
+A level-1 auxiliary file: relatedWorks.aux
+A level-1 auxiliary file: methodology.aux
+The style file: estiloDeBibliografiaJorge.bst
+Database file #1: bibliografia.bib
+Warning--empty publisher in 2008algorithm
+Warning--empty year in cs21math19notes
+You've used 21 entries,
+            2823 wiz_defined-function locations,
+            766 strings with 9129 characters,
+and the built_in function-call counts, 8106 in all, are:
+= -- 680
+> -- 473
+< -- 15
++ -- 165
+- -- 144
+* -- 549
+:= -- 1285
+add.period$ -- 80
+call.type$ -- 21
+change.case$ -- 104
+chr.to.int$ -- 21
+cite$ -- 44
+duplicate$ -- 385
+empty$ -- 706
+format.name$ -- 171
+if$ -- 1706
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 18
+newline$ -- 128
+num.names$ -- 84
+pop$ -- 286
+preamble$ -- 1
+purify$ -- 90
+quote$ -- 0
+skip$ -- 306
+stack$ -- 0
+substring$ -- 62
+swap$ -- 30
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 191
+warning$ -- 2
+while$ -- 65
+width$ -- 0
+write$ -- 291
+(There were 2 warnings)

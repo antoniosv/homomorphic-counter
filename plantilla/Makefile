@@ -6,6 +6,7 @@ tesis.pdf: tesis.tex bibliografia.bib portillas.tex resumen.tex
 	makeindex tesis
 	touch tesis.bbl	
 	rm tesis.bbl
+	touch tesis.bbl.bak
 	cp tesis.bbl.bak tesis.bbl
 	pdflatex --enable-write18 --shell-scape tesis
 	pdflatex --enable-write18 --shell-scape tesis

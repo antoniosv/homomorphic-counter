@@ -90,28 +90,42 @@ which means that there is some integer $q$, such that
   a = qn + r
 \end{equation}
 
-The remainder $r$ is resulting from $a \mod n$ is always an integer in the set $\{0, 1, 2, \dots, n-1\}$, even when $a$ is negative. 
+The remainder $r$ is resulting from $a \mod n$ is always an integer in the set $\{0, 1, 2, \dots, n-1\}$, even when $a$ is negative. The integer $n$ is called the \textbf{modulus}. 
 
 \textbf{Congruence} modulo $n$ is a relevant concept to mention as well. If
 \begin{equation}
   a \mod n = b \mod n,
 \end{equation}
-
 then we say that $a$ is \textbf{congruent} to $b$ modulo $n$, so it can bet written in this way:
 \begin{equation}
 a \mod n \equiv b \pmod n
 \end{equation}
-
 Therefore, if $a \equiv b \mod n$, then $a-b=kn$ for some integer $k$. 
 
-Having explained the residue and modulo operation, a very convenient notation, called the set of residues, can be introduced. Let $Z_{n}$ denote the set of nonnegative integers less than $n$:
+Congruences have the following properties: 
+\begin{enumerate}
+\item $a \equiv b \pmod n$ if $n|(a-b)$.
+\item $a \equiv b \pmod n$ implies $b \equiv a \pmod n$.
+\item $a \equiv b \pmod n$ and mob $b \equiv c \pmod n$  imply $a \equiv c \pmod n$.
+\end{enumerate}
+
+Suppose that there is a mapping of all integers by the $\pmod n$ operator into the set of integers $\{0, 1, \dots, (n-1)\}$. The technique used to perform arithmetic operations within the confines of this set is known as \textbf{modular arithmetic}. Modular arithmetic exhibits the following properties:
+
+\begin{enumerate}
+\item $[(a \mod n) + (b \mod n)] mod n = (a + b) \mod n$
+\item $[(a \mod n) - (b \mod n)] mod n = (a - b) \mod n$
+\item $[(a \mod n) \times (b \mod n)] mod n = (a \times b) \mod n$
+\end{enumerate}
+And so, the rules for ordinary arithmetic invoving addition, subtraction, and multiplication carry over into modular arithmetic, except that the result is always within the boundaries of the defined set, which is between 0 and $n-1$.
+
+Having explained modulo operation, as well as a having introduced modular arithmetic operations; a very convenient notation, called the set of residues, can be now described. Let $Z_{n}$ denote the set of nonnegative integers less than $n$:
 \begin{equation}
 Z_{n} = \{0,1,\cdots, (n-1)\}
 \end{equation} 
 
-The set $Z_{n}$ is also called the set of \textbf{residues} modulo $n$, because if $b=a \mod n$, $b$ is sometimes called the \textbf{residue} of $a$ modulo $n$. The notation $Z_{n}$ represents the integers between 0 and $n-1$. Thus, when it says that ``Let $a$ be a member of $Z_{n}$'', it really means the same thing as ``Let $a$ be an integer between 0 and $n-1$.''
+The set $Z_{n}$ is also called the set of \textbf{residues}, or \textbf{residue classes} modulo $n$, because if $b=a \mod n$, $b$ is sometimes called the \textbf{residue} of $a$ modulo $n$. The notation $Z_{n}$ represents the integers between 0 and $n-1$. Thus, when it says that ``Let $a$ be a member of $Z_{n}$'', it really means the same thing as ``Let $a$ be an integer between 0 and $n-1$.''
 
-Modular arithmetic in $Z_{n}$, where operations on the elements of $Z_{n}$ are performed $\mod n$, show properties similar to those in traditional arithmetic, such as the \textbf{associativity}, \textbf{commutativity}, \textbf{distributivity} of addition and multiplication, and the existence of identity elements 0 and 1 for addition and multiplication, respectively. However, other operations such as division and exponentiation, behave very differently than they do for normal arithmetic.
+Modular arithmetic in $Z_{n}$, where operations on the elements of $Z_{n}$ are performed $\mod n$, show properties similar to those in traditional arithmetic, such as the \textbf{associativity}, \textbf{commutativity}, \textbf{distributivity} of addition and multiplication, and the existence of \textbf{identity} elements 0 and 1 for addition and multiplication, respectively. However, other operations such as division and exponentiation, behave very differently than they do for normal arithmetic. 
 
 Every element $x$ in $Z_{n}$ has an \textbf{additive inverse}, that is, for each $x \in Z_{n}$, there is a $y \in Z_{n}$ such that $x + y \mod n = 0$. In other words, it means there is an element $a'$ that multiplies $a$ modulo $n$ which equals 1.  A \textbf{multiplicative inverse} of $x$ is an element $z^{-1} \in Z_{n}$ such that $xx^-1 \equiv 1 \mod n$. As well as in regular arithmetic, 0 does not have a multiplicative inverse in $Z_{n}$. There are some nonzero elements that do not have a multiplicative inverse in $Z_{n}$. However, for every $n$ that is prime, every element $x \ne 0$ of $Z_{n}$ has a multiplicative inverse.
 
@@ -156,18 +170,51 @@ Stallings \cite{CryptoStallings} describes groups and rings as some of the funda
 \subsection{Groups}
 
 A \textbf{group} G, denoted by $\{ G, \cdot \}$ is a set of elements with a binary operation, which is denoted by the operator $\cdot$. This operator is generic, and can refer not only to multiplication, but also to addition or some other mathematical operation. It associates to each ordered pair $(a, b)$ of elements in G an element $(a \cdot b)$ in G, such that the following axioms are followed:
+\begin{description}
+  \item[(A1) Closure:] If $a$ and $b$ belong to $G$, then $a \cdot b$ is also in $G$.
+  \item[(A2) Associative:] $a \cdot (b \cdot c) = (a \cdot b) \cdot c $ for all $a$, $b$, $c$ in $G$.
+  \item[(A3) Identity element:] There is an element $e$ in $G$ such that $a \cdot e = e \cdot a = a$ for all $a$ in $G$.
+  \item[(A4) Inverse element:] For each $a$ in $G$ there is an element $a'$ in G such that $a \cdot a' = a' \cdot a = e$ 
+\end{description}
+It is worth noting that if a group has a finite number of elements, it is called a \textbf{finite group}, and the order of the group is equal to the number of elements in the group. Otherwise, the group is an \textbf{infinite group}. Moreover, a group is said to be \textbf{abelian} if it satifies the following condition, known as the commutative property:
+\begin{description}
+  \item[(A5)Commutative] $a \cdot b = b \cdot a$ for all $a$, $b$ in $G$.
+\end{description}
 
-\begin{tabular}{ l c r }
-  \hline
-  Closure: & If $a$ and $b$ belong to $G$, then $a \cdot b$ is also in $G$. \\ \hline
-  Associative & $a \cdot (b \cdot c) = (a \cdot b) \cdot c $ for all $a$, $b$, $c$ in $G$. \\ \hline
-  Identity element & There is an element $e$ in $G$ such that $a \cdot e = e = e \cdot a = a$ for all $a$ in $G$. \\ \hline
-  Inverse element & For each $a$ in $G$ there is an element $a'$ in G such that $a \cdot a' = a' \cdot a = e$ \\ \hline
-\end{tabular}
+When the group operation is addition, the identity element is 0; the inverse element of $a$ is $-a$; and subtraction is defined with the following rule: $a-b = a+(-b)$. 
+
+\subsubsection{Isomorphisms}
+
+\subsubsection{Homomorphisms}
+
+According to Beachy and Blair \cite{beachy2006abstract}, an homomorphism is defined as follows: Let $G_{1}$ and $G_{2}$ be gorups, and let $\mu: G_{1} \rightarrow G_{2}$ be a function. Then $\mu$ is said to be a \textbf{group homomorphism} if
+\begin{equation}
+\mu(ab) = \mu(a)\mu(b)
+\end{equation}
+for all $a$, $b$ in $G_{1}$.
+
  
 \subsection{Rings}
 
-\subsection{Homomorphisms}
+A \textbf{ring} $R$, which is sometimes denoted by $\{R, +, \times \}$, is a set of elements with two binary operations, called \textit{addition} and \textit{multiplication}, such that for all $a$, $b$, $c$ in $R$, there are some axioms that must be obeyed. It must be pointed out that a ring fulfills the same axions as an abelian group with respect to addition; that is, axioms A1 through A5. The rest of the axioms obeyed by a ring are listed as follows:
+\begin{description}
+\item[(M1) Closure under multiplication:] If $a$ and $b$ belong to $R$, then $ab$ is also in $R$.
+\item[(M2) Associativity of multiplication:] $a(bc) = (ab)c$ for all $a$, $b$, $c$ in $R$.
+\item[(M3) Distributive laws:] $a(b+c) = ab+ ac$ for all $a$, $b$, $c$ in $R$. \\ $(a+b)c = ac + bc$ for all $a$, $b$, $c$ in $R$.
+\end{description}
+
+Essentially, a ring is a set in which addition, subtraction $[a-b = a + (-b)]$, and multiplication can be done without leaving the set. Furthermore, a ring is said to be \textbf{commutative} if it satisfies the following additional condition:
+\begin{description}
+\item[(M4) Commutativity of multiplication:] $ab = ba$ for all $a$, $b$, $c$ in $R$.
+\end{description}
+
+Additionally, there are other axioms that, if obeyed, turn the commutative ring into an \textbf{integral domain}. The axioms are:  
+
+\begin{description}
+\item[(M5) Multiplicative identity:] There is an element 1 in $R$ such that $a1 = 1a = a$ for all $a$ in $R$.
+\item[(M6) No zero divisors:] If $a$, $b$ in $R$ and $ab=0$, then either $a=0$ or $b=0$.
+\end{description}
+
 
 \section{Services in the cloud}
 
@@ -211,7 +258,7 @@ Homomorphic encryption schemes are classified in two broad groups, depending on 
 
 According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, even though somewhat homomorphic cryptosystems support a limited number of homomorphic operations, they are the building blocks for fully homomorphic encryption, and provide much more efficiency and shorter ciphertexts than their fully homomorphic counterparts. 
 
-\textit{Applications}
+\subsection{Applications}
 
 As it was previously mentioned, various individuals and corporations are hesitant to make use of cloud services, mainly because of the security risks it poses, such as privacy loss and tampering of the data. Traditional cryptosystems can protect confidentiality if the only goal is remote storage; but it is restricted to just that. However, if the encryption employed were homomorphic, the cloud server where the data is stored would be able to perform meaningful computations on the encrypted data.  The scenenarios where homomorphic encryption can be applied are many, and some of the most important areas are: medical applications, financial applications, advertising and pricing, electronic voting, data mining, and biometric authentication.
 
@@ -224,6 +271,10 @@ As it was previously mentioned, various individuals and corporations are hesitan
 \item[Data mining] Closely related to advertisement, data mining has several issues on privacy. Using homomorphic encryption would mean that certain sensitive attributes of customers data can be protected from unauthorized parties. Yang, Zhong and Wright \cite{YangZhongWright} have proposed a solution that allows a data miner to compute frequencies of values or tuples of values in the customers' data in a privacy preserving manner. The advantage of this solution is that, unlike other existing attempts to make data mining more private, is that this solution is both fully private and fully accurate, without compromising one in exchange of the other.
 \item[Biometric Authentication] Biometric authentication is an area of application quite different from the rest. This is because biometric data is assumed to be public, since fingerprints virtually on every object touched by a person. Therefore, according to P{\"o}tzelsberger \cite{potzelsberger2013kv}, what is considered to be private is the relationship between the biometric data and the person from whom it comes. It can be applied on the scenario where the user tries to authenticate using one of his biometric features: the biometric feature would be stored and encrypted before it looks for a match in the database. The homomorphic evaluation would consist in the comparison between the user's biometric feature and all of the existing rows in the database. Traditional cryptographic would not be appropriate for this task, since biometric data can vary slightly each time, so an exact match would not work out. Assuming that the biometric feature is stored as a binary string, the homomorphic evaluation would consist in computing the Hamming distance between two feature vectors, and a predefined threshold to achieve the comparison. This is how the biometric data itself can stay public, but the relationship of whom it belongs to is kept private.
 \end{description}
+
+\section{Lattice-based cryptography}
+
+\section{Ring-Learning with Error problems}
 
 \section{BGV scheme}
 
