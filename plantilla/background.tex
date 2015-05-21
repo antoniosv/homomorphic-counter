@@ -32,7 +32,15 @@ Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a five
 \item For each $K \in \mathcal{K}$ there is an \textit{encryption rule} $ e_{K} \in \mathcal{E}$  and a corresponding \textit{decryption rule} $ d_{K} \in \mathcal{D}$. Each $e_{K}: \mathcal{P} \rightarrow \mathcal{C}$ and $d_{K}: \mathcal{C} \rightarrow \mathcal{P}$ are functions such that $d_{k}(e_{K}(x))$ for every plaintext element $x \in \mathcal{P}$.
 \end{enumerate}
 
-[INSERT BOB-ALICE-EVE DRAWING]
+The following image depicts the process flow of a simple cryptosystem that is put in place. The plaintext and encryption key is used as input by an encryption algorithm, which results in a ciphertext that gets sent to the other end of the communication line. Then, the ciphertext is used as input by a decryption algorithm, which takes a decryption key H, finally resulting in the original plaintext. Depending on the type of cryptosystem (symmetric or asymmetric), the encryption keys can be considered to be the same or different, i.e. $K_{A}\ne K_{B}$ if asymmetric, or $K_{A} = K_{B}$ if symmetric.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[width=14cm]{img/basic_crypto}}
+  \caption{Basic cryptosystem diagram\cite{kurose2010computer}}
+\end{figure}
+
+\subsection{The first fully homomorphic encryption scheme}
+
 
 The use of the plaintext, ciphertext, and key concepts are recurrent throughout this work, and given their relevance, they are explained as follows, along with other concepts, the same way Cameron \cite{CryptoNotes} and Stallings \cite{CryptoStallings} describe them.
 \begin{description}
@@ -156,7 +164,7 @@ x^{p-1} \equiv 1 \pmod{n}
 
 \item \textit{Adding multiples of n does not change values mod n}. That is, $i \mod n= (i+kn) \mod n$ for any integer $k$.
 
-\item Mods (by $n$) can be taken anywhere in calculation, so long as we take the final result $\mod n$
+\item Mods (by $n$) can be taken anywhere in calculation, as long as $\mod n$ is taken from the final result.
 
 \item \textit{Commutative, associative, and distributive laws}. Addition and multiplication mod $n$ satisfy the commutative and associative laws, and multiplication distributes over addition.
 
@@ -165,7 +173,7 @@ x^{p-1} \equiv 1 \pmod{n}
 
 \section{Abstract Algebra: Groups and Rings}
 
-Stallings \cite{CryptoStallings} describes groups and rings as some of the fundamental elements of a branch of mathematics known as abstract algebra. In abstract algebra, the focus is mostly on whose elements can be operated algebraically; in other words, how can two elements of a set be combined to obtain a third element in the set. The nature of the set is defined by by the operations that can be performed on the elements of the set. It has been chosen that, by convention, the two main classes of operations on set elements is usually the same as the notation for addition and multiplication on traditional arithmetic. However, in abstract algebra, there is not really a limitation to just that.
+Stallings \cite{CryptoStallings} describes groups and rings as some of the fundamental elements of a branch of mathematics known as abstract algebra. In abstract algebra, the focus is mostly on whose elements can be operated algebraically; in other words, how two elements of a set can be combined to obtain a third element in the set. The nature of the set is defined by by the operations that can be performed on the elements of the set. It has been chosen that, by convention, the two main classes of operations on set elements is usually the same as the notation for addition and multiplication on traditional arithmetic. However, there is not really a limitation on the kind of operations that can be defined using abstract algebra.
 
 \subsection{Groups}
 
@@ -178,12 +186,10 @@ A \textbf{group} G, denoted by $\{ G, \cdot \}$ is a set of elements with a bina
 \end{description}
 It is worth noting that if a group has a finite number of elements, it is called a \textbf{finite group}, and the order of the group is equal to the number of elements in the group. Otherwise, the group is an \textbf{infinite group}. Moreover, a group is said to be \textbf{abelian} if it satifies the following condition, known as the commutative property:
 \begin{description}
-  \item[(A5)Commutative] $a \cdot b = b \cdot a$ for all $a$, $b$ in $G$.
+  \item[(A5) Commutative] $a \cdot b = b \cdot a$ for all $a$, $b$ in $G$.
 \end{description}
 
 When the group operation is addition, the identity element is 0; the inverse element of $a$ is $-a$; and subtraction is defined with the following rule: $a-b = a+(-b)$. 
-
-\subsubsection{Isomorphisms}
 
 \subsubsection{Homomorphisms}
 
@@ -192,7 +198,6 @@ According to Beachy and Blair \cite{beachy2006abstract}, an homomorphism is defi
 \mu(ab) = \mu(a)\mu(b)
 \end{equation}
 for all $a$, $b$ in $G_{1}$.
-
  
 \subsection{Rings}
 
@@ -215,48 +220,98 @@ Additionally, there are other axioms that, if obeyed, turn the commutative ring 
 \item[(M6) No zero divisors:] If $a$, $b$ in $R$ and $ab=0$, then either $a=0$ or $b=0$.
 \end{description}
 
+\subsection{Homomorphisms}
 
-\section{Services in the cloud}
+\subsubsection{Ring Homomorphism}
 
-The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. As Xu et al. in \cite{cryptoeprint:2011:574} point out, cloud storage services, such as Dropbox, Skydrive, Google Drive, and Amazon S3 have become very popular in recent years. As the use of these services become more common, more sensitive information is kept in the cloud, such as emails, health records, private videos and photos, company finance data, government documents, etc. 
+Similarly to groups, there are also homomorphisms for rings, the main difference being that, instead of a single operation, two operations are considered.
 
-Li, Jin et. al \cite{cryptoeprint:2009:593} introduce cloud computing as a new term that views computing as an utility which enables convenient, on-demand access to computing resources that can be rapidly deployed with minimal management overhead and great efficiency. Cloud computing has the potential to benefit its users in avoiding large capital expenditure used for deployment and management of both software and hardware, such as setting up a data center. 
-
-All of these services are opening up a new era powered by the software as a service (SaaS) computing architecture. One of the main advantages of storing this information in the cloud is that the owners are relieved from the burden of data storage and maintenance at all times. There are many plans that adjust to the on-demand needs of the owner of the data, which is way less costly than building and maintaining a whole data center. This implies that the clients of these services can expect to gain reliability and availability from having the data stored remotely. On the other hand, the data is necessarily brought out of their control and protectio. This becomes a risk for the owner of the data, since the information stored in the cloud could potentially be accessed by unauthorized individuals, such as competitors or malicious attackers. There also exists the possibility that the information stored could be tampered in some way, thus compromising its integrity. Therefore, the computing and storage service providers are usually not trusted completely, which is why it has been difficult for the public and organizations to fully adopt the use of these services.
-
-The aforementioned issue brings up the need of having a mechanism that verifies that a cloud provider is storing the whole database intact, even the portions that are rarely accessed. Ateniese et al. \cite{cryptoeprint:2014:886} point out that, fortunately, a series of \textit{proofs-of-storage} protocols have been proposed to solve this problem related to data integrity. Xu et al. \cite{cryptoeprint:2014:395} define a proof of storage (POR or PDP) as a cryptographic tool, which enables a data owner or third party auditor to audit integrity of data stored remotely in a cloud storage server, without keeping a local copy of data or downloading data back during auditing. In other words, applying a proof of storage in a cloud server can guarantee that the data has not been tampered with; and in the event that it is, most likely the service could be held liable for damages to the data. A huge advantage of using a proof of storage is that the data does not have to be downloaded to confirm its integrity, which makes it ideal to make use of it routinely. 
-
-One of the simplest use cases for cloud computing is when a user independent from the cloud wants to store some data in it for later retrieval. In this simple case, data confidentiality and integrity can be trivially ensured. For that, typical cryptography primitives can be usedby encrypting the user's data before it is sent for storage in the cloud. To ensure confidentiality, the key used for encryption is kept secret from the cloud provider. However, real life applications are not as simple. Damgard et al. \cite{cryptoeprint:2013:629} mentions that the cloud is more than a storage medium; in particular, computation over the stored data is outsourced to the cloud. Sometimes it might even be distributed among distinct cloud servers geographically apart, operated by different parties. Wang et al \cite{cryptoeprint:2009:081} describe the nature of the problem at length, because usually a cloud service is not solely restricted as a data warehouse. The data stored in the cloud may be frequently updated by the users, including insertion, deletion, modification, appending, reordering, etc. This kind of complex scenario is what makes the use of traditional cryptographic primitives so difficult to adapt, especially because the data is not stored in a single cloud server, but is instead redundantly stored in multiple physical locations to further reduce the data integrity threats. Therefore, making use of cloud services highly improve data avalability and storage flexibility, data confidentiality and integrity is put at risk.
-
-In order to tackle these issues, there have been many attempts to make cloud services, especially cloud computing, more secure. These attempts are very different in nature, though very similar regarding its goals. These are \textit{secure multi-party computation} and \textit{homomorphic encryption}. David, Nishimaki, et al. \cite{cryptoeprint:2015:135} describes secure multiparty computation (MPC) as the means to allow mutually distrustful parties to compute functions on private data that they hold, without revealing data to each other. There are many methods and approaches proposed to perform secure multiparty computation, although only recent attempts are considered to be efficient enough for application. On the other hand, homomorphic encryption is based on the idea of performing computations on the ciphertext that has gone through an encryption algorithm, without having to decrypt it beforehand. This detail makes homomorphic encryption a good technique for cloud services, since only one authorized user is able to decrypt the ciphertext after the necessary computations have been performed on it.
+Let $R$ and $S$ be rings with addition and multiplication. The map $\phi: R \rightarrow S$ is a homomorphism if:
+\begin{enumerate}
+\item $\phi$ is a group homomorphism on the additive groups $(R, +)$ and $(S,+)$
+\item $\phi(xy) = \phi(x) \phi(y)$ $\forall x, y \in R$
+\end{enumerate}
 
 \section{Homomorphic Encryption}
 
-\subsection{Intro}
+Homomorphic is a word that has its roots in Greek, and it means ``the same shape''. It is used in various areas, such as abstract algebra, which then inspired its use in cryptography. This concept refers to the ability to make computations, i.e. operations such as addition and multiplication, on encrypted data without sharing the secret key to decrypt the data prior to the computations. 
 
-\subsection{Mathematical things}
+Before homomorphic encryption, any change to the secret value contained in a ciphertext required a secret key, so that it could be decrypted, applied the change, and encrypted once more. However, homomorphic encryption eliminates the need of sharing a secret, especially of those that are not to be completely trusted, in the event that there is some change that must be applied to encrypted data. 
+Lange \cite{langue2011} mentions several applications that would benefit from a homomorphic encryption function, given its ability to manipulate encrypted data. Such applications fall in the domain of: e-cash, e-voting, private information retrieval (encrypted databases), and cloud computing.
 
-According to P{\"o}tzelsberger \cite{potzelsberger2013kv},  \textit{homomorphic cryptosystem} is a cryptosystem whose encryption function is a homomorphism, and thus preserves group operations performed on ciphertexts. Arithmetic addition and multiplication are the two group operations considered.  A homomorphic encryption is additive if:
+\subsection{What is Homomorphic Encryption?}
 
-\begin{equation}
-\epsilon(x+y) = \epsilon(x)\otimes \epsilon(y)
-\end{equation}
-
-where $\epsilon$ denotes an encryption function, $\otimes$ denotes an operation depending the used cipher and x and y are plaintext messages. A homomorphic encryption is multiplicative if:
+According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, a \textit{homomorphic cryptosystem} is a cryptosystem whose encryption function is a homomorphism, and thus preserves group operations performed on ciphertexts. Arithmetic addition and multiplication are the two group operations considered.  A homomorphic encryption is additive if:
 
 \begin{equation}
-\epsilon(x \cdot y) = \epsilon(x) \otimes \epsilon(y)
+\mathcal{E}(x+y) = \mathcal{E}(x)\otimes \mathcal{E}(y)
 \end{equation}
 
-where again $\epsilon$ denotes an encryption function, $\otimes$ denotes an operation depending on the used cipher and x and y are plaintext messages.
+where $\mathcal{E}$ denotes an encryption function, $\otimes$ denotes an operation depending the used cipher and $x$ and $y$ are plaintext messages. A homomorphic encryption is multiplicative if:
 
-\subsection{Classification}
+\begin{equation}
+\mathcal{E}(x \cdot y) = \mathcal{E}(x) \otimes \mathcal{E}(y)
+\end{equation}
+
+where again $\mathcal{E}$ denotes an encryption function, $\otimes$ denotes an operation depending on the used cipher and $x$ and $y$ are plaintext messages.
+
+The above conditions basically mean that the result of the operations between both inputs, in this case $x$ and $y$, is going to be the same whether the operations after performed after or before encryption. This property is what makes it possible to perform computations on an encrypted value which later can be decrypted to the correct result.
+
+\subsection{Classification of Homomorphic Encryption Schemes}
 
 Homomorphic encryption schemes are classified in two broad groups, depending on how they are defined, namely: partially homomorphic and fully homomorphic. 
 
-\textit{Partially homomorphic encryption} schemes are defined over a group, and they support one operation at most: either addition or multiplication. On the other hand, \textit{fully homomorphic encryption} schemes are defined over a ring, and can support up to operations: addition and multiplication.
+\textit{Partially homomorphic encryption} schemes are defined over a group, and they support one operation at most: either addition or multiplication. On the other hand, \textit{fully homomorphic encryption} schemes are defined over a ring, and can support up to two operations: addition and multiplication.
 
 According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, even though somewhat homomorphic cryptosystems support a limited number of homomorphic operations, they are the building blocks for fully homomorphic encryption, and provide much more efficiency and shorter ciphertexts than their fully homomorphic counterparts. 
+
+
+\subsection{Explaining Homomorphic Encryption}
+
+Craig Gentry \cite{homenc} explains the concept behind homomorphic encryption in a very simple way. Imagine that Alice has a jewelry store and wants her workers to assemple raw materials (diamonds, gold, silver, etc.) into finished products (necklaces, rings, etc.), but does not trust them, thinking they might run off with the raw materials at their first chance. So instead of giving them direct access to the materials, Alice places the materials inside a transparent glove boxes, which are then promptly locked with a key that only Alice has. This way, workers can put their hands inside the gloves that are connected to the box, and through them, work with the raw materials. Additionally, the workers are able to put in things inside the boxes, such as soldering iron to use on the raw materials, even though they cannot take anything out of it, since they do not have the key to open the box. Once the products are finished, Alice can then recover the products from the box using her key. The analogy is not perfect, because the workers are able to see the materials while working on them, but it is relevant because homomorphic encrytion means that they cannot take the materials with them.
+
+Hayes \cite{Hayes2012} offers a proof of concept that accurately describes the very esssence of a homomorphic cryptosystem. It is shown as follows: consider that the plaintext consists of integers; to encrypt a number, double it; to decrypt it, divide by 2. Using this scheme, addition and a nonstandard version of multiplication can be done on the encrypted data. Given the plaintext inputs $x$ and $y$, we can encrypt each of them separately, add the ciphertexts, and finally decrypt the result. This calculation would give the correct answer, expressed as $2x+2y=2(x+y)$. In other words, it is the same result as if each plaintext input were multiplied separately and then added with each other, because in the end, dividing it by two causes the same effect on both sides. 
+Regarding multiplication, a little tweak has to be done for it to work. The product of the ciphertexts is defined as $\dfrac{(C_{x} C_{y})}{2}$, while the plaintexts are multiplied by the regular formula $xy$. 
+As an example, consider $x=5$ and $y=7$. The result of the multiplication would come as $x \times y = 35$. To perform the same evaluation between ciphertexts, both inputs would be encrypted following the rule previously defined:
+\begin{equation}
+C_{x} = 5 \times 2 = 10
+\end{equation}
+\begin{equation}
+C_{y} = 7 \times 2 = 14
+\end{equation}
+The multiplication is performed as $\dfrac{10 \times 14}{2} = 70$, and it is divided by 2 to decrypt the ciphertext: $\dfrac{70}{2} = 35$, which turns out to be the correct result of the multiplication.
+
+Certainly, the above cryptosystem is considered to be \emph{fully homomorphic}, since it supports both addition and multiplication. However, it is definitely not a secure one, since anyone that knows of the workings of the cipher can easily get to learn the secret message. This is also partly the reason of why the encryption and decryption algorithms are not usually kept as a secret, because it would be quite impractical to make a different encryption and decryption algorithm every time it were discovered. 
+
+Stuntz \cite{stuntz2010} provides an example of a cipher scheme that has an inherent homomorphic property. Consider the popular, yet insecure, ROT13 cipher, also known as the Caesar cipher. The ROT13 is a simple substitution cipher which changes each letter with the letter that is thirteen positions ahead on encryption. To do decryption, it does the opposite: each character goes back thirteen positions in the alphabet. 
+ROT13 is partially homomorphic with respect to the concatenation operation, because it is possible to concatenate two different pieces of ciphertexts. At decryption, the concatenation of the two pieces of ciphertexts ends up to be same as the concatenation of the original messages, the plaintext. Therefore, it is partially homomorphic with respect to concatenation. 
+
+Consider, for instance, the plaintext pair $P_{1}=HELLO$ and $P_{2}=WORLD$, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=URYYB$ and $C_{2}=JBEYQ$, and if concatenated, ``URYYBJBEYQ''. So if the result of the ciphertext concatenation was decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally.
+
+\begin{figure}[H]
+  \centerline{\includegraphics[scale=0.5]{img/rot13homo}}
+  \caption{Example of the homomorphic property in ROT13\cite{stuntz2010}}
+\end{figure}
+
+\subsection{The first fully homomorphic encryption scheme}
+
+In an article published by the research staff of the NSA \cite{NSA2014}, it is discussed how the term of fully homomorphic encryption has been around for about 30 years, and only recently, in 2009 to be exact, a very important breakthrough regarding fully homomorphic encryption was made by Craig Gentry. Thanks to this breakthrough, the first fullly homomorphic scheme was created, opening the doors of research to this topic that was thought to be at a dead end. 
+
+As Gentry \cite{homoenc} himself points out, by ``fully'' it means that there are no limitations on what manipulations can be performed on the ciphertext. Given ciphertexts $c_{1}, \dots, c_{t}$ that encrypt $m_{1}, \dots, m_{t}$ with a fully homomorphic encryption scheme under some key, and given any efficiently computable function $f$, anyone can efficiently compute a ciphertext (or set of ciphertexts) that encrypts $f(m_{1}, \dots, m_{t})$ under that key. This permits all kinds of computations on the encrypted data. Of course, no information about the plaintexts $m_{1}, \dots, m_{t}$ or the value of $f(m_{1}, \dots, m_{t})$ is leaked. 
+
+One of the main problems that fully homomorphic encryption faces is the managing of ``noise'' in the ciphertext. In this case, noise refers to the gradual distortion of ciphertexts that is caused by doing operations (e.g., addition or multiplication) on them. As more operations are performed on the ciphertext, the larger the noise becomes, rendering the ciphertext undecipherable, as it would end up with the wrong result after attempting to decrypt. As Hayes \cite{Hayes2012} points out, each homomorphic addition doubles the noise, and each multiplication squares it. Thus, the number of operations must be limited, should one not wish to ``corrupt'' the ciphertext. 
+
+An obvious solution to the problem of accumulating noise is to decrypt the data and decrypt it whenever the noise begins to approach the critical threshold. Thus, the noise is resetted to its original level, allowing for more operations. The problem with this approach is that decryption needs the secret key, which is usually not going to be available to whoever is performing the operations on the ciphertext. 
+
+Instead, Gentry developed a process called \emph{bootstrapping} to overcome the problem of noise accumulation. The \emph{evaluate} function used in the cryptosystem can virtually perform any computation, as long as it has not reached the critical threshold of noise. Therefore, that very function is used to run the \emph{decrypt} function, which takes as input the noise-heavy ciphertext that has gone through several operations, and the \emph{encrypted secret key}. This makes sense because the decrypt function relies on the evaluate function, which was made to work on encrypted values. So when the \emph{decrypt} function is run, the decrypted result is not the plaintext, but rather a new encryption, with reduced noise. This process of re-encrypting and refreshing the noisy ciphertext can be repeated as many times as needed, because then it technically has no limitations on the number of operations it can perform. However, extra layer of encryption will consequently increase the overall computational effort required to complete the set of operations desired to be performed. As the research staff from the NSA exemplifies \cite{NSA2014}, if the process were to be used by Google to search the web homomorphically, the normal computing time required would be multiplied by about a trillion. This is the reason why this scheme is not practical enough as a solution for implementation.
+
+\section{Ring-Learning with Error problems}
+
+
+\cite{Hayes2012} More recently, Brakerski, Vaikuntanathan and Gentry have developed a variant of the learning-with-errors system that takes a different approach to noise management. Instead of stopping the computation at intervals to re-encrypt the data, they incrementally adjust parameters of the system after every computational step in a way that prevents the noise level from ever approaching the limit.
+
+\section{BGV scheme}
+
 
 \subsection{Applications}
 
@@ -272,12 +327,18 @@ As it was previously mentioned, various individuals and corporations are hesitan
 \item[Biometric Authentication] Biometric authentication is an area of application quite different from the rest. This is because biometric data is assumed to be public, since fingerprints virtually on every object touched by a person. Therefore, according to P{\"o}tzelsberger \cite{potzelsberger2013kv}, what is considered to be private is the relationship between the biometric data and the person from whom it comes. It can be applied on the scenario where the user tries to authenticate using one of his biometric features: the biometric feature would be stored and encrypted before it looks for a match in the database. The homomorphic evaluation would consist in the comparison between the user's biometric feature and all of the existing rows in the database. Traditional cryptographic would not be appropriate for this task, since biometric data can vary slightly each time, so an exact match would not work out. Assuming that the biometric feature is stored as a binary string, the homomorphic evaluation would consist in computing the Hamming distance between two feature vectors, and a predefined threshold to achieve the comparison. This is how the biometric data itself can stay public, but the relationship of whom it belongs to is kept private.
 \end{description}
 
-\section{Lattice-based cryptography}
+\section{Services in the cloud}
 
-\section{Ring-Learning with Error problems}
+The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. As Xu et al. in \cite{cryptoeprint:2011:574} point out, cloud storage services, such as Dropbox, Skydrive, Google Drive, and Amazon S3 have become very popular in recent years. As the use of these services become more common, more sensitive information is kept in the cloud, such as emails, health records, private videos and photos, company finance data, government documents, etc. 
 
-\section{BGV scheme}
+Li, Jin et. al \cite{cryptoeprint:2009:593} introduce cloud computing as a new term that views computing as an utility which enables convenient, on-demand access to computing resources that can be rapidly deployed with minimal management overhead and great efficiency. Cloud computing has the potential to benefit its users in avoiding large capital expenditure used for deployment and management of both software and hardware, such as setting up a data center. 
 
+All of these services are opening up a new era powered by the software as a service (SaaS) computing architecture. One of the main advantages of storing this information in the cloud is that the owners are relieved from the burden of data storage and maintenance at all times. There are many plans that adjust to the on-demand needs of the owner of the data, which is way less costly than building and maintaining a whole data center. This implies that the clients of these services can expect to gain reliability and availability from having the data stored remotely. On the other hand, the data is necessarily brought out of their control and protectio. This becomes a risk for the owner of the data, since the information stored in the cloud could potentially be accessed by unauthorized individuals, such as competitors or malicious attackers. There also exists the possibility that the information stored could be tampered in some way, thus compromising its integrity. Therefore, the computing and storage service providers are usually not trusted completely, which is why it has been difficult for the public and organizations to fully adopt the use of these services.
 
+The aforementioned issue brings up the need of having a mechanism that verifies that a cloud provider is storing the whole database intact, even the portions that are rarely accessed. Ateniese et al. \cite{cryptoeprint:2014:886} point out that, fortunately, a series of \textit{proofs-of-storage} protocols have been proposed to solve this problem related to data integrity. Xu et al. \cite{cryptoeprint:2014:395} define a proof of storage (POR or PDP) as a cryptographic tool, which enables a data owner or third party auditor to audit integrity of data stored remotely in a cloud storage server, without keeping a local copy of data or downloading data back during auditing. In other words, applying a proof of storage in a cloud server can guarantee that the data has not been tampered with; and in the event that it is, most likely the service could be held liable for damages to the data. A huge advantage of using a proof of storage is that the data does not have to be downloaded to confirm its integrity, which makes it ideal to make use of it routinely. 
+
+One of the simplest use cases for cloud computing is when a user independent from the cloud wants to store some data in it for later retrieval. In this simple case, data confidentiality and integrity can be trivially ensured. For that, typical cryptography primitives can be usedby encrypting the user's data before it is sent for storage in the cloud. To ensure confidentiality, the key used for encryption is kept secret from the cloud provider. However, real life applications are not as simple. Damgard et al. \cite{cryptoeprint:2013:629} mentions that the cloud is more than a storage medium; in particular, computation over the stored data is outsourced to the cloud. Sometimes it might even be distributed among distinct cloud servers geographically apart, operated by different parties. Wang et al \cite{cryptoeprint:2009:081} describe the nature of the problem at length, because usually a cloud service is not solely restricted as a data warehouse. The data stored in the cloud may be frequently updated by the users, including insertion, deletion, modification, appending, reordering, etc. This kind of complex scenario is what makes the use of traditional cryptographic primitives so difficult to adapt, especially because the data is not stored in a single cloud server, but is instead redundantly stored in multiple physical locations to further reduce the data integrity threats. Therefore, making use of cloud services highly improve data avalability and storage flexibility, data confidentiality and integrity is put at risk.
+
+In order to tackle these issues, there have been many attempts to make cloud services, especially cloud computing, more secure. These attempts are very different in nature, though very similar regarding its goals. These are \textit{secure multi-party computation} and \textit{homomorphic encryption}. David, Nishimaki, et al. \cite{cryptoeprint:2015:135} describes secure multiparty computation (MPC) as the means to allow mutually distrustful parties to compute functions on private data that they hold, without revealing data to each other. There are many methods and approaches proposed to perform secure multiparty computation, although only recent attempts are considered to be efficient enough for application. On the other hand, homomorphic encryption is based on the idea of performing computations on the ciphertext that has gone through an encryption algorithm, without having to decrypt it beforehand. This detail makes homomorphic encryption a good technique for cloud services, since only one authorized user is able to decrypt the ciphertext after the necessary computations have been performed on it.
 
 \clearpage
