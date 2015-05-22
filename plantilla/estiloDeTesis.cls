@@ -28,7 +28,7 @@
 	{\filcenter \Huge}[\titlerule\vspace{-0.4em}]
 \titleformat{\section}[hang]{\vspace{-0.4em}\Large \scshape}
 	{}{0mm}{\filright \thesection\ }[\vspace{-0.2em}]
-\titleformat{\subsection}[hang]{\vspace{-0.4em}\large \scshape}
+\titleformat{\subsection}[hang]{\vspace{-0.4em}\Large \scshape}
 	{}{0mm}{\filright \thesubsection\ }[\vspace{-0.2em}]
 \titleformat{\subsubsection}[hang]{\vspace{-0.4em}\scshape}{}{0mm}{\filright}
 \titleformat{\paragraph}[runin]{\vspace{-0.4em}\scshape}{}{0mm}{}

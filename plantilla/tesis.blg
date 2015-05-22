@@ -11,49 +11,48 @@ A level-1 auxiliary file: relatedWorks.aux
 A level-1 auxiliary file: methodology.aux
 The style file: estiloDeBibliografiaJorge.bst
 Database file #1: bibliografia.bib
-Warning--I didn't find a database entry for "langue2011"
-Warning--I didn't find a database entry for "homoenc"
 Warning--empty publisher in 2008algorithm
 Warning--empty year in cs21math19notes
-You've used 27 entries,
+Warning--empty journal in regevlearning
+You've used 38 entries,
             2823 wiz_defined-function locations,
-            798 strings with 10009 characters,
-and the built_in function-call counts, 9950 in all, are:
-= -- 844
-> -- 544
-< -- 21
-+ -- 192
-- -- 165
-* -- 649
-:= -- 1577
-add.period$ -- 100
-call.type$ -- 27
-change.case$ -- 127
-chr.to.int$ -- 27
-cite$ -- 56
-duplicate$ -- 481
-empty$ -- 888
-format.name$ -- 200
-if$ -- 2096
+            868 strings with 12169 characters,
+and the built_in function-call counts, 14647 in all, are:
+= -- 1293
+> -- 765
+< -- 31
++ -- 269
+- -- 231
+* -- 961
+:= -- 2271
+add.period$ -- 147
+call.type$ -- 38
+change.case$ -- 183
+chr.to.int$ -- 38
+cite$ -- 79
+duplicate$ -- 702
+empty$ -- 1306
+format.name$ -- 281
+if$ -- 3132
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 20
-newline$ -- 160
-num.names$ -- 108
-pop$ -- 351
+missing$ -- 24
+newline$ -- 226
+num.names$ -- 152
+pop$ -- 488
 preamble$ -- 1
-purify$ -- 109
+purify$ -- 153
 quote$ -- 0
-skip$ -- 389
+skip$ -- 582
 stack$ -- 0
-substring$ -- 74
-swap$ -- 36
-text.length$ -- 1
+substring$ -- 184
+swap$ -- 71
+text.length$ -- 4
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 252
-warning$ -- 2
-while$ -- 83
+type$ -- 373
+warning$ -- 3
+while$ -- 125
 width$ -- 0
-write$ -- 368
-(There were 4 warnings)
+write$ -- 532
+(There were 3 warnings)
