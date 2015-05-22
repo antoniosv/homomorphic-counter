@@ -21,18 +21,18 @@
 \contentsline {subsection}{\numberline {2.3.4}Other relevant points on modular arithmetic}{16}{subsection.2.3.4}
 \contentsline {section}{\numberline {2.4}Abstract Algebra: Groups and Rings}{16}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Groups}{17}{subsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.1.1}Homomorphisms}{18}{subsubsection.2.4.1.1}
 \contentsline {subsection}{\numberline {2.4.2}Rings}{18}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Homomorphisms}{19}{subsection.2.4.3}
-\contentsline {subsubsection}{\numberline {2.4.3.1}Ring Homomorphism}{19}{subsubsection.2.4.3.1}
-\contentsline {section}{\numberline {2.5}Homomorphic Encryption}{19}{section.2.5}
-\contentsline {subsection}{\numberline {2.5.1}What is Homomorphic Encryption?}{20}{subsection.2.5.1}
+\contentsline {subsection}{\numberline {2.4.3}Homomorphisms}{18}{subsection.2.4.3}
+\contentsline {subsubsection}{\numberline {2.4.3.1}Group homomorphism}{19}{subsubsection.2.4.3.1}
+\contentsline {subsubsection}{\numberline {2.4.3.2}Ring Homomorphism}{20}{subsubsection.2.4.3.2}
+\contentsline {section}{\numberline {2.5}Homomorphic Encryption}{20}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}What is Homomorphic Encryption?}{21}{subsection.2.5.1}
 \contentsline {subsection}{\numberline {2.5.2}Classification of Homomorphic Encryption Schemes}{21}{subsection.2.5.2}
-\contentsline {subsection}{\numberline {2.5.3}Explaining Homomorphic Encryption}{21}{subsection.2.5.3}
-\contentsline {subsection}{\numberline {2.5.4}The first fully homomorphic encryption scheme}{23}{subsection.2.5.4}
-\contentsline {section}{\numberline {2.6}Ring-Learning with Error problems}{25}{section.2.6}
-\contentsline {section}{\numberline {2.7}BGV scheme}{25}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Applications}{25}{subsection.2.7.1}
-\contentsline {section}{\numberline {2.8}Services in the cloud}{28}{section.2.8}
+\contentsline {subsection}{\numberline {2.5.3}Explaining Homomorphic Encryption}{22}{subsection.2.5.3}
+\contentsline {subsection}{\numberline {2.5.4}The first fully homomorphic encryption scheme}{24}{subsection.2.5.4}
+\contentsline {subsection}{\numberline {2.5.5}Ring-Learning with Error problems}{26}{subsection.2.5.5}
+\contentsline {subsection}{\numberline {2.5.6}BGV scheme}{26}{subsection.2.5.6}
+\contentsline {subsection}{\numberline {2.5.7}Applications}{26}{subsection.2.5.7}
+\contentsline {section}{\numberline {2.6}Services in the cloud}{29}{section.2.6}
 \contentsline {chapter}{\numberline {3}Trabajos Relacionados}{32}{chapter.3}
 \contentsline {chapter}{\numberline {4}Methodology}{33}{chapter.4}

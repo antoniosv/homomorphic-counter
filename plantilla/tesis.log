@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.5.14)  21 MAY 2015 18:55
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.4)  22 MAY 2015 01:56
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -653,10 +653,10 @@ Package caption Info: End \AtBeginDocument code.
 
  (./portillas.tex
 Package epstopdf Info: Source file: <uanl.eps>
-(epstopdf)                    date: 2015-05-06 09:31:26
+(epstopdf)                    date: 2013-06-11 15:17:10
 (epstopdf)                    size: 828415 bytes
 (epstopdf)             Output file: <uanl-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-05-06 09:31:26
+(epstopdf)                    date: 2013-06-11 15:17:10
 (epstopdf)                    size: 51213 bytes
 (epstopdf)             Command: <epstopdf --outfile=uanl-eps-converted-to.pdf u
 anl.eps>
@@ -698,10 +698,10 @@ Non-PDF special ignored!
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./uanl-eps-converted-to.pd
 f>]
 Package epstopdf Info: Source file: <fime.eps>
-(epstopdf)                    date: 2015-05-06 09:31:25
+(epstopdf)                    date: 2013-06-11 15:17:10
 (epstopdf)                    size: 530852 bytes
 (epstopdf)             Output file: <fime-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-05-06 09:31:25
+(epstopdf)                    date: 2013-06-11 15:17:10
 (epstopdf)                    size: 50804 bytes
 (epstopdf)             Command: <epstopdf --outfile=fime-eps-converted-to.pdf f
 ime.eps>
@@ -895,128 +895,131 @@ t line 153.
 Package natbib Warning: Citation `CryptoStallings' on page 16 undefined on inpu
 t line 176.
 
-[16]
+[16] [17] [18]
 
-Package natbib Warning: Citation `beachy2006abstract' on page 17 undefined on i
-nput line 196.
+Package natbib Warning: Citation `beachy2006abstract' on page 19 undefined on i
+nput line 221.
 
-[17] [18]
 
-Package natbib Warning: Citation `langue2011' on page 19 undefined on input lin
-e 240.
+Package natbib Warning: Citation `sorzano2013' on page 19 undefined on input li
+ne 227.
 
 [19]
 
+Package natbib Warning: Citation `langue2011' on page 20 undefined on input lin
+e 260.
+
+
 Package natbib Warning: Citation `potzelsberger2013kv' on page 20 undefined on 
-input line 244.
+input line 264.
 
-[20]
+[20] [21]
 
-Package natbib Warning: Citation `potzelsberger2013kv' on page 21 undefined on 
-input line 266.
+Package natbib Warning: Citation `potzelsberger2013kv' on page 22 undefined on 
+input line 286.
 
 
-Package natbib Warning: Citation `homenc' on page 21 undefined on input line 27
+Package natbib Warning: Citation `homenc' on page 22 undefined on input line 29
 1.
 
-[21]
 
 Package natbib Warning: Citation `Hayes2012' on page 22 undefined on input line
- 273.
+ 293.
 
+[22]
 
-Package natbib Warning: Citation `stuntz2010' on page 22 undefined on input lin
-e 286.
+Package natbib Warning: Citation `stuntz2010' on page 23 undefined on input lin
+e 306.
 
-[22] <img/rot13homo.jpg, id=373, 623.32875pt x 300.12125pt>
+[23] <img/rot13homo.jpg, id=379, 623.32875pt x 300.12125pt>
 File: img/rot13homo.jpg Graphic file (type jpg)
 
 <use img/rot13homo.jpg>
-Package pdftex.def Info: img/rot13homo.jpg used on input line 292.
+Package pdftex.def Info: img/rot13homo.jpg used on input line 312.
 (pdftex.def)             Requested size: 311.6636pt x 150.06026pt.
 
 
-Package natbib Warning: Citation `stuntz2010' on page 23 undefined on input lin
-e 293.
+Package natbib Warning: Citation `stuntz2010' on page 24 undefined on input lin
+e 313.
 
 
-Package natbib Warning: Citation `stuntz2010' on page 23 undefined on input lin
-e 293.
-
-
-Package natbib Warning: Citation `NSA2014' on page 23 undefined on input line 2
-98.
-
-[23 <./img/rot13homo.jpg>]
-
-Package natbib Warning: Citation `homoenc' on page 24 undefined on input line 3
-00.
-
-
-Package natbib Warning: Citation `Hayes2012' on page 24 undefined on input line
- 302.
+Package natbib Warning: Citation `stuntz2010' on page 24 undefined on input lin
+e 313.
 
 
 Package natbib Warning: Citation `NSA2014' on page 24 undefined on input line 3
-06.
+18.
 
-[24]
+
+Package natbib Warning: Citation `homoenc' on page 24 undefined on input line 3
+20.
+
+[24 <./img/rot13homo.jpg>]
 
 Package natbib Warning: Citation `Hayes2012' on page 25 undefined on input line
- 311.
+ 322.
+
+
+Package natbib Warning: Citation `NSA2014' on page 25 undefined on input line 3
+26.
 
 [25]
 
-Package natbib Warning: Citation `KimMai' on page 26 undefined on input line 32
-3.
+Package natbib Warning: Citation `Hayes2012' on page 26 undefined on input line
+ 331.
 
 [26]
 
-Package natbib Warning: Citation `YangZhongWright' on page 27 undefined on inpu
-t line 326.
+Package natbib Warning: Citation `KimMai' on page 27 undefined on input line 34
+3.
 
 [27]
 
+Package natbib Warning: Citation `YangZhongWright' on page 28 undefined on inpu
+t line 346.
+
+
 Package natbib Warning: Citation `potzelsberger2013kv' on page 28 undefined on 
-input line 327.
+input line 347.
 
 
-Overfull \hbox (4.97032pt too wide) in paragraph at lines 327--328
+Overfull \hbox (4.97032pt too wide) in paragraph at lines 347--348
 []\T1/cmr/m/n/12 Biometric au-then-ti-ca-tion is an area of ap-pli-ca-tion quit
 e
  []
 
-
-Package natbib Warning: Citation `cryptoeprint:2011:574' on page 28 undefined o
-n input line 332.
-
-
-Package natbib Warning: Citation `cryptoeprint:2009:593' on page 28 undefined o
-n input line 334.
-
 [28]
 
-Package natbib Warning: Citation `cryptoeprint:2014:886' on page 29 undefined o
-n input line 338.
+Package natbib Warning: Citation `cryptoeprint:2011:574' on page 29 undefined o
+n input line 352.
 
 
-Package natbib Warning: Citation `cryptoeprint:2014:395' on page 29 undefined o
-n input line 338.
+Package natbib Warning: Citation `cryptoeprint:2009:593' on page 29 undefined o
+n input line 354.
 
 [29]
 
+Package natbib Warning: Citation `cryptoeprint:2014:886' on page 30 undefined o
+n input line 358.
+
+
+Package natbib Warning: Citation `cryptoeprint:2014:395' on page 30 undefined o
+n input line 358.
+
+
 Package natbib Warning: Citation `cryptoeprint:2013:629' on page 30 undefined o
-n input line 340.
+n input line 360.
 
 
 Package natbib Warning: Citation `cryptoeprint:2009:081' on page 30 undefined o
-n input line 340.
+n input line 360.
 
+[30]
 
-Package natbib Warning: Citation `cryptoeprint:2015:135' on page 30 undefined o
-n input line 342.
+Package natbib Warning: Citation `cryptoeprint:2015:135' on page 31 undefined o
+n input line 362.
 
-[30] [31])
+[31])
 \openout2 = `relatedWorks.aux'.
 
  (./relatedWorks.tex
@@ -1070,16 +1073,16 @@ Overfull \hbox (1.73468pt too wide) in paragraph at lines 199--200
 
 [45]
 Package epstopdf Info: Source file: <clientserver.eps>
-(epstopdf)                    date: 2015-05-06 09:31:25
+(epstopdf)                    date: 2015-04-16 07:01:52
 (epstopdf)                    size: 137752 bytes
 (epstopdf)             Output file: <clientserver-eps-converted-to.pdf>
-(epstopdf)                    date: 2015-05-06 09:31:25
+(epstopdf)                    date: 2015-05-05 23:36:16
 (epstopdf)                    size: 72327 bytes
 (epstopdf)             Command: <epstopdf --outfile=clientserver-eps-converted-
 to.pdf clientserver.eps>
 (epstopdf)             \includegraphics on input line 222.
 Package epstopdf Info: Output file is already uptodate.
- <clientserver-eps-converted-to.pdf, id=546, 796.9775pt x 597.23125pt>
+ <clientserver-eps-converted-to.pdf, id=548, 796.9775pt x 597.23125pt>
 File: clientserver-eps-converted-to.pdf Graphic file (type pdf)
 
 <use clientserver-eps-converted-to.pdf>
@@ -1107,7 +1110,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 110.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 110.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 110.
 Package rerunfilecheck Info: File `tesis.out' has not changed.
-(rerunfilecheck)             Checksum: C5E4EE06B375F8B35027B42F185FFDBC;2227.
+(rerunfilecheck)             Checksum: 8D344FE7159D78B7B481A195D373F596;2241.
 
 
 LaTeX Warning: There were undefined references.
@@ -1115,13 +1118,13 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 110.
  ) 
 Here is how much of TeX's memory you used:
- 13229 strings out of 493304
- 193006 string characters out of 6139871
+ 13232 strings out of 493304
+ 193069 string characters out of 6139872
  318048 words of memory out of 5000000
- 16152 multiletter control sequences out of 15000+600000
+ 16153 multiletter control sequences out of 15000+600000
  17568 words of font info for 47 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 53i,8n,92p,1611b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,15n,92p,1611b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/
@@ -1138,10 +1141,10 @@ f/fonts/type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public
 /cm-super/sfcc2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.p
 fb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf
 /fonts/type1/public/cm-super/sfti1200.pfb>
-Output written on tesis.pdf (58 pages, 654401 bytes).
+Output written on tesis.pdf (58 pages, 655849 bytes).
 PDF statistics:
- 671 PDF objects out of 1000 (max. 8388607)
- 579 compressed objects within 6 object streams
- 206 named destinations out of 1000 (max. 500000)
+ 673 PDF objects out of 1000 (max. 8388607)
+ 581 compressed objects within 6 object streams
+ 208 named destinations out of 1000 (max. 500000)
  282 words of extra memory for PDF output out of 10000 (max. 10000000)
 

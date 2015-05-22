@@ -190,18 +190,10 @@ It is worth noting that if a group has a finite number of elements, it is called
 \end{description}
 
 When the group operation is addition, the identity element is 0; the inverse element of $a$ is $-a$; and subtraction is defined with the following rule: $a-b = a+(-b)$. 
-
-\subsubsection{Homomorphisms}
-
-According to Beachy and Blair \cite{beachy2006abstract}, an homomorphism is defined as follows: Let $G_{1}$ and $G_{2}$ be gorups, and let $\mu: G_{1} \rightarrow G_{2}$ be a function. Then $\mu$ is said to be a \textbf{group homomorphism} if
-\begin{equation}
-\mu(ab) = \mu(a)\mu(b)
-\end{equation}
-for all $a$, $b$ in $G_{1}$.
- 
+  
 \subsection{Rings}
 
-A \textbf{ring} $R$, which is sometimes denoted by $\{R, +, \times \}$, is a set of elements with two binary operations, called \textit{addition} and \textit{multiplication}, such that for all $a$, $b$, $c$ in $R$, there are some axioms that must be obeyed. It must be pointed out that a ring fulfills the same axions as an abelian group with respect to addition; that is, axioms A1 through A5. The rest of the axioms obeyed by a ring are listed as follows:
+A \emph{ring} $R$, which is sometimes denoted by $\{R, +, \times \}$, is a set of elements with two binary operations, called \textit{addition} and \textit{multiplication}, such that for all $a$, $b$, $c$ in $R$, there are some axioms that must be obeyed. It must be pointed out that a ring fulfills the same axions as an abelian group with respect to addition; that is, axioms A1 through A5. The rest of the axioms obeyed by a ring are listed as follows:
 \begin{description}
 \item[(M1) Closure under multiplication:] If $a$ and $b$ belong to $R$, then $ab$ is also in $R$.
 \item[(M2) Associativity of multiplication:] $a(bc) = (ab)c$ for all $a$, $b$, $c$ in $R$.
@@ -222,6 +214,34 @@ Additionally, there are other axioms that, if obeyed, turn the commutative ring 
 
 \subsection{Homomorphisms}
 
+As it has been previously noted, operations within a closed group always results in another element from the group. Only one operation is allowed in a group: addition or multiplication, for instance. There may also be two groups or sets that are made up of different elements, each with its own operation. A \emph{homomorphism} consists of the construction of a function that \emph{translates} elements from one group to other with the same properties.
+
+\subsubsection{Group homomorphism}
+
+According to Beachy and Blair \cite{beachy2006abstract}, a homomorphism is defined as follows: Let $G_{1}$ and $G_{2}$ be gorups, and let $\mu: G_{1} \rightarrow G_{2}$ be a function. Then $\mu$ is said to be a \textbf{group homomorphism} if
+\begin{equation}
+\phi(a*b) = \phi(a) *' \phi(b)
+\end{equation}
+for all $a$, $b$ in $G_{1}$.
+
+Consider the example presented by Sorzano \cite{sorzano2013}, where there are two sets: $S= \{a, b, c\}$ and $S' = \{A, B, C\}$  with the operations $*: S \times S \rightarrow S$ and $*' : S' \times S' \rightarrow S'$. The operations within each group map two elements to another element from the same group. For example, $b*c=a$ and $a*a=a$, and in the other group, $A*A = A$ and $B*C=A$. So it can be seen that there is some similarity in the nature of the operations from both groups. Now consider the homomorphism between both groups, where:
+\begin{equation}
+\begin{split}
+  \phi: S \rightarrow S' \\
+  \phi(a) = A \\
+  \phi(b) = B \\
+  \phi(c) = C \\
+\end{split}
+\end{equation}
+
+Therefore, the following holds true using the above homomorphism:
+
+\begin{equation}
+b*c=a \rightarrow \phi(b) *' \phi(c) = \phi(a) \rightarrow B *' C = A
+\end{equation}
+
+What this means is that an homomorphism serves as a link to translate operations from one group to the other, keeping the same properties.
+
 \subsubsection{Ring Homomorphism}
 
 Similarly to groups, there are also homomorphisms for rings, the main difference being that, instead of a single operation, two operations are considered.
@@ -241,7 +261,7 @@ Lange \cite{langue2011} mentions several applications that would benefit from a 
 
 \subsection{What is Homomorphic Encryption?}
 
-According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, a \textit{homomorphic cryptosystem} is a cryptosystem whose encryption function is a homomorphism, and thus preserves group operations performed on ciphertexts. Arithmetic addition and multiplication are the two group operations considered.  A homomorphic encryption is additive if:
+According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, a \textit{homomorphic cryptosystem} is a cryptosystem whose encryption function is a homomorphism, and thus preserves group operations performed on ciphertexts. Either arithmetic addition or multiplication is the group operation considered.  A homomorphic encryption is additive if:
 
 \begin{equation}
 \mathcal{E}(x+y) = \mathcal{E}(x)\otimes \mathcal{E}(y)
@@ -305,12 +325,12 @@ An obvious solution to the problem of accumulating noise is to decrypt the data 
 
 Instead, Gentry developed a process called \emph{bootstrapping} to overcome the problem of noise accumulation. The \emph{evaluate} function used in the cryptosystem can virtually perform any computation, as long as it has not reached the critical threshold of noise. Therefore, that very function is used to run the \emph{decrypt} function, which takes as input the noise-heavy ciphertext that has gone through several operations, and the \emph{encrypted secret key}. This makes sense because the decrypt function relies on the evaluate function, which was made to work on encrypted values. So when the \emph{decrypt} function is run, the decrypted result is not the plaintext, but rather a new encryption, with reduced noise. This process of re-encrypting and refreshing the noisy ciphertext can be repeated as many times as needed, because then it technically has no limitations on the number of operations it can perform. However, extra layer of encryption will consequently increase the overall computational effort required to complete the set of operations desired to be performed. As the research staff from the NSA exemplifies \cite{NSA2014}, if the process were to be used by Google to search the web homomorphically, the normal computing time required would be multiplied by about a trillion. This is the reason why this scheme is not practical enough as a solution for implementation.
 
-\section{Ring-Learning with Error problems}
+\subsection{Ring-Learning with Error problems}
 
 
 \cite{Hayes2012} More recently, Brakerski, Vaikuntanathan and Gentry have developed a variant of the learning-with-errors system that takes a different approach to noise management. Instead of stopping the computation at intervals to re-encrypt the data, they incrementally adjust parameters of the system after every computational step in a way that prevents the noise level from ever approaching the limit.
 
-\section{BGV scheme}
+\subsection{BGV scheme}
 
 
 \subsection{Applications}

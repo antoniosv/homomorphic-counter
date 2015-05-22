@@ -15,45 +15,45 @@ Warning--I didn't find a database entry for "langue2011"
 Warning--I didn't find a database entry for "homoenc"
 Warning--empty publisher in 2008algorithm
 Warning--empty year in cs21math19notes
-You've used 26 entries,
+You've used 27 entries,
             2823 wiz_defined-function locations,
-            795 strings with 9933 characters,
-and the built_in function-call counts, 9667 in all, are:
-= -- 821
-> -- 534
-< -- 20
-+ -- 188
-- -- 162
-* -- 636
-:= -- 1535
-add.period$ -- 98
-call.type$ -- 26
-change.case$ -- 123
-chr.to.int$ -- 26
-cite$ -- 54
-duplicate$ -- 466
-empty$ -- 856
-format.name$ -- 196
-if$ -- 2035
+            798 strings with 10009 characters,
+and the built_in function-call counts, 9950 in all, are:
+= -- 844
+> -- 544
+< -- 21
++ -- 192
+- -- 165
+* -- 649
+:= -- 1577
+add.period$ -- 100
+call.type$ -- 27
+change.case$ -- 127
+chr.to.int$ -- 27
+cite$ -- 56
+duplicate$ -- 481
+empty$ -- 888
+format.name$ -- 200
+if$ -- 2096
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 20
-newline$ -- 156
-num.names$ -- 104
-pop$ -- 338
+newline$ -- 160
+num.names$ -- 108
+pop$ -- 351
 preamble$ -- 1
-purify$ -- 106
+purify$ -- 109
 quote$ -- 0
-skip$ -- 375
+skip$ -- 389
 stack$ -- 0
-substring$ -- 72
-swap$ -- 35
+substring$ -- 74
+swap$ -- 36
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 241
+type$ -- 252
 warning$ -- 2
-while$ -- 80
+while$ -- 83
 width$ -- 0
-write$ -- 358
+write$ -- 368
 (There were 4 warnings)
