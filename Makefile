@@ -1,4 +1,4 @@
-ALL: server_counter client_counter
+ALL: server_counter client_counter experiment_counter
 CC = g++
 CFLAGS = -g -O2 -Wfatal-errors -Wshadow -Wall -I/usr/local/include
 GMP = -lgmp
@@ -16,6 +16,8 @@ client_counter: client_counter.cpp
 
 server_counter: server_counter.cpp
 	$(CC) $(CFLAGS) -o $@ $(INCDIR) $< $(LDLIBS)
+experiment_counter: experiment_counter.cpp
+	$(CC) $(CFLAGS) -o $@ $(INCDIR) $< $(LDLIBS)
 
 clean:
-	rm -f HEcalc counter server_counter client_counter
+	rm -f HEcalc counter server_counter client_counter experiment_counter
