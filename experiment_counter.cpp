@@ -9,6 +9,7 @@
 #include <sstream>
 #include <ctime>
 
+
 using namespace std;
 
 const int numTests = 5;
@@ -17,8 +18,8 @@ FHEcontext* context;
 FHESecKey* secretKey;
 FHEPubKey* publicKey;
 ZZX G;
-float* genKeyTime[paramLoops][numTests];
-clock_t* start;
+EncryptedArray* ea;
+double* genKeyTime[paramLoops][numTests];
 
 //  setTimersOn();
 
@@ -28,6 +29,7 @@ void  setUp(long R, long p, long r, long d, long c, long k, long w,
   context = new FHEcontext(m, p, r);
   buildModChain(*context, L, c);
 
+  cout << "aaa" << endl;
   if (d == 0)
     G = context->alMod.getFactorsOverZZ()[0];
   else
@@ -36,83 +38,45 @@ void  setUp(long R, long p, long r, long d, long c, long k, long w,
   secretKey = new FHESecKey(*context);
   publicKey = secretKey;
 
-  addSome1DMatrices(*secretKey); // compute key-switching matrices that we need
+  addSome1DMatrices(*secretKey); // compute key-switching matrices that we need  
+}
 
-  EncryptedArray ea(*context, G);
-
+void encryption()
+{
+  ea = new EncryptedArray(*context, G);
   // Plaintext encoding
-  PlaintextArray counter(ea);  
+  PlaintextArray counter(*ea);  
   counter.encode(50);
   Ctxt encryptedCounter(*publicKey);  
-  ea.encrypt(encryptedCounter, publicKey, counter);
+  ea->encrypt(encryptedCounter, *publicKey, counter);
 
-  // Ciphertexts encoding
-  PlaintextArray p1(ea), p2(ea);
-  Ctxt c1(publicKey);
-  Ctxt c2(publicKey);
-  p1.encode(10);
-  p2.encode(5);
-  ea.encrypt(c1, publicKey, p1);
-  ea.encrypt(c2, publicKey, p2);
-  
-  resetAllTimers();
-
-  FHE_NTIMER_START(Circuit);
-
-  PlaintextArray const1(ea), const2(ea);
-  const1.encode(5); const2.encode(10);
-
-  ZZX const1_poly, const2_poly;
-  ea.encode(const1_poly, const1);
-  ea.encode(const2_poly, const2);
-  
-  cout << "Original plaintext: ";
-  counter.print(cout);
-  cout << endl;
-
-  
-  (encryptedCounter)+=(c1);
-  (encryptedCounter)+=(c1);
-  (encryptedCounter)-=c2;
-  
-  /*
-  // operation on ciphertext
-  counter.add(const1); // counter += const2
-  counter.add(const1);
-  encryptedCounter.addConstant(const1_poly);    CheckCtxt(encryptedCounter, "c0+=k1");
-  encryptedCounter.addConstant(const1_poly);
-  debugCompare(ea,secretKey,counter,encryptedCounter);
-  */ 
-     // decrypting ciphertext
-  PlaintextArray decryptedCounter(ea);
-  ea.decrypt(encryptedCounter, secretKey, decryptedCounter);
-  cout << "Modified plaintext: ";
-  counter.print(cout);
-  cout << "\nAdding constant: ";
-  p1.print(cout);
-  cout << "\nPlaintext (after decryption): ";
-  decryptedCounter.print(cout);
-  cout << endl;
-
-  cout << "Serializing ciphertext object..." << endl;
-
-  ostringstream ostream;
-  ostream << encryptedCounter;
-  
-  Ctxt receivedCipher(publicKey);
-  //  serialCipher.str(receivedCipher);
-  istringstream istream;
-  istream.str(ostream.str());
-  istream >> receivedCipher;
-
-  cout << "Printing decrypted ciphertext after reading it..." << endl;
-  PlaintextArray decryptedStream(ea);
-  ea.decrypt(receivedCipher, secretKey, decryptedStream);
-  decryptedStream.print(cout);
-  
-
-  
 }
+
+void decryption(Ctxt encryptedCounter)
+{
+  // decrypting ciphertext
+  PlaintextArray decryptedCounter(*ea);
+  ea->decrypt(encryptedCounter, *secretKey, decryptedCounter);
+  cout << "Modified plaintext: ";
+}
+
+// void serialize(Ctxt encryptedCounter)
+// {   
+//   cout << "Serializing ciphertext object..." << endl;
+//   ostringstream ostream;
+//   ostream << encryptedCounter;
+  
+//   Ctxt receivedCipher(*publicKey);
+//   //  serialCipher.str(receivedCipher);
+//   istringstream istream;
+//   istream.str(ostream.str());
+//   istream >> receivedCipher;
+
+//   cout << "Printing decrypted ciphertext after reading it..." << endl;
+//   PlaintextArray decryptedStream(ea);
+//   ea.decrypt(receivedCipher, *secretKey, decryptedStream);
+//   decryptedStream.print(cout); 
+// }
 
 /* A general test program that uses a mix of operations over four ciphertexts.
  * Usage: Test_General_x [ name=value ]...
@@ -144,7 +108,7 @@ int main(int argc, char **argv)
     5. Al iniciar el loop interior corre el tiempo, y termina al acabar esa iteracion
     6. Guarda en un csv los valores de K, y los tiempos capturados 
   */
-  long K[numTests] = {40, 60, 80, 100, 120} 
+  long K[numTests] = {40, 60, 80, 100, 120}; 
 
   long R=1;
   long p=101;
@@ -174,10 +138,16 @@ int main(int argc, char **argv)
   if (mvec.length()>0)
     chosen_m = computeProd(mvec);
   long m;
-  for (int kCount = 0; i<numTests; kCount++) {
+  clock_t start;
+  double duration;  
+  for (int kCount = 0; kCount<numTests; kCount++) {
     for (long repeat_cnt = 0; repeat_cnt < repeat; repeat_cnt++) {
-      long m = FindM(k, L, c, p, d, s, chosen_m, true);      
-      runTest(R, p, r, d, c, k, w, L, m, gens, ords);
+      cout << kCount << endl;
+      //start = clock();
+      m = FindM(k, L, c, p, d, s, chosen_m, true);      
+      setUp(R, p, r, d, c, k, w, L, m, gens, ords);
+      //      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+      //cout<<"printf: "<< duration <<'\n';
     }
   }
 }
