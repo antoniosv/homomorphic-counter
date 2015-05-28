@@ -12,14 +12,14 @@
 
 using namespace std;
 
-const int numTests = 5;
-const int paramLoops = 10;
+const int numTests = 2;
+const int tratamientos = 1;
 FHEcontext* context;
 FHESecKey* secretKey;
 FHEPubKey* publicKey;
 ZZX G;
 EncryptedArray* ea;
-double* genKeyTime[paramLoops][numTests];
+double genKeyTime[tratamientos][numTests];
 
 //  setTimersOn();
 
@@ -29,7 +29,6 @@ void  setUp(long R, long p, long r, long d, long c, long k, long w,
   context = new FHEcontext(m, p, r);
   buildModChain(*context, L, c);
 
-  cout << "aaa" << endl;
   if (d == 0)
     G = context->alMod.getFactorsOverZZ()[0];
   else
@@ -37,6 +36,9 @@ void  setUp(long R, long p, long r, long d, long c, long k, long w,
 
   secretKey = new FHESecKey(*context);
   publicKey = secretKey;
+  cout << "bbb" << endl;
+
+  secretKey->GenSecKey(w);
 
   addSome1DMatrices(*secretKey); // compute key-switching matrices that we need  
 }
@@ -108,14 +110,15 @@ int main(int argc, char **argv)
     5. Al iniciar el loop interior corre el tiempo, y termina al acabar esa iteracion
     6. Guarda en un csv los valores de K, y los tiempos capturados 
   */
-  long K[numTests] = {40, 60, 80, 100, 120}; 
+
+  //long K[tratamientos] = {40, 60, 80, 100}; 
 
   long R=1;
   long p=101;
   long r=1;
   long d=1;
   long c=2;
-  long k=80;
+  long k=20;
   long L=0;
   long s=0;
   long repeat=1;
@@ -140,14 +143,21 @@ int main(int argc, char **argv)
   long m;
   clock_t start;
   double duration;  
-  for (int kCount = 0; kCount<numTests; kCount++) {
-    for (long repeat_cnt = 0; repeat_cnt < repeat; repeat_cnt++) {
-      cout << kCount << endl;
-      //start = clock();
+  for (int t = 0; t < tratamientos; t++) {    
+    for (int rep = 0; rep<numTests; rep++) {
+      cout << "Iteration no. " << rep << endl;
+      cout << "Generating public and private keys" << endl;
+      start = clock();
       m = FindM(k, L, c, p, d, s, chosen_m, true);      
-      setUp(R, p, r, d, c, k, w, L, m, gens, ords);
-      //      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
-      //cout<<"printf: "<< duration <<'\n';
+      //setUp(R, p, r, d, c, k, w, L, m, gens, ords);
+      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+      genKeyTime[t][rep] = duration;
+    }
+  }
+
+  for(int i=0; i<tratamientos; i++) {
+    for(int j=0; j<numTests; j++) {
+      cout << genKeyTime[i][j] << endl;
     }
   }
 }
