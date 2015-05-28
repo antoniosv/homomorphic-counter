@@ -8,20 +8,54 @@
 #include <cstdio>
 #include <sstream>
 #include <ctime>
+#include <string>
+#include <iostream>
+#include <fstream>
 
 
 using namespace std;
 
 const int numTests = 2;
-const int tratamientos = 1;
+const int tratamientos = 4;
 FHEcontext* context;
 FHESecKey* secretKey;
 FHEPubKey* publicKey;
 ZZX G;
 EncryptedArray* ea;
+long K[tratamientos] = {40, 60, 80, 100}; 
 double genKeyTime[tratamientos][numTests];
+double encryptionTime[tratamientos][numTests];
+double decryptionTime[tratamientos][numTests];
+double additionTime[tratamientos][numTests];
+int keySize[tratamientos][numTests];
 
-//  setTimersOn();
+void csvwriter() {
+  ofstream keyData, keySizeData, encryptData, addData, decryptData;
+  keyData.open("experiments/keygen.csv");
+  // keySizeData.open("experiments/keysize.csv");
+  // encryptData.open("experiments/encrypt.csv");
+  // addData.open("experiments/add.csv");
+  // decryptData.open("experiments/decrypt.csv"); 
+
+  for(int i=0;i<tratamientos; i++) {
+    keyData << K[i] << ",";
+    // keySizeData << K[i] << ",";
+    // encryptData << K[i] << ",";
+    // addData << K[i] << ",";
+    // decryptData << K[i] << ",";    
+    for(int j=0; j<numTests; j++) {
+      keyData << genKeyTime[i][j] << ",";
+      // keySizeData << keySize[i][j] << ",";
+      // encryptData << encryptionTime[i][j] << ",";
+      // addData << additionTime[i][j] << ",";
+      // decryptData << decryptionTime[i][j] << ",";
+    }
+     keyData << "\n";
+  }
+  
+  keyData.close(); //encryptData.close(); addData.close(); decryptData.close();
+  
+}
 
 void  setUp(long R, long p, long r, long d, long c, long k, long w, 
                long L, long m, const Vec<long>& gens, const Vec<long>& ords)
@@ -36,49 +70,64 @@ void  setUp(long R, long p, long r, long d, long c, long k, long w,
 
   secretKey = new FHESecKey(*context);
   publicKey = secretKey;
-  cout << "bbb" << endl;
 
   secretKey->GenSecKey(w);
 
   addSome1DMatrices(*secretKey); // compute key-switching matrices that we need  
 }
 
-void encryption()
+string encryption()
 {
+  ostringstream oss;
   ea = new EncryptedArray(*context, G);
   // Plaintext encoding
-  PlaintextArray counter(*ea);  
+  PlaintextArray counter(*ea);
   counter.encode(50);
   Ctxt encryptedCounter(*publicKey);  
   ea->encrypt(encryptedCounter, *publicKey, counter);
-
+  oss << encryptedCounter;
+  return oss.str();
 }
 
-void decryption(Ctxt encryptedCounter)
+void addition(string str)
 {
+  istringstream iss;
+  iss.str(str);
+  Ctxt encryptedCounter(*publicKey);  
+  iss >> encryptedCounter;
+
+  PlaintextArray p0(*ea);
+  p0.random();
+  Ctxt c0(*publicKey);
+  ea->encrypt(c0, *publicKey, p0);
+
+  encryptedCounter += c0;
+  return;
+}
+
+void decryption(string str)
+{
+  istringstream iss;
+  iss.str(str);
+  Ctxt encryptedCounter(*publicKey);  
+  iss >> encryptedCounter;
   // decrypting ciphertext
   PlaintextArray decryptedCounter(*ea);
   ea->decrypt(encryptedCounter, *secretKey, decryptedCounter);
-  cout << "Modified plaintext: ";
+  // cout << "Modified plaintext: "; 
+  // decryptedCounter.print(cout);
 }
 
-// void serialize(Ctxt encryptedCounter)
-// {   
-//   cout << "Serializing ciphertext object..." << endl;
-//   ostringstream ostream;
-//   ostream << encryptedCounter;
-  
-//   Ctxt receivedCipher(*publicKey);
-//   //  serialCipher.str(receivedCipher);
-//   istringstream istream;
-//   istream.str(ostream.str());
-//   istream >> receivedCipher;
+int publicKeySize() {
+  int size;
+  {fstream keyFile("iotest.txt", ios::binary | ios::ate | fstream::out|fstream::trunc);
+    keyFile << *publicKey << endl;
+    size = keyFile.tellg();
+    keyFile.flush();
+    keyFile.close();}
 
-//   cout << "Printing decrypted ciphertext after reading it..." << endl;
-//   PlaintextArray decryptedStream(ea);
-//   ea.decrypt(receivedCipher, *secretKey, decryptedStream);
-//   decryptedStream.print(cout); 
-// }
+  return size;
+}
 
 /* A general test program that uses a mix of operations over four ciphertexts.
  * Usage: Test_General_x [ name=value ]...
@@ -111,8 +160,6 @@ int main(int argc, char **argv)
     6. Guarda en un csv los valores de K, y los tiempos capturados 
   */
 
-  //long K[tratamientos] = {40, 60, 80, 100}; 
-
   long R=1;
   long p=101;
   long r=1;
@@ -121,7 +168,7 @@ int main(int argc, char **argv)
   long k=20;
   long L=0;
   long s=0;
-  long repeat=1;
+  //  long repeat=1;
   long chosen_m=0;
   Vec<long> mvec;
   Vec<long> gens;
@@ -144,20 +191,44 @@ int main(int argc, char **argv)
   clock_t start;
   double duration;  
   for (int t = 0; t < tratamientos; t++) {    
+    k = K[t];
     for (int rep = 0; rep<numTests; rep++) {
       cout << "Iteration no. " << rep << endl;
       cout << "Generating public and private keys" << endl;
       start = clock();
       m = FindM(k, L, c, p, d, s, chosen_m, true);      
-      //setUp(R, p, r, d, c, k, w, L, m, gens, ords);
+      setUp(R, p, r, d, c, k, w, L, m, gens, ords);
       duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
       genKeyTime[t][rep] = duration;
+
+      keySize[t][rep] = publicKeySize();    
+
+      cout << "Encrypting plaintext" << endl;
+      start = clock();
+      string cipherStr=encryption();
+      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+      encryptionTime[t][rep] = duration;
+      
+      cout << "Performing addition" << endl;
+      start = clock();
+      addition(cipherStr);
+      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+      additionTime[t][rep] = duration;
+
+      cout << "Decrypting ciphertext" << endl;
+      start = clock();
+      decryption(cipherStr);
+      duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
+      decryptionTime[t][rep] = duration;       
+
     }
   }
 
   for(int i=0; i<tratamientos; i++) {
     for(int j=0; j<numTests; j++) {
-      cout << genKeyTime[i][j] << endl;
+      cout << "Keygen: " << genKeyTime[i][j] << "\tKeysize: " << keySize[i][j] << "\tEncrypt: " << encryptionTime[i][j] << "\tAdd: " << additionTime[i][j] << "\tDecrypt: " << decryptionTime[i][j] << endl;
     }
   }
+
+  csvwriter();
 }
