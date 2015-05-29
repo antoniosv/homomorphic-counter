@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const int numTests = 2;
+const int numTests = 20;
 const int tratamientos = 4;
 FHEcontext* context;
 FHESecKey* secretKey;
@@ -32,28 +32,32 @@ int keySize[tratamientos][numTests];
 void csvwriter() {
   ofstream keyData, keySizeData, encryptData, addData, decryptData;
   keyData.open("experiments/keygen.csv");
-  // keySizeData.open("experiments/keysize.csv");
-  // encryptData.open("experiments/encrypt.csv");
-  // addData.open("experiments/add.csv");
-  // decryptData.open("experiments/decrypt.csv"); 
+  keySizeData.open("experiments/keysize.csv");
+  encryptData.open("experiments/encrypt.csv");
+  addData.open("experiments/add.csv");
+  decryptData.open("experiments/decrypt.csv"); 
 
   for(int i=0;i<tratamientos; i++) {
     keyData << K[i] << ",";
-    // keySizeData << K[i] << ",";
-    // encryptData << K[i] << ",";
-    // addData << K[i] << ",";
-    // decryptData << K[i] << ",";    
+    keySizeData << K[i] << ",";
+    encryptData << K[i] << ",";
+    addData << K[i] << ",";
+    decryptData << K[i] << ",";    
     for(int j=0; j<numTests; j++) {
       keyData << genKeyTime[i][j] << ",";
-      // keySizeData << keySize[i][j] << ",";
-      // encryptData << encryptionTime[i][j] << ",";
-      // addData << additionTime[i][j] << ",";
-      // decryptData << decryptionTime[i][j] << ",";
+      keySizeData << keySize[i][j] << ",";
+      encryptData << encryptionTime[i][j] << ",";
+      addData << additionTime[i][j] << ",";
+      decryptData << decryptionTime[i][j] << ",";
     }
      keyData << "\n";
+     keySizeData << "\n";
+     encryptData << "\n";
+     addData << "\n";
+     decryptData << "\n";
   }
   
-  keyData.close(); //encryptData.close(); addData.close(); decryptData.close();
+  keyData.close(); encryptData.close(); addData.close(); decryptData.close();
   
 }
 
