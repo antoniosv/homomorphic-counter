@@ -15,7 +15,7 @@
 
 using namespace std;
 
-const int numTests = 20;
+const int numTests = 2;
 const int tratamientos = 4;
 FHEcontext* context;
 FHESecKey* secretKey;
@@ -28,14 +28,16 @@ double encryptionTime[tratamientos][numTests];
 double decryptionTime[tratamientos][numTests];
 double additionTime[tratamientos][numTests];
 int keySize[tratamientos][numTests];
+int ctextSize[tratamientos][numTests];
 
 void csvwriter() {
-  ofstream keyData, keySizeData, encryptData, addData, decryptData;
+  ofstream keyData, keySizeData, encryptData, addData, decryptData, ctextData;
   keyData.open("experiments/keygen.csv");
   keySizeData.open("experiments/keysize.csv");
   encryptData.open("experiments/encrypt.csv");
   addData.open("experiments/add.csv");
   decryptData.open("experiments/decrypt.csv"); 
+  ctextData.open("experiments/ctext.csv");
 
   for(int i=0;i<tratamientos; i++) {
     keyData << K[i] << ",";
@@ -43,21 +45,24 @@ void csvwriter() {
     encryptData << K[i] << ",";
     addData << K[i] << ",";
     decryptData << K[i] << ",";    
+    ctextData << K[i] << ",";    
     for(int j=0; j<numTests; j++) {
       keyData << genKeyTime[i][j] << ",";
       keySizeData << keySize[i][j] << ",";
       encryptData << encryptionTime[i][j] << ",";
       addData << additionTime[i][j] << ",";
       decryptData << decryptionTime[i][j] << ",";
+      ctextData << ctextSize[i][j] << ",";
     }
      keyData << "\n";
      keySizeData << "\n";
      encryptData << "\n";
      addData << "\n";
      decryptData << "\n";
+     ctextData << "\n";
   }
   
-  keyData.close(); encryptData.close(); addData.close(); decryptData.close();
+  keyData.close(); encryptData.close(); addData.close(); decryptData.close(); ctextData.close();
   
 }
 
@@ -90,6 +95,7 @@ string encryption()
   Ctxt encryptedCounter(*publicKey);  
   ea->encrypt(encryptedCounter, *publicKey, counter);
   oss << encryptedCounter;
+
   return oss.str();
 }
 
@@ -132,6 +138,20 @@ int publicKeySize() {
 
   return size;
 }
+
+int ciphertextSize(string str) {
+  int size;
+  istringstream iss;
+  iss.str(str);
+  {fstream keyFile("ctext.txt", ios::binary | ios::ate | fstream::out|fstream::trunc);
+    keyFile << iss.rdbuf() << endl;
+    size = keyFile.tellg();
+    keyFile.flush();
+    keyFile.close();}
+  return size;
+}
+
+
 
 /* A general test program that uses a mix of operations over four ciphertexts.
  * Usage: Test_General_x [ name=value ]...
@@ -213,6 +233,9 @@ int main(int argc, char **argv)
       duration = ( clock() - start ) / (double) CLOCKS_PER_SEC;
       encryptionTime[t][rep] = duration;
       
+
+      ctextSize[t][rep] = ciphertextSize(cipherStr);
+  
       cout << "Performing addition" << endl;
       start = clock();
       addition(cipherStr);

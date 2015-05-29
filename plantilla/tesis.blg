@@ -9,6 +9,7 @@ A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: background.aux
 A level-1 auxiliary file: relatedWorks.aux
 A level-1 auxiliary file: methodology.aux
+A level-1 auxiliary file: experiments.aux
 The style file: estiloDeBibliografiaJorge.bst
 Database file #1: bibliografia.bib
 Warning--empty publisher in 2008algorithm
@@ -16,7 +17,7 @@ Warning--empty year in cs21math19notes
 Warning--empty journal in regevlearning
 You've used 38 entries,
             2823 wiz_defined-function locations,
-            868 strings with 12169 characters,
+            869 strings with 12184 characters,
 and the built_in function-call counts, 14647 in all, are:
 = -- 1293
 > -- 765
