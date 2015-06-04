@@ -16,45 +16,45 @@ Database file #1: bibliografia.bib
 Warning--empty publisher in 2008algorithm
 Warning--empty year in cs21math19notes
 Warning--empty journal in regevlearning
-You've used 42 entries,
+You've used 46 entries,
             2823 wiz_defined-function locations,
-            897 strings with 13076 characters,
-and the built_in function-call counts, 16659 in all, are:
-= -- 1486
-> -- 874
-< -- 34
-+ -- 306
-- -- 264
-* -- 1124
-:= -- 2573
-add.period$ -- 163
-call.type$ -- 42
-change.case$ -- 206
-chr.to.int$ -- 42
-cite$ -- 87
-duplicate$ -- 791
-empty$ -- 1468
-format.name$ -- 320
-if$ -- 3563
+            933 strings with 14218 characters,
+and the built_in function-call counts, 18856 in all, are:
+= -- 1728
+> -- 925
+< -- 42
++ -- 325
+- -- 279
+* -- 1257
+:= -- 2874
+add.period$ -- 185
+call.type$ -- 46
+change.case$ -- 223
+chr.to.int$ -- 46
+cite$ -- 95
+duplicate$ -- 917
+empty$ -- 1671
+format.name$ -- 341
+if$ -- 4078
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 27
-newline$ -- 249
-num.names$ -- 168
-pop$ -- 531
+missing$ -- 31
+newline$ -- 276
+num.names$ -- 184
+pop$ -- 566
 preamble$ -- 1
-purify$ -- 172
+purify$ -- 185
 quote$ -- 0
-skip$ -- 656
+skip$ -- 756
 stack$ -- 0
-substring$ -- 265
-swap$ -- 84
-text.length$ -- 5
+substring$ -- 393
+swap$ -- 123
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 417
+type$ -- 461
 warning$ -- 3
-while$ -- 144
+while$ -- 168
 width$ -- 0
-write$ -- 592
+write$ -- 666
 (There were 3 warnings)

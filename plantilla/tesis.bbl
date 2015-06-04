@@ -1,0 +1,321 @@
+\begin{thebibliography}{46}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{ Yang, Zhiqiang; Zhong, Sheng; Wright, Rebecca
+  N.}(200)]{YangZhongWright}
+{ Yang, Zhiqiang; Zhong, Sheng; Wright, Rebecca N.}
+\newblock Privacy-preserving classification of customer data without loss of
+  accuracy.
+\newblock In \emph{In Proceedings of the 5th SIAM International Conference on
+  Data Mining}, pages 21--23, 200.
+
+\bibitem[Abadi(2009)]{abadi2009data}
+Daniel~J Abadi.
+\newblock Data management in the cloud: Limitations and opportunities.
+\newblock \emph{IEEE Data Eng. Bull.}, 32\penalty0 (1):\penalty0 3--12, 2009.
+
+\bibitem[Agrawal(2012)]{CryptoKeys}
+Pradeed Agrawal, Monika;~Mishra.
+\newblock A comparative survey on symmetric key encryption techniques.
+\newblock In \emph{International Journal on Computer Science and Engineering},
+  2012.
+\newblock URL
+  \url{http://www.enggjournals.com/ijcse/doc/IJCSE12-04-05-237.pdf}.
+
+\bibitem[Ateniese et~al.(2014)Ateniese, Goodrich, Lekakis, Papamanthou,
+  Paraskevas, and Tamassia]{cryptoeprint:2014:886}
+Giuseppe Ateniese, Michael~T. Goodrich, Vassilios Lekakis, Charalampos
+  Papamanthou, Evripidis Paraskevas, and Roberto Tamassia.
+\newblock Accountable storage.
+\newblock Cryptology ePrint Archive, Report 2014/886, 2014.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Beachy and Blair(2006)]{beachy2006abstract}
+J.A. Beachy and W.D. Blair.
+\newblock \emph{Abstract Algebra: Third Edition}.
+\newblock Waveland Press, 2006.
+\newblock ISBN 9781478607991.
+\newblock URL \url{https://books.google.com.mx/books?id=baEQAAAAQBAJ}.
+
+\bibitem[Benaloh(1994)]{benaloh1994dense}
+Josh Benaloh.
+\newblock Dense probabilistic encryption.
+\newblock In \emph{Proceedings of the workshop on selected areas of
+  cryptography}, pages 120--128, 1994.
+
+\bibitem[Blum et~al.(1994)Blum, Furst, Kearns, and
+  Lipton]{Blum:1993:CPB:646758.759585}
+Avrim Blum, Merrick~L. Furst, Michael~J. Kearns, and Richard~J. Lipton.
+\newblock Cryptographic primitives based on hard learning problems.
+\newblock In \emph{Proceedings of the 13th Annual International Cryptology
+  Conference on Advances in Cryptology}, CRYPTO '93, pages 278--291, London,
+  UK, UK, 1994. Springer-Verlag.
+\newblock ISBN 3-540-57766-1.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=646758.759585}.
+
+\bibitem[Brakerski and Vaikuntanathan(2011)]{cryptoeprint:2011:344}
+Zvika Brakerski and Vinod Vaikuntanathan.
+\newblock Efficient fully homomorphic encryption from (standard) lwe.
+\newblock Cryptology ePrint Archive, Report 2011/344, 2011.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Brakerski et~al.(2011)Brakerski, Gentry, and
+  Vaikuntanathan]{cryptoeprint:2011:277}
+Zvika Brakerski, Craig Gentry, and Vinod Vaikuntanathan.
+\newblock Fully homomorphic encryption without bootstrapping.
+\newblock Cryptology ePrint Archive, Report 2011/277, 2011.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Brakerski et~al.(2014)Brakerski, Gentry, and Vaikuntanathan]{helib}
+Zvika Brakerski, Craig Gentry, and Vinod Vaikuntanathan.
+\newblock Helib, 2014.
+\newblock URL \url{https://github.com/shaih/HElib}.
+
+\bibitem[Cameron(2003)]{CryptoNotes}
+Peter~J. Cameron.
+\newblock Notes on cryptography, 2003.
+\newblock URL
+  \url{http://vanilla47.com/PDFs/Cryptography/Cryptography/Notes_on_cryptography.pdf}.
+
+\bibitem[Cutler(2010)]{KimMai}
+Kim-Mai Cutler.
+\newblock Why the facebook amazon.com integration is bigger than you think,
+  2010.
+\newblock URL \url{http://venturebeat.com/2010/07/27/facebook-amazon/}.
+
+\bibitem[Damgard et~al.(2013)Damgard, Jakobsen, Nielsen, and
+  Pagter]{cryptoeprint:2013:629}
+Ivan Damgard, Thomas~P. Jakobsen, Jesper~Buus Nielsen, and Jakob~I. Pagter.
+\newblock Secure key management in the cloud.
+\newblock Cryptology ePrint Archive, Report 2013/629, 2013.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[David et~al.(2015)David, Nishimaki, Ranellucci, and
+  Tapp]{cryptoeprint:2015:135}
+Bernardo David, Ryo Nishimaki, Samuel Ranellucci, and Alain Tapp.
+\newblock Generalizing efficient multiparty computation.
+\newblock Cryptology ePrint Archive, Report 2015/135, 2015.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Ducas and Micciancio(2014)]{fhew}
+Leo Ducas and Daniel Micciancio.
+\newblock A fully homomorphic encryption library, 2014.
+\newblock URL \url{https://github.com/lducas/FHEW}.
+
+\bibitem[El~Gamal(1985)]{ElGamal:1985:PKC:19478.19480}
+Taher El~Gamal.
+\newblock A public key cryptosystem and a signature scheme based on discrete
+  logarithms.
+\newblock In \emph{Proceedings of CRYPTO 84 on Advances in Cryptology}, pages
+  10--18, New York, NY, USA, 1985. Springer-Verlag New York, Inc.
+\newblock ISBN 0-387-15658-5.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=19478.19480}.
+
+\bibitem[Gentry(2009)]{homoenc}
+Craig Gentry.
+\newblock A fully homomorphic encryption scheme, 2009.
+\newblock \url{crypto.stanford.edu/craig}.
+
+\bibitem[Goldwasser and Micali(1982)]{Goldwasser:1982:PEA:800070.802212}
+Shafi Goldwasser and Silvio Micali.
+\newblock Probabilistic encryption \&amp; how to play mental poker keeping
+  secret all partial information.
+\newblock In \emph{Proceedings of the Fourteenth Annual ACM Symposium on Theory
+  of Computing}, STOC '82, pages 365--377, New York, NY, USA, 1982. ACM.
+\newblock ISBN 0-89791-070-2.
+\newblock \doi{10.1145/800070.802212}.
+\newblock URL \url{http://doi.acm.org/10.1145/800070.802212}.
+
+\bibitem[Halevi and Shoup(2014)]{cryptoeprint:2014:106}
+Shai Halevi and Victor Shoup.
+\newblock Algorithms in helib.
+\newblock Cryptology ePrint Archive, Report 2014/106, 2014.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Hayes(2012)]{Hayes2012}
+Brian Hayes.
+\newblock A new form of encryption allows you to compute with data you cannot
+  read, 2012.
+\newblock URL
+  \url{http://www.americanscientist.org/issues/pub/2012/5/alice-and-bob-in-cipherspace/99999}.
+
+\bibitem[John Wiley \&~Sons(2008)]{2008algorithm}
+Incorporated John Wiley \&~Sons.
+\newblock \emph{Algorithm Design: Foundations, Analysis and Internet Examples
+  2E}.
+\newblock 2008.
+\newblock ISBN 9780470088548.
+\newblock URL \url{https://books.google.com.mx/books?id=M-8RAgAACAAJ}.
+
+\bibitem[Ken and Cliff()]{cs21math19notes}
+Bogard Ken and Stein Cliff.
+\newblock Discrete math in computer science.
+\newblock URL
+  \url{https://math.dartmouth.edu/archive/m19w03/public_html/Section2-1}.
+
+\bibitem[Kurose and Ross(2010)]{kurose2010computer}
+J.F. Kurose and K.W. Ross.
+\newblock \emph{Computer Networking: A Top-Down Approach}.
+\newblock Pearson Education, Limited, 2010.
+\newblock ISBN 9780131365483.
+\newblock URL \url{https://books.google.com.mx/books?id=2hv3PgAACAAJ}.
+
+\bibitem[Lange(2011)]{lange2011}
+Alexander Lange.
+\newblock An overview of homomorphic encryption, 2011.
+\newblock URL
+  \url{http://www.cs.rit.edu/~arl9577/crypto/alange-presentation.pdf}.
+
+\bibitem[Li et~al.(2009)Li, Wang, Wang, Cao, Ren, and
+  Lou]{cryptoeprint:2009:593}
+Jin Li, Qian Wang, Cong Wang, Ning Cao, Kui Ren, and Wenjing Lou.
+\newblock Enabling efficient fuzzy keyword search over encrypted data in cloud
+  computing.
+\newblock Cryptology ePrint Archive, Report 2009/593, 2009.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Lyubashevsky et~al.(2010)Lyubashevsky, Peikert, and Regev]{rlwe2010}
+Vadim Lyubashevsky, Chris Peikert, and Oded Regev.
+\newblock On ideal lattices and learning with errors over rings, 2010.
+\newblock URL \url{http://dx.doi.org/10.1007/978-3-642-13190-5_1}.
+
+\bibitem[Paillier(1999)]{Paillier:1999:PCB:1756123.1756146}
+Pascal Paillier.
+\newblock Public-key cryptosystems based on composite degree residuosity
+  classes.
+\newblock In \emph{Proceedings of the 17th International Conference on Theory
+  and Application of Cryptographic Techniques}, EUROCRYPT'99, pages 223--238,
+  Berlin, Heidelberg, 1999. Springer-Verlag.
+\newblock ISBN 3-540-65889-0.
+\newblock URL \url{http://dl.acm.org/citation.cfm?id=1756123.1756146}.
+
+\bibitem[Peikert(2009)]{Peikert:2009:PCW:1536414.1536461}
+Chris Peikert.
+\newblock Public-key cryptosystems from the worst-case shortest vector problem:
+  Extended abstract.
+\newblock In \emph{Proceedings of the Forty-first Annual ACM Symposium on
+  Theory of Computing}, STOC '09, pages 333--342, New York, NY, USA, 2009. ACM.
+\newblock ISBN 978-1-60558-506-2.
+\newblock \doi{10.1145/1536414.1536461}.
+\newblock URL \url{http://doi.acm.org/10.1145/1536414.1536461}.
+
+\bibitem[P{\"o}tzelsberger and Eng(2013)]{potzelsberger2013kv}
+Gerhard P{\"o}tzelsberger and B~Eng.
+\newblock Kv web security: Applications of homomorphic encryption, 2013.
+\newblock URL
+  \url{http://www.fim.uni-linz.ac.at/Lva/Web_Security/Abgaben/Poetzelsberger-Homomorphic.pdf}.
+
+\bibitem[Regev(2005)]{Regev:2005:LLE:1060590.1060603}
+Oded Regev.
+\newblock On lattices, learning with errors, random linear codes, and
+  cryptography.
+\newblock In \emph{Proceedings of the Thirty-seventh Annual ACM Symposium on
+  Theory of Computing}, STOC '05, pages 84--93, New York, NY, USA, 2005. ACM.
+\newblock ISBN 1-58113-960-8.
+\newblock \doi{10.1145/1060590.1060603}.
+\newblock URL \url{http://doi.acm.org/10.1145/1060590.1060603}.
+
+\bibitem[Regev(2010)]{regevlearning}
+Oded Regev.
+\newblock The learning with errors problem.
+\newblock 2010.
+\newblock URL \url{http://www.cims.nyu.edu/~regev/papers/lwesurvey.pdf}.
+
+\bibitem[Rivest et~al.(1978)Rivest, Adleman, and Dertouzos]{rivest1978data}
+Ronald~L Rivest, Len Adleman, and Michael~L Dertouzos.
+\newblock On data banks and privacy homomorphisms.
+\newblock \emph{Foundations of secure computation}, 4\penalty0 (11):\penalty0
+  169--180, 1978.
+
+\bibitem[Ryabko(2005)]{CryptoIT}
+Andrey Ryabko, Boris;~Fionov.
+\newblock \emph{{Basics of Contemporary Cryptography for IT Practitioners}}.
+\newblock World Scientific, 2005.
+
+\bibitem[Sahni(1999)]{sahni1999}
+Sartaj Sahni.
+\newblock Hard problems, 1999.
+\newblock URL \url{http://www.cise.ufl.edu/~sahni/cop3530/slides/lec422.pdf}.
+
+\bibitem[S\'{a}nchez~Sorzano(2013)]{sorzano2013}
+Carlos~\'{O}scar S\'{a}nchez~Sorzano.
+\newblock Chapter 10. abstract algebra, 2013.
+
+\bibitem[Srinivasan et~al.(2012)Srinivasan, Sarukesi, Rodrigues, Manoj, and
+  Revathy]{Srinivasan:2012:SCC:2345396.2345474}
+Madhan~Kumar Srinivasan, K.~Sarukesi, Paul Rodrigues, M.~Sai Manoj, and
+  P.~Revathy.
+\newblock State-of-the-art cloud computing security taxonomies: A
+  classification of security challenges in the present cloud computing
+  environment.
+\newblock In \emph{Proceedings of the International Conference on Advances in
+  Computing, Communications and Informatics}, ICACCI '12, pages 470--476, New
+  York, NY, USA, 2012. ACM.
+\newblock ISBN 978-1-4503-1196-0.
+\newblock \doi{10.1145/2345396.2345474}.
+\newblock URL \url{http://doi.acm.org/10.1145/2345396.2345474}.
+
+\bibitem[staff(2014)]{NSA2014}
+NSA Research~Directorate staff.
+\newblock Securing the cloud with homomorphic encryption, 2014.
+\newblock URL
+  \url{https://www.nsa.gov/research/tnw/tnw203/articles/pdfs/tnw203_article5.pdf}.
+
+\bibitem[Stallings(2010)]{CryptoStallings}
+William Stallings.
+\newblock \emph{{Cryptography and Network Security: Principles and Practice}}.
+\newblock Pearson, 2010.
+
+\bibitem[Stanoyevitch(2010)]{IntroCryptoMath}
+Alexander Stanoyevitch.
+\newblock \emph{Introduction to Cryptography with Mathematical Foundations and
+  Computer Implementations}.
+\newblock CRC Press, 2010.
+
+\bibitem[Stark(1970)]{stark1970introduction}
+H.M. Stark.
+\newblock \emph{An introduction to number theory}.
+\newblock Markham mathematics series. Markham Pub. Co., 1970.
+\newblock URL \url{https://books.google.com.mx/books?id=exTvAAAAMAAJ}.
+
+\bibitem[Stinson(2005)]{stinson2005cryptography}
+D.R. Stinson.
+\newblock \emph{Cryptography: Theory and Practice, Third Edition}.
+\newblock Discrete Mathematics and Its Applications. Taylor \& Francis, 2005.
+\newblock ISBN 9781584885085.
+\newblock URL \url{https://books.google.com.mx/books?id=Yz55lPEuzckC}.
+
+\bibitem[Stuntz(2010)]{stuntz2010}
+Craig Stuntz.
+\newblock What is homomorphic encryption, and why should i care?, 2010.
+\newblock URL \url{http://blogs.teamb.com/craigstuntz/2010/03/18/38566/}.
+
+\bibitem[Wang et~al.(2009)Wang, Wang, Ren, and Lou]{cryptoeprint:2009:081}
+Cong Wang, Qian Wang, Kui Ren, and Wenjing Lou.
+\newblock Ensuring data storage security in cloud computing.
+\newblock Cryptology ePrint Archive, Report 2009/081, 2009.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[{Whitman, Michael; Mattord,
+  Herbert}(2011)]{PrinciplesInformationSecurity}
+{Whitman, Michael; Mattord, Herbert}.
+\newblock \emph{{ Principles of Information Security }}.
+\newblock Cengage Learning, 4 edition, 2011.
+
+\bibitem[Xu et~al.(2011)Xu, Chang, and Zhou]{cryptoeprint:2011:574}
+Jia Xu, Ee-Chien Chang, and Jianying Zhou.
+\newblock Towards efficient provable data possession in cloud storage.
+\newblock Cryptology ePrint Archive, Report 2011/574, 2011.
+\newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Xu et~al.(2014)Xu, Yang, Zhou, and Wong]{cryptoeprint:2014:395}
+Jia Xu, Anjia Yang, Jianying Zhou, and Duncan~S. Wong.
+\newblock Lightweight and privacy-preserving delegatable proofs of storage.
+\newblock Cryptology ePrint Archive, Report 2014/395, 2014.
+\newblock \url{http://eprint.iacr.org/}.
+
+\end{thebibliography}
