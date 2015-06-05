@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.4)  4 JUN 2015 03:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.4)  5 JUN 2015 03:47
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -740,7 +740,16 @@ LaTeX Warning: Reference `lastpage' on page v undefined on input line 23.
 \tf@toc=\write6
 \openout6 = `tesis.toc'.
 
- [8] (./tesis.lof)
+ [8] (./tesis.lof
+
+Package natbib Warning: Citation `kurose2010computer' on page ix undefined on i
+nput line 4.
+
+
+Package natbib Warning: Citation `stuntz2010' on page ix undefined on input lin
+e 5.
+
+)
 \tf@lof=\write7
 \openout7 = `tesis.lof'.
 
@@ -755,8 +764,7 @@ LaTeX Warning: Reference `lastpage' on page v undefined on input line 23.
 ]
 \openout2 = `abreviaciones.aux'.
 
-
-(./abreviaciones.tex)
+ (./abreviaciones.tex)
 \openout2 = `introduction.aux'.
 
  (./introduction.tex
@@ -768,50 +776,345 @@ Chapter 1.
 
 
 
-] [2] [3] [4] [5] [6] [7] [8])
+]
+
+Package natbib Warning: Citation `Srinivasan:2012:SCC:2345396.2345474' on page 
+2 undefined on input line 12.
+
+[2]
+
+Package natbib Warning: Citation `abadi2009data' on page 3 undefined on input l
+ine 14.
+
+
+Package natbib Warning: Citation `rivest1978data' on page 3 undefined on input 
+line 18.
+
+
+Package natbib Warning: Citation `ElGamal:1985:PKC:19478.19480' on page 3 undef
+ined on input line 18.
+
+
+Package natbib Warning: Citation `Goldwasser:1982:PEA:800070.802212' on page 3 
+undefined on input line 18.
+
+
+Package natbib Warning: Citation `benaloh1994dense' on page 3 undefined on inpu
+t line 18.
+
+
+Package natbib Warning: Citation `Paillier:1999:PCB:1756123.1756146' on page 3 
+undefined on input line 18.
+
+[3]
+
+Package natbib Warning: Citation `helib' on page 4 undefined on input line 22.
+
+
+Package natbib Warning: Citation `fhew' on page 4 undefined on input line 22.
+
+
+Package natbib Warning: Citation `cryptoeprint:2011:277' on page 4 undefined on
+ input line 22.
+
+
+Package natbib Warning: Citation `fhew' on page 4 undefined on input line 22.
+
+
+Package natbib Warning: Citation `potzelsberger2013kv' on page 4 undefined on i
+nput line 26.
+
+[4] [5] [6] [7] [8])
 \openout2 = `background.aux'.
 
  (./background.tex
 Chapter 2.
+
+Package natbib Warning: Citation `PrinciplesInformationSecurity' on page 9 unde
+fined on input line 8.
+
+
+Package natbib Warning: Citation `NIST95' on page 9 undefined on input line 8.
+
 [9
 
 
 
 
-] [10] [11] [12] <img/basic_crypto.png, id=387, 1346.02875pt x 688.5725pt>
+]
+
+Package natbib Warning: Citation `shirey2000rfc' on page 10 undefined on input 
+line 12.
+
+
+Package natbib Warning: Citation `CryptoStallings' on page 10 undefined on inpu
+t line 12.
+
+
+Package natbib Warning: Citation `IntroCryptoMath' on page 10 undefined on inpu
+t line 16.
+
+
+Package natbib Warning: Citation `CryptoStallings' on page 10 undefined on inpu
+t line 16.
+
+[10]
+
+Package natbib Warning: Citation `CryptoIT' on page 11 undefined on input line 
+20.
+
+[11]
+
+Package natbib Warning: Citation `IntroCryptoMath' on page 12 undefined on inpu
+t line 25.
+
+
+Package natbib Warning: Citation `stinson2005cryptography' on page 12 undefined
+ on input line 27.
+
+
+Overfull \hbox (7.84506pt too wide) in paragraph at lines 27--28
+[]\T1/cmr/m/n/12 Stinson (2005) [\T1/cmr/bx/n/12 ? \T1/cmr/m/n/12 ] for-mally d
+e-fines a cryp-tosys-tem as a five-tuple ($\OMS/cmsy/m/n/12 P\OML/cmm/m/it/12 ;
+ \OMS/cmsy/m/n/12 C\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 K\OML/cmm/m/it/12 ; \OMS
+/cmsy/m/n/12 E\OML/cmm/m/it/12 ; \OMS/cmsy/m/n/12 D$\T1/cmr/m/n/12 ),
+ []
+
+[12] <img/basic_crypto.png, id=349, 1346.02875pt x 688.5725pt>
 File: img/basic_crypto.png Graphic file (type png)
 
 <use img/basic_crypto.png>
 Package pdftex.def Info: img/basic_crypto.png used on input line 38.
 (pdftex.def)             Requested size: 398.33858pt x 203.76804pt.
- [13 <./img/basic_crypto.png>] [14]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+
+Package natbib Warning: Citation `kurose2010computer' on page 13 undefined on i
+nput line 39.
+
+
+Package natbib Warning: Citation `kurose2010computer' on page 13 undefined on i
+nput line 39.
+
+
+Package natbib Warning: Citation `CryptoNotes' on page 13 undefined on input li
+ne 45.
+
+
+Package natbib Warning: Citation `CryptoStallings' on page 13 undefined on inpu
+t line 45.
+
+[13 <./img/basic_crypto.png>] [14]
+
+Package natbib Warning: Citation `CryptoKeys' on page 15 undefined on input lin
+e 56.
+
+
+Package natbib Warning: Citation `stark1970introduction' on page 15 undefined o
+n input line 60.
+
+
+Package natbib Warning: Citation `2008algorithm' on page 15 undefined on input 
+line 60.
+
+[15]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 72.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 72.
- [15] [16] [17]
-[18] [19] [20] [21] [22] [23] [24] [25] [26]
-<img/rot13homo.jpg, id=506, 623.32875pt x 300.12125pt>
+ [16] [17]
+[18]
+
+Package natbib Warning: Citation `cs21math19notes' on page 19 undefined on inpu
+t line 153.
+
+[19]
+
+Package natbib Warning: Citation `CryptoStallings' on page 20 undefined on inpu
+t line 176.
+
+[20] [21]
+
+Package natbib Warning: Citation `beachy2006abstract' on page 22 undefined on i
+nput line 221.
+
+
+Package natbib Warning: Citation `sorzano2013' on page 22 undefined on input li
+ne 227.
+
+[22] [23]
+
+Package natbib Warning: Citation `lange2011' on page 24 undefined on input line
+ 260.
+
+
+Package natbib Warning: Citation `potzelsberger2013kv' on page 24 undefined on 
+input line 264.
+
+[24]
+
+Package natbib Warning: Citation `potzelsberger2013kv' on page 25 undefined on 
+input line 286.
+
+
+Package natbib Warning: Citation `homoenc' on page 25 undefined on input line 2
+91.
+
+[25]
+
+Package natbib Warning: Citation `Hayes2012' on page 26 undefined on input line
+ 293.
+
+[26]
+
+Package natbib Warning: Citation `stuntz2010' on page 27 undefined on input lin
+e 306.
+
+<img/rot13homo.jpg, id=425, 623.32875pt x 300.12125pt>
 File: img/rot13homo.jpg Graphic file (type jpg)
  <use img/rot13homo.jpg>
 Package pdftex.def Info: img/rot13homo.jpg used on input line 312.
 (pdftex.def)             Requested size: 311.6636pt x 150.06026pt.
 
-[27 <./img/rot13homo.jpg>] [28] [29] [30] [31] [32] [33] [34]
-Overfull \hbox (4.97032pt too wide) in paragraph at lines 383--384
-[]\T1/cmr/m/n/12 Biometric au-then-ti-ca-tion is an area of ap-pli-ca-tion quit
-e
- []
 
-[35] [36] [37] [38])
+Package natbib Warning: Citation `stuntz2010' on page 27 undefined on input lin
+e 313.
+
+
+Package natbib Warning: Citation `stuntz2010' on page 27 undefined on input lin
+e 313.
+
+[27]
+
+Package natbib Warning: Citation `NSA2014' on page 28 undefined on input line 3
+18.
+
+
+Package natbib Warning: Citation `homoenc' on page 28 undefined on input line 3
+20.
+
+[28 <./img/rot13homo.jpg>]
+
+Package natbib Warning: Citation `Hayes2012' on page 29 undefined on input line
+ 324.
+
+
+Package natbib Warning: Citation `NSA2014' on page 29 undefined on input line 3
+28.
+
+[29]
+
+Package natbib Warning: Citation `sahni1999' on page 30 undefined on input line
+ 332.
+
+
+Package natbib Warning: Citation `Blum:1993:CPB:646758.759585' on page 30 undef
+ined on input line 334.
+
+
+Package natbib Warning: Citation `Regev:2005:LLE:1060590.1060603' on page 30 un
+defined on input line 336.
+
+
+Package natbib Warning: Citation `Peikert:2009:PCW:1536414.1536461' on page 30 
+undefined on input line 340.
+
+[30]
+
+Package natbib Warning: Citation `rlwe2010' on page 31 undefined on input line 
+342.
+
+
+Package natbib Warning: Citation `regevlearning' on page 31 undefined on input 
+line 344.
+
+
+Package natbib Warning: Citation `regevlearning' on page 31 undefined on input 
+line 346.
+
+
+Package natbib Warning: Citation `regevlearning' on page 31 undefined on input 
+line 348.
+
+[31]
+
+Package natbib Warning: Citation `Hayes2012' on page 32 undefined on input line
+ 358.
+
+
+Package natbib Warning: Citation `cryptoeprint:2011:277' on page 32 undefined o
+n input line 362.
+
+[32]
+
+Package natbib Warning: Citation `homoenc' on page 33 undefined on input line 3
+66.
+
+
+Package natbib Warning: Citation `cryptoeprint:2011:344' on page 33 undefined o
+n input line 366.
+
+
+Package natbib Warning: Citation `helib' on page 33 undefined on input line 370
+.
+
+
+Package natbib Warning: Citation `cryptoeprint:2014:106' on page 33 undefined o
+n input line 370.
+
+[33]
+
+Package natbib Warning: Citation `KimMai' on page 34 undefined on input line 37
+9.
+
+[34]
+
+Package natbib Warning: Citation `YangZhongWright' on page 35 undefined on inpu
+t line 382.
+
+[35]
+
+Package natbib Warning: Citation `potzelsberger2013kv' on page 36 undefined on 
+input line 383.
+
+
+Package natbib Warning: Citation `cryptoeprint:2011:574' on page 36 undefined o
+n input line 388.
+
+[36]
+
+Package natbib Warning: Citation `cryptoeprint:2009:593' on page 37 undefined o
+n input line 390.
+
+[37]
+
+Package natbib Warning: Citation `cryptoeprint:2014:886' on page 38 undefined o
+n input line 394.
+
+
+Package natbib Warning: Citation `cryptoeprint:2014:395' on page 38 undefined o
+n input line 394.
+
+
+Package natbib Warning: Citation `cryptoeprint:2013:629' on page 38 undefined o
+n input line 396.
+
+
+Package natbib Warning: Citation `cryptoeprint:2009:081' on page 38 undefined o
+n input line 396.
+
+[38]
+
+Package natbib Warning: Citation `cryptoeprint:2015:135' on page 39 undefined o
+n input line 398.
+
+[39])
 \openout2 = `relatedWorks.aux'.
 
  (./relatedWorks.tex
 Chapter 3.
-[39
+[40
 
 
 
@@ -821,29 +1124,29 @@ Chapter 3.
 
  (./methodology.tex
 Chapter 4.
-[40
+[41
 
 
 
 
-] [41] [42] [43]
+] [42] [43] [44]
 Overfull \hbox (10.74466pt too wide) in paragraph at lines 42--60
 [][] 
  []
 
-[44] [45]
+[45] [46]
 Overfull \hbox (80.0448pt too wide) in paragraph at lines 77--80
 \T1/cmr/m/n/12 sock-ets [ref-er-ence: http://docs.oracle.com/javase/8/docs/tech
 notes/guides/serialization/index.html
  []
 
-[46]
+[47]
 Overfull \hbox (2.58495pt too wide) in paragraph at lines 94--95
 []\T1/cmr/m/n/12 Following the con-ven-tions de-fined in the HE-lib, an ob-ject
  from the \T1/cmr/m/it/12 En-cryptedAr-
  []
 
-[47] [48] [49]
+[48] [49] [50]
 Overfull \hbox (8.78302pt too wide) in paragraph at lines 141--142
 [][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
@@ -853,12 +1156,12 @@ Overfull \hbox (44.02472pt too wide) in paragraph at lines 142--143
 [][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-[50] [51]
+[51] [52]
 Overfull \hbox (1.73468pt too wide) in paragraph at lines 194--195
 [][][][][][][][][][][][][][][][][][] 
  []
 
-[52]
+[53]
 Package epstopdf Info: Source file: <clientserver.eps>
 (epstopdf)                    date: 2015-04-16 07:01:52
 (epstopdf)                    size: 137752 bytes
@@ -869,7 +1172,7 @@ Package epstopdf Info: Source file: <clientserver.eps>
 to.pdf clientserver.eps>
 (epstopdf)             \includegraphics on input line 217.
 Package epstopdf Info: Output file is already uptodate.
- <clientserver-eps-converted-to.pdf, id=743, 796.9775pt x 597.23125pt>
+ <clientserver-eps-converted-to.pdf, id=618, 796.9775pt x 597.23125pt>
 File: clientserver-eps-converted-to.pdf Graphic file (type pdf)
 
 <use clientserver-eps-converted-to.pdf>
@@ -884,12 +1187,16 @@ Overfull \hbox (129.66638pt too wide) in paragraph at lines 217--218
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[53] [54 <./clientserver-eps-converted-to.pdf>] [55] [56])
+[54] [55 <./clientserver-eps-converted-to.pdf>] [56] [57])
 \openout2 = `experiments.aux'.
 
  (./experiments.tex
 Chapter 5.
-[57
+
+Package natbib Warning: Citation `cryptoeprint:2014:106' on page 58 undefined o
+n input line 8.
+
+[58
 
 
 
@@ -902,54 +1209,30 @@ Overfull \hbox (50.91443pt too wide) in paragraph at lines 23--30
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[58] [59] [60])
+[59] [60] [61])
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 Chapter 6.
-[61
-
-
-
-
-]) (./tesis.bbl
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 27.
- (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
 [62
 
 
 
-] [63] [64] [65]
-Underfull \hbox (badness 4416) in paragraph at lines 286--291
-[]\T1/cmr/m/n/12 D.R. Stin-son.  \T1/cmr/m/it/12 Cryp-tog-ra-phy: The-ory and P
-rac-tice, Third Edi-tion\T1/cmr/m/n/12 .
- []
 
+]) (./tesis.bbl) (./tesis.ind)
 
-Underfull \hbox (badness 4144) in paragraph at lines 286--291
-\T1/cmr/m/n/12 Dis-crete Math-e-mat-ics and Its Ap-pli-ca-tions. Tay-lor & Fran
--cis, 2005.
- []
+Package natbib Warning: There were undefined citations.
 
-
-Underfull \hbox (badness 3000) in paragraph at lines 286--291
-\T1/cmr/m/n/12 ISBN 9781584885085.  URL [][]$\T1/cmtt/m/n/12 https : / / books 
-. google . com . mx / books ? id =
- []
-
-[66]) (./tesis.ind) [67]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 110.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 110.
- (./tesis.aux (./portillas.aux) (./agradecimientos.aux) (./resumen.aux) (./abre
-viaciones.aux) (./introduction.aux) (./background.aux)
+(./tesis.aux (./portillas.aux) (./agradecimientos.aux) (./resumen.aux)
+(./abreviaciones.aux) (./introduction.aux) (./background.aux)
 (./relatedWorks.aux) (./methodology.aux) (./experiments.aux) (./conclusions.aux
 ))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 110.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 110.
 Package rerunfilecheck Info: File `tesis.out' has not changed.
-(rerunfilecheck)             Checksum: 7C9A37528DC1CE157ED4BA59BD2E6BBA;2721.
+(rerunfilecheck)             Checksum: 5747B59C618C03162D77941F24028CD5;2721.
 
 
 LaTeX Warning: There were undefined references.
@@ -957,11 +1240,11 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 110.
  ) 
 Here is how much of TeX's memory you used:
- 13458 strings out of 493304
- 198253 string characters out of 6139872
- 321242 words of memory out of 5000000
- 16285 multiletter control sequences out of 15000+600000
- 17881 words of font info for 48 fonts, out of 8000000 for 9000
+ 13281 strings out of 493304
+ 193759 string characters out of 6139872
+ 319297 words of memory out of 5000000
+ 16180 multiletter control sequences out of 15000+600000
+ 17568 words of font info for 47 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  53i,15n,92p,1611b,1009s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
@@ -981,12 +1264,11 @@ sr/share/texmf/fonts/type1/public/cm-super/sfcc1440.pfb></usr/share/texmf/fonts
 /type1/public/cm-super/sfcc1728.pfb></usr/share/texmf/fonts/type1/public/cm-sup
 er/sfcc2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/
-type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
-r/sftt1200.pfb>
-Output written on tesis.pdf (77 pages, 758466 bytes).
+type1/public/cm-super/sfti1200.pfb>
+Output written on tesis.pdf (72 pages, 701781 bytes).
 PDF statistics:
- 1005 PDF objects out of 1200 (max. 8388607)
- 886 compressed objects within 9 object streams
- 284 named destinations out of 1000 (max. 500000)
+ 772 PDF objects out of 1000 (max. 8388607)
+ 663 compressed objects within 7 object streams
+ 216 named destinations out of 1000 (max. 500000)
  346 words of extra memory for PDF output out of 10000 (max. 10000000)
 

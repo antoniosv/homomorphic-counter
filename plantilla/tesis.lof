@@ -1,10 +1,10 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Basic cryptosystem diagram\cite {kurose2010computer}\relax }}{13}{figure.caption.6}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of the homomorphic property in ROT13\cite {stuntz2010}\relax }}{27}{figure.caption.7}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Basic cryptosystem diagram. Source: Kurose and Ross (2010) \cite {kurose2010computer}.\relax }}{13}{figure.caption.6}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Example of the homomorphic property in ROT13. Source: Stuntz (2010) \cite {stuntz2010}.\relax }}{28}{figure.caption.7}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture breakdown into client and server.\relax }}{54}{figure.caption.8}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Architecture breakdown into client and server.\relax }}{55}{figure.caption.8}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

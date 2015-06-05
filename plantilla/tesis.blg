@@ -13,48 +13,49 @@ A level-1 auxiliary file: experiments.aux
 A level-1 auxiliary file: conclusions.aux
 The style file: estiloDeBibliografiaJorge.bst
 Database file #1: bibliografia.bib
-Warning--empty publisher in 2008algorithm
+Warning--entry type for "NIST95" isn't style-file defined
+--line 49 of file bibliografia.bib
 Warning--empty year in cs21math19notes
 Warning--empty journal in regevlearning
-You've used 46 entries,
+You've used 48 entries,
             2823 wiz_defined-function locations,
-            933 strings with 14218 characters,
-and the built_in function-call counts, 18856 in all, are:
-= -- 1728
-> -- 925
-< -- 42
-+ -- 325
-- -- 279
-* -- 1257
-:= -- 2874
-add.period$ -- 185
-call.type$ -- 46
-change.case$ -- 223
-chr.to.int$ -- 46
-cite$ -- 95
-duplicate$ -- 917
-empty$ -- 1671
-format.name$ -- 341
-if$ -- 4078
+            944 strings with 14462 characters,
+and the built_in function-call counts, 19501 in all, are:
+= -- 1784
+> -- 956
+< -- 44
++ -- 336
+- -- 288
+* -- 1291
+:= -- 2975
+add.period$ -- 190
+call.type$ -- 48
+change.case$ -- 232
+chr.to.int$ -- 48
+cite$ -- 98
+duplicate$ -- 951
+empty$ -- 1733
+format.name$ -- 354
+if$ -- 4216
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 31
-newline$ -- 276
-num.names$ -- 184
-pop$ -- 566
+missing$ -- 32
+newline$ -- 285
+num.names$ -- 192
+pop$ -- 588
 preamble$ -- 1
-purify$ -- 185
+purify$ -- 192
 quote$ -- 0
-skip$ -- 756
+skip$ -- 786
 stack$ -- 0
-substring$ -- 393
-swap$ -- 123
+substring$ -- 397
+swap$ -- 125
 text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 461
-warning$ -- 3
-while$ -- 168
+type$ -- 483
+warning$ -- 2
+while$ -- 174
 width$ -- 0
-write$ -- 666
+write$ -- 689
 (There were 3 warnings)
