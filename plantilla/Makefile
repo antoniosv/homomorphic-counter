@@ -1,6 +1,6 @@
 #B1;2802;0call: tesis.pdf
 
-tesis.pdf: tesis.tex bibliografia.bib portillas.tex resumen.tex
+tesis.pdf: tesis.tex bibliografia.bib portillas.tex abstract.tex
 	pdflatex --enable-write18 --shell-scape tesis
 	bibtex tesis	
 	makeindex tesis

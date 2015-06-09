@@ -1,8 +1,26 @@
-\textbf{Abstract}
-\label{abstract}
+\chapter{Abstract}
+\markboth{Resumen}{}
 
-\textbf{Objetives and Study Method}
+\noindent\autor.
 
+\noindent Candidato para el grado de [Ingeniero en Tecnolog\'{\i}as de Software].
+%\indent 
+
+\noindent\uanl.\\
+\noindent\fime.
+
+\noindent T\'{\i}tulo del estudio: 
+
+\begin{center}
+\begin{tabular}{p{11cm}}
+	\centering
+	\scshape{\large{\titulo}}
+\end{tabular}
+\end{center}\bigskip
+
+\noindent N\'{u}mero de p\'{a}ginas: \pageref*{lastpage}.
+
+\paragraph{Objetives and Study Method}
 %Problem
 This work proposes an implementation of a client-server architecture based software that uses HElib to enable homomorphic encryption and perform computations on the encrypted data. Cloud computing is a cost-efficient alternative to host data remotely and subsequently perform computations on it. Confidentiality becomes an issue when data is delegated to the cloud, as often the information hosted is considered to be sensitive. A typical approach is to make use of a cryptographic algorithm that encrypts the data with a secret key that only the owner has. However, as long as the owner of the data wishes to make changes to the encrypted data, he would have to download the encrypted data, decrypt it using his secret key, perform the desired computations or changes to it, and reencrypt it once again before uploading it to the server in the cloud. An alternative to this approach is to make use of \emph{homomorphic encryption}, and advanced technique in cryptography that enables computations on encrypted data without needing the secret key. 
 
@@ -18,8 +36,7 @@ Consider the scenario where a household has an expected pattern of activity, ie.
 %Problematica al encriptar cada vez
 The problem found in encryping and then uploading the data every time a change is made, is that the overhead costs might be too high to do this often. For one, bandwidth would be spent on each ocassion, and the time required for encryption and uploading might not be that short. 
 
-\textbf{Contributions}
-
+\paragraph{Contributions and Conclusions}
 %Diferencia de los demas trabajos
 In contrast with other works, the proposed solution tackles on the problem by employing homomorphic encryption. It is a simple client-server architecture which could be expanded to adapt with other scenarios and requirements. The proof of concept provides the means to operate on the encrypted data, ie. performing additions on the counter value, without compromising confidentiality and wasting resources caused by the overhead costs of reencrypting data at every change.
 
@@ -27,4 +44,8 @@ In contrast with other works, the proposed solution tackles on the problem by em
 
 To show the feasibility of using HElib to do homomorphic encryption, experiments were designed by varying the value of a security parameter $k$. This value has a direct impact on the execution time of key generation, encryption, and decryption, as well as the size of the resulting public key. The findings show that even though key generation time is long, taking approximately between 9 and 13 seconds, and key size is large, being between 35MB and 165M, it is not considered to be an issue, as this step is done one time only. On the other hand, encryption, decryption, and addition times are amazingly fast, none of them exceding over 1 second. However, the ciphertext raises some doubts over the magnitude of its size: during development, it was found that on average, ciphertext size was 74MB; meanwhile, during experimentation, it was found that ciphertext size rose no higher than 45kB. To the best of our knowledge, there is yet no way to predict the size of the ciphertext by using HElib. Therefore, if it were found to keep the size of the ciphertext below 45kB, it would certainly be feasible to take this solution to the cloud; otherwise, it would not be possible if each ciphertext had a size that exceded several MB.
 
-\clearpage
+\noindent Firma del asesor: \rule{72mm}{0.3pt}
+
+\vspace*{-4mm}
+
+\noindent \phantom{Firma del asesor: m} \asesor

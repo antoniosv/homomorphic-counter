@@ -3,8 +3,6 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: tesis.aux
 A level-1 auxiliary file: portillas.aux
 A level-1 auxiliary file: agradecimientos.aux
-A level-1 auxiliary file: resumen.aux
-A level-1 auxiliary file: abreviaciones.aux
 A level-1 auxiliary file: abstract.aux
 A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: background.aux
@@ -20,7 +18,7 @@ Warning--empty year in cs21math19notes
 Warning--empty journal in regevlearning
 You've used 50 entries,
             2823 wiz_defined-function locations,
-            956 strings with 14811 characters,
+            954 strings with 14783 characters,
 and the built_in function-call counts, 20347 in all, are:
 = -- 1866
 > -- 987
