@@ -30,30 +30,27 @@
 \contentsline {subsection}{\numberline {2.5.2}Classification of Homomorphic Encryption Schemes}{25}{subsection.2.5.2}
 \contentsline {subsection}{\numberline {2.5.3}Explaining Homomorphic Encryption}{25}{subsection.2.5.3}
 \contentsline {subsection}{\numberline {2.5.4}The first fully homomorphic encryption scheme}{28}{subsection.2.5.4}
-\contentsline {subsection}{\numberline {2.5.5}Learning with Error Problems}{30}{subsection.2.5.5}
+\contentsline {subsection}{\numberline {2.5.5}Learning with Error Problems}{29}{subsection.2.5.5}
 \contentsline {subsection}{\numberline {2.5.6}Brakerski-Gentry-Vaikuntanathan scheme}{32}{subsection.2.5.6}
-\contentsline {subsection}{\numberline {2.5.7}Applications}{34}{subsection.2.5.7}
-\contentsline {section}{\numberline {2.6}Services in the cloud}{37}{section.2.6}
-\contentsline {chapter}{\numberline {3}Related Works}{40}{chapter.3}
-\contentsline {chapter}{\numberline {4}Methodology}{41}{chapter.4}
-\contentsline {section}{\numberline {4.1}{Case Study}}{42}{section.4.1}
-\contentsline {section}{\numberline {4.2}{Proposed Solution}}{43}{section.4.2}
-\contentsline {section}{\numberline {4.3}{Details of the HELib library}}{45}{section.4.3}
-\contentsline {section}{\numberline {4.4}Setting up the parameters and context}{45}{section.4.4}
-\contentsline {section}{\numberline {4.5}{Key Generation and Serialization}}{46}{section.4.5}
-\contentsline {section}{\numberline {4.6}{Encryption of the Counter Value}}{48}{section.4.6}
-\contentsline {section}{\numberline {4.7}{Operation Flow: Single Component}}{49}{section.4.7}
-\contentsline {section}{\numberline {4.8}{Software Architecture and Data transmission}}{50}{section.4.8}
+\contentsline {subsection}{\numberline {2.5.7}Applications}{33}{subsection.2.5.7}
+\contentsline {section}{\numberline {2.6}Services in the cloud}{36}{section.2.6}
+\contentsline {chapter}{\numberline {3}Related Works}{39}{chapter.3}
+\contentsline {chapter}{\numberline {4}Methodology}{40}{chapter.4}
+\contentsline {section}{\numberline {4.1}{Case Study}}{41}{section.4.1}
+\contentsline {section}{\numberline {4.2}{Proposed Solution}}{42}{section.4.2}
+\contentsline {section}{\numberline {4.3}{Details of the HELib library}}{44}{section.4.3}
+\contentsline {section}{\numberline {4.4}Setting up the parameters and context}{44}{section.4.4}
+\contentsline {section}{\numberline {4.5}{Key Generation and Serialization}}{45}{section.4.5}
+\contentsline {section}{\numberline {4.6}{Encryption of the Counter Value}}{47}{section.4.6}
+\contentsline {section}{\numberline {4.7}{Operation Flow: Single Component}}{48}{section.4.7}
+\contentsline {section}{\numberline {4.8}{Software Architecture and Data transmission}}{49}{section.4.8}
 \contentsline {section}{\numberline {4.9}Sending and reading serialized data}{51}{section.4.9}
-\contentsline {section}{\numberline {4.10}{Reconstructing the Ciphertext}}{54}{section.4.10}
+\contentsline {section}{\numberline {4.10}{Reconstructing the Ciphertext}}{53}{section.4.10}
 \contentsline {section}{\numberline {4.11}Changes in the counter}{54}{section.4.11}
-\contentsline {section}{\numberline {4.12}{Operation Flow: Client and Server}}{55}{section.4.12}
+\contentsline {section}{\numberline {4.12}{Operation Flow: Client and Server}}{56}{section.4.12}
 \contentsline {section}{\numberline {4.13}Discussion}{58}{section.4.13}
-\contentsline {chapter}{\numberline {5}Experiments and Results}{60}{chapter.5}
-\contentsline {section}{\numberline {5.1}Setup}{60}{section.5.1}
-\contentsline {section}{\numberline {5.2}Results}{61}{section.5.2}
-\contentsline {section}{\numberline {5.3}Discussion}{62}{section.5.3}
-\contentsline {chapter}{\numberline {6}Conclusions}{64}{chapter.6}
-\contentsline {section}{\numberline {6.1}Comentarios finales}{64}{section.6.1}
-\contentsline {section}{\numberline {6.2}Contribuciones}{64}{section.6.2}
-\contentsline {section}{\numberline {6.3}Trabajo a futuro}{64}{section.6.3}
+\contentsline {chapter}{\numberline {5}Experiments and Results}{61}{chapter.5}
+\contentsline {section}{\numberline {5.1}Setup}{61}{section.5.1}
+\contentsline {section}{\numberline {5.2}Results}{62}{section.5.2}
+\contentsline {section}{\numberline {5.3}Discussion}{64}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusions}{66}{chapter.6}
