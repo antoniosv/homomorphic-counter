@@ -1,7 +1,45 @@
 \chapter{Related Works}
 \label{relatedWorks}
 
-Pending ....
-%En este cap\'{\i}tulo se presentan cuatro trabajos relacionados con el sistema de detecci\'{o}n de reportes duplicados desarrollado en esta tesis. Se realiza una breve descripci\'{o}n de cada uno de los trabajos y se explican las similitudes y diferencias entre esos trabajos y este trabajo de tesis.
+This chapters presents ___ works that are considered to be related to the system that keeps count of how many people are inside a household at a given time, while keeping this value confidential. The works are grouped by their similarities inside distinct categories, and each one is briefly described. At the end of each work, a short line stating the similarities or differences between both works is shown.
+
+\section{{Related to Homomorphic Encryption}}
+The works mentioned here all have in common that they employ homomorphic encryption, whether it is partial or fully, to address a situation where it is convenient to do so. They do not propose a new homomorphic encryption scheme, but rather use existing ones to fulfill their goals. These works are especially of particular interest, because their application is related to cloud computing. The ones considered for this section are the works by Yasuda \cite{yasuda2015secure} and \cite{yasuda2014secret}, Adida \cite{adida2008helios}, 
+
+\subsection{Secret computation of purchase history data}
+This work proposed by Yasuda\cite{yasuda2014} considers a secret computation of purchase history data between two companies of different business. The goal of this computation is to identify the purchase patterns that their clients have without revealing customer information to the other company. Therefore, each company would be able to know how many of their clients engage in business with another kind of company, without getting to know about the customers that are exclusive to the the other company.
+
+From the current possible approaches, they choose to focus on homomorphic encryption, specifically on the scheme proposed by Brakerski and Vaikuntanathan \cite{cryptoeprint:2011:277}. This scheme is regarded as \emph{somewhat homomorphic encryption}, since it can perform a limited amount of both addition and multiplication operations. Each customer is coded with 1 if it engages in business with the company, and 0 if otherwise. In order to know whether or not an individual is a customer of both companies, a multiplication is performed. Therefore, it would result to 1 if the customer engages in business with both companies. It is important to point out that the proposed variation of the scheme considers the support of a \emph{trusted assayer}, who is tasked with the decryption process. Morever, both companies are expected to use the same public key, so that the homomorphic evaluations can be performed sucessfully.
+
+This work is related to ours in the sense that it is an real-world application of homomorphic encryption: in this case related to customer data. There are two main differences: the first is that it makes use of multiplication, which takes more time to process than addition, and that it relies on a a third party considered to be trustworthy. 
+
+\subsection{Secure Data Devolution}
+This works looks at the problem that arises when two distinct parties try to perform a computation with their own encrypted inputs using their respective keys. Current homomorphic encryption schemes only allow for the correct computations to happen if the same key was used on the distinct pieces of data. Therefore, operating on data that has been encrypted with different keys would not be possible. 
+
+This work by Yasuda \cite{yasuda2015secure} proposes a twist in the homomorphic encryption process, so that it becomes possible to re-encrypt ciphertext under a different public key. Their contribution is based on the somewhat homomorphic encryption scheme proposed by  Brakerski and Vaikuntanathan \cite{cryptoeprint:2011:277}, which relies on the learning with errors problem for its security.  Basically, their variation of the aforementioned scheme consists in rewriting the decryption circuit and evaluate the circuit homomorphically with auxiliary information.
+
+The change is mostly related to the bootstrap process of \emph{refreshing} the ciphertext, which modified it so that it uses fewer operations and thus, is faster to run. However, this comes at the cost that the number of homomorphic operations allowed are limited to a certain amount. The main idea behind this work is how a ciphertext can be transformed into another ciphertext with a new key, without revealing the plaintext data. This work shows how this can be applied in secure key exchange to collaboratively compute multiple users' data in the cloud.
+
+In short, this work is similar to ours because of its direct application in the cloud; however, it is limited to key exchange, and does not consider a scenario that operates on the encrypted data itself.
+
+\subsection{{Helios Voting}}
+Helios \cite{adida2008helios} is an open-audit, web-based voting system, which takes advange of existing cryptographic primitives to ensure that privacy is preserved. It offers two important things: ballot casting assurance and universal verifiability. It is considered to be universal because virtually \emph{anyone} can observe and audit the process to confirm that the ballots can be verified.
+
+Helios is based off ElGamal \cite{ElGamal:1985:PKC:19478.19480}, which is a partially homomorphic encryption scheme. In this case, it is perfectly acceptable to make use of a partially homomorphic encryption scheme, since only addition is required to count the votes cast. 
+
+The process of voting in Helios goes as follows: 
+First of all, Alice can audit as much as she sees fit before choosing to cast her vote.  Then, she authenticates with Helios to establish a secure connection, and casts a ballot which is promptly encrypted before being sent to the Helios server. After Alice casts her vote, any auditor or Alice herself can verify that the vote has been cast by looking at a bulletin board, which displays both her name and encrypted ballot. After the voting has been closed, Helios performs certain shuffling operations, and then counts the number of votes.
+
+Even though Helios is limited to somewhat homomorphic encryption, it resembles our work because it performs homomorphic addition to count values; furthermore, Helios takes into account several details regarding implementation in the web, similarly as we do.
+
+\section{Security in the Cloud}
+The works mentioned in this section are in some way related to mantaining the confidentiality of data in the cloud, whether it is related to computing or solely storage. Even though these works do not employ homomorphic encryption in their solutions, they make use of other alternatives to achieve something nature to achieve their confidentiality goals.
+
+\subsection{Cybernetica's Sharemind}
+Cybernetica \cite{cybernetica} launched a cloud application called Sharemind for analyzing public sector incomes in Estonia. Sharemind is a data analysis system for securely processing confidential information, and in this case, this refers to the public sector incomes in Estonia. The need for confidentiality arises because it is unwanted that the data sent to this system is linked to an individual or group of individuals. 
+
+Their approach focuses on not having a secret key altogether, since the input data is both anonymous and is split in several parts. By having each of these parts distributed between a set of data providers, the data is distributed. Sharemind makes sure that it is impossible for the data providers to make the split parts whole. However, it has its own secure joint analysis mechanisms that make it possible for the data providers to perform the desired computations by using the parts they hold. Finally, the results of the analysis are shared with the approved partners.
+
+Even though it is not related at all to homomorphic encryption, both systems operate on private data. The downside is that the reports generated are not relative to the individual, but is rather a general view.
 
 \clearpage
