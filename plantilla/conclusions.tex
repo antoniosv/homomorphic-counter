@@ -1,24 +1,39 @@
 \chapter{Conclusions}
 \label{conclusions}
 
-Pending... 
+We showed the design and implementation of a client-server architecture based software that employs homomorphic encryption in order to perform computations on encrypted data. The software relies on the HElib library to enable the necessary homomorphic evaluations. The work focused on the confidentiality of a household counting system as case study. 
 
-\iffalse
-Se present\'{o} un enfoque para la detecci\'{o}n de documentos duplicados el cual est\'{a} basado en reconocimientos de entidades de un texto y aprendizaje computacional. Se trabaj\'{o} con los reportes ciudadanos del Centro de Integraci\'{o}n Ciudadana (CIC) como caso de estudio.
+A set of public and private keys was created by the client using certain parameters, and the former key was sent to the server. The server registered the public key for future use. An initial value representing the number of people inside the household was chosen and encrypted using the client's public key. The ciphertext resulting from the encryption of the counter value was serialized into a container. Once the communication between server and client was established, the serialized ciphertext was sent to the server using sockets on the TCP. Whenever a change in the amount of individuals inside the household was recorded, the server was promptly informed of it. The server reconstructed the ciphertext representing the initial value using the appropriate public key, and performed an addition between the original value and its respective change. Then, the client requested to see modified counter value, to which the server responded by sending the modified ciphertext. Finally, the client decrypted the received ciphertext xby using its private key, and confirmed the current counter value. 
 
-Otras cosas \ldots
+During this process, the time required to do each scenario was recorded, since it was important to evaluate how feasible it was to implement this in a real environment. It was chosen to experiment on the value of the $k$ security parameter, since it was apparent that it had the most impact on the operations performed by the library. 
 
-\section{Comentarios finales}
+The results showed that key generation took the most amount of time, ranging between 9 and 13 seconds. The size of the public key ranged between 35 and 165 megabytes. Despite the long time and large size, it was not considered to be obstacles to the feasibility of the system. This is because key generation and registration of the public key is done only at the beginning of the process and is not required to do it again at a later time.  
 
-Algo m\'{a}s que quieras decir \ldots
+\section{Final remarks}
 
-\section{Contribuciones}
+It was noted during the development phase that the ciphertext often had a filesize of around 74 megabytes, and it was surprising to see that this value got reduced to less than 50 kilobytes during the experimentation phase. It was not certain which factors  influenced on the drastic change during these phases, and it made it difficult to decide whether implementing this as a service in the cloud would be feasible or not. In the case that the ciphertext size is indeed too large, the design of the system could be tweaked so that only the initial value of the counter is encrypted, so that the change values are sent to the server as plaintext. Evidently, this would diminish the overall security of the system, since it would not be impossible to predict the current value of the counter by observing the changes. 
 
-Recordar cu\'{a}l fue tu contribuci\'{o}n.
+\section{Contributions}
 
-\section{Trabajo a futuro}
+The main contribution of this work is the design and implementation of a client-server architecture based software that employs homomorphic encryption. The proposed system addresses the processes regarding key generation, data encryption, client-server communication, addition on encrypted data, and decryption. It is relevant to note that this system relies on the homomorphic encryption functionalities provided by the HElib library. The contribution itself is related to how the library is being used to implement a system in a client-server model.
 
-Lo que falt\'{o} por hacer.
+Regarding the proposed system, the following points are important to mention:
 
-\fi
+\begin{itemize}
+\item The overall process was designed around a case study that had the goal of counting the number of people inside a household while maintaining its confidentiality. Neither the server nor other other authorized parties are able to learn of the value of the counter, as they do not have the private key that is required for decryption.
+\item As the counter data was encrypted, further changes to it were performed by using homomorphic addition. 
+\item Serialization was used in order to send the public key and ciphertext with the server.
+\item As proof of concept, socket communication that relied on TCP was used between client and server to transmit the required data.
+\end{itemize} 
+
+\section{Future Work}
+At a first glance, the results obtained from the experimentation were satisfactory; however, some doubts were raised upon noticing that there was a great variation between the development and experimentation phases of the ciphertext size. More experimentation is recommended to fully ascertain what other factors have an impact in the size of the ciphertext. As future work, the following points are noted:
+
+\begin{itemize}
+\item Design and implement the appropriate mechanisms for key management, including key registration.
+\item Design a database scheme to keep control of the ciphertexts stored in the server, while associating each of them with its respective public key..
+\item Look into the possibility of implementing the client-architecture system as a Software-as-a-Service model.
+\item Provide a secure communication channel between the client and server, relying on the SSL protocol.
+\end{itemize}
+
 \clearpage
