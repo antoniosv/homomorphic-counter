@@ -114,7 +114,7 @@ Congruences have the following properties:
 \begin{enumerate}
 \item $a \equiv b \pmod n$ if $n|(a-b)$.
 \item $a \equiv b \pmod n$ implies $b \equiv a \pmod n$.
-\item $a \equiv b \pmod n$ and mob $b \equiv c \pmod n$  imply $a \equiv c \pmod n$.
+\item $a \equiv b \pmod n$ and mod $b \equiv c \pmod n$  imply $a \equiv c \pmod n$.
 \end{enumerate}
 
 Suppose that there is a mapping of all integers by the $\pmod n$ operator into the set of integers $\{0, 1, \dots, (n-1)\}$. The technique used to perform arithmetic operations within the confines of this set is known as \textbf{modular arithmetic}. Modular arithmetic exhibits the following properties:
@@ -195,7 +195,7 @@ When the group operation is addition, the identity element is 0; the inverse ele
 
 A \emph{ring} $R$, which is sometimes denoted by $\{R, +, \times \}$, is a set of elements with two binary operations, called \textit{addition} and \textit{multiplication}, such that for all $a$, $b$, $c$ in $R$, there are some axioms that must be obeyed. It must be pointed out that a ring fulfills the same axioms as an abelian group with respect to addition; that is, axioms A1 through A5. The rest of the axioms obeyed by a ring are listed as follows:
 \begin{description}
-\item[(M1) Closure under multiplication:] If $a$ and $b$ belong to $R$, then $ab$ is also in $R$.
+\item[(M1) Closure under multiplication:] If $a$ and $b$ belong to $R$, then $a \times b$ is also in $R$.
 \item[(M2) Associativity of multiplication:] $a(bc) = (ab)c$ for all $a$, $b$, $c \in R$.
 \item[(M3) Distributive laws:] $a(b+c) = ab+ ac$ for all $a$, $b$, $c$ in $R$. \\ $(a+b)c = ac + bc$ for all $a$, $b$, $c$ in $R$.
 \end{description}
@@ -308,7 +308,7 @@ Certainly, the above cryptosystem is considered to be \emph{fully homomorphic}, 
 Stuntz \cite{stuntz2010} provides an example of a cipher scheme that has an inherent homomorphic property. Consider the popular, yet insecure, ROT13 cipher, also known as the Caesar cipher. The ROT13 is a simple substitution cipher which changes each letter with the letter that is thirteen positions ahead on encryption. To do decryption, it does the opposite: each character goes back thirteen positions in the alphabet. 
 ROT13 is partially homomorphic with respect to the concatenation operation, because it is possible to concatenate two different pieces of ciphertexts. At decryption, the concatenation of the two pieces of ciphertexts ends up to be same as the concatenation of the original messages, the plaintext. Therefore, it is partially homomorphic with respect to concatenation. 
 
-Consider, for instance, the plaintext pair $P_{1}=HELLO$ and $P_{2}=WORLD$, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=URYYB$ and $C_{2}=JBEYQ$, and if concatenated, ``URYYBJBEYQ''. So if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally.
+Consider, for instance, the plaintext pair $P_{1}=HELLO$ and $P_{2}=$WORLD, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=$URYYB and $C_{2}=$JBEYQ, and if concatenated, ``URYYBJBEYQ''. So if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally.
 
 \begin{figure}[H]
   \centerline{\includegraphics[scale=0.5]{img/rot13homo}}

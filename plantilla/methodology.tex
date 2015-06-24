@@ -93,7 +93,7 @@ Before proceeding to encrypt the data, it is important to have the public key se
   pkstream << *publicKey;
 \end{lstlisting}
 
-As shown in the code snippet \ref{serializeKey}, the data stored inside the public key object has been stored as a stream of bytes in a highly portable object from the \textit{ostringstream} class. Using this newly populated object, the public key can be shared using sockets.
+As shown in the code snippet \ref{lst:serializeKey}, the data stored inside the public key object has been stored as a stream of bytes in a highly portable object from the \textit{ostringstream} class. Using this newly populated object, the public key can be shared using sockets.
 
 \section{{Encryption of the Counter Value}}
 
