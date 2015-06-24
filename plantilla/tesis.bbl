@@ -1,4 +1,4 @@
-\begin{thebibliography}{50}
+\begin{thebibliography}{57}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -17,6 +17,11 @@
 Daniel~J Abadi.
 \newblock Data management in the cloud: Limitations and opportunities.
 \newblock \emph{IEEE Data Eng. Bull.}, 32\penalty0 (1):\penalty0 3--12, 2009.
+
+\bibitem[Adida(2008)]{adida2008helios}
+Ben Adida.
+\newblock Helios: Web-based open-audit voting.
+\newblock In \emph{USENIX Security Symposium}, volume~17, pages 335--348, 2008.
 
 \bibitem[Agrawal(2012)]{CryptoKeys}
 Pradeed Agrawal, Monika;~Mishra.
@@ -56,6 +61,15 @@ Avrim Blum, Merrick~L. Furst, Michael~J. Kearns, and Richard~J. Lipton.
   UK, UK, 1994. Springer-Verlag.
 \newblock ISBN 3-540-57766-1.
 \newblock URL \url{http://dl.acm.org/citation.cfm?id=646758.759585}.
+
+\bibitem[Bogdanov et~al.(2008)Bogdanov, Laur, and Willemson]{ESORICS08:BLW08}
+Dan Bogdanov, Sven Laur, and Jan Willemson.
+\newblock {Sharemind: A Framework for Fast Privacy-Preserving Computations}.
+\newblock In Sushil Jajodia and Javier Lopez, editors, \emph{Proceedings of the
+  13th European Symposium on Research in Computer Security - ESORICS'08},
+  volume 5283 of \emph{Lecture Notes in Computer Science}, pages 192--206.
+  Springer Berlin / Heidelberg, 2008.
+\newblock ISBN 978-3-540-88312-8.
 
 \bibitem[Brakerski and Vaikuntanathan(2011)]{cryptoeprint:2011:344}
 Zvika Brakerski and Vinod Vaikuntanathan.
@@ -255,6 +269,16 @@ Sartaj Sahni.
 Carlos~\'{O}scar S\'{a}nchez~Sorzano.
 \newblock Chapter 10. abstract algebra, 2013.
 
+\bibitem[Schroepfer and Kerschbaum(2011)]{Schroepfer:2011:DSC:2046707.2093509}
+Axel Schroepfer and Florian Kerschbaum.
+\newblock Demo: Secure computation in javascript.
+\newblock In \emph{Proceedings of the 18th ACM Conference on Computer and
+  Communications Security}, CCS '11, pages 849--852, New York, NY, USA, 2011.
+  ACM.
+\newblock ISBN 978-1-4503-0948-6.
+\newblock \doi{10.1145/2046707.2093509}.
+\newblock URL \url{http://doi.acm.org/10.1145/2046707.2093509}.
+
 \bibitem[Shirey(2000)]{shirey2000rfc}
 Robert Shirey.
 \newblock Rfc 2828: Internet security glossary.
@@ -309,6 +333,16 @@ Craig Stuntz.
 \newblock What is homomorphic encryption, and why should i care?, 2010.
 \newblock URL \url{http://blogs.teamb.com/craigstuntz/2010/03/18/38566/}.
 
+\bibitem[Tetali et~al.(2013)Tetali, Lesani, Majumdar, and
+  Millstein]{Tetali:2013:MSA:2544173.2509554}
+Sai~Deep Tetali, Mohsen Lesani, Rupak Majumdar, and Todd Millstein.
+\newblock Mrcrypt: Static analysis for secure cloud computations.
+\newblock \emph{SIGPLAN Not.}, 48\penalty0 (10):\penalty0 271--286, octubre
+  2013.
+\newblock ISSN 0362-1340.
+\newblock \doi{10.1145/2544173.2509554}.
+\newblock URL \url{http://doi.acm.org/10.1145/2544173.2509554}.
+
 \bibitem[Wang et~al.(2009)Wang, Wang, Ren, and Lou]{cryptoeprint:2009:081}
 Cong Wang, Qian Wang, Kui Ren, and Wenjing Lou.
 \newblock Ensuring data storage security in cloud computing.
@@ -338,5 +372,36 @@ Jia Xu, Anjia Yang, Jianying Zhou, and Duncan~S. Wong.
 \newblock Lightweight and privacy-preserving delegatable proofs of storage.
 \newblock Cryptology ePrint Archive, Report 2014/395, 2014.
 \newblock \url{http://eprint.iacr.org/}.
+
+\bibitem[Yao(1986)]{Yao:1986:GES:1382439.1382944}
+Andrew Chi-Chih Yao.
+\newblock How to generate and exchange secrets.
+\newblock In \emph{Proceedings of the 27th Annual Symposium on Foundations of
+  Computer Science}, SFCS '86, pages 162--167, Washington, DC, USA, 1986. IEEE
+  Computer Society.
+\newblock ISBN 0-8186-0740-8.
+\newblock \doi{10.1109/SFCS.1986.25}.
+\newblock URL \url{http://dx.doi.org/10.1109/SFCS.1986.25}.
+
+\bibitem[Yasuda et~al.(2014)Yasuda, Shimoyama, and Kogure]{yasuda2014}
+Masaya Yasuda, Takeshi Shimoyama, and Jun Kogure.
+\newblock Secret computation of purchase history data using somewhat
+  homomorphic encryption.
+\newblock \emph{Pacific Journal of Mathematics for Industry}, 6\penalty0
+  (1):\penalty0 5, 2014.
+\newblock \doi{10.1186/s40736-014-0005-x}.
+\newblock URL \url{http://dx.doi.org/10.1186/s40736-014-0005-x}.
+
+\bibitem[Yasuda et~al.(2015)Yasuda, Koshiba, Shimoyama, Kogure, and
+  Yokoyama]{Yasuda:2015:SDD:2732516.2732521}
+Masaya Yasuda, Takeshi Koshiba, Takeshi Shimoyama, Jun Kogure, and Kazuhiro
+  Yokoyama.
+\newblock Secure data devolution: Practical re-encryption with auxiliary data
+  in lwe-based somewhat homomorphic encryption.
+\newblock In \emph{Proceedings of the 3rd International Workshop on Security in
+  Cloud Computing}, SCC '15, pages 53--61, New York, NY, USA, 2015. ACM.
+\newblock ISBN 978-1-4503-3447-1.
+\newblock \doi{10.1145/2732516.2732521}.
+\newblock URL \url{http://doi.acm.org/10.1145/2732516.2732521}.
 
 \end{thebibliography}

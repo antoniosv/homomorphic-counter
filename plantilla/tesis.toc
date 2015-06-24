@@ -1,6 +1,6 @@
-\contentsline {chapter}{Abstract}{v}{chapter*.2}
-\contentsline {paragraph}{\numberline {0.0.0.0.1}Objetives and Study Method}{v}{paragraph.0.0.0.0.1}
-\contentsline {paragraph}{\numberline {0.0.0.0.2}Contributions and Conclusions}{vii}{paragraph.0.0.0.0.2}
+\contentsline {chapter}{Abstract}{vi}{chapter*.2}
+\contentsline {paragraph}{\numberline {0.0.0.0.1}Objetives and Study Method}{vi}{paragraph.0.0.0.0.1}
+\contentsline {paragraph}{\numberline {0.0.0.0.2}Contributions and Conclusions}{viii}{paragraph.0.0.0.0.2}
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \contentsline {section}{\numberline {1.1}Problem Definition}{4}{section.1.1}
 \contentsline {section}{\numberline {1.2}Motivation}{5}{section.1.2}
@@ -35,22 +35,34 @@
 \contentsline {subsection}{\numberline {2.5.7}Applications}{33}{subsection.2.5.7}
 \contentsline {section}{\numberline {2.6}Services in the cloud}{36}{section.2.6}
 \contentsline {chapter}{\numberline {3}Related Works}{39}{chapter.3}
-\contentsline {chapter}{\numberline {4}Methodology}{40}{chapter.4}
-\contentsline {section}{\numberline {4.1}{Case Study}}{41}{section.4.1}
-\contentsline {section}{\numberline {4.2}{Proposed Solution}}{42}{section.4.2}
-\contentsline {section}{\numberline {4.3}{Details of the HELib library}}{44}{section.4.3}
-\contentsline {section}{\numberline {4.4}Setting up the parameters and context}{44}{section.4.4}
-\contentsline {section}{\numberline {4.5}{Key Generation and Serialization}}{45}{section.4.5}
-\contentsline {section}{\numberline {4.6}{Encryption of the Counter Value}}{47}{section.4.6}
-\contentsline {section}{\numberline {4.7}{Operation Flow: Single Component}}{48}{section.4.7}
-\contentsline {section}{\numberline {4.8}{Software Architecture and Data transmission}}{49}{section.4.8}
-\contentsline {section}{\numberline {4.9}Sending and reading serialized data}{51}{section.4.9}
-\contentsline {section}{\numberline {4.10}{Reconstructing the Ciphertext}}{53}{section.4.10}
-\contentsline {section}{\numberline {4.11}Changes in the counter}{54}{section.4.11}
-\contentsline {section}{\numberline {4.12}{Operation Flow: Client and Server}}{56}{section.4.12}
-\contentsline {section}{\numberline {4.13}Discussion}{58}{section.4.13}
-\contentsline {chapter}{\numberline {5}Experiments and Results}{61}{chapter.5}
-\contentsline {section}{\numberline {5.1}Setup}{61}{section.5.1}
-\contentsline {section}{\numberline {5.2}Results}{62}{section.5.2}
-\contentsline {section}{\numberline {5.3}Discussion}{64}{section.5.3}
-\contentsline {chapter}{\numberline {6}Conclusions}{66}{chapter.6}
+\contentsline {section}{\numberline {3.1}{Related to Homomorphic Encryption}}{39}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Secret computation of purchase history}{39}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Secure Data Devolution}{40}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}{Helios Voting}}{41}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}{Related to Security in the Cloud}}{42}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Cybernetica's Sharemind}{42}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}MrCrypt}{43}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Secure Computation in Javascript}{44}{subsection.3.2.3}
+\contentsline {section}{\numberline {3.3}Discussion}{45}{section.3.3}
+\contentsline {chapter}{\numberline {4}Methodology}{47}{chapter.4}
+\contentsline {section}{\numberline {4.1}{Case Study}}{48}{section.4.1}
+\contentsline {section}{\numberline {4.2}{Proposed Solution}}{49}{section.4.2}
+\contentsline {section}{\numberline {4.3}{Details of the HELib library}}{51}{section.4.3}
+\contentsline {section}{\numberline {4.4}Setting up the parameters and context}{51}{section.4.4}
+\contentsline {section}{\numberline {4.5}{Key Generation and Serialization}}{52}{section.4.5}
+\contentsline {section}{\numberline {4.6}{Encryption of the Counter Value}}{54}{section.4.6}
+\contentsline {section}{\numberline {4.7}{Operation Flow: Single Component}}{55}{section.4.7}
+\contentsline {section}{\numberline {4.8}{Software Architecture and Data transmission}}{56}{section.4.8}
+\contentsline {section}{\numberline {4.9}Sending and reading serialized data}{58}{section.4.9}
+\contentsline {section}{\numberline {4.10}{Reconstructing the Ciphertext}}{60}{section.4.10}
+\contentsline {section}{\numberline {4.11}Changes in the counter}{61}{section.4.11}
+\contentsline {section}{\numberline {4.12}{Operation Flow: Client and Server}}{63}{section.4.12}
+\contentsline {section}{\numberline {4.13}Discussion}{65}{section.4.13}
+\contentsline {chapter}{\numberline {5}Experiments and Results}{68}{chapter.5}
+\contentsline {section}{\numberline {5.1}Setup}{68}{section.5.1}
+\contentsline {section}{\numberline {5.2}Results}{69}{section.5.2}
+\contentsline {section}{\numberline {5.3}Discussion}{71}{section.5.3}
+\contentsline {chapter}{\numberline {6}Conclusions and Future Work}{73}{chapter.6}
+\contentsline {section}{\numberline {6.1}Final remarks}{74}{section.6.1}
+\contentsline {section}{\numberline {6.2}Contributions}{75}{section.6.2}
+\contentsline {section}{\numberline {6.3}Future Work}{75}{section.6.3}
