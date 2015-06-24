@@ -1,13 +1,13 @@
 #B1;2802;0call: tesis.pdf
 
-tesis.pdf: tesis.tex bibliografia.bib portillas.tex abstract.tex
+tesis.pdf: tesis.tex bibliografia.bib #portillas.tex abstract.tex
 	pdflatex --enable-write18 --shell-scape tesis
 	bibtex tesis	
-	makeindex tesis
-	touch tesis.bbl	
-	rm tesis.bbl
-	touch tesis.bbl.bak
-	cp tesis.bbl.bak tesis.bbl
+	#makeindex tesis
+	#touch tesis.bbl	
+	#rm tesis.bbl
+	#touch tesis.bbl.bak
+	#cp tesis.bbl.bak tesis.bbl
 	pdflatex --enable-write18 --shell-scape tesis
 	pdflatex --enable-write18 --shell-scape tesis
 

@@ -1,13 +1,15 @@
-\chapter{Conclusions}
+\chapter{Conclusions and Future Work}
 \label{conclusions}
 
 We showed the design and implementation of a client-server architecture based software that employs homomorphic encryption in order to perform computations on encrypted data. The software relies on the HElib library to enable the necessary homomorphic evaluations. The work focused on the confidentiality of a household counting system as case study. 
 
-A set of public and private keys was created by the client using certain parameters, and the former key was sent to the server. The server registered the public key for future use. An initial value representing the number of people inside the household was chosen and encrypted using the client's public key. The ciphertext resulting from the encryption of the counter value was serialized into a container. Once the communication between server and client was established, the serialized ciphertext was sent to the server using sockets on the TCP. Whenever a change in the amount of individuals inside the household was recorded, the server was promptly informed of it. The server reconstructed the ciphertext representing the initial value using the appropriate public key, and performed an addition between the original value and its respective change. Then, the client requested to see modified counter value, to which the server responded by sending the modified ciphertext. Finally, the client decrypted the received ciphertext xby using its private key, and confirmed the current counter value. 
+A set of public and private keys was created by the client using certain parameters, and the former key was sent to the server. The server registered the public key for future use. An initial value representing the number of people inside the household was chosen and encrypted using the client's public key. The ciphertext resulting from the encryption of the counter value was serialized into a container. Once the communication between server and client was established, the serialized ciphertext was sent to the server using sockets on the TCP. Whenever a change in the amount of individuals inside the household was recorded, the server was promptly informed of it. The server reconstructed the ciphertext representing the initial value using the appropriate public key, and performed an addition between the original value and its respective change. Then, the client requested to see the modified counter value, to which the server responded by sending the modified ciphertext. Finally, the client decrypted the received ciphertext by using its private key, and confirmed the current counter value. 
 
-During this process, the time required to do each scenario was recorded, since it was important to evaluate how feasible it was to implement this in a real environment. It was chosen to experiment on the value of the $k$ security parameter, since it was apparent that it had the most impact on the operations performed by the library. 
+In essense, a client-server archictecture was established and it made use of homomorphic encryption successfully. It was found that the factors that pose a challenge to deem applications of homomorphic encryption as inefficient were mainly: key generation time, key size, ciphertext size, and encryption and decryption times. Moreover, the client-server software implementation showed as simple as possible how HElib can be used to fulfill the necessary use cases. 
 
-The results showed that key generation took the most amount of time, ranging between 9 and 13 seconds. The size of the public key ranged between 35 and 165 megabytes. Despite the long time and large size, it was not considered to be obstacles to the feasibility of the system. This is because key generation and registration of the public key is done only at the beginning of the process and is not required to do it again at a later time.  
+In order to confirm the relevant factors pertaining to the feasibility of an implementation in the cloud, data regarding the execution times and size of the key and ciphertext were collected.It was chosen to experiment on the value of the $k$ security parameter, since it was apparent that it had the most impact on the operations performed by the library. 
+
+The results showed that key generation took the most amount of time, ranging between 9 and 13 seconds. The size of the public key ranged between 35 and 165 megabytes. Despite the long time and large size, these were not considered to be obstacles to the feasibility of the system. This is because key generation and registration of the public key is done only at the beginning of the process and is not required to do it again at a later time.
 
 \section{Final remarks}
 
@@ -31,7 +33,7 @@ At a first glance, the results obtained from the experimentation were satisfacto
 
 \begin{itemize}
 \item Design and implement the appropriate mechanisms for key management, including key registration.
-\item Design a database scheme to keep control of the ciphertexts stored in the server, while associating each of them with its respective public key..
+\item Design a database scheme to keep control of the ciphertexts stored in the server, while associating each of them with its respective public key.
 \item Look into the possibility of implementing the client-architecture system as a Software-as-a-Service model.
 \item Provide a secure communication channel between the client and server, relying on the SSL protocol.
 \end{itemize}
