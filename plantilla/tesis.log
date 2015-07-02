@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.4)  24 JUN 2015 01:04
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.7.4)  2 JUL 2015 01:21
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -733,13 +733,7 @@ LaTeX Warning: Reference `lastpage' on page vi undefined on input line 21.
 
 
 
-] [7]
-Overfull \hbox (4.66223pt too wide) in paragraph at lines 37--38
-[]\T1/cmr/m/n/12 As it was briefly men-tioned, a prob-lem found the usual ap-pr
-oach of re-encrypting
- []
-
-[8]) [9] (./tesis.toc [10
+] [7] [8]) [9] (./tesis.toc [10
 
 
 ] [11] [12])
@@ -752,12 +746,12 @@ oach of re-encrypting
 
  [14
 
-] (./tesis.lot)
+]
+(./tesis.lot)
 \tf@lot=\write8
 \openout8 = `tesis.lot'.
 
-
-[15
+ [15
 
 ] (./tesis.lol)
 \tf@lol=\write9
@@ -785,7 +779,7 @@ Chapter 2.
 
 
 
-] [10] [11] [12] <img/basic_crypto.png, id=544, 1346.02875pt x 688.5725pt>
+] [10] [11] [12] <img/basic_crypto.png, id=546, 1346.02875pt x 688.5725pt>
 File: img/basic_crypto.png Graphic file (type png)
 
 <use img/basic_crypto.png>
@@ -828,11 +822,16 @@ Chapter 4.
 
 
 
-] [48] [49] [50] [51] [52]
+] [48] [49] [50] [51]
+Overfull \hbox (11.79156pt too wide) in paragraph at lines 46--63
+ [][] 
+ []
+
+[52]
 Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
-nput line 73.
+nput line 74.
  [53] [54] [55] [56] [57] [58] [59] [60]
-Overfull \hbox (1.73468pt too wide) in paragraph at lines 210--211
+Overfull \hbox (1.73468pt too wide) in paragraph at lines 211--212
 [][][][][][][][][][][][][][][][][][][] 
  []
 
@@ -845,7 +844,7 @@ Package epstopdf Info: Source file: <clientserver.eps>
 (epstopdf)                    size: 72327 bytes
 (epstopdf)             Command: <epstopdf --outfile=clientserver-eps-converted-
 to.pdf clientserver.eps>
-(epstopdf)             \includegraphics on input line 250.
+(epstopdf)             \includegraphics on input line 251.
 Package epstopdf Info: Output file is already uptodate.
 
 <clientserver-eps-converted-to.pdf, id=995, 796.9775pt x 597.23125pt>
@@ -853,16 +852,16 @@ File: clientserver-eps-converted-to.pdf Graphic file (type pdf)
 
 <use clientserver-eps-converted-to.pdf>
 Package pdftex.def Info: clientserver-eps-converted-to.pdf used on input line 2
-50.
+51.
 (pdftex.def)             Requested size: 398.48776pt x 298.61488pt.
  [63]
 <counter.png, id=1001, 691.58376pt x 656.4525pt>
 File: counter.png Graphic file (type png)
  <use counter.png>
-Package pdftex.def Info: counter.png used on input line 259.
+Package pdftex.def Info: counter.png used on input line 260.
 (pdftex.def)             Requested size: 449.52411pt x 426.68907pt.
 
-Overfull \hbox (21.31006pt too wide) in paragraph at lines 259--260
+Overfull \hbox (21.31006pt too wide) in paragraph at lines 260--261
  [][] 
  []
 
@@ -965,7 +964,7 @@ Here is how much of TeX's memory you used:
  16356 multiletter control sequences out of 15000+600000
  17881 words of font info for 48 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 53i,15n,92p,1596b,1823s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 53i,15n,92p,1597b,1823s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist
@@ -985,7 +984,7 @@ er/sfcc2488.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></us
 r/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/
 type1/public/cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-supe
 r/sftt1200.pfb>
-Output written on tesis.pdf (99 pages, 842891 bytes).
+Output written on tesis.pdf (99 pages, 841881 bytes).
 PDF statistics:
  1316 PDF objects out of 1440 (max. 8388607)
  1168 compressed objects within 12 object streams
