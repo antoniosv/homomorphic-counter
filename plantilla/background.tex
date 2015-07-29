@@ -22,7 +22,16 @@ For the messages to go from Alice to Bob, there has to be some kind of medium or
 
 Before a message is sent from Alice to Bob or viceversa, the sender \textit{encrypts} the message. In other words, a certain algorithm is applied on the message so that the content of it is unclear to a third party, such as Eve. Once the sent message has been received by the other party, he \textit{decrypts} it to recover the original content of the message before encryption, known as \textit{plaintext}. In order for this to work, Alice and Bob must have agreed in advance about various of the details needed, such as the algorithm and parameters used by the sender, so that the receiver knows how to perform the decryption properly. Since it would be troublesome that Eve learned of those details, Alice and Bob would have to use some sort of secure channel, such as trusted messengers or couriers, or set up a private meeting where no one else can eavesdrop. Making use of this secure channel, however, is more costly than using the regular communication channel between Alice and Bob, and it might not be available at all times, which is why it is recommended to use it only to agree on some details in advance, like the parameters for the encryption algorithm, as well as a \textit{private key}.
 
-Stanoyevitch describes on his Introduction to Cryptography \cite{IntroCryptoMath} book that the above scheme would make up a cryptosystem, since it makes use of cryptographic algorithms with the purpose of protecting confidentiality. As it has been hinted, such a cryptosystem has two parts: \emph{encryption}, which is done by the sender as means of putting or transforming the actual \textbf{plaintext} into \textbf{ciphertext}, and \emph{decryption}, which is done once the message has been received at the other end and has the purpose of translating the ciphertext back into the original plaintext message. Both encryption and decryption are usually done using a \textbf{key}, and it is intended that only the sender and receiver learn of the nature and value of the key. 
+Stanoyevitch \cite{IntroCryptoMath} suggests that the above scheme would make up a cryptosystem, since it makes use of cryptographic algorithms with the purpose of protecting confidentiality. As it has been hinted, such a cryptosystem has two parts: \emph{encryption}, which is done by the sender as means of putting or transforming the actual \textbf{plaintext} into \textbf{ciphertext}, and \emph{decryption}, which is done once the message has been received at the other end and has the purpose of translating the ciphertext back into the original plaintext message. Both encryption and decryption are usually done using a \textbf{key}, and it is intended that only the sender and receiver learn of the nature and value of the key. 
+
+The use of the plaintext, ciphertext, and key concepts are recurrent throughout this work, and given their relevance, they are explained as follows, along with other concepts, the same way Cameron \cite{CryptoNotes} and Stallings \cite{CryptoStallings} describe them.
+\begin{description}
+\item[Plaintext.-] It is the original message that Alice wants to send to Bob. Neither Bob nor Alice want the message to be known to Eve. This piece of data is fed into the encryption algorithm before it is sent to the other end.
+\item[Encryption algorithm.-] This algorithm uses a key that performs several substitutions and transformations on the plaintext. The result is a ciphertext that cannot be translated back to its original plaintext form without the appropriate key.
+\item[Secret key.-] It is a value that both Alice and Bob agree upon, it is usually kept secret, since it is used by the encryption algorithm to obtain the ciphertext. The encryption algorithm will produce a distinct output depending on the key being used. In other words, if the secret key is leaked to Eve, this would mean that Eve can now learn any messages that are being produced using that key.
+\item[Ciphertext.-] This is the modified or scrambled message produced as output by the encryption algorithm. Its value depends on the algorithm and plaintext, as well as the chosen key.
+\item[Decryption algorithm.-] It is like the encryption algorithm, except that its run in reverse. The decryption algorithm has two inputs: the ciphertext and its corresponding key. It then performs the necessary substitutions and transpositions so that the ciphertext is translated back into the original plaintext.
+\end{description}
 
 Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a five-tuple ($\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D}$), where the following conditions are satisfied:
 \begin{enumerate}
@@ -39,17 +48,6 @@ The following image depicts the process flow of a simple cryptosystem that is pu
   \caption[Basic cryptosystem diagram]{Basic cryptosystem diagram. Source: Kurose and Ross \cite{kurose2010computer}.}
 \end{figure}
 
-\subsection{The first fully homomorphic encryption scheme}
-
-
-The use of the plaintext, ciphertext, and key concepts are recurrent throughout this work, and given their relevance, they are explained as follows, along with other concepts, the same way Cameron \cite{CryptoNotes} and Stallings \cite{CryptoStallings} describe them.
-\begin{description}
-\item[Plaintext.-] It is the original message that Alice wants to send to Bob. Neither Bob nor Alice want the message to be known to Eve. This piece of data is fed into the encryption algorithm before it is sent to the other end.
-\item[Encryption algorithm.-] This algorithm uses a key that performs several substitutions and transformations on the plaintext. The result is a ciphertext that cannot be translated back to its original plaintext form without the appropriate key.
-\item[Secret key.-] It is a value that both Alice and Bob agree upon, it is usually kept secret, since it is used by the encryption algorithm to obtain the ciphertext. The encryption algorithm will produce a distinct output depending on the key being used. In other words, if the secret key is leaked to Eve, this would mean that Eve can now learn any messages that are being produced using that key.
-\item[Ciphertext.-] This is the modified or scrambled message produced as output by the encryption algorithm. Its value depends on the algorithm and plaintext, as well as the chosen key.
-\item[Decryption algorithm.-] It is like the encryption algorithm, except that its run in reverse. The decryption algorithm has two inputs: the ciphertext and its corresponding key. It then performs the necessary substitutions and transpositions so that the ciphertext is translated back into the original plaintext.
-\end{description}
 
 It is assumed at all times that Eve has access to the communication lines, and can always know the ciphertext that is being sent between Alice and Bob. It is also a good practice to assume that the encryption and decryption algorithms are known to Eve, which leaves the key as the most important part of the scheme. As mentioned previously, Alice and Bob need to establish the means to agree on a private key, without anyone else knowing what this key is. As soon as the key is known to the attacker, i.e. Eve, all further communication is compromised. When that happens, another key has to be chosen and agreed upon once more by Alice and Bob.
 
@@ -57,7 +55,7 @@ The nature of the encryption and decryption can be classified in two broad categ
 
 \section{Introduction to Number theory}
 
-In other to understand more topics pertaining cryptosystems, number theory and its notation, as well as some relevant theorems must be introduced. According to Stark \cite{stark1970introduction}, number theory consists of the study of the properties of whole numbers, and it is considered to be inextricably linked to cryptography. Goodrich introduces number theory and most of its relevant aspects in his Algorithm Design \cite{2008algorithm} book. The information is briefly summarized as follows.
+In other to understand more topics pertaining cryptosystems, number theory and its notation, as well as some relevant theorems must be introduced. According to Stark \cite{stark1970introduction}, number theory consists of the study of the properties of whole numbers, and it is considered to be inextricably linked to cryptography. Goodrich \cite{2008algorithm} introduces number theory and most of its relevant aspects, most of which is briefly summarized as follows.
 
 \subsection{Fundamental Theorems}
 
@@ -67,20 +65,26 @@ a|b
 \]
 to indicate that $a$ \textbf{divides} $b$, that is, $b$ is a multiple of $a$. If $a|b$, then we know that there is some integer $k$, such that $b=ak$. From this definition, the following properties are found:
 
-\textbf{Theorem on Divisibility}: \textit{Let a, b and c be arbitrary integers. Then}
-\begin{itemize}
-\item If $a|b$ and $b|c$, then $a|c$.
-\item If $a|b$ and $a|c$, then $a|(ib+jc)$, for all integers $i$ and $j$.
-\item If $a|b$ and $b|a$, then $a=b$ or $a= -b$.
-\end{itemize}
+\begin{theorem}
+  \emph{(Theorem on Divisibility)} Let a, b and c be arbitrary integers,
+  \begin{itemize}
+  \item If $a|b$ and $b|c$, then $a|c$.
+  \item If $a|b$ and $a|c$, then $a|(ib+jc)$, for all integers $i$ and $j$.
+  \item If $a|b$ and $b|a$, then $a=b$ or $a= -b$.
+  \end{itemize}
+\end{theorem}
 
 An integer $p$ is said to be \textbf{prime} if $p\geq 2$ and its only divisors are the trivial divisors $1$ and $p$. Therefore, in the case $p$ is a prime, $p|q$ implies $d=1$ or $d=p$. An integer greater than 2 that is not prime is said to be \textbf{composite}. Also, two integers which only share a common divisor of 1 are considered to be \textbf{relatively prime}.
 
-\textbf{Fundamental Theorem of Arithmetic}: \textit{Let $n > 1$ be an integer. Then there is a unique set of prime numbers $\{p_{1}, \dots p_{k}\}$ and positive integer exponents  $\{e_{1}, \dots , e_{k}\}$, such that}
+
+\begin{theorem}
+\emph{(Fundamental Theorem of Arithmetic)}
+Let $n > 1$ be an integer. Then there is a unique set of prime numbers $\{p_{1}, \dots p_{k}\}$ and positive integer exponents  $\{e_{1}, \dots , e_{k}\}$, such that
 
 \[
 n = p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}
 \]
+\end{theorem}
 
 The above product $p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}$ is the prime decomposition of $n$. In other words, any positive integer is made up of the product between two prime numbers.   
 
@@ -89,7 +93,7 @@ The above product $p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}$ is the prime decompositio
 The remainder of $a$ when divided by $n$ is expressed as $a \mod n$, that is:
 
 \[
-  r = a \mod n
+  r = a \Mod{n}
 \]
 
 \noindent which means that there is some integer $q$, such that
@@ -102,11 +106,11 @@ The remainder $r$ is resulting from $a \mod n$ is always an integer in the set $
 
 \textbf{Congruence} modulo $n$ is a relevant concept to mention as well. If
 \[
-  a \mod n = b \mod n,
+  a \Mod{n} = b \Mod{n},
 \]
 \noindent then we say that $a$ is \textbf{congruent} to $b$ modulo $n$, so it can be written in this way:
 \[
-a \mod n \equiv b \pmod n
+a \equiv b \pmod n
 \]
 Therefore, if $a \equiv b \mod n$, then $a-b=kn$ for some integer $k$. 
 
@@ -120,9 +124,9 @@ Congruences have the following properties:
 Suppose that there is a mapping of all integers by the $\pmod n$ operator into the set of integers $\{0, 1, \dots, (n-1)\}$. The technique used to perform arithmetic operations within the confines of this set is known as \textbf{modular arithmetic}. Modular arithmetic exhibits the following properties:
 
 \begin{enumerate}
-\item $[(a \mod n) + (b \mod n)] \mod n = (a + b) \mod n$
-\item $[(a \mod n) - (b \mod n)] \mod n = (a - b) \mod n$
-\item $[(a \mod n) \times (b \mod n)] \mod n = (a \times b) \mod n$
+\item $[(a \Mod{n}) + (b \Mod{n})] \Mod{n} = (a + b) \Mod{n}$
+\item $[(a \Mod{n}) - (b \Mod{n})] \Mod{n} = (a - b) \Mod{n}$
+\item $[(a \Mod{n}) \times (b \Mod{n})] \Mod{n} = (a \times b) \Mod{n}$
 \end{enumerate}
 And so, the rules for ordinary arithmetic invoving addition, subtraction, and multiplication carry over into modular arithmetic, except that the result is always within the boundaries of the defined set, which is between 0 and $n-1$.
 
@@ -146,22 +150,30 @@ Given a prime $p$ and an integer $a$ between 1 and $p-1$, the \textbf{order} of 
 
 A \textbf{generator}, or primitive root, of $Z_{p}$ is an element $g$ of $Z_{p}$ with order $p-1$. It is called a generator, because the repeated exponentiation of it can generate all the elements in $Z_{p}^{*}$. $Z_{p}^{*}$ is a subset of $Z_{p}$, defined to be the set of integers between 1 and $n$ that are relatively prime to $n$. 
 
-\textbf{Theorem on generators}: \textit{If $p$ is a prime, then set $Z_{p}$ has $\phi(p-1)$ generators}. 
+\begin{theorem}
+\emph{(Theorem on generators)}
+If $p$ is a prime, then set $Z_{p}$ has $\phi(p-1)$ generators.
+\end{theorem}
 
-\subsection{Other relevant points on modular arithmetic}
+\subsection{Other Relevant Points on Modular Arithmetic}
+
+%\item 
+\begin{theorem}
+\emph{(Fermat's Little Theorem)}
+Let $p$ be a prime, and let $x$ be an integer such that \\ $x \mod p \ne 0$. In other words, that $p$ does not divide the integer $x$. Then
+\[
+x^{p-1} \equiv 1 \pmod{n}
+\]
+\end{theorem}
+
+%\item 
+\begin{theorem}
+\emph{(Euclid's Division Theorem)} For every integer $m$ and positive integer $n$, there exist unique integers $q$ and $r$ such that $m=nq+r$ and $0 \leq r < n$. By definition, $r$ is equal to $m \mod n$.
+\end{theorem}
 
 Cliff and Ken \cite{cs21math19notes} review several important concepts regarding modular arithmetic, and are thus listed as follows:
 
 \begin{itemize}
-\item \textit{Fermat's Little Theorem}
-\textit Let $p$ be a prime, and let $x$ be an integer such that \\ $x \mod p \ne 0$. In other words, that $p$ does not divide the integer $x$. Then
-
-\[
-x^{p-1} \equiv 1 \pmod{n}
-\]
-
-\item \textit{Euclid's Division Theorem}. For every integer $m$ and positive integer $n$, there exist unique integers $q$ and $r$ such that $m=nq+r$ and $0 \leq r < n$. By definition, $r$ is equal to $m \mod n$.
-
 \item \textit{Adding multiples of n does not change values mod n}. That is, \\ $i \mod n= (i+kn) \mod n$ for any integer $k$.
 
 \item Mod (by $n$) can be taken anywhere in calculation, as long as mod $n$ is taken from the final result.
@@ -196,8 +208,8 @@ When the group operation is addition, the identity element is 0; the inverse ele
 A \emph{ring} $R$, which is sometimes denoted by $\{R, +, \times \}$, is a set of elements with two binary operations, called \textit{addition} and \textit{multiplication}, such that for all $a$, $b$, $c$ in $R$, there are some axioms that must be obeyed. It must be pointed out that a ring fulfills the same axioms as an abelian group with respect to addition; that is, axioms A1 through A5. The rest of the axioms obeyed by a ring are listed as follows:
 \begin{description}
 \item[(M1) Closure under multiplication:] If $a$ and $b$ belong to $R$, then $a \times b$ is also in $R$.
-\item[(M2) Associativity of multiplication:] $a(bc) = (ab)c$ for all $a$, $b$, $c \in R$.
-\item[(M3) Distributive laws:] $a(b+c) = ab+ ac$ for all $a$, $b$, $c$ in $R$. \\ $(a+b)c = ac + bc$ for all $a$, $b$, $c$ in $R$.
+\item[(M2) Associativity of multiplication:] $a(b \times c) = (a \times b)c$ for all $a$, $b$, $c \in R$.
+\item[(M3) Distributive laws:] $a(b+c) = (a \times b) + (a \times c)$ for all $a$, $b$, $c$ in $R$. \\ $(a+b)c = (a \times c) + (b \times c)$ for all $a$, $b$, $c$ in $R$.
 \end{description}
 
 Essentially, a ring is a set in which addition, subtraction $[a-b = a + (-b)]$, and multiplication can be done without leaving the set. Furthermore, a ring is said to be \textbf{commutative} if it satisfies the following additional condition:
@@ -293,7 +305,7 @@ According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, even though somewhat 
 Craig Gentry \cite{homoenc} explains the concept behind homomorphic encryption in a very simple way. Imagine that Alice has a jewelry store and wants her workers to assemble raw materials (diamonds, gold, silver, etc.) into finished products (necklaces, rings, etc.), but does not trust them, thinking they might run off with the raw materials at their first chance. So instead of giving them direct access to the materials, Alice places the materials inside a transparent glove boxes, which are then promptly locked with a key that only Alice has. This way, workers can put their hands inside the gloves that are connected to the box, and through them, work with the raw materials. Additionally, the workers are able to put in things inside the boxes, such as soldering iron to use on the raw materials, even though they cannot take anything out of it, since they do not have the key to open the box. Once the products are finished, Alice can then recover the products from the box using her key. The analogy is not perfect, because the workers are able to see the materials while working on them, but it is relevant because homomorphic encrytion means that they cannot take the materials with them.
 
 Hayes \cite{Hayes2012} offers a proof of concept that accurately describes the very essence of a homomorphic cryptosystem. It is shown as follows: consider that the plaintext consists of integers; to encrypt a number, double it; to decrypt it, divide by 2. Using this scheme, addition and a nonstandard version of multiplication can be done on the encrypted data. Given the plaintext inputs $x$ and $y$, we can encrypt each of them separately, add the ciphertexts, and finally decrypt the result. This calculation would give the correct answer, expressed as $2x+2y=2(x+y)$. In other words, it is the same result as if each plaintext input were multiplied separately and then added with each other, because in the end, dividing it by two causes the same effect on both sides. 
-Regarding multiplication, a little tweak has to be done for it to work. The product of the ciphertexts is defined as $\dfrac{(C_{x} C_{y})}{2}$, while the plaintexts are multiplied by the regular formula $xy$. 
+Regarding multiplication, a little tweak has to be done for it to work. The product of the ciphertexts is defined as $(\frac{1}{2}) C_x C_y$, while the plaintexts are multiplied by the regular formula $xy$. 
 As an example, consider $x=5$ and $y=7$. The result of the multiplication would come as $x \times y = 35$. To perform the same evaluation between ciphertexts, both inputs would be encrypted following the rule previously defined:
 \[
 C_{x} = 5 \times 2 = 10
@@ -301,21 +313,21 @@ C_{x} = 5 \times 2 = 10
 \[
 C_{y} = 7 \times 2 = 14
 \]
-The multiplication is performed as $\dfrac{10 \times 14}{2} = 70$, and it is divided by 2 to decrypt the ciphertext: $\dfrac{70}{2} = 35$, which turns out to be the correct result of the multiplication.
+The multiplication is performed as $(\frac{1}{2}) 10 \times 14 = 70$, and it is divided by 2 to decrypt the ciphertext: $\frac{70}{2} = 35$, which turns out to be the correct result of the multiplication.
 
 Certainly, the above cryptosystem is considered to be \emph{fully homomorphic}, since it supports both addition and multiplication. However, it is definitely not a secure one, since anyone that knows of the workings of the cipher can easily get to learn the secret message. This is also partly the reason of why the encryption and decryption algorithms are not usually kept as a secret, because it would be quite impractical to make a different encryption and decryption algorithm every time it were discovered. 
 
 Stuntz \cite{stuntz2010} provides an example of a cipher scheme that has an inherent homomorphic property. Consider the popular, yet insecure, ROT13 cipher, also known as the Caesar cipher. The ROT13 is a simple substitution cipher which changes each letter with the letter that is thirteen positions ahead on encryption. To do decryption, it does the opposite: each character goes back thirteen positions in the alphabet. 
 ROT13 is partially homomorphic with respect to the concatenation operation, because it is possible to concatenate two different pieces of ciphertexts. At decryption, the concatenation of the two pieces of ciphertexts ends up to be same as the concatenation of the original messages, the plaintext. Therefore, it is partially homomorphic with respect to concatenation. 
 
-Consider, for instance, the plaintext pair $P_{1}=$ HELLO and $P_{2}=$ WORLD, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=$URYYB and $C_{2}=$JBEYQ, and if concatenated, ``URYYBJBEYQ''. So if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally.
+Consider, for instance, the plaintext pair $P_{1}=$ HELLO and $P_{2}=$ WORLD, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=$ URYYB and $C_{2}=$ JBEYQ, and if concatenated, ``URYYBJBEYQ''. Therefore, if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally.
 
 \begin{figure}[H]
   \centerline{\includegraphics[scale=0.5]{img/rot13homo}}
   \caption[Example of the homomorphic property in ROT13]{Example of the homomorphic property in ROT13. Source: Stuntz \cite{stuntz2010}.}
 \end{figure}
 
-\subsection{The first fully homomorphic encryption scheme}
+\subsection{The First Fully Homomorphic Encryption Scheme}
 
 In an article published by the research staff of the NSA \cite{NSA2014}, it is discussed how the term of fully homomorphic encryption has been around for about 30 years, and only recently, in 2009 to be exact, a very important breakthrough regarding fully homomorphic encryption was made by Craig Gentry. Thanks to this breakthrough, the first fullly homomorphic scheme was created, opening the doors of research to this topic that was thought to be at a dead end. 
 
@@ -337,7 +349,11 @@ Blum \cite{Blum:1993:CPB:646758.759585} suggests that learning problems have cer
 
 The learning with errors (LWE) problem was introduced by Regev \cite{Regev:2005:LLE:1060590.1060603}; it is defined as follows:
 
-\textit{For security parameter $\lambda$, let $n = n(\lambda)$ be an integer dimension, let $q=q(\lambda) \geq 2$ be an integer, and let $\chi = \chi(\lambda)$ be a distribution over $\mathbb{Z}$. The LWE $(n, q, \chi)$ problem is to distinguish the following two distributions: In the first distribution, one samples $(a_{i},b_{i})$ uniformly from $\mathbb{Z}_{q}^{n+1}$. In the second distribution, one first draws $s \leftarrow \mathbb{Z}_{q}^{n}$ uniformly and then samples $(a_{i}, b_{i}) \in \mathbb{Z}_{q}^{n+1}$ by sampling $a_{i} \leftarrow \mathbb{Z}_{q}^{n}$ uniformly, $e_{i} \leftarrow \chi$, and setting $b_{i} = \left \langle a,s  \right \rangle + e_{i}$. The LWE $(n, q, \chi)$ assumption is that the LWE $(n, q, \chi)$ problem is infeasible.}
+\theoremstyle{definition}
+\begin{definition}
+{Learning with Errors Problem}
+For security parameter $\lambda$, let $n = n(\lambda)$ be an integer dimension, let $q=q(\lambda) \geq 2$ be an integer, and let $\chi = \chi(\lambda)$ be a distribution over $\mathbb{Z}$. The LWE $(n, q, \chi)$ problem is to distinguish the following two distributions: In the first distribution, one samples $(a_{i},b_{i})$ uniformly from $\mathbb{Z}_{q}^{n+1}$. In the second distribution, one first draws $s \leftarrow \mathbb{Z}_{q}^{n}$ uniformly and then samples $(a_{i}, b_{i}) \in \mathbb{Z}_{q}^{n+1}$ by sampling $a_{i} \leftarrow \mathbb{Z}_{q}^{n}$ uniformly, $e_{i} \leftarrow \chi$, and setting $b_{i} = \left \langle a,s  \right \rangle + e_{i}$. The LWE $(n, q, \chi)$ assumption is that the LWE $(n, q, \chi)$ problem is infeasible.
+\end{definition}
 
 Regev proved that for certain moduli $q$ and Gaussian error distributions $\chi$, the LWE $(n, q, \chi)$ assumption is true as long as certain worst-case lattice problems are hard to solve using a quantum algorithm. Later, Peikert \cite{Peikert:2009:PCW:1536414.1536461} de-quantized Regev's results, proving that the LWE $(n, q, \chi)$ assumption is true as long as certain worst-case lattice problems are hard to solve using a \emph{classical algorithm} as well.
 
@@ -359,7 +375,7 @@ Such a cryptosystem is quite inefficient, but it serves its purpose to establish
 
 Hayes \cite{Hayes2012} writes in his article that recently, Brakerski, Vaikuntanathan and Gentry have developed a variant of the learning-with-errors system that takes a different approach to noise management. Instead of stopping the computation at intervals to re-encrypt the data, they incrementally adjust parameters of the system after every computational step in a way that prevents the noise level from ever approaching the limit.
 
-\subsection{Brakerski-Gentry-Vaikuntanathan scheme}
+\subsection{Brakerski-Gentry-Vaikuntanathan Scheme}
 
 The Brakerski-Gentry-Vaikuntanathan (BGV) scheme \cite{cryptoeprint:2011:277} is a leveled fully homomorphic encryption that does not rely on bootstrapping, but rather employs it as an optimization. However, it still follows Gentry's blueprint to build a fully homomorphic cryptosystem, thus lattice-based cryptography is employed, albeit with certain improvements. It is described as \emph{leveled} in the sense that the parameters of the scheme depend (polynomially) on the depth of the circuits that the scheme is capable of evaluating.
 

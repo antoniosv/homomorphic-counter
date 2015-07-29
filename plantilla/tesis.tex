@@ -10,6 +10,7 @@
 \usepackage{mathrsfs}
 \usepackage{makeidx}
 \usepackage[breaklinks=true]{hyperref}
+\usepackage{lastpage}
 \usepackage{breakcites}
 \hypersetup{breaklinks=true,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black}
 \usepackage{algorithm}
@@ -31,6 +32,7 @@
 \usepackage[margin=10pt,font=small,labelfont=bf,labelsep=endash]{caption}
 \usepackage{subcaption}
 \usepackage{listings}
+\usepackage{amsthm}
 \def\titulo{{Applying Homomorphic Encryption in the Cloud}}
 \def\autor{Jes\'{u}s Antonio Soto Vel\'{a}zquez}
 \def\grado{Ingeniero en Tecnolog\'{i}a de Software}
@@ -54,6 +56,11 @@
 \newcommand{\correccion}[1]{\textcolor{black}{\text{#1}}} %Correcciones alumno
 \newcommand{\captionFigureCorrection}{\vspace*{-6mm}}
 \newcommand{\captionSubfigureCorrection}{\vspace*{-5mm}}
+\newcommand{\Mod}[1]{\ (\text{mod}\ #1)}
+\newtheorem{theorem}{Theorem}[section]
+\theoremstyle{definition}
+\newtheorem{definition}
+{Definition}[section]
 %\renewcommand{\tablename}{Cuadro}
 %\usepackage{ulem}
 \usepackage{hhline}
