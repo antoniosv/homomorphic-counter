@@ -42,6 +42,7 @@ The HElib library is an implementation of a homomorphic encryption scheme, and a
 The following table briefly describes each parameter used in HElib. It does not go into much depth, as those details are mostly pertaining to the algorithms in the library.
 
 \begin{table}[h]
+\caption{Parameters used in HElib}
 \centering
   \begin{tabular}{|l|c|r|}
     \hline
@@ -60,7 +61,6 @@ The following table briefly describes each parameter used in HElib. It does not 
     gens &   use specified vector of generators & optional \\ \hline
     ords  &  use specified vector of orders & optional \\ \hline
   \end{tabular}
-\caption{Parameters used in HElib}
 \end{table}
 
 
@@ -187,7 +187,7 @@ The following piece of code extracted from the server side where the ciphertext 
   bytes_read = 0;
   int bytes_remaining = responseBufferSize;
   int this_recv;
-  // Keeps receiving data via recv() \  @\newline@ as long as there are bytes missing
+  // Keeps receiving data via recv()  as long as there are bytes missing
   while(bytes_remaining > 0) {    
     this_recv = recv(newsockfd, responseBuffer+bytes_read,
                 bytes_remaining, 0); 
@@ -207,7 +207,7 @@ If this is not done, there is no way to perform operations on the ciphertext, or
 The following piece of code describes the steps to be taken in order to reconstruct the object that will contain the ciphertext. First of all, the buffer that was previously filled with data is copied into a string variable, then it goes through a couple of steps so it can be used as a \textit{istringstream} object. The preparation seems complicated, but the reconstruction of the ciphertext object is actually quite simple. Since HElib is friendly with the \textgreater\textgreater operators, it can be done in one step. This operator basically takes the data from one variable and puts it in another kind of variable, one being a \textit{istringstream} object, and the other a \textit{Ctxt} object.
 
 \begin{lstlisting}[caption={Reconstruction of the ciphertext},label={lst:reconstruct},numbers=left,escapeinside={@}{@}]
-  // Buffer that will hold the ciphertext \ @\newline@ is defined with the exact size
+  // Buffer that will hold the ciphertext is defined with the exact size
   string strBuffer((const char*) responseBuffer, bytes_read);
   istringstream serialCipher;
   serialCipher.str(strBuffer);
@@ -224,7 +224,7 @@ As it is observed in the code snippet \ref{lst:reconstruct}, in order for the se
 Once the initial value of the counter is received by the server, there are two possible scenarios that could occur next: the value gets viewed by the householder, or a change in the counter occurs. Whenever a significant change is observed by the client program, the change is promptly notified to the server, which could be either imply that the value goes up or down. When the cloud service receives the value of change, it either adds or subtracts it from the previously stored value. The change can then be known to the user by retrieving the encrypted counter.
 
 \begin{lstlisting}[caption={Addition on the ciphertext},label={lst:addition},numbers=left,escapeinside={@}{@}]
-  // Object for plaintext is initialized \ @\newline@  using the encrypted array object
+  // Object for plaintext is initialized using the encrypted array object
   PlaintextArray ptxtChange(*ea);
   ptxtChange.encode(change); 
   // change is assumed to be an integer
