@@ -26,3 +26,16 @@
 *.exe
 *.out
 *.app
+
+# Latex files
+*.log
+*.lol
+*.bbl
+*.aux
+*.lot
+*~
+*#
+*.lof
+*.blg
+*.toc
+*.txt
