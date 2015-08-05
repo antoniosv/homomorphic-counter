@@ -11,9 +11,9 @@ In order to confirm the relevant factors pertaining to the feasibility of an imp
 
 The results showed that key generation took the most amount of time, ranging between 9 and 13 seconds. The size of the public key ranged between 35 and 165 megabytes. Despite the long time and large size, these were not considered to be obstacles to the feasibility of the system. This is because key generation and registration of the public key is done only at the beginning of the process and is not required to do it again at a later time.
 
-\section{Final remarks}
+\section{Final Remarks}
 
-It was noted during the development phase that the ciphertext often had a filesize of around 74 megabytes, and it was surprising to see that this value got reduced to less than 50 kilobytes during the experimentation phase. It is not certain which factors influenced the drastic change during these phases, and it made it difficult to decide whether implementing this as a service in the cloud would be feasible or not. In the case that the ciphertext size is indeed too large, the design of the system could be tweaked so that only the initial value of the counter is encrypted, so that the change values are sent to the server as plaintext. Evidently, this would diminish the overall security of the system, since it would not be impossible to predict the current value of the counter by observing the changes. 
+It was noted during the development phase that the ciphertext often had a filesize of around 74 megabytes, and it was surprising to see that this value got reduced to less than 50 kilobytes during the experimentation phase. It is not clear which factors influenced the drastic change during these phases, and it made it difficult to decide whether implementing this as a service in the cloud would be feasible or not. In the case that the ciphertext size is indeed too large, the design of the system could be tweaked so that only the initial value of the counter is encrypted, so that the change values are sent to the server as plaintext. Evidently, this would diminish the overall security of the system, since it would not be impossible to predict the current value of the counter by observing the changes. 
 
 \section{Contributions}
 
@@ -36,6 +36,7 @@ At a first glance, the results obtained from the experimentation were satisfacto
 \item Design a database scheme to keep control of the ciphertexts stored in the server, while associating each of them with its respective public key.
 \item Look into the possibility of implementing the client-architecture system as a Software-as-a-Service model.
 \item Provide a secure communication channel between the client and server, relying on the SSL protocol.
+\item Experiment on the number of homomorphic operations correctly evaluated before the accumulated noise causes an incorrect decryption.
 \end{itemize}
 
 \clearpage

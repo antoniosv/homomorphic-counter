@@ -1,7 +1,7 @@
 \chapter{Background}
 \label{background}
 
-Information security is a broad topic that covers many different aspects, from which two of them are particularly important for this work: confidentiality and authentication. There are some aspects from cryptography that would be relevant to review, such as asymmetric and symmetric cryptography, as well as the concepts: \emph{plaintext}, \emph{ciphertext}, and \emph{secret key}. In order to explain more advanced topics, number theory and abstract algebra are introduced. Homomorphic encryption is explained thoroughly, noting the mathematical properties and its categories, as well as some possible applications of this type of encryption. The first fully homomorphic encryption scheme is introduced, paving the road for the Brakerski-Gentry-Vaikuntanathan (BGV) scheme. Finally, a brief description of cloud computing and its relevant aspects are described, as well as the impact of secure computation.
+Information security is a broad topic that covers many different aspects, from which two of them are particularly important for this work: confidentiality and authentication. There are some aspects from cryptography that would be relevant to review, such as asymmetric and symmetric cryptography, as well as the concepts: \emph{plaintext}, \emph{ciphertext}, and \emph{secret key}. In order to explain more advanced topics, number theory and abstract algebra are introduced. Homomorphic encryption is explained thoroughly, noting the mathematical properties and its categories, as well as some possible applications of this type of encryption. The first fully homomorphic encryption scheme is introduced, paving the road for the Brakerski-Gentry-Vaikuntanathan cryptosystem (mentioned as the BGV scheme from now on.) Finally, a brief description of cloud computing and its relevant aspects are presented, as well as the impact of secure computation.
 
 \section{Information Security and Data Confidentiality}
 
@@ -9,7 +9,7 @@ Seen from a general perspective, Whitman and Herbert \cite{PrinciplesInformation
 
 ``The protection afforded to an automated information system in order to attain the applicable objectives of preserving the \emph{integrity}, \emph{availability}, and \emph{confidentiality} of information system resources (includes hardware, software, firmware, information/data, and telecommunications)''.
 
-This definition introduces two relevant concepts in the previous definition, namely: \emph{information} and \emph{confidentiality}. The RFC 2828 standard reference \cite{shirey2000rfc} defines information as ``facts and ideas, which can be represented (encoded) as various forms of data,'' and data as ``information in a specific physical representation, usually a sequence of symbols that have meaning: especially a representation of information that can be processed or produced by a computer.'' Although both terms have different connotations depending on what it represents, both words are used interchangeably in this work. Now that information has been described as a concept, confidentiality can be introduced. More specifically, data confidentiality refers to the assurance that private or confidential information is not made available or disclosed to unauthorized individuals \cite{CryptoStallings}. This term is closely related to \textit{privacy}, which gives individuals the control of what information related to them may be accessed or stored by whom. Loss of confidentiality would imply unathorized access or disclosure of information.
+This definition introduces two relevant concepts in the previous definition, namely: \emph{information} and \emph{confidentiality}. The RFC 2828 (Request for Comments) publication \cite{shirey2000rfc} defines information as ``facts and ideas, which can be represented (encoded) as various forms of data,'' and data as ``information in a specific physical representation, usually a sequence of symbols that have meaning: especially a representation of information that can be processed or produced by a computer.'' Although both terms have different connotations depending on what it represents, both words are used interchangeably in this work. Now that information has been described as a concept, confidentiality can be introduced. More specifically, data confidentiality refers to the assurance that private or confidential information is not made available or disclosed to unauthorized individuals \cite{CryptoStallings}. This term is closely related to \textit{privacy}, which gives individuals the control of what information related to them may be accessed or stored by whom. Loss of confidentiality would imply unathorized access or disclosure of information.
 
 \section{Cryptography Concepts}
 
@@ -41,11 +41,12 @@ Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a five
 \item For each $k \in \mathcal{K}$ there is an \textit{encryption rule} $ e_{k} \in \mathcal{E}$  and a corresponding \textit{decryption rule} $ d_{k} \in \mathcal{D}$. Each $e_{k}: \mathcal{P} \rightarrow \mathcal{C}$ and $d_{k}: \mathcal{C} \rightarrow \mathcal{P}$ are functions such that $d_{k}(e_{k}(x))$ for every plaintext element $x \in \mathcal{P}$.
 \end{enumerate}
 
-The following image depicts the process flow of a simple cryptosystem that is put in place. The plaintext and encryption key is used as input by an encryption algorithm, which results in a ciphertext that gets sent to the other end of the communication line. Then, the ciphertext is used as input by a decryption algorithm, which takes a decryption key H, finally resulting in the original plaintext. Depending on the type of cryptosystem (symmetric or asymmetric), the encryption keys can be considered to be the same or different, i.e. $K_{A}\ne K_{B}$ if asymmetric, or $K_{A} = K_{B}$ if symmetric.
+Figure \ref{fig:cryptoflow} depicts the process flow of a simple cryptosystem that is put in place. The plaintext and encryption key is used as input by an encryption algorithm, which results in a ciphertext that gets sent to the other end of the communication line. Then, the ciphertext is used as input by a decryption algorithm, which takes a decryption key H, finally resulting in the original plaintext. Depending on the type of cryptosystem (symmetric or asymmetric), the encryption keys can be considered to be the same or different, i.e. $K_{A}\ne K_{B}$ if asymmetric, or $K_{A} = K_{B}$ if symmetric.
 
 \begin{figure}[H]
   \centerline{\includegraphics[width=14cm]{img/basic_crypto}}
   \caption[Basic cryptosystem diagram]{Basic cryptosystem diagram. Source: Kurose and Ross \cite{kurose2010computer}.}
+  \label{fig:cryptoflow}
 \end{figure}
 
 
@@ -320,11 +321,12 @@ Certainly, the above cryptosystem is considered to be \emph{fully homomorphic}, 
 Stuntz \cite{stuntz2010} provides an example of a cipher scheme that has an inherent homomorphic property. Consider the popular, yet insecure, ROT13 cipher, also known as the Caesar cipher. The ROT13 is a simple substitution cipher which changes each letter with the letter that is thirteen positions ahead on encryption. To do decryption, it does the opposite: each character goes back thirteen positions in the alphabet. 
 ROT13 is partially homomorphic with respect to the concatenation operation, because it is possible to concatenate two different pieces of ciphertexts. At decryption, the concatenation of the two pieces of ciphertexts ends up to be same as the concatenation of the original messages, the plaintext. Therefore, it is partially homomorphic with respect to concatenation. 
 
-Consider, for instance, the plaintext pair $P_{1}=$ HELLO and $P_{2}=$ WORLD, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=$ URYYB and $C_{2}=$ JBEYQ, and if concatenated, ``URYYBJBEYQ''. Therefore, if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally.
+Consider, for instance, the plaintext pair $P_{1}=$ HELLO and $P_{2}=$ WORLD, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=$ URYYB and $C_{2}=$ JBEYQ, and if concatenated, ``URYYBJBEYQ''. Therefore, if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally. Figure \ref{fig:homosample} shows the aforementioned example as it goes through the encryption and decryption processes. 
 
 \begin{figure}[H]
   \centerline{\includegraphics[scale=0.5]{img/rot13homo}}
   \caption[Example of the homomorphic property in ROT13]{Example of the homomorphic property in ROT13. Source: Stuntz \cite{stuntz2010}.}
+  \label{fig:homosample}
 \end{figure}
 
 \subsection{The First Fully Homomorphic Encryption Scheme}
