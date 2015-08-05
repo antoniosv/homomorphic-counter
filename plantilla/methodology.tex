@@ -29,7 +29,7 @@ The solution itself consists in an implementation of a client-server software th
 
 \section{{Details of the HELib library}}
 
-An implementation of an homomorphic encryption scheme, the Brakerski-Gentry-Vaikuntanathan (BGV), is openly available as a C++ library, called HELib. Using this library, it is possible to encrypt integer values and perform operations on them while being encrypted. There are many parameters to be considered when using this implementation, and these usually define how the public and private keys are going to be like. For this particular application, most parameters can be left in their default values, as they seem to serve the intended purpose. 
+An implementation of a homomorphic encryption scheme, the Brakerski-Gentry-Vaikuntanathan (BGV), is openly available as a C++ library, called HELib. Using this library, it is possible to encrypt integer values and perform operations on them while being encrypted. There are many parameters to be considered when using this implementation, and these usually define how the public and private keys are going to be like. For this particular application, most parameters can be left in their default values, as they seem to serve the intended purpose. 
 
 Part of the description found in the code repository of HElib states that the library is considered to be low-level, and given its difficulty and constant changes, it is not that appropriate to build big applications with it. Regarding the use of the library and its implementation of homomorphic encrypted, often referred to as \emph{HE}, the following is stated: ``At its present state, this library is mostly meant for researchers working on HE and its uses. Also currently it is fairly low-level, and is best thought of as \emph{assembly language for HE}. That is, it provides low-level routines (set, add, multiply, shift, etc.), with as much access to optimizations as we can give.'' Brakerski et al. \cite{helib}.
 
@@ -39,10 +39,11 @@ It is important to note that the library recently started to support multi-threa
 
 The HElib library is an implementation of a homomorphic encryption scheme, and as such, it has certain requirements before it can encrypt data or even generate keys. First of all, it has a list of parameters which must be manually set. Depending on the parameters applied, some aspects that directly affect the keys and ciphertext are altered. The suggested values are used for the majority of the parameters. Altering the values of the parameters could be an interesting way to do experimentation with the key size and computation time required.
 
-The following table briefly describes each parameter used in HElib. It does not go into much depth, as those details are mostly pertaining to the algorithms in the library.
+Table \ref{tbl:parameters} briefly describes each parameter used in HElib. It does not go into much depth, as those details are mostly pertaining to the algorithms in the library.
 
 \begin{table}[h]
-\caption{Parameters used in HElib}
+  \caption{Parameters used in HElib}
+  \label{tbl:parameters}
 \centering
   \begin{tabular}{|l|c|r|}
     \hline
@@ -244,7 +245,7 @@ As it has been mentioned, whenever a homomorphic evaluation is performed on the 
 
 The proof of concept that makes use of homomorphic encryption ends up being completely linear in the sense that it has no communication at all with different parts of the outside world. The case study implies that there is a set location where the counter is initialized and uploaded to the cloud, and a variable location where the value of it is accessed. Therefore, the proof of concept is translated into a client-server architecture, where the tasks are delegated accordingly. 
 
-In figure \ref{fig:clientserver}, a breakdown of the client-model architecture employed is depicted. As previously mentioned, the solution is split into two parts: client and server sides. Each side has specific tasks that must be performed independently. The figure was conceived as an attempt to organize the software structure and assign a functionality to one of the components. The client side is in charge of the tasks that are performed at the place where the counter is initialized, i.e. the household. Such tasks include: setting up the parameters and context required by the HElib, generating the set of public and private keys, registering the public key, encrypting the initial counter value, serializing the ciphertext, recording changes in the counter value, and decrypting the received ciphertext. The following illustration depicts the client-server architecture that was conceived. 
+In Figure \ref{fig:clientserver}, a breakdown of the client-model architecture employed is depicted. As previously mentioned, the solution is split into two parts: client and server sides. Each side has specific tasks that must be performed independently. The figure was conceived as an attempt to organize the software structure and assign a functionality to one of the components. The client side is in charge of the tasks that are performed at the place where the counter is initialized, i.e. the household. Such tasks include: setting up the parameters and context required by the HElib, generating the set of public and private keys, registering the public key, encrypting the initial counter value, serializing the ciphertext, recording changes in the counter value, and decrypting the received ciphertext. The following illustration depicts the client-server architecture that was conceived. 
 
 \begin{figure}[H]
   \centering 
@@ -254,7 +255,7 @@ In figure \ref{fig:clientserver}, a breakdown of the client-model architecture e
 \end{figure}
 
 
-In order to understand how the workflow occurs inside of the client-server architecture, it is better to think of two possible clients: one that is located at the household, and another one that requests access to the counter data. The sensor system is the former one, whereas the user is the latter. Usually, the client that retrieves data from the sensor begins by generating a set of keys and registering it with the server, and then encrypting the value of the initial counter before sending it over. Whenever a change of the value is notified to the server, it performs the corresponding operations: addition if people go inside, or subtraction if people go outside the building. Finally, whenever the user wants to learn the value of the counter, it can request to download it from the server. It is also possible for the user to reset the value of the counter as he sees fit. This flow of operation is shown in figure \ref{seqdiag} as a sequence diagram.
+In order to understand how the workflow occurs inside of the client-server architecture, it is better to think of two possible clients: one that is located at the household, and another one that requests access to the counter data. The sensor system is the former one, whereas the user is the latter. Usually, the client that retrieves data from the sensor begins by generating a set of keys and registering it with the server, and then encrypting the value of the initial counter before sending it over. Whenever a change of the value is notified to the server, it performs the corresponding operations: addition if people go inside, or subtraction if people go outside the building. Finally, whenever the user wants to learn the value of the counter, it can request to download it from the server. It is also possible for the user to reset the value of the counter as he sees fit. This flow of operation is shown in Figure \ref{fig:seqdiag} as a sequence diagram.
 
 \begin{figure}[H]
   \centering
