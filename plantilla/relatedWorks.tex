@@ -77,4 +77,40 @@ Similarly, MrCrypt \cite{Tetali:2013:MSA:2544173.2509554} provides meaningful in
 
 Finally, Yasuda's \cite{Yasuda:2015:SDD:2732516.2732521} work opens up a whole new area of opportunity, since it focuses on the secure key exchange aspect. So far, not much thought has been given on how to handle key management in the homomorphic counting system, and Yasuda's work hints on the solution of problems that could arise with badly planned key exchange.
 
+In essense, table \ref{tbl:comparison} compares the related works with each other, including this very thesis work, using a list of characteristics that are thought to be relevant in the context of secure computation in the cloud. 
+
+\afterpage{
+  \clearpage
+  \begin{landscape}
+\begin{table}[]
+\centering
+\caption{Comparison between related works}
+\label{tbl:comparison}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{Characteristic / Work}                                   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Yasuda \\ et. al \cite{Yasuda:2015:SDD:2732516.2732521}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Yasuda \\ et. al \cite{yasuda2014}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Adida \\ et. al \cite{adida2008helios}\end{tabular}} & \multicolumn{1}{l|}{Cybernetica \cite{ESORICS08:BLW08}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tetali \\ et. al \cite{Tetali:2013:MSA:2544173.2509554}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Schroepfer\\  et. al \cite{Schroepfer:2011:DSC:2046707.2093509}\end{tabular}} & \multicolumn{1}{l|}{Thesis work} \\ \hline
+Client-server architecture                                                    & $\times$                                                                             & $\times$                                                                             & $\bigcirc$                                                                            & $\bigtriangleup$                               & $\bigcirc$                                                                             & $\times$                                                                                 & $\bigcirc$                                \\ \hline
+Cloud computation                                                             & $\bigcirc$                                                                             & $\times$                                                                             & $\bigcirc$                                                                            & $\bigcirc$                                & $\bigcirc$                                                                             & $\times$                                                                                 & $\bigcirc$                                \\ \hline
+Real-world application                                                        & $\bigcirc$                                                                             & $\times$                                                                             & $\bigcirc$                                                                            & $\bigcirc$                                & $\times$                                                                             & $\bigcirc$                                                                                 & $\bigcirc$                                \\ \hline
+Secure computation                                                            & $\bigcirc$                                                                             & $\bigcirc$                                                                             & $\bigcirc$                                                                            & $\bigcirc$                                & $\bigcirc$                                                                             & $\bigcirc$                                                                                 & $\bigcirc$                                \\ \hline
+\begin{tabular}[c]{@{}l@{}}Homomorphic addition \\ support\end{tabular}       & $\bigcirc$                                                                             & $\times$                                                                             & $\bigcirc$                                                                            & $\times$                                & $\times$                                                                             & $\times$                                                                                 & $\bigcirc$                                \\ \hline
+\begin{tabular}[c]{@{}l@{}}Homomorphic multiplication \\ support\end{tabular} & $\bigcirc$                                                                             & $\times$                                                                             & $\times$                                                                            & $\times$                                & $\times$                                                                             & $\times$                                                                                 & $\bigcirc$                                \\ \hline
+Doesn't trust 3rd party                                                       & $\times$                                                                             & $\bigcirc$                                                                             & $\bigcirc$                                                                            & $\bigcirc$                                & $\bigcirc$                                                                             & $\times$                                                                                 & $\bigcirc$                                \\ \hline
+Key exchange support                                                          & $\bigcirc$                                                                             & $\bigcirc$                                                                             & $\bigcirc$                                                                            & $\times$                                & $\times$                                                                             & $\bigcirc$                                                                                 & $\times$                                \\ \hline
+Web-based                                                                     & $\times$                                                                             & $\times$                                                                             & $\bigcirc$                                                                            & $\bigcirc$                                & $\times$                                                                             & $\bigcirc$                                                                                 & $\times$                                \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{table}[]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+{\it $\bigcirc$ has the characteristic} & {\it $\bigtriangleup$ partially has the characteristic} & {\it $\times$ does not have the characteristic} \\ \hline
+\end{tabular}
+\end{table}
+
+  \end{landscape}
+  \clearpage
+}
+
 \clearpage
