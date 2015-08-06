@@ -3,7 +3,7 @@
 
 This chapters presents six works that are considered to be related to the homomorphic counting system proposed in this work. The works are grouped by their similarities inside distinct categories, and each of them is briefly described. At the end of each description, a short comparison between both works is shown. 
 
-\section{{Related to Homomorphic Encryption}}
+\section{{Existing Literature on Homomorphic Encryption}}
 The works mentioned here all have in common that they employ homomorphic encryption, whether it is partially or fully, to address a situation where it is convenient to do so. They do not propose a new homomorphic encryption scheme, but rather use existing ones to fulfill their goals. These works are especially of particular interest because their application is related to cloud computing. The ones considered for this section are the works by Yasuda et al. \cite{Yasuda:2015:SDD:2732516.2732521, yasuda2014} and Adida et al. \cite{adida2008helios}.
 
 \subsection{Secret Computation of Purchase History}
@@ -25,13 +25,13 @@ In short, this work is similar to ours because of its direct application in the 
 \subsection{{Helios Voting}}
 Helios \cite{adida2008helios} is an open-audit, web-based voting system, which takes advange of existing cryptographic primitives to ensure that privacy is preserved. It offers two important things: ballot casting assurance and universal verifiability. It is considered to be universal because virtually \emph{anyone} can observe and audit the process to confirm that the ballots can be verified.
 
-Helios is based off El Gamal \cite{ElGamal:1985:PKC:19478.19480}, which is a partially homomorphic encryption scheme. In this case, it is perfectly acceptable to make use of a partially homomorphic encryption scheme, since only addition is required to count the votes cast. 
+Helios is based off the ElGamal cryptosystem \cite{ElGamal:1985:PKC:19478.19480}, which is a partially homomorphic encryption scheme. In this case, it is perfectly acceptable to make use of a partially homomorphic encryption scheme, since only addition is required to count the votes cast. 
 
 The process of voting in Helios goes as follows: First of all, Alice can audit as much as she sees fit before choosing to cast her vote.  Then, she authenticates with Helios to establish a secure connection, and casts a ballot which is promptly encrypted before being sent to the Helios server. After Alice casts her vote, any auditor or Alice herself can verify that the vote has been cast by looking at a bulletin board, which displays both her name and encrypted ballot. After the voting has been closed, Helios performs certain shuffling operations, and then counts the number of votes.
 
 Even though Helios is limited to somewhat homomorphic encryption, it resembles our work because it performs homomorphic addition to count values; furthermore, Helios takes into account several details regarding implementation in the web, similarly as we do.
 
-\section{{Related to Security in the Cloud}}
+\section{{Existing Literature on Security in the Cloud}}
 The works mentioned in this section are in some way related to mantaining the confidentiality of data in the cloud, whether it is related to computing or solely storage. Even though these works do not employ homomorphic encryption in their solutions, they make use of other alternatives to achieve something nature to achieve their confidentiality goals. These works are contributions by Cybernetica \cite{ESORICS08:BLW08}, Tetali et al. \cite{Tetali:2013:MSA:2544173.2509554}, and Schroepfer et al. \cite{Schroepfer:2011:DSC:2046707.2093509}.
 
 \subsection{Cybernetica's Sharemind}
@@ -44,24 +44,24 @@ Even though it is not related at all to homomorphic encryption, both systems ope
 \subsection{MrCrypt}
 MrCrypt \cite{Tetali:2013:MSA:2544173.2509554} a system implemented in Java that provides data confidentiality and client computation on encrypted data in an environment where clients upload data and computations to servers managed by a third-party.
 
-The authors recognize that most fully homomorphic schemes are not yet ready to put into use because of the time it takes to perform homomorphic evaluations. Instead, they propose to employ a mix of distinct partially homomorphic schemes as they are required, such as El Gamal \cite{ElGamal:1985:PKC:19478.19480} and Pailler \cite{Paillier:1999:PCB:1756123.1756146} cryptosystems. MrCrypt provides an interface that allows it to extend to other schemes, such as probabilistic, deterministic, and order-preserving encryption schemes. 
+The authors recognize that most fully homomorphic schemes are not yet ready to put into use because of the time it takes to perform homomorphic evaluations. Instead, they propose to employ a mix of distinct partially homomorphic schemes as they are required, such as the ElGamal \cite{ElGamal:1985:PKC:19478.19480} and Pailler \cite{Paillier:1999:PCB:1756123.1756146} cryptosystems. MrCrypt provides an interface that allows it to extend to other schemes, such as probabilistic, deterministic, and order-preserving encryption schemes. 
 
 In order to know which operations to perform, MrCrypt statically analyzes a program, selecting the appropriate encryption schemes for each column, and then transforms the program to operate over the encrypted data. This process of static analysis falls under the category of \emph{encryption scheme inference}. Both the encrypted data and the transformed program are uploaded to the server and executed. The result can be decrypted on the client side, so that confidentiality is preserved.
 
 MrCrypt compares to our homomorphic counting system because it is able to compute both multiplication and addition, albeit with extra measures in order to make it work. However, the work does not mention how it would deal with the secret keys, and if it would be feasible to continously perform operations on the ciphertext whilst being stored in the cloud.
 
-\subsection{Secure Computation in Javascript}
+\subsection{Secure Computation in JavaScript}
 
-In 2011, one of the earliest efforts to use cryptography in a Software-as-a-Service (SaaS), setting was made by Schroepfer et al. \cite{Schroepfer:2011:DSC:2046707.2093509}, and his work focused on performing secure computation in Javascript for the client-side, that is, executed in web-browsers.
+In 2011, one of the earliest efforts to use cryptography in a Software-as-a-Service (SaaS), setting was made by Schroepfer et al. \cite{Schroepfer:2011:DSC:2046707.2093509}, and his work focused on performing secure computation in JavaScript for the client-side, that is, executed in web-browsers.
 
 Schroepfer's motivation stemmed from the diverse range of applications to business optimization that would benefit from performing secure computations on a SaaS software platform. He mentions that it has not been given much effort to attempt to do this because often, the consequences of disclosing the input from any of the parties would outweight the benefits.
 
-The contribution of this work consists in a Javascript implementation of Yao's protocol \cite{Yao:1986:GES:1382439.1382944}, which allows arbitrary secure computations for two parties. Certainly, Yao's protocol has been implemented before; however, it is often implemented on software executed locally, which would not facilitate the Software-as-a-Service model.
+The contribution of this work consists in a JavaScript implementation of Yao's protocol \cite{Yao:1986:GES:1382439.1382944}, which allows arbitrary secure computations for two parties. Certainly, Yao's protocol has been implemented before; however, it is often implemented on software executed locally, which would not facilitate the Software-as-a-Service model.
 
 This work focuses on three things:
 \begin{enumerate}
-\item Proposal of a compelling use-case from industrial practice in supply chain management, consisting of an arithmetic function computed with inputs of two parties, e.g. buyer and seller.
-\item Description of an architecture that employs secure computations in Javascript
+\item Proposal of a compelling use-case from industrial practice in supply chain management, consisting of an arithmetic function computed with inputs of two parties, e.g.\ buyer and seller.
+\item Description of an architecture that employs secure computations in JavaScript
 \item Implementation of the proposed architecture, including tests to evaluate running times.
 \end{enumerate}
    
@@ -71,7 +71,7 @@ Even though this work differs from the proposed homomorphic counting system in t
 
 The aformentioned works are in some way related to our homomorphic counting system: some do because they employ a certain type of homomorphic encryption, and others do because of their focus on making use of the cloud as a computing resource. The reality is that none of them completely overlap with each other or with our own work; however, this is helpful in order to identify what is lacking, and aditionally, these differences serve as a gateway to new ideas to be included in the future work.
 
-For instance, consider the Javascript implementation of Yao's protocol \cite{Yao:1986:GES:1382439.1382944} by Schroepfer et al. \cite{Schroepfer:2011:DSC:2046707.2093509}. This implementation takes a clear approach to offer a solution as a Software-as-a-Service. Even though both this work and ours have a similar goal, both directly differ on the aspect of which entity performs the computations. In Schroepfer's work, it is clearly the web-browser that performs all the work, while in our work the work load is divided between the client and the server. However, it is remarkable that Schroepfer's implementation works right out of the box if using a modern browser, while our work heavily depends on a homomorphic encryption library which has its own dependencies itself.
+For instance, consider the JavaScript implementation of Yao's protocol \cite{Yao:1986:GES:1382439.1382944} by Schroepfer et al. \cite{Schroepfer:2011:DSC:2046707.2093509}. This implementation takes a clear approach to offer a solution as a Software-as-a-Service. Even though both this work and ours have a similar goal, both directly differ on the aspect of which entity performs the computations. In Schroepfer's work, it is clearly the web-browser that performs all the work, while in our work the work load is divided between the client and the server. However, it is remarkable that Schroepfer's implementation works right out of the box if using a modern browser, while our work heavily depends on a homomorphic encryption library which has its own dependencies itself.
 
 Similarly, MrCrypt \cite{Tetali:2013:MSA:2544173.2509554} provides meaningful insight that could lead to the improvement of the homomorphic counting system. This is because MrCrypt is smart in the way it handles the operations performed on the ciphertext. Since it is regarded that partially homomorphic encryption is faster than fully homomorphic encryption, it makes sense to make use of the former. Moreover, since the homomorphic counting scheme relies mostly on addition, it would be preferable to use a scheme that only supports that operation, hoping that it would perform better that way.
 

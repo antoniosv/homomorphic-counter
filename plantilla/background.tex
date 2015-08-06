@@ -1,15 +1,15 @@
 \chapter{Background}
 \label{background}
 
-Information security is a broad topic that covers many different aspects, from which two of them are particularly important for this work: confidentiality and authentication. There are some aspects from cryptography that would be relevant to review, such as asymmetric and symmetric cryptography, as well as the concepts: \emph{plaintext}, \emph{ciphertext}, and \emph{secret key}. In order to explain more advanced topics, number theory and abstract algebra are introduced. Homomorphic encryption is explained thoroughly, noting the mathematical properties and its categories, as well as some possible applications of this type of encryption. The first fully homomorphic encryption scheme is introduced, paving the road for the Brakerski-Gentry-Vaikuntanathan cryptosystem (mentioned as the BGV scheme from now on.) Finally, a brief description of cloud computing and its relevant aspects are presented, as well as the impact of secure computation.
+Information security is a broad topic that covers many different aspects, from which two of them are particularly important for this work: confidentiality and authentication. There are some aspects from cryptography that would be relevant to review, such as asymmetric and symmetric cryptography, as well as the concepts: \emph{plaintext}, \emph{ciphertext}, and \emph{secret key}. In order to explain more advanced topics, number theory and abstract algebra are introduced. Homomorphic encryption is explained thoroughly, noting the mathematical properties and its categories, as well as some possible applications of this type of encryption. The first fully homomorphic encryption scheme is introduced, paving the road for the Brakerski-Gentry-Vaikuntanathan cryptosystem (referred to as the BGV scheme from now on.) Finally, a brief description of cloud computing and its relevant aspects are presented, as well as the impact of secure computation.
 
 \section{Information Security and Data Confidentiality}
 
 Seen from a general perspective, Whitman and Herbert \cite{PrinciplesInformationSecurity} describe security as ``the quality or state of being secure---to be free from danger''. Danger would refer to a potential harming action that an adversary can do, whether it is intentional or not. Computer security is defined by the NIST Computer Security Handbook \cite{NIST95} as follows:
-
-``The protection afforded to an automated information system in order to attain the applicable objectives of preserving the \emph{integrity}, \emph{availability}, and \emph{confidentiality} of information system resources (includes hardware, software, firmware, information/data, and telecommunications)''.
-
-This definition introduces two relevant concepts in the previous definition, namely: \emph{information} and \emph{confidentiality}. The RFC 2828 (Request for Comments) publication \cite{shirey2000rfc} defines information as ``facts and ideas, which can be represented (encoded) as various forms of data,'' and data as ``information in a specific physical representation, usually a sequence of symbols that have meaning: especially a representation of information that can be processed or produced by a computer.'' Although both terms have different connotations depending on what it represents, both words are used interchangeably in this work. Now that information has been described as a concept, confidentiality can be introduced. More specifically, data confidentiality refers to the assurance that private or confidential information is not made available or disclosed to unauthorized individuals \cite{CryptoStallings}. This term is closely related to \textit{privacy}, which gives individuals the control of what information related to them may be accessed or stored by whom. Loss of confidentiality would imply unathorized access or disclosure of information.
+\begin{quotation}
+The protection afforded to an automated information system in order to attain the applicable objectives of preserving the \emph{integrity}, \emph{availability}, and \emph{confidentiality} of information system resources (includes hardware, software, firmware, information/data, and telecommunications).
+\end{quotation}
+This definition introduces two relevant concepts in the previous definition, namely: \emph{information} and \emph{confidentiality}. The RFC 2828 (Request for Comments) publication \cite{shirey2000rfc} defines information as ``facts and ideas, which can be represented (encoded) as various forms of data,'' and data as ``information in a specific physical representation, usually a sequence of symbols that have meaning: especially a representation of information that can be processed or produced by a computer.'' Although both terms have different connotations depending on what they represent, both words are used interchangeably in this work. Now that information has been described as a concept, confidentiality can be introduced. More specifically, data confidentiality refers to the assurance that private or confidential information is not made available or disclosed to unauthorized individuals \cite{CryptoStallings}. This term is closely related to \textit{privacy}, which gives individuals the control of what information related to them may be accessed or stored by whom. Loss of confidentiality would imply unathorized access or disclosure of information.
 
 \section{Cryptography Concepts}
 
@@ -41,7 +41,7 @@ Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a five
 \item For each $k \in \mathcal{K}$ there is an \textit{encryption rule} $ e_{k} \in \mathcal{E}$  and a corresponding \textit{decryption rule} $ d_{k} \in \mathcal{D}$. Each $e_{k}: \mathcal{P} \rightarrow \mathcal{C}$ and $d_{k}: \mathcal{C} \rightarrow \mathcal{P}$ are functions such that $d_{k}(e_{k}(x))$ for every plaintext element $x \in \mathcal{P}$.
 \end{enumerate}
 
-Figure \ref{fig:cryptoflow} depicts the process flow of a simple cryptosystem that is put in place. The plaintext and encryption key is used as input by an encryption algorithm, which results in a ciphertext that gets sent to the other end of the communication line. Then, the ciphertext is used as input by a decryption algorithm, which takes a decryption key H, finally resulting in the original plaintext. Depending on the type of cryptosystem (symmetric or asymmetric), the encryption keys can be considered to be the same or different, i.e. $K_{A}\ne K_{B}$ if asymmetric, or $K_{A} = K_{B}$ if symmetric.
+Figure \ref{fig:cryptoflow} depicts the process flow of a simple cryptosystem that is put in place. The plaintext and encryption key is used as input by an encryption algorithm, which results in a ciphertext that gets sent to the other end of the communication line. Then, the ciphertext is used as input by a decryption algorithm, which takes a decryption key H, finally resulting in the original plaintext. Depending on the type of cryptosystem (symmetric or asymmetric), the encryption keys can be considered to be the same or different, i.e.\ $K_{A}\ne K_{B}$ if asymmetric, or $K_{A} = K_{B}$ if symmetric.
 
 \begin{figure}[H]
   \centerline{\includegraphics[width=14cm]{img/basic_crypto}}
@@ -50,20 +50,20 @@ Figure \ref{fig:cryptoflow} depicts the process flow of a simple cryptosystem th
 \end{figure}
 
 
-It is assumed at all times that Eve has access to the communication lines, and can always know the ciphertext that is being sent between Alice and Bob. It is also a good practice to assume that the encryption and decryption algorithms are known to Eve, which leaves the key as the most important part of the scheme. As mentioned previously, Alice and Bob need to establish the means to agree on a private key, without anyone else knowing what this key is. As soon as the key is known to the attacker, i.e. Eve, all further communication is compromised. When that happens, another key has to be chosen and agreed upon once more by Alice and Bob.
+It is assumed at all times that Eve has access to the communication lines, and can always know the ciphertext that is being sent between Alice and Bob. It is also a good practice to assume that the encryption and decryption algorithms are known to Eve, which leaves the key as the most important part of the scheme. As mentioned previously, Alice and Bob need to establish the means to agree on a private key, without anyone else knowing what this key is. As soon as the key is known to the attacker, i.e.\ Eve, all further communication is compromised. When that happens, another key has to be chosen and agreed upon once more by Alice and Bob.
 
 The nature of the encryption and decryption can be classified in two broad categories: symmetric and asymmetric key encryption. Agrawal \cite{CryptoKeys} describes both categories by looking at the keys used. In \textbf{symmetric encryption}, the key used for encryption is virtually the same used in decryption. Therefore, key distribution has to be done before the tranmission of the messages. The key length has a direct impact on the security offered by the encryption algorithm. Meanwhile, \textbf{asymmetric encryption} employs two different keys: public and private. The public key is closely tied to the receiver, and it is used for encryption of the data. It is called public because it is available for general use; therefore, Alice can use Bob's public key to send him messages. On the other hand, the private is kept secret from the outside world, and is only available by an authorized person. The public and private keys always come in pairs, and this is because while the public key is used to encrypt data; its counterpart, the private key, is used to decrypt the data. 
 
-\section{Introduction to Number theory}
+\section{Introduction to Number Theory}
 
 In other to understand more topics pertaining cryptosystems, number theory and its notation, as well as some relevant theorems must be introduced. According to Stark \cite{stark1970introduction}, number theory consists of the study of the properties of whole numbers, and it is considered to be inextricably linked to cryptography. Goodrich \cite{2008algorithm} introduces number theory and most of its relevant aspects, most of which is briefly summarized as follows.
 
 \subsection{Fundamental Theorems}
 
 Given positive integers $a$ and $b$, we use the notation 
-\[
+\begin{equation}
 a|b
-\]
+\end{equation}
 to indicate that $a$ \textbf{divides} $b$, that is, $b$ is a multiple of $a$. If $a|b$, then we know that there is some integer $k$, such that $b=ak$. From this definition, the following properties are found:
 
 \begin{theorem}
@@ -77,14 +77,12 @@ to indicate that $a$ \textbf{divides} $b$, that is, $b$ is a multiple of $a$. If
 
 An integer $p$ is said to be \textbf{prime} if $p\geq 2$ and its only divisors are the trivial divisors $1$ and $p$. Therefore, in the case $p$ is a prime, $p|q$ implies $d=1$ or $d=p$. An integer greater than 2 that is not prime is said to be \textbf{composite}. Also, two integers which only share a common divisor of 1 are considered to be \textbf{relatively prime}.
 
-
 \begin{theorem}
 \emph{(Fundamental Theorem of Arithmetic)}
 Let $n > 1$ be an integer. Then there is a unique set of prime numbers $\{p_{1}, \dots p_{k}\}$ and positive integer exponents  $\{e_{1}, \dots , e_{k}\}$, such that
-
-\[
-n = p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}
-\]
+\begin{equation}
+n = p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}.
+\end{equation}
 \end{theorem}
 
 The above product $p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}$ is the prime decomposition of $n$. In other words, any positive integer is made up of the product between two prime numbers.   
@@ -92,49 +90,53 @@ The above product $p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}$ is the prime decompositio
 \subsection{Modular Arithmetic}
 
 The remainder of $a$ when divided by $n$ is expressed as $a \mod n$, that is:
-
-\[
-  r = a \Mod{n}
-\]
-
+\begin{equation}
+  r = a \Mod{n}.
+\end{equation}
 \noindent which means that there is some integer $q$, such that
-
-\[
-  a = qn + r
-\]
+\begin{equation}
+  a = qn + r.
+\end{equation}
 
 The remainder $r$ is resulting from $a \mod n$ is always an integer in the set $\{0, 1, 2, \dots, n-1\}$, even when $a$ is negative. The integer $n$ is called the \textbf{modulus}. 
-
-\textbf{Congruence} modulo $n$ is a relevant concept to mention as well. If
-\[
+\noindent \textbf{Congruence} modulo $n$ is a relevant concept to mention as well. If
+\begin{equation}
   a \Mod{n} = b \Mod{n},
-\]
+\end{equation}
 \noindent then we say that $a$ is \textbf{congruent} to $b$ modulo $n$, so it can be written in this way:
-\[
-a \equiv b \pmod n
-\]
+\begin{equation}
+a \equiv b \Mod{n}.
+\end{equation}
 Therefore, if $a \equiv b \mod n$, then $a-b=kn$ for some integer $k$. 
 
-Congruences have the following properties: 
-\begin{enumerate}
-\item $a \equiv b \pmod n$ if $n|(a-b)$.
-\item $a \equiv b \pmod n$ implies $b \equiv a \pmod n$.
-\item $a \equiv b \pmod n$ and mod $b \equiv c \pmod n$  imply $a \equiv c \pmod n$.
-\end{enumerate}
+Congruences have the following properties:
+\begin{equation}
+  a \equiv b \Mod{n} \text{ if } n|(a-b)
+\end{equation}
+\begin{equation}
+  a \equiv b \Mod{n} \text{ implies } b \equiv a \Mod{n}
+\end{equation}
+\begin{equation}
+  a \equiv b \Mod{n} \text{ and } b \equiv c \Mod{n} \text{ imply } a \equiv c \Mod {n}
+\end{equation}
 
 Suppose that there is a mapping of all integers by the $\pmod n$ operator into the set of integers $\{0, 1, \dots, (n-1)\}$. The technique used to perform arithmetic operations within the confines of this set is known as \textbf{modular arithmetic}. Modular arithmetic exhibits the following properties:
+\begin{equation}
+  [(a \Mod{n}) + (b \Mod{n})] \Mod{n} = (a + b) \Mod{n}
+\end{equation}
+\begin{equation}
+  [(a \Mod{n}) - (b \Mod{n})] \Mod{n} = (a - b) \Mod{n}
+\end{equation}
+\begin{equation}
+  [(a \Mod{n}) \times (b \Mod{n})] \Mod{n} = (a \times b) \Mod{n}
+\end{equation}
 
-\begin{enumerate}
-\item $[(a \Mod{n}) + (b \Mod{n})] \Mod{n} = (a + b) \Mod{n}$
-\item $[(a \Mod{n}) - (b \Mod{n})] \Mod{n} = (a - b) \Mod{n}$
-\item $[(a \Mod{n}) \times (b \Mod{n})] \Mod{n} = (a \times b) \Mod{n}$
-\end{enumerate}
 And so, the rules for ordinary arithmetic invoving addition, subtraction, and multiplication carry over into modular arithmetic, except that the result is always within the boundaries of the defined set, which is between 0 and $n-1$.
 
 Having explained modulo operation, as well as a having introduced modular arithmetic operations, a very convenient notation, called the set of residues, can be now described. Let $Z_{n}$ denote the set of nonnegative integers less than $n$:
-\[
+\begin{equation}
 Z_{n} = \{0,1,\cdots, (n-1)\}
-\]
+\end{equation}
 
 The set $Z_{n}$ is also called the set of \textbf{residues}, or \textbf{residue classes} modulo $n$, because if $b=a \mod n$, $b$ is sometimes called the \textbf{residue} of $a$ modulo $n$. The notation $Z_{n}$ represents the integers between 0 and $n-1$. Thus, when it says that ``Let $a$ be a member of $Z_{n}$'', it really means the same thing as ``Let $a$ be an integer between 0 and $n-1$.''
 
@@ -145,9 +147,9 @@ Every element $x$ in $Z_{n}$ has an \textbf{additive inverse}, that is, for each
 \subsection{Order and Generators}
 
 Given a prime $p$ and an integer $a$ between 1 and $p-1$, the \textbf{order} of $a$ is the smallest exponent $e > 1 $ such that
-\[
+\begin{equation}
   a^{e} \equiv 1 \mod q
-\]
+\end{equation}
 
 A \textbf{generator}, or primitive root, of $Z_{p}$ is an element $g$ of $Z_{p}$ with order $p-1$. It is called a generator, because the repeated exponentiation of it can generate all the elements in $Z_{p}^{*}$. $Z_{p}^{*}$ is a subset of $Z_{p}$, defined to be the set of integers between 1 and $n$ that are relatively prime to $n$. 
 
@@ -162,9 +164,9 @@ If $p$ is a prime, then set $Z_{p}$ has $\phi(p-1)$ generators.
 \begin{theorem}
 \emph{(Fermat's Little Theorem)}
 Let $p$ be a prime, and let $x$ be an integer such that \\ $x \mod p \ne 0$. In other words, that $p$ does not divide the integer $x$. Then
-\[
+\begin{equation}
 x^{p-1} \equiv 1 \pmod{n}
-\]
+\end{equation}
 \end{theorem}
 
 %\item 
@@ -195,7 +197,7 @@ A \textbf{group} G, denoted by $\{ G, \cdot \}$ is a set of elements with a bina
   \item[(A1) Closure:] If $a$ and $b$ belong to $G$, then $a \cdot b$ is also in $G$.
   \item[(A2) Associative:] $a \cdot (b \cdot c) = (a \cdot b) \cdot c $ for all $a$, $b$, $c$ in $G$.
   \item[(A3) Identity element:] There is an element $e$ in $G$ such that $a \cdot e = e \cdot a = a$ for all $a$ in $G$.
-  \item[(A4) Inverse element:] For each $a$ in $G$ there is an element $a'$ in G such that $a \cdot a' = a' \cdot a = e$ 
+  \item[(A4) Inverse element:] For each $a$ in $G$ there is an element $a'$ in G such that $a \cdot a' = a' \cdot a = e$. 
 \end{description}
 It is worth noting that if a group has a finite number of elements, it is called a \textbf{finite group}, and the order of the group is equal to the number of elements in the group. Otherwise, the group is an \textbf{infinite group}. Moreover, a group is said to be \textbf{abelian} if it satifies the following condition, known as the commutative property:
 \begin{description}
@@ -215,26 +217,25 @@ A \emph{ring} $R$, which is sometimes denoted by $\{R, +, \times \}$, is a set o
 
 Essentially, a ring is a set in which addition, subtraction $[a-b = a + (-b)]$, and multiplication can be done without leaving the set. Furthermore, a ring is said to be \textbf{commutative} if it satisfies the following additional condition:
 \begin{description}
-\item[(M4) Commutativity of multiplication:] $ab = ba$ for all $a$, $b$, $c$ in $R$.
+\item[(M4) Commutativity of multiplication:] $(a \times b) = (b \times a)$ for all $a$, $b$ in $R$.
 \end{description}
 
-Additionally, there are other axioms that, if obeyed, turn the commutative ring into an \textbf{integral domain}. The axioms are:  
-
+Additionally, there are other axioms that, if obeyed, turn the commutative ring into an \textbf{integral domain}. These axioms are:  
 \begin{description}
-\item[(M5) Multiplicative identity:] There is an element 1 in $R$ such that $a1 = 1a = a$ for all $a$ in $R$.
-\item[(M6) No zero divisors:] If $a$, $b$ in $R$ and $ab=0$, then either $a=0$ or $b=0$.
+\item[(M5) Multiplicative identity:] There is an element 1 in $R$ such that \\ $(a \times 1) = (1 \times a) = a$ for all $a$ in $R$.
+\item[(M6) No zero divisors:] If $a$, $b$ in $R$ and $(a \times b)=0$, then either $a=0$ or $b=0$.
 \end{description}
 
 \subsection{Homomorphisms}
 
 As it has been previously noted, operations within a closed group always result in another element from the group. Only one operation is allowed in a group: addition or multiplication, for instance. There may also be two groups or sets that are made up of different elements, each with its own operation. A \emph{homomorphism} consists of the construction of a function that \emph{translates} elements from one group to another group with the same properties.
 
-\subsubsection{Group homomorphism}
+\subsubsection{Group Homomorphism}
 
 According to Beachy and Blair \cite{beachy2006abstract}, a homomorphism is defined as follows: Let $G_{1}$ and $G_{2}$ be groups, and let $\phi: G_{1} \rightarrow G_{2}$ be a function. Then $\phi$ is said to be a \textbf{group homomorphism} if
-\[
+\begin{equation}
 \phi(a*b) = \phi(a) *' \phi(b)
-\]
+\end{equation}
 for all $a$, $b$ in $G_{1}$.
 
 Consider the example presented by Sorzano \cite{sorzano2013}, where there are two sets: $S= \{a, b, c\}$ and $S' = \{A, B, C\}$  with the operations $*: S \times S \rightarrow S$ and $*' : S' \times S' \rightarrow S'$. The operations within each group map two elements to another element from the same group. For example, $b*c=a$ and $a*a=a$, and in the other group, $A*A = A$ and $B*C=A$. So it can be seen that there is some similarity in the nature of the operations from both groups. Now consider the homomorphism between both groups, where:
@@ -249,9 +250,9 @@ Consider the example presented by Sorzano \cite{sorzano2013}, where there are tw
 
 \noindent Therefore, the following holds true using the above homomorphism:
 
-\[
+\begin{equation}
 b*c=a \rightarrow \phi(b) *' \phi(c) = \phi(a) \rightarrow B *' C = A
-\]
+\end{equation}
 
 What this means is that a homomorphism serves as a link to translate operations from one group to the other, keeping the same properties.
 
@@ -267,26 +268,21 @@ Let $R$ and $S$ be rings with addition and multiplication. The map $\phi: R \rig
 
 \section{Homomorphic Encryption}
 
-Homomorphic is a word that has its roots in Greek, and it means ``the same shape''. It is used in various areas, such as abstract algebra, which then inspired its use in cryptography. This concept refers to the ability to make computations, i.e. operations such as addition and multiplication, on encrypted data without sharing the secret key to decrypt the data prior to the computations. 
+Homomorphic is a word that has its roots in Greek, and it means ``the same shape''. It is used in various areas, such as abstract algebra, which then inspired its use in cryptography. This concept refers to the ability to make computations, i.e.\ operations such as addition and multiplication, on encrypted data without sharing the secret key to decrypt the data prior to the computations. 
 
 Before homomorphic encryption, any change to the secret value contained in a ciphertext required the corresponding secret key, so that it could be decrypted, applied the change, and re-encrypted. However, homomorphic encryption eliminates the need of sharing the secret key, especially with those that are not to be completely trusted, in the event that there is some change that must be applied to encrypted data. 
 Lange \cite{lange2011} mentions several applications that would benefit from a homomorphic encryption function, given its ability to manipulate encrypted data. Such applications fall in the domain of: e-cash, e-voting, private information retrieval (encrypted databases), and cloud computing.
 
-\subsection{What is Homomorphic Encryption?}
+%\subsection{What is Homomorphic Encryption?}
 According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, when the encryption function of a cryptosystem is a homomorphism, meaning that it preserves group operations performed on ciphertexts, it is called a \emph{homomorphic cryptosystem}. The group operation considered for this kind of cryptosystem is either the arithmetic addition or multiplication, or both. A homomorphic encryption is additive if:
-
-% a \textit{homomorphic cryptosystem} is a cryptosystem which encryption function is a homomorphism, and thus preserves group operations performed on ciphertexts.
-% Either arithmetic addition or multiplication is the group operation considered.  
-
-\[
+\begin{equation}
 \mathcal{E}(x+y) = \mathcal{E}(x)\otimes \mathcal{E}(y)
-\]
+\end{equation}
 
 where $\mathcal{E}$ denotes an encryption function, $\otimes$ denotes an operation depending on the used cipher and $x$ and $y$ are plaintext messages. A homomorphic encryption is multiplicative if:
-
-\[
+\begin{equation}
 \mathcal{E}(x \cdot y) = \mathcal{E}(x) \otimes \mathcal{E}(y)
-\]
+\end{equation}
 
 where again $\mathcal{E}$ denotes an encryption function, $\otimes$ denotes an operation depending on the used cipher and $x$ and $y$ are plaintext messages.
 
@@ -296,7 +292,7 @@ The above conditions denote that the result of the operations between both input
 
 Homomorphic encryption schemes are classified in two broad groups, depending on how they are defined, namely: partially homomorphic and fully homomorphic. 
 
-\textit{Partially homomorphic encryption} schemes are defined over a group, and they support one operation at most: either addition or multiplication. On the other hand, \textit{fully homomorphic encryption} schemes are defined over a ring, and can support up to two operations: addition and multiplication.
+\emph{Partially homomorphic encryption} schemes are defined over a group, and they support one operation at most: either addition or multiplication. On the other hand, \emph{fully homomorphic encryption} schemes are defined over a ring, and can support up to two operations: addition and multiplication.
 
 According to P{\"o}tzelsberger \cite{potzelsberger2013kv}, even though somewhat homomorphic cryptosystems support a limited number of homomorphic operations, they are the building blocks for fully homomorphic encryption, and provide much more efficiency and shorter ciphertexts than their fully homomorphic counterparts. 
 
@@ -308,17 +304,17 @@ Craig Gentry \cite{homoenc} explains the concept behind homomorphic encryption i
 Hayes \cite{Hayes2012} offers a proof of concept that accurately describes the very essence of a homomorphic cryptosystem. It is shown as follows: consider that the plaintext consists of integers; to encrypt a number, double it; to decrypt it, divide by 2. Using this scheme, addition and a nonstandard version of multiplication can be done on the encrypted data. Given the plaintext inputs $x$ and $y$, we can encrypt each of them separately, add the ciphertexts, and finally decrypt the result. This calculation would give the correct answer, expressed as $2x+2y=2(x+y)$. In other words, it is the same result as if each plaintext input were multiplied separately and then added with each other, because in the end, dividing it by two causes the same effect on both sides. 
 Regarding multiplication, a little tweak has to be done for it to work. The product of the ciphertexts is defined as $(\frac{1}{2}) C_x C_y$, while the plaintexts are multiplied by the regular formula $xy$. 
 As an example, consider $x=5$ and $y=7$. The result of the multiplication would come as $x \times y = 35$. To perform the same evaluation between ciphertexts, both inputs would be encrypted following the rule previously defined:
-\[
+\begin{equation}
 C_{x} = 5 \times 2 = 10
-\]
-\[
+\end{equation}
+\begin{equation}
 C_{y} = 7 \times 2 = 14
-\]
+\end{equation}
 The multiplication is performed as $(\frac{1}{2}) 10 \times 14 = 70$, and it is divided by 2 to decrypt the ciphertext: $\frac{70}{2} = 35$, which turns out to be the correct result of the multiplication.
 
 Certainly, the above cryptosystem is considered to be \emph{fully homomorphic}, since it supports both addition and multiplication. However, it is definitely not a secure one, since anyone that knows of the workings of the cipher can easily get to learn the secret message. This is also partly the reason of why the encryption and decryption algorithms are not usually kept as a secret, because it would be quite impractical to make a different encryption and decryption algorithm every time it were discovered. 
 
-Stuntz \cite{stuntz2010} provides an example of a cipher scheme that has an inherent homomorphic property. Consider the popular, yet insecure, ROT13 cipher, also known as the Caesar cipher. The ROT13 is a simple substitution cipher which changes each letter with the letter that is thirteen positions ahead on encryption. To do decryption, it does the opposite: each character goes back thirteen positions in the alphabet. 
+Stuntz \cite{stuntz2010} provides an example of a cipher scheme that has an inherent homomorphic property. Consider the popular, yet unsecure, ROT13 cipher, also known as the Caesar cipher. The ROT13 is a simple substitution cipher which changes each letter with the letter that is thirteen positions ahead on encryption. To do decryption, it does the opposite: each character goes back thirteen positions in the alphabet. 
 ROT13 is partially homomorphic with respect to the concatenation operation, because it is possible to concatenate two different pieces of ciphertexts. At decryption, the concatenation of the two pieces of ciphertexts ends up to be same as the concatenation of the original messages, the plaintext. Therefore, it is partially homomorphic with respect to concatenation. 
 
 Consider, for instance, the plaintext pair $P_{1}=$ HELLO and $P_{2}=$ WORLD, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=$ URYYB and $C_{2}=$ JBEYQ, and if concatenated, ``URYYBJBEYQ''. Therefore, if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally. Figure \ref{fig:homosample} shows the aforementioned example as it goes through the encryption and decryption processes. 
@@ -403,7 +399,7 @@ As it was previously mentioned, various individuals and corporations are hesitan
 \item[Biometric Authentication.-] Biometric authentication is an area of application quite different from the rest. This is because biometric data is assumed to be public, since fingerprints virtually on every object touched by a person. Therefore, according to P{\"o}tzelsberger \cite{potzelsberger2013kv}, what is considered to be private is the relationship between the biometric data and the person from whom it comes. It can be applied on the scenario where the user tries to authenticate using one of his biometric features: the biometric feature would be stored and encrypted before it looks for a match in the database. The homomorphic evaluation would consist in the comparison between the user's biometric feature and all of the existing rows in the database. Traditional cryptographic would not be appropriate for this task, since biometric data can vary slightly each time, so an exact match would not work out. Assuming that the biometric feature is stored as a binary string, the homomorphic evaluation would consist in computing the Hamming distance between two feature vectors, and a predefined threshold to achieve the comparison. This is how the biometric data itself can stay public, but the relationship of whom it belongs to is kept private.
 \end{description}
 
-\section{Services in the cloud}
+\section{Services in the Cloud}
 
 The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. As Xu et al. in \cite{cryptoeprint:2011:574} point out, cloud storage services, such as Dropbox, Skydrive, Google Drive, and Amazon S3 have become very popular in recent years. As the use of these services become more common, more sensitive information is kept in the cloud, such as emails, health records, private videos and photos, company finance data, government documents, etc. 
 
