@@ -31,7 +31,7 @@ The solution itself consists in an implementation of a client-server software th
 
 An implementation of a homomorphic encryption scheme, the Brakerski-Gentry-Vaikuntanathan (BGV), is openly available as a C++ library, called HELib. Using this library, it is possible to encrypt integer values and perform operations on them while being encrypted. There are many parameters to be considered when using this implementation, and these usually define how the public and private keys are going to be like. For this particular application, most parameters can be left in their default values, as they seem to serve the intended purpose. 
 
-Part of the description found in the code repository of HElib states that the library is considered to be low-level, and given its difficulty and constant changes, it is not that appropriate to build big applications with it. Regarding the use of the library and its implementation of homomorphic encrypted, often referred to as \emph{HE}, the following is stated: ``At its present state, this library is mostly meant for researchers working on HE and its uses. Also currently it is fairly low-level, and is best thought of as \emph{assembly language for HE}. That is, it provides low-level routines (set, add, multiply, shift, etc.), with as much access to optimizations as we can give.'' Brakerski et al. \cite{helib}.
+Part of the description found in the code repository of HElib states that the library is considered to be low-level, and given its difficulty and constant changes, it is not that appropriate to build big applications with it. Regarding the use of the library and its implementation of homomorphic encrypted, often referred to as \emph{HE}, the following is stated: ``At its present state, this library is mostly meant for researchers working on HE and its uses. Also currently it is fairly low-level, and is best thought of as \emph{assembly language for HE}. That is, it provides low-level routines (set, add, multiply, shift, etc.), with as much access to optimizations as we can give.'' Brakerski et al.\ \cite{helib}.
 
 It is important to note that the library recently started to support multi-threading, which would considerably speed up the evaluation times of the homomorphic operations. Not too long ago it started to support bootstrapping as well, a technique that prevents the ciphertext from getting too much noise and that eventually results in the incorrect homomorphic evaluations.
 
@@ -45,7 +45,7 @@ Table \ref{tbl:parameters} briefly describes each parameter used in HElib. It do
   \caption{Parameters used in HElib}
   \label{tbl:parameters}
 \centering
-  \begin{tabular}{|l|c|r|}
+  \begin{tabular}{|l|l|l|}
     \hline
     \textbf{Parameter} & \textbf{Description} & \textbf{Value} \\ \hline
     R  &     number of rounds &  default=1     \\ \hline
@@ -75,20 +75,17 @@ In order to generate a set of keys, a component called a \emph{context} needs to
 \begin{lstlisting}[caption={Key generation},label={lst:keyGeneration},numbers=left,escapeinside={@}{@}]
   FHEcontext* context;
   FHESecKey* secretKey;
-  FHEPubKey* publicKey;
-  
+  FHEPubKey* publicKey;  
   context = new FHEcontext(m, p, r);
-
   // Set of keys are initialized
   publicKey = new FHESecKey(*context);
   secretKey = publicKey;
-
   // Secret key is fully created by using these two methods
   secretKey->GenSecKey(w); 
   addSome1DMatrices(*secretKey); 
 \end{lstlisting}
 
-Before proceeding to encrypt the data, it is important to have the public key serialized and ready to send it to the server. Serialization is a popular term used to describe the encoding of objects and the objects reachable from them, into a string of bytes. Serialization is a term introduced by Oracle \cite{oracleserial}, and it is commonly used for lightweight persistence and communication via sockets. In this case, it is used as the means of temporarily storing the public key in a stream of bytes so it can be shared with a remote server that will be able to read such stream. Only after the contents of the saved object have been fully read, it will be possible to reconstruct the public key. Fortunately, the HElib provides a very simple way to do serialization, since the class \textit{FHESecKey} supports the $<<$ operator which works quite nicely with a couple popular serialization classes in C++ called \textit{istringstream} and \textit{ostringstream}. The use of this class is showed as follows: 
+Before proceeding to encrypt the data, it is important to have the public key serialized and ready to send it to the server. Serialization is a popular term used to describe the encoding of objects and the objects reachable from them, into a string of bytes. Serialization is a term introduced by Oracle \cite{oracleserial}, and it is commonly used for lightweight persistence and communication via sockets. In this case, it is used as the means of temporarily storing the public key in a stream of bytes so it can be shared with a remote server that will be able to read such stream. Only after the contents of the saved object have been fully read, it will be possible to reconstruct the public key. Fortunately, the HElib provides a very simple way to do serialization, since the class \textit{FHESecKey} supports the $\ll$ operator which works quite nicely with a couple popular serialization classes in C++ called \textit{istringstream} and \textit{ostringstream}. The use of this class is showed as follows: 
 
 \begin{lstlisting}[caption={Key serialization},label={lst:serializeKey},numbers=left,escapeinside={@}{@}]
   ostringstream pkstream;
