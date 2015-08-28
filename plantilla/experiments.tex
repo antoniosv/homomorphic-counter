@@ -1,7 +1,7 @@
 \chapter{Experiments and Results}
 \label{results}
 
-This section describes the design of the experiments related to the use of fully homomorphic encryption in HELib, as well as a summary of the results obtained. The objective of the experimental design was to test whether or not homomorphic encryption were practical enough to be applied in the cloud as a web application. The feasibility of application in the web depends heavily on the time required to perform homomorphic evaluations, which is affected by several factors. One of these main factors is the \emph{security parameter} $k$, which is a value closely related to the generation of public and private keys and how secure they are. The experimental design consists in changing the $k$ parameter to different values, as to see to what degree it has impact on the key generation, encryption, decryption and addition \emph{processing times}, as well as the \emph{size} of the resulting public key and ciphertext. Finally, the results obtained are presented and briefly discussed. 
+This section describes the design of the experiments related to the use of fully homomorphic encryption in HElib, as well as a summary of the results obtained. The objective of the experimental design was to test whether or not homomorphic encryption were practical enough to be applied in the cloud as a web application. The feasibility of application in the web depends heavily on the time required to perform homomorphic evaluations, which is affected by several factors. One of these main factors is the \emph{security parameter} $k$, which is a value closely related to the generation of public and private keys and how secure they are. The experimental design consists in changing the $k$ parameter to different values, as to see to what degree it has impact on the key generation, encryption, decryption and addition \emph{processing times}, as well as the \emph{size} of the resulting public key and ciphertext. Finally, the results obtained are presented and briefly discussed. 
 
 \section{Setup}
 
@@ -19,7 +19,7 @@ It is important to consider that the experimentation was done on a notebook whic
 
 The results are presented in Table \ref{tbl:results}, where the column represents the characteristic or attribute considered, such as the processing times and the size of the public key and ciphertext files measured in bytes. Consider that the values presented are the averages obtained from the set of iterations run.
 
-\begin{table}[h]
+\begin{table}[t]
   \caption{Experimental results}
   \label{tbl:results}
 \begin{tabular}{lllllll}

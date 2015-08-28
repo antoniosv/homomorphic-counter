@@ -1,7 +1,7 @@
 \chapter{Background}
 \label{background}
 
-Information security is a broad topic that covers many different aspects, from which two of them are particularly important for this work: confidentiality and authentication. There are some aspects from cryptography that would be relevant to review, such as asymmetric and symmetric cryptography, as well as the concepts: \emph{plaintext}, \emph{ciphertext}, and \emph{secret key}. In order to explain more advanced topics, number theory and abstract algebra are introduced. Homomorphic encryption is explained thoroughly, noting the mathematical properties and its categories, as well as some possible applications of this type of encryption. The first fully homomorphic encryption scheme is introduced, paving the road for the Brakerski-Gentry-Vaikuntanathan cryptosystem (referred to as the BGV scheme from now on.) Finally, a brief description of cloud computing and its relevant aspects are presented, as well as the impact of secure computation.
+Information security is a broad topic that covers many different aspects, from which two of them are particularly important for this work: confidentiality and authentication. There are some aspects from cryptography that would be relevant to review, such as asymmetric and symmetric cryptography, as well as the concepts: \emph{plaintext}, \emph{ciphertext}, and \emph{secret key}. In order to explain more advanced topics, number theory and abstract algebra are introduced. Homomorphic encryption is explained thoroughly, noting the mathematical properties and its categories, as well as some possible applications of this type of encryption. The first fully homomorphic encryption scheme is introduced, paving the road for the Brakerski-Gentry-Vaikuntanathan cryptosystem (referred to as the BGV scheme from now on). Finally, a brief description of cloud computing and its relevant aspects are presented, as well as the impact of secure computation.
 
 \section{Information Security and Data Confidentiality}
 
@@ -95,7 +95,7 @@ The remainder of $a$ when divided by $n$ is expressed as $a$ mod $n$, that is:
 \end{equation}
 \noindent which means that there is some integer $q$, such that
 \begin{equation}
-  a = qn + r.
+  a = qn + r,
 \end{equation}
 
 The remainder $r$ is resulting from $a \mod n$ is always an integer in the set $\{0, 1, 2, \dots, n-1\}$, even when $a$ is negative. The integer $n$ is called the \textbf{modulus}. 
@@ -117,7 +117,7 @@ Congruences have the following properties:
   a \equiv b \Mod{n} \text{ implies } b \equiv a \Mod{n}
 \end{equation}
 \begin{equation}
-  a \equiv b \Mod{n} \text{ and } b \equiv c \Mod{n} \text{ imply } a \equiv c \Mod {n}
+  a \equiv b \Mod{n} \text{ and } b \equiv c \Mod{n} \text{ imply } a \equiv c \Mod {n}.
 \end{equation}
 
 Suppose that there is a mapping of all integers by the mod $n$ operator into the set of integers $\{0, 1, \dots, (n-1)\}$. The technique used to perform arithmetic operations within the confines of this set is known as \textbf{modular arithmetic}. Modular arithmetic exhibits the following properties:
@@ -128,17 +128,17 @@ Suppose that there is a mapping of all integers by the mod $n$ operator into the
   [(a \Mod{n}) - (b \Mod{n})] \Mod{n} = (a - b) \Mod{n}
 \end{equation}
 \begin{equation}
-  [(a \Mod{n}) \times (b \Mod{n})] \Mod{n} = (a \times b) \Mod{n}
+  [(a \Mod{n}) \times (b \Mod{n})] \Mod{n} = (a \times b) \Mod{n}.
 \end{equation}
 
 And so, the rules for ordinary arithmetic invoving addition, subtraction, and multiplication carry over into modular arithmetic, except that the result is always within the boundaries of the defined set, which is between 0 and $n-1$.
 
 Having explained modulo operation, as well as a having introduced modular arithmetic operations, a very convenient notation, called the set of residues, can be now described. Let $Z_{n}$ denote the set of nonnegative integers less than $n$:
 \begin{equation}
-Z_{n} = \{0,1,\cdots, (n-1)\}
+Z_{n} = \{0,1,\cdots, (n-1)\}.
 \end{equation}
 
-The set $Z_{n}$ is also called the set of \textbf{residues}, or \textbf{residue classes} modulo $n$, because if $b=a \mod n$, $b$ is sometimes called the \textbf{residue} of $a$ modulo $n$. The notation $Z_{n}$ represents the integers between 0 and $n-1$. Thus, when it says that ``Let $a$ be a member of $Z_{n}$'', it really means the same thing as ``Let $a$ be an integer between 0 and $n-1$.''
+The set $Z_{n}$ is also called the set of \textbf{residues}, or \textbf{residue classes} modulo $n$, because if $b=a \mod n$, $b$ is sometimes called the \textbf{residue} of $a$ modulo $n$. The notation $Z_{n}$ represents the integers between 0 and $n-1$. Thus, when it says that ``Let $a$ be a member of $Z_{n}$'', it really means the same thing as ``Let $a$ be an integer between 0 and $n-1$''.
 
 Modular arithmetic in $Z_{n}$, where operations on the elements of $Z_{n}$ are performed mod $n$, show properties similar to those in traditional arithmetic, such as the \textbf{associativity}, \textbf{commutativity}, \textbf{distributivity} of addition and multiplication, and the existence of \textbf{identity} elements 0 and 1 for addition and multiplication, respectively. However, other operations such as division and exponentiation, behave very differently than they do for normal arithmetic. 
 
