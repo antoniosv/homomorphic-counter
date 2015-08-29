@@ -91,11 +91,11 @@ The above product $p_{1}^{e_{1}} \cdots p_{k}^{e_{k}}$ is the prime decompositio
 
 The remainder of $a$ when divided by $n$ is expressed as $a$ mod $n$, that is:
 \begin{equation}
-  r = a \Mod{n}.
+  r = a \Mod{n},
 \end{equation}
 \noindent which means that there is some integer $q$, such that
 \begin{equation}
-  a = qn + r,
+  a = qn + r.
 \end{equation}
 
 The remainder $r$ is resulting from $a \mod n$ is always an integer in the set $\{0, 1, 2, \dots, n-1\}$, even when $a$ is negative. The integer $n$ is called the \textbf{modulus}. 
@@ -148,7 +148,7 @@ Every element $x$ in $Z_{n}$ has an \textbf{additive inverse}, that is, for each
 
 Given a prime $p$ and an integer $a$ between 1 and $p-1$, the \textbf{order} of $a$ is the smallest exponent $e > 1 $ such that
 \begin{equation}
-  a^{e} \equiv 1 \mod q
+  a^{e} \equiv 1 \mod q.
 \end{equation}
 
 A \textbf{generator}, or primitive root, of $Z_{p}$ is an element $g$ of $Z_{p}$ with order $p-1$. It is called a generator, because the repeated exponentiation of it can generate all the elements in $Z_{p}^{*}$. $Z_{p}^{*}$ is a subset of $Z_{p}$, defined to be the set of integers between 1 and $n$ that are relatively prime to $n$. 
@@ -244,7 +244,7 @@ Consider the example presented by Sorzano \cite{sorzano2013}, where there are tw
   \phi: S \rightarrow S' \\
   \phi(a) = A \\
   \phi(b) = B \\
-  \phi(c) = C \\
+  \phi(c) = C. \\
 \end{split}
 \]
 
@@ -261,7 +261,7 @@ Similarly to groups, there are also homomorphisms for rings, the main difference
 
 Let $R$ and $S$ be rings with addition and multiplication. The map $\phi: R \rightarrow S$ is a homomorphism if:
 \begin{enumerate}
-\item $\phi$ is a group homomorphism on the additive groups $(R, +)$ and $(S,+)$
+\item $\phi$ is a group homomorphism on the additive groups $(R, +)$ and $(S,+)$.
 \item $\phi(xy) = \phi(x) \phi(y)$ $\forall x, y \in R$.
 \end{enumerate}
 
@@ -398,7 +398,7 @@ As it was previously mentioned, various individuals and corporations are hesitan
 
 \section{Services in the Cloud}
 
-The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. As Xu et al.\ in \cite{cryptoeprint:2011:574} point out, cloud storage services, such as Dropbox, Skydrive, Google Drive, and Amazon S3 have become very popular in recent years. As the use of these services become more common, more sensitive information is kept in the cloud, such as emails, health records, private videos and photos, company finance data, government documents, etc. 
+The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. As Xu et al.\ \cite{cryptoeprint:2011:574} point out, cloud storage services, such as Dropbox, Skydrive, Google Drive, and Amazon S3 have become very popular in recent years. As the use of these services become more common, more sensitive information is kept in the cloud, such as emails, health records, private videos and photos, company finance data, government documents, etc. 
 
 Li et al.\ \cite{cryptoeprint:2009:593} introduce cloud computing as a new term that views computing as a utility which enables convenient, on-demand access to computing resources that can be rapidly deployed with minimal management overhead and great efficiency. Cloud computing has the potential to benefit its users in avoiding large capital expenditure used for deployment and management of both software and hardware, such as setting up a data center. 
 
@@ -406,9 +406,9 @@ All of these services are opening up a new era powered by the Software-as-a-Serv
 
 The aforementioned issue brings up the need of having a mechanism that verifies that a cloud provider is storing the whole database intact, even the portions that are rarely accessed. Ateniese et al.\ \cite{cryptoeprint:2014:886} point out that, fortunately, a series of \emph{proofs-of-storage} protocols have been proposed to solve this problem related to data integrity. Xu et al.\ \cite{cryptoeprint:2014:395} define a proof of storage (POR or PDP) as a cryptographic tool, which enables a data owner or third party auditor to audit integrity of data stored remotely in a cloud storage server, without keeping a local copy of data or downloading data back during auditing. In other words, applying a proof of storage in a cloud server can guarantee that the data has not been tampered with; and in the event that it is, most likely the service could be held liable for damages to the data. A huge advantage of using a proof of storage is that the data does not have to be downloaded to confirm its integrity, which makes it ideal to make use of it routinely. 
 
-One of the simplest use cases for cloud computing is when a user independent from the cloud wants to store some data in it for later retrieval. In this simple case, data confidentiality and integrity can be trivially ensured. For that, typical cryptography primitives can be used by encrypting the user's data before it is sent for storage in the cloud. To ensure confidentiality, the key used for encryption is kept secret from the cloud provider. However, real life applications are not as simple. Damgard et al.\ \cite{cryptoeprint:2013:629} mentions that the cloud is more than a storage medium; in particular, computation over the stored data is outsourced to the cloud. Sometimes it might even be distributed among distinct cloud servers geographically apart, operated by different parties. Wang et al.\ \cite{cryptoeprint:2009:081} describe the nature of the problem at length, because usually a cloud service is not solely restricted as a data warehouse. The data stored in the cloud may be frequently updated by the users, including insertion, deletion, modification, appending, reordering, etc. This kind of complex scenario is what makes the use of traditional cryptographic primitives so difficult to adapt, especially because the data is not stored in a single cloud server, but is instead redundantly stored in multiple physical locations to further reduce the data integrity threats. Therefore, making use of cloud services highly improve data avalability and storage flexibility, data confidentiality and integrity is put at risk.
+One of the simplest use cases for cloud computing is when a user independent from the cloud wants to store some data in it for later retrieval. In this simple case, data confidentiality and integrity can be trivially ensured. For that, typical cryptography primitives can be used by encrypting the user's data before it is sent for storage in the cloud. To ensure confidentiality, the key used for encryption is kept secret from the cloud provider. However, real life applications are not as simple. Damgard et al.\ \cite{cryptoeprint:2013:629} mention that the cloud is more than a storage medium; in particular, computation over the stored data is outsourced to the cloud. Sometimes it might even be distributed among distinct cloud servers geographically apart, operated by different parties. Wang et al.\ \cite{cryptoeprint:2009:081} describe the nature of the problem at length, because usually a cloud service is not solely restricted as a data warehouse. The data stored in the cloud may be frequently updated by the users, including insertion, deletion, modification, appending, reordering, etc. This kind of complex scenario is what makes the use of traditional cryptographic primitives so difficult to adapt, especially because the data is not stored in a single cloud server, but is instead redundantly stored in multiple physical locations to further reduce the data integrity threats. Therefore, making use of cloud services highly improve data avalability and storage flexibility, data confidentiality and integrity is put at risk.
 
-In order to tackle these issues, there have been many attempts to make cloud services, especially cloud computing, more secure. These attempts are very different in nature, though very similar regarding its goals. These are \emph{secure multi-party computation} and \emph{homomorphic encryption}. David, Nishimaki, et al.\ \cite{cryptoeprint:2015:135} describes secure multiparty computation (MPC) as the means to allow mutually distrustful parties to compute functions on private data that they hold, without revealing data to each other. There are many methods and approaches proposed to perform secure multiparty computation, although only recent attempts are considered to be efficient enough for application. On the other hand, homomorphic encryption is based on the idea of performing computations on the ciphertext that has gone through an encryption algorithm, without having to decrypt it beforehand. This aspect makes homomorphic encryption a good technique for cloud services, since only the authorized users are able to decrypt the ciphertext after the necessary computations have been performed on it.
+In order to tackle these issues, there have been many attempts to make cloud services, especially cloud computing, more secure. These attempts are very different in nature, though very similar regarding its goals. These are \emph{secure multi-party computation} and \emph{homomorphic encryption}. David et al.\ \cite{cryptoeprint:2015:135} describes secure multiparty computation (MPC) as the means to allow mutually distrustful parties to compute functions on private data that they hold, without revealing data to each other. There are many methods and approaches proposed to perform secure multiparty computation, although only recent attempts are considered to be efficient enough for application. On the other hand, homomorphic encryption is based on the idea of performing computations on the ciphertext that has gone through an encryption algorithm, without having to decrypt it beforehand. This aspect makes homomorphic encryption a good technique for cloud services, since only the authorized users are able to decrypt the ciphertext after the necessary computations have been performed on it.
 
 %Pendiente hacer un resumen del capitulo y ligarlo al siguiente capitulo
 

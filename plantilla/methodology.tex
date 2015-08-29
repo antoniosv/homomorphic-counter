@@ -92,7 +92,7 @@ Before proceeding to encrypt the data, it is important to have the public key se
   pkstream << *publicKey;
 \end{lstlisting}
 
-As shown in the code snippet \ref{lst:serializeKey}, the data stored inside the public key object has been stored as a stream of bytes in a highly portable object from the \textit{ostringstream} class. Using this newly populated object, the public key can be shared using sockets.
+As shown in Code Snippet \ref{lst:serializeKey}, the data stored inside the public key object has been stored as a stream of bytes in a highly portable object from the \textit{ostringstream} class. Using this newly populated object, the public key can be shared using sockets.
 
 \section{{Encryption of the Counter Value}}
 
@@ -108,7 +108,7 @@ Following the conventions defined in the HElib, objects from the \textit{Encrypt
   ea.encrypt(encryptedCounter, *publicKey, counter); 
 \end{lstlisting}
 
-The ciphertext obtained from the code snippet \ref{lst:encrypt} can be used in several ways: its value can be modified by adding, substracting or multiplying it by some arbitrary value, it could also be decrypted at any time using the private key, or it could be serialized as it was done with the public key, so another party, e.g.\ the server, can receive and store it.
+The ciphertext obtained from Code Snippet \ref{lst:encrypt} can be used in several ways: its value can be modified by adding, substracting or multiplying it by some arbitrary value, it could also be decrypted at any time using the private key, or it could be serialized as it was done with the public key, so another party, e.g.\ the server, can receive and store it.
 
 \section{{Operation Flow: Single Component}}
 
@@ -199,7 +199,7 @@ The following piece of code extracted from the server side where the ciphertext 
 
 \section{{Reconstructing the Ciphertext}}
 
-It was observed in the code snippets \ref{lst:write} and \ref{lst:keyGeneration}, serialization enabled persistence of the public key and ciphertext and made it easier for the object data to be sent via sockets. However, the serialized objects cannot be used the way they are received. In this case, the ciphertext was serialized before being sent to the server, and once it is properly received, the data must be used to reconstruct the original ciphertext object.
+It was observed in Code Snippet \ref{lst:keyGeneration}  and Code Snippet \ref{lst:write} that serialization enabled persistence of the public key and ciphertext and made it easier for the object data to be sent via sockets. However, the serialized objects cannot be used the way they are received. In this case, the ciphertext was serialized before being sent to the server, and once it is properly received, the data must be used to reconstruct the original ciphertext object.
 If this is not done, there is no way to perform operations on the ciphertext, or even decrypt it to know its value.
 
 The following piece of code describes the steps to be taken in order to reconstruct the object that will contain the ciphertext. First of all, the buffer that was previously filled with data is copied into a string variable, then it goes through a couple of steps so it can be used as a \textit{istringstream} object. The preparation seems complicated, but the reconstruction of the ciphertext object is actually quite simple. Since HElib is friendly with the \textgreater\textgreater operators, it can be done in one step. This operator basically takes the data from one variable and puts it in another kind of variable, one being a \textit{istringstream} object, and the other a \textit{Ctxt} object.
@@ -215,7 +215,7 @@ The following piece of code describes the steps to be taken in order to reconstr
   serialCipher >> receivedCipher;
 \end{lstlisting}
 
-As it is observed in the code snippet \ref{lst:reconstruct}, in order for the server to perform any kind of computation it requires both the ciphertext and its respective public key. That is why it is recommended to perform some kind of registration at the beginning, so that it is not necessary to share the public key every time a change is to be done on the ciphertext. 
+As it is observed in Code Snippet \ref{lst:reconstruct}, in order for the server to perform any kind of computation it requires both the ciphertext and its respective public key. That is why it is recommended to perform some kind of registration at the beginning, so that it is not necessary to share the public key every time a change is to be done on the ciphertext. 
 
 \section{{Changes in the Counter}}
 
@@ -234,7 +234,7 @@ Once the initial value of the counter is received by the server, there are two p
   encryptedCounter += ctxtChange;
 \end{lstlisting}
 
-The code snippet \ref{lst:addition} focuses on performing addition on the original counter value; it only requires that the respective public key is present to do the proper initializations. Prior to performing the addition, it is assumed that the value that represents the change on the counter has been previously received and validated. The operation itself is quite simply, since it uses the common addition operator. 
+Code Snippet \ref{lst:addition} focuses on performing addition on the original counter value; it only requires that the respective public key is present to do the proper initializations. Prior to performing the addition, it is assumed that the value that represents the change on the counter has been previously received and validated. The operation itself is quite simply, since it uses the common addition operator. 
 
 As it has been mentioned, whenever a homomorphic evaluation is performed on the ciphertext, a small amount of noise is added to it, and after a certain threshold, the ciphertext becomes unusable, in the sense that it no longer decrypts back to the correct value. \emph{Bootstrapping} is an advanced technique in fully homomorphic encryption which allows more homomorphic evaluations to be run on a ciphertext. As an alternative to bootstrapping, however, it is possible to reset the counter, i.e.\ upload a newly created ciphertext with an initial counter value, so that more homomorphic evaluations can be performed on it.  Considering that the operations that will be done most of the time are addition and subtraction, this is not something that will occur often, but eventually will. As of December 2014, HElib includes bootstrapping as an optimization of the scheme, which would increase the number of operations that can be done on a ciphertext before the accumulated noise makes it impossible to decipher the encrypted value. However, as the implementation of this counter system was started before December 2014, it was not considered to make use of bootstrapping.
 
