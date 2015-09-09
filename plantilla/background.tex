@@ -44,8 +44,10 @@ Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a quin
 Figure \ref{fig:cryptoflow} depicts the process flow of a simple cryptosystem that is put in place. The plaintext and encryption key $K_A$ is used as input by an encryption algorithm, which results in a ciphertext that gets sent to the other end of the communication line. Then, the ciphertext is used as input by a decryption algorithm, which takes a decryption key $K_B$, finally resulting in the original plaintext. Depending on the type of cryptosystem (symmetric or asymmetric), the encryption keys can be considered to be the same or different, i.e.\ $K_{A}\ne K_{B}$ if asymmetric, or $K_{A} = K_{B}$ if symmetric.
 
 \begin{figure}[H]
-  \centerline{\includegraphics[width=14cm]{img/basic_crypto}}
-  \caption[Basic cryptosystem diagram]{Basic cryptosystem diagram. Source: Kurose and Ross \cite{kurose2010computer}.}
+  %\centerline{\includegraphics[width=14cm]{img/basic_crypto}}
+  \centering
+  \includegraphics{basiccryptosystem}
+  \caption[Basic cryptosystem diagram]{Basic cryptosystem diagram. Based on Kurose and Ross \cite{kurose2010computer}.}
   \label{fig:cryptoflow}
 \end{figure}
 
