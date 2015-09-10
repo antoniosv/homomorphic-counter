@@ -220,7 +220,7 @@ As it is observed in Code Snippet \ref{lst:reconstruct}, in order for the server
 \section{{Changes in the Counter}}
 
 Once the initial value of the counter is received by the server, there are two possible scenarios that could occur next: the value gets viewed by the householder, or a change in the counter occurs. Whenever a significant change is observed by the client program, the change is promptly notified to the server, which could be either imply that the value goes up or down. When the cloud service receives the value of change, it either adds or subtracts it from the previously stored value. The change can then be known to the user by retrieving the encrypted counter.
-
+\newline
 \begin{lstlisting}[caption={Addition on the ciphertext},label={lst:addition},numbers=left,escapeinside={@}{@}]
   // Object for plaintext is initialized using the encrypted array object
   PlaintextArray ptxtChange(*ea);
@@ -246,7 +246,7 @@ In Figure \ref{fig:clientserver}, a breakdown of the client-model architecture e
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=1]{architecture}
+  \includegraphics[scale=1]{img/architecture}
  \caption{Architecture breakdown into client and server.}
  \label{fig:clientserver}
 \end{figure}
@@ -255,7 +255,7 @@ In order to understand how the workflow occurs inside of the client-server archi
 
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.65]{counter}
+  \includegraphics[scale=0.65]{img/counter}
   \caption{Sequence diagram showing operation under normal conditions}
   \label{fig:seqdiag}
 \end{figure}

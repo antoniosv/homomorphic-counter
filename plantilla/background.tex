@@ -319,8 +319,8 @@ ROT13 is partially homomorphic with respect to the concatenation operation, beca
 Consider, for instance, the plaintext pair $P_{1}=$ HELLO and $P_{2}=$ WORLD, which both concatenate to ``HELLOWORLD''. If both plaintexts were encrypted using ROT13, the ciphertexts would be $C_{1}=$ URYYB and $C_{2}=$ JBEYQ, and if concatenated, ``URYYBJBEYQ''. Therefore, if the result of the ciphertext concatenation were decrypted, it would result in ``HELLOWORLD'', which is exactly the same message obtained when the pair of plaintexts were concatenated originally. Figure \ref{fig:homosample} shows the aforementioned example as it goes through the encryption and decryption processes. 
 
 \begin{figure}[H]
-  \centerline{\includegraphics[scale=0.5]{img/rot13homo}}
-  \caption[Example of the homomorphic property in ROT13]{Example of the homomorphic property in ROT13. Source: Stuntz \cite{stuntz2010}.}
+  \centerline{\includegraphics{rot13remade}}
+  \caption[Example of the homomorphic property in ROT13]{Example of the homomorphic property in ROT13. Based on Stuntz \cite{stuntz2010}.}
   \label{fig:homosample}
 \end{figure}
 
