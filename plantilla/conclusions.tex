@@ -1,28 +1,28 @@
 \chapter{Conclusions and Future Work}
 \label{conclusions}
 
-This work proposed the design and implementation of a client-server architecture based software that employs homomorphic encryption in order to perform computations on encrypted data. Instead of taking the typical approach of re-encrypting the data after a change is made, it was opted to use homomorphic encryption, ensuring the confidentiality of the protected data. The software relies on the homomorphic encryption library \emph{HElib} to enable the necessary homomorphic evaluations. The work focused on the confidentiality of a household counting system as case study. 
+This work proposed the design and implementation of a client-server architecture based software that employs homomorphic encryption in order to perform computations on encrypted data. Instead of taking the typical approach of re-encrypting the data after a change is made, it was opted to use homomorphic encryption, ensuring the confidentiality of the protected data. The software relies on the homomorphic encryption library \emph{HElib} to enable the necessary homomorphic evaluations. The work focused on the confidentiality of a counting system in a household as case study. 
 
 A set of public and private keys were created by the client using certain parameters, and the former key was sent to the server. The server registered the public key for future use. An initial value representing the number of people inside the household was chosen and encrypted using the client's public key. The ciphertext resulting from the encryption of the counter value was serialized into a container. Once the communication between server and client was established, the serialized ciphertext was sent to the server using sockets on the TCP. Whenever a change in the amount of individuals inside the household was recorded, the server was promptly informed of it. The server reconstructed the ciphertext representing the initial value using the appropriate public key, and performed an addition between the original value and its respective change. Then, the client requested to see the modified counter value, to which the server responded by sending the modified ciphertext. Finally, the client decrypted the received ciphertext by using its private key, and confirmed the current counter value. 
 
 In essense, a client-server archictecture was established and it made use of homomorphic encryption successfully. It was found that the factors that pose a challenge to deem applications of homomorphic encryption as inefficient were mainly: key generation time, key size, ciphertext size, and encryption and decryption times. Moreover, the client-server software implementation showed as simple as possible how HElib can be used to fulfill the necessary use cases. 
 
-In order to confirm the relevant factors pertaining to the feasibility of an implementation in the cloud, data regarding the execution times and size of the key and ciphertext were collected.It was chosen to experiment on the value of the $k$ security parameter, since it was apparent that it had the most impact on the operations performed by the library. 
+In order to confirm the relevant factors pertaining to the feasibility of an implementation in the cloud, data regarding the execution times and size of the key and ciphertext were collected. It was chosen to experiment on the value of the security parameter $k$, since it was apparent that it had the most impact on the operations performed by the library. 
 
 The results showed that key generation took the most amount of time, ranging between 9 and 13 seconds. The size of the public key ranged between 35 and 165 megabytes. Despite the long time and large size, these were not considered to be obstacles to the feasibility of the system. This is because key generation and registration of the public key is done only at the beginning of the process and is not required to do it again at a later time.
 
 \section{Final Remarks}
 
-It was noted during the development phase that the ciphertext often had a filesize of around 74 megabytes, and it was surprising to see that this value got reduced to less than 50 kilobytes during the experimentation phase. It is not clear which factors influenced the drastic change during these phases, and it made it difficult to decide whether implementing this as a service in the cloud would be feasible or not. In the case that the ciphertext size is indeed too large, the design of the system could be tweaked so that only the initial value of the counter is encrypted, so that the change values are sent to the server as plaintext. Evidently, this would diminish the overall security of the system, since it would not be impossible to predict the current value of the counter by observing the changes. 
+It was noted during the development phase that the ciphertext often had a filesize of around 74 megabytes, and it was surprising to see that this value got reduced to less than 50 kilobytes during the experimentation phase. It is not clear which factors influenced the drastic change during these phases, making it difficult to decide whether implementing this as a service in the cloud would be feasible or not. In the case that the ciphertext size is indeed too large, the design of the system could be tweaked so that only the initial value of the counter is encrypted, so that the change values are sent to the server as plaintext. Evidently, this would diminish the overall security of the system, since it would not be impossible to predict the current value of the counter by observing the changes. 
 
 \section{Contributions}
 
 The main contribution of this work is the design and implementation of a client-server architecture based software that employs homomorphic encryption. The proposed system addresses the processes regarding key generation, data encryption, client-server communication, addition on encrypted data, and decryption. It is relevant to note that this system relies on the homomorphic encryption functionalities provided by the HElib library. The contribution itself is related to how the library is being used to implement a system in a client-server model.
 
-Regarding the proposed system, the following points are important to mention:
+Regarding the proposed system, the following points are worth mentioning:
 
 \begin{itemize}
-\item The overall process was designed around a case study that had the goal of counting the number of people inside a household while maintaining its confidentiality. Neither the server nor other other authorized parties are able to learn of the value of the counter, as they do not have the private key that is required for decryption.
+\item The overall process was designed around a case study that had the goal of counting the number of people inside a household while maintaining its confidentiality. Neither the server nor any other unauthorized parties are able to learn the value of the counter, as they do not have the private key that is required for decryption.
 \item As the counter data was encrypted, further changes to it were performed by using homomorphic addition. 
 \item Serialization was used in order to send the public key and ciphertext with the server.
 \item As proof of concept, socket communication that relied on TCP was used between client and server to transmit the required data.
@@ -35,9 +35,9 @@ At a first glance, the results obtained from the experimentation were satisfacto
 \item Design and implement the appropriate mechanisms for key management, including key registration.
 \item Design a database scheme to keep control of the ciphertexts stored in the server, while associating each of them with its respective public key.
 \item Look into the possibility of implementing the client-architecture system as a Software-as-a-Service model.
-\item Provide a secure communication channel between the client and server, relying on the SSL protocol.
+\item Provide a secure communication channel between the client and server, relying on the SSL/TLS protocol.
 \item Experiment on the number of homomorphic operations correctly evaluated before the accumulated noise causes an incorrect decryption.
-\item Implement solution over the HTTP protocol, as to allow use via web browsers.
+\item Implement solution over the HTTPS protocol, as to allow its use via web browsers.
 \end{itemize}
 
 \clearpage
