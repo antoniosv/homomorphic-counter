@@ -2,6 +2,9 @@ all: presentation
 
 presentation: presentation.tex
 	pdflatex presentation.tex
+#	bibtex presentation	
+	pdflatex presentation.tex
+#	pdflatex presentation.tex
 
 clean:
 	-rm *~
