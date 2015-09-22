@@ -17,6 +17,7 @@
 
 \documentclass{beamer}
 \usepackage{listings}
+\usepackage{mdframed}
 
 \renewcommand{\figurename}{Figure}
 \renewcommand{\tablename}{Table}
@@ -34,6 +35,8 @@
 
 \setbeamertemplate{caption}[numbered]
 
+
+\definecolor{carolinablue}{rgb}{0.6, 0.73, 0.89}
 \definecolor{lbcolor}{rgb}{0.9,0.9,0.9}
 \lstset{
     tabsize=4,    
@@ -111,48 +114,52 @@
 
 \begin{frame}
 \frametitle{Introduction}
-
-These days, it has become more common to exchange information with our peers remotely. An issue arises when the information is considered to be \emph{sensitive}, and thus, the confidentiality of it must be protected. \\~\\
-
-\emph{Cryptography} is the study of techniques that enable secret communication, such as ciphers, that is, encryption and decryption algorithms to be used on sensitive data. \\~\\
-
-The issue at hand becomes even more interesting when the safe containing the private information does not go directly to the intended party, but is rather stored somewhere in the cloud, i.e.\ the Internet. \\~\\
-
+\begin{itemize}
+  \setlength\itemsep{1.5em}
+\item It is commonplace to exchange information with our peers remotely. 
+\item Sometimes, the information is \emph{sensitive}.
+\item \emph{Cryptography} is the study of techniques that enable secret communication and ensure \emph{confidentiality}.
+\item Sensitive information may be stored somewhere in the cloud, i.e.\ the Internet.
+\item The need to modify the protected data in the cloud arises.
+\end{itemize}
 \end{frame}
 
-\subsection{Problem Definition} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
+%\subsection{Problem Definition} % A subsection can be created just before a set of slides with a common theme to further break down your presentation into chunks
 
 \begin{frame}
 \frametitle{Problem Definition}
 
-An approach to secure data on the cloud consists in encrypting the data before storing it; therefore, assuring its confidentiality. However, it is inconvenient to modify the data if this approach is followed. \\~\\
-
-\emph{Homomorphic encryption} is an encryption technique used to modify the already encrypted data without compromising its confidentiality. \\~\\
-
-Even though there are many homomorphic encryption schemes that have been created to allow for computations on encrypted data, so far, they are not considered fast enough to build efficient secure cloud computing solutions. 
-
+\begin{itemize}
+  \setlength\itemsep{1.5em}
+\item \textbf{The typical approach}: encrypt the data before storing it in the cloud, requiring to reupload after any modification. 
+\item \emph{Homomorphic encryption}: enables modification of the encrypted data without decrypting first.
+\item  Tested homomorphic encryption schemes are not considered fast enough to build efficient secure cloud computing solutions. 
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
-\subsection{Motivation}
+%\subsection{Motivation}
 \begin{frame}
 \frametitle{Motivation}
 
-There are many areas in which homomorphic encryption could be used, such as the medical, marketing, and financial fields. Until now, there was no way to make a concrete implementation of a solution related to these areas, since available schemes were either too limited or too slow. \\~\\
-
-By showing a compelling example of how homomorphic encryption can be applied in a simple scenario, cloud service providers and developers might start considering how to apply homomorphic encryption in other ways and mediums, and thus, expanding on software that makes use of it.
+\begin{itemize}
+  \setlength\itemsep{1.5em}
+\item Areas of application in homomorphic encryption: medical, marketing, and financial fields. 
+\item Not many implementations of real life applications using homomorphic encryption because of the limitations of the existing schemes.
+\item Opportunity to show a compelling example of homomorphic encryption applied in the cloud.  \end{itemize}
 \end{frame}
 %------------------------------------------------
-\subsection{Hyphotesis}
+%\subsection{Hyphotesis}
 \begin{frame}
 \frametitle{Hyphotesis}
 
+\begin{mdframed}[backgroundcolor=carolinablue]
 Building a client-server based solution using the homomorphic encryption functionalities provided by HElib is feasible in terms of processing time.
-
+\end{mdframed}
 \end{frame}
 
 %------------------------------------------------
-\subsection{Objectives}
+%\subsection{Objectives}
 \begin{frame}
 \frametitle{Objectives}
 
@@ -160,6 +167,7 @@ Develop a client-server based solution using HElib to perform homomorphic evalua
 
 Specific Objectives:\\
 \begin{enumerate}
+  \setlength\itemsep{1em}
 \item Establish a client-server architecture where homomorphic encryption can be applied.
 \item Identify which factors pose a challenge to deem applications of homomorphic encryption as inefficient.
 \item Show the use of HElib to setup, encrypt, and decrypt in simple terms.
@@ -171,7 +179,7 @@ Specific Objectives:\\
 %------------------------------------------------
 
 \section{Background}
-\subsection{Relevant Terminology}
+%\subsection{Relevant Terminology}
 \begin{frame}
 \frametitle{Information Security}
 
@@ -193,8 +201,9 @@ Cryptography is the study of protecting data and communications. It employs ciph
 \begin{frame}
 \frametitle{Definition of a Cryptosystem}
 
-Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a quintuple ($\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D}$), where the following conditions are satisfied: 
+Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a quintuple ($\mathcal{P}, \mathcal{C}, \mathcal{K}, \mathcal{E}, \mathcal{D}$), where the following conditions are satisfied:  \\~\\
 \begin{enumerate}
+  \setlength\itemsep{1em}
 \item $\mathcal{P}$ is a finite set of possible plaintexts;
 \item $\mathcal{C}$ is a finite set of possible ciphertexts;
 \item $\mathcal{K}$, the keyspace, is a set of possible keys;
@@ -219,7 +228,7 @@ Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a quin
 \end{frame}
 
 %------------------------------------------------
-\subsection{Abstract Algebra}
+%\subsection{Abstract Algebra}
 \begin{frame}
 \frametitle{Abstract Algebra}
 
@@ -254,7 +263,7 @@ In the case for rings, a homomorphism considers two operations instead.
 \end{frame}
 
 %------------------------------------------------
-\subsection{Homomorphic Encryption}
+%\subsection{Homomorphic Encryption}
 \begin{frame}
 \frametitle{Homomorphic Encryption}
 Refers to the ability to make computations, i.e.\ operations such as addition and multiplication, on encrypted data without sharing the secret key to decrypt the data prior to the computations. \\~\\
@@ -287,6 +296,7 @@ where again $\mathcal{E}$ denotes an encryption function, $\otimes$ denotes an o
 \begin{frame}
 \frametitle{Classification of Homomorphic Encryption Schemes}
 \begin{itemize}
+  \setlength\itemsep{1.5em}
 \item \emph{Partially homomorphic encryption} schemes are defined over a group, and they support one operation at most: either addition or multiplication.  
 \item \emph{Fully homomorphic encryption} schemes are defined over a ring, and can support up to two operations: addition and multiplication. 
 \item \emph{Somewhat homomorphic encryption} schemes support up to two operations; however, the number of operations that can be performed is limited.
@@ -297,18 +307,18 @@ where again $\mathcal{E}$ denotes an encryption function, $\otimes$ denotes an o
 \begin{frame}
 \frametitle{Jewelry Store Analogy}
 
-\begin{itemize}
-\item Alice has a jewelry store and wants her workers to assemble raw materials (diamonds, gold, silver, etc.) into finished products (necklaces, rings, etc.).
-\item She does not trust her workers.
-\item Alice places the materials inside transparent glove boxes, which are then promptly locked with a key that only Alice has. 
-\item Workers can put their hands inside the gloves that are connected to the box, and through them, work with the raw materials. 
-\item The workers are able to put in things inside the boxes, such as soldering iron to use on the raw materials.
+\begin{enumerate}
+  \setlength\itemsep{1.5em}
+\item Alice has a jewelry store and wants her workers to assemble raw materials into finished products.
+\item Alice places the materials inside transparent glove boxes, which are then locked with her key.
+\item Workers can put their hands inside the gloves that are connected to the box to work with the raw materials. 
+\item The workers are able to put in things inside the boxes, i.e.\ soldering iron. 
 \item Once the products are finished, Alice can then recover the products from the box using her key. 
-\end{itemize}
+\end{enumerate}
 
 \end{frame}
 %------------------------------------------------
-\subsection{Services in the Cloud}
+%\subsection{Services in the Cloud}
 \begin{frame}
 \frametitle{Services in the Cloud}
 The cloud, a trendy term used to describe a network of servers usually accessible through the Internet, currently provides two important services: storage and computation. \\~\\
@@ -321,23 +331,27 @@ Attempts to tackle these concerns include \emph{secure multi-party computation} 
 \end{frame}
 %------------------------------------------------
 \section{Methodology}
-\subsection{Case Study}
+%\subsection{Case Study}
 \begin{frame}
 \frametitle{Case Study}
 
-Consider a household that has a pattern of activity, i.e.\ empty during the day and non-empty at night, so that the resident seeks to ascertain the number of people inside at any point in time during the day. \\~\\
-
-Assuming the resident has put in place certain sensors around the building so that it detects and counts who comes in and out, he would like to learn the value of the counter remotely. As the resident chooses to store the value in the cloud, he quickly realizes he does not want others to learn of this value, not even the cloud service itself, as to prevent potential burglars to break in when the household is empty.
-
+\begin{itemize}
+  \setlength\itemsep{1.5em}
+\item Consider a household that has a pattern of activity, fluctuating during the day.
+\item The resident seeks to ascertain the number of people inside at any point in time.
+\item Assume the resident has put in place certain sensors around the building to detect entry and exit.
+\item Counter of people inside is stored in the cloud for subsequent retrieval. 
+\item Resident does not want others to learn of this value, as to prevent potential burglars to break in when the household is empty.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
 
-\subsection{Proposed Solution}
+%\subsection{Proposed Solution}
 \begin{frame}
 \frametitle{Proposed Solution}
 
-Implementation of a client-server software that aims to store and modify securely a counter by making use of homomorphic encryption.  \\~\\
+Implementation of a client-server software that aims to store and modify securely a counter by making use of homomorphic encryption.  \\~\\~\\
 
 The solution utilizes a \emph{HElib}, a library in C++ that enables the use of a leveled fully homomorphic encryption scheme. It is used to perform operations on the encrypted data, such as addition, subtraction, and multiplication. \\~\\
 
@@ -386,6 +400,7 @@ The solution utilizes a \emph{HElib}, a library in C++ that enables the use of a
 \begin{frame}
 \frametitle{Implementation Details}
 \begin{itemize}
+  \setlength\itemsep{1.5em}
 \item A seed is used to pseudorandomly generate the set of keys.
 \item Among the parameters chosen, the security parameter $k$ is chosen at the start.
 \item Serialization is done by using the \emph{istringstream} and \emph{ostringstream} C++ classes.
@@ -432,17 +447,25 @@ Web-based                                                                     & 
 \end{frame}
 %------------------------------------------------------------
 \section{Experiments and Results}
-\subsection{Setup}
+%\subsection{Setup}
 \begin{frame}
 \frametitle{Setup}
-The experiment is performed by running several iterations of the program with different values of the security parameter $k$, as to evaluate how it affects the time required for certain activities in the software, such as key generation, encryption, decryption, and homomorphic addition of ciphertext. Resulting key size and ciphertext size is also considered. \\~\\
+The experiment is performed by running several iterations of the program with different values of the security parameter $k$. The experimental units considered where: 
+\begin{itemize}
+\item \textbf{Times for}: key generation, encryption, decryption, and homomorphic addition of ciphertext. 
+\item \textbf{Sizes for}: public key and ciphertext.
+\end{itemize}
 
-The experiment considers several arbitrarily chosen values, namely: 20, 40, 80, 100; where 80 is the default value found in the examples of the HElib. \\~\\
+\vspace*{5mm} 
+The experiment considers several arbitrarily chosen values, namely: 20, 40, 80, 100; where 80 is the default value found in the examples of the HElib.
 
-It is important to consider that the experimentation was done on a notebook which had an AMD Elite A4-5150M processor. The processor is dual core and it runs at 2.7 GHz. 
+\begin{itemize}
+\item Iterations were run on a notebook which had an AMD Elite A4-5150M processor. 
+\item The processor is dual core and it runs at 2.7 GHz. 
+\end{itemize}
 \end{frame}
 %------------------------------------------------
-\subsection{Results}
+%\subsection{Results}
 \begin{frame}
 \frametitle{Results}
 
@@ -488,6 +511,16 @@ It was chosen to experiment on the value of the security parameter $k$. Data reg
 
 The results showed that key generation took the most amount of time, ranging between 9 and 13 seconds. The size of the public key ranged between 35 and 165 megabytes. Despite the long time and large size, these were not considered to be obstacles to the feasibility of the system. 
 
+\end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Contributions}
+\begin{itemize}
+  \setlength\itemsep{1.5em}
+\item Design and implementation of a client-server architecture based software that employs homomorphic encryption was made.
+\item A case study was addressed, closing the gap between the theory of homomorphic encryption and actual practice.
+\item Data regarding the use of the functionalities provided by HElib was gathered.
+\end{itemize}
 \end{frame}
 %------------------------------------------------
 \begin{frame}
