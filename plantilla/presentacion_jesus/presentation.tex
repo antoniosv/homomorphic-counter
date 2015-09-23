@@ -14,7 +14,7 @@
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND THEMES
 %----------------------------------------------------------------------------------------
-
+\PassOptionsToPackage{subsection=false}{beamerouterthememiniframes}
 \documentclass{beamer}
 \usepackage{listings}
 \usepackage{mdframed}
@@ -31,7 +31,7 @@
 \def\uanl{Universidad Aut\'{o}noma de Nuevo Le\'{o}n}
 \def\fime{Facultad de Ingenier\'{\i}a Mec\'{a}nica y El\'{e}ctrica}
 \usepackage[numbers,sort]{natbib}
-\bibliographystyle{../estiloDeBibliografia}
+%\bibliographystyle{../estiloDeBibliografia}
 
 \setbeamertemplate{caption}[numbered]
 
@@ -66,7 +66,8 @@
 
 
 \mode<presentation> {
-\usetheme{Madrid}
+\usetheme{Berlin}
+%\useoutertheme[subsection=false]{miniframes}
 
 %\setbeamertemplate{footline} % To remove the footer line in all slides uncomment this line
 \setbeamertemplate{footline}[page number] % To replace the footer line in all slides with a simple slide count uncomment this line
@@ -87,8 +88,11 @@
 
 \author{\autor} % Your name
 \institute[FIME UANL]{
-  \uanl \\[6mm]
-  \includegraphics[scale=0.8]{../uanl}
+  \uanl \\[3mm]
+  \fime \\[3mm]
+  \includegraphics[height=3cm]{../uanl}
+  \hspace{1em}
+  \includegraphics[height=3cm]{../fime}
 }
 
 \date{\fecha} % Date, can be changed to a custom date
@@ -219,7 +223,7 @@ Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a quin
 \begin{figure}[H]
   %\centerline{\includegraphics[width=14cm]{img/basic_crypto}}
   \centering
-  \includegraphics{../img/basiccryptosystem}
+  \includegraphics[width=\textwidth]{../img/basiccryptosystem}
   \caption[Basic cryptosystem diagram]{Basic cryptosystem diagram. Based on Kurose and Ross \cite{kurose2010computer}.}
   \label{fig:cryptoflow}
 \end{figure}
@@ -232,7 +236,7 @@ Stinson \cite{stinson2005cryptography} formally defines a cryptosystem as a quin
 \begin{frame}
 \frametitle{Abstract Algebra}
 
-Abstract algebra is a branch of mathematics that focuses on those elements that can be operated algebraically. Groups and rings are examples of such sets of elemnts \cite{CryptoStallings}. \\~\\
+Abstract algebra is a branch of mathematics that focuses on those elements that can be operated algebraically. Groups and rings are examples of such sets of elements \cite{CryptoStallings}. \\~\\
 \begin{block}{Definition of Group}
 A \emph{group} G, denoted by $\{ G, \cdot \}$ is a set of elements with a binary operation, which is denoted by the operator $\cdot$.
 \end{block}
@@ -261,17 +265,31 @@ for all $a$, $b$ in $G_{1}$.
 In the case for rings, a homomorphism considers two operations instead.
 
 \end{frame}
+%------------------------------------------------
+\begin{frame}
+\frametitle{Jewelry Store Analogy}
+
+\begin{enumerate}
+  \setlength\itemsep{1.5em}
+\item Alice has a jewelry store and wants her workers to assemble raw materials into finished products.
+\item Alice places the materials inside transparent glove boxes, which are then locked with her key.
+\item Workers can put their hands inside the gloves that are connected to the box to work with the raw materials. 
+\item The workers are able to put in things inside the boxes, i.e.\ soldering iron. 
+\item Once the products are finished, Alice can then recover the products from the box using her key. 
+\end{enumerate}
+
+\end{frame}
 
 %------------------------------------------------
+
 %\subsection{Homomorphic Encryption}
 \begin{frame}
 \frametitle{Homomorphic Encryption}
-Refers to the ability to make computations, i.e.\ operations such as addition and multiplication, on encrypted data without sharing the secret key to decrypt the data prior to the computations. \\~\\
-
-When the encryption function of a cryptosystem is a homomorphism, meaning that it preserves group operations performed on ciphertexts, it is called a \emph{homomorphic cryptosystem}. \\~\\
-
-Lange \cite{lange2011} mentions that several real life applications of homomorphic encryption fall in the domain of: e-cash, e-voting, private information retrieval, and cloud computing.
-
+\begin{itemize}
+\item Refers to the ability to perform computations on encrypted data without sharing the secret key to decrypt the data prior to the computations. \\~\\
+\item When the encryption function of a cryptosystem is a homomorphism, meaning that it preserves group operations performed on ciphertexts, it is called a \emph{homomorphic cryptosystem}. \\~\\
+\item Lange \cite{lange2011} mentions that several real life applications of homomorphic encryption fall in the domain of: e-cash, e-voting, private information retrieval, and cloud computing.
+\end{itemize}
 \end{frame}
 
 %------------------------------------------------
@@ -301,20 +319,6 @@ where again $\mathcal{E}$ denotes an encryption function, $\otimes$ denotes an o
 \item \emph{Fully homomorphic encryption} schemes are defined over a ring, and can support up to two operations: addition and multiplication. 
 \item \emph{Somewhat homomorphic encryption} schemes support up to two operations; however, the number of operations that can be performed is limited.
 \end{itemize}
-
-\end{frame}
-%------------------------------------------------
-\begin{frame}
-\frametitle{Jewelry Store Analogy}
-
-\begin{enumerate}
-  \setlength\itemsep{1.5em}
-\item Alice has a jewelry store and wants her workers to assemble raw materials into finished products.
-\item Alice places the materials inside transparent glove boxes, which are then locked with her key.
-\item Workers can put their hands inside the gloves that are connected to the box to work with the raw materials. 
-\item The workers are able to put in things inside the boxes, i.e.\ soldering iron. 
-\item Once the products are finished, Alice can then recover the products from the box using her key. 
-\end{enumerate}
 
 \end{frame}
 %------------------------------------------------
@@ -362,7 +366,7 @@ The solution utilizes a \emph{HElib}, a library in C++ that enables the use of a
 \frametitle{Architecture Breakdown}
 \begin{figure}[H]
   \centering
-  \includegraphics[scale=0.6]{../img/architecture}
+  \includegraphics[scale=0.65]{../img/architecture}
  \caption{Architecture breakdown into client and server.}
  \label{fig:clientserver}
 \end{figure}
@@ -409,43 +413,6 @@ The solution utilizes a \emph{HElib}, a library in C++ that enables the use of a
 \end{frame}
 
 %------------------------------------------------
-\section{Related Works}
-\begin{frame}
-\frametitle{Related Works}
-
-\begin{table}[]
-\centering
-\caption{Comparison between related works}
-\label{tbl:comparison}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{|l|c|c|c|c|c|c|c|}
-\hline
-\multicolumn{1}{|c|}{Characteristic / Work}                                   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Yasuda \\ et al.\ \cite{Yasuda:2015:SDD:2732516.2732521}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Yasuda \\ et al.\ \cite{yasuda2014}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Adida \\ et al.\ \cite{adida2008helios}\end{tabular}} & \multicolumn{1}{l|}{Cybernetica \cite{ESORICS08:BLW08}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tetali \\ et al.\ \cite{Tetali:2013:MSA:2544173.2509554}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Schroepfer\\  et al.\ \cite{Schroepfer:2011:DSC:2046707.2093509}\end{tabular}} & \multicolumn{1}{l|}{Thesis work} \\ \hline
-Client-server architecture                                                    & $\times$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\sim$                               & $\checkmark$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
-Cloud computation                                                             & $\checkmark$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\checkmark$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
-Real-world application                                                        & $\checkmark$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\times$                                                                             & $\checkmark$                                                                                 & $\checkmark$                                \\ \hline
-Secure computation                                                            & $\checkmark$                                                                             & $\checkmark$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\checkmark$                                                                             & $\checkmark$                                                                                 & $\checkmark$                                \\ \hline
-\begin{tabular}[c]{@{}l@{}}Homomorphic addition \\ support\end{tabular}       & $\checkmark$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\times$                                & $\times$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
-\begin{tabular}[c]{@{}l@{}}Homomorphic multiplication \\ support\end{tabular} & $\checkmark$                                                                             & $\times$                                                                             & $\times$                                                                            & $\times$                                & $\times$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
-No 3rd party trust                                                       & $\times$                                                                             & $\checkmark$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\checkmark$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
-Key exchange support                                                          & $\checkmark$                                                                             & $\checkmark$                                                                             & $\checkmark$                                                                            & $\times$                                & $\times$                                                                             & $\checkmark$                                                                                 & $\times$                                \\ \hline
-Web-based                                                                     & $\times$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\times$                                                                             & $\checkmark$                                                                                 & $\times$                                \\ \hline
-\end{tabular}%
-}
-\end{table}
-\vspace*{-5mm} 
-
-\begin{table}[]
-\centering
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{|l|l|l|}
-\hline
-{\it $\checkmark$ has the characteristic} & {\it $\sim$ partially has the characteristic} & {\it $\times$ does not have the characteristic} \\ \hline
-\end{tabular}%
-}
-\end{table}
-\end{frame}
-%------------------------------------------------------------
 \section{Experiments and Results}
 %\subsection{Setup}
 \begin{frame}
@@ -501,16 +468,55 @@ Figure \ref{fig:boxplot} depicts a box plot that shows the time required to gene
 
 \end{frame}
 %------------------------------------------------
+\section{Related Works}
+\begin{frame}
+\frametitle{Related Works}
+
+\begin{table}[]
+\centering
+\caption{Comparison between related works}
+\label{tbl:comparison}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+\multicolumn{1}{|c|}{Characteristic / Work}                                   & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Yasuda \\ et al.\ \cite{Yasuda:2015:SDD:2732516.2732521}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Yasuda \\ et al.\ \cite{yasuda2014}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Adida \\ et al.\ \cite{adida2008helios}\end{tabular}} & \multicolumn{1}{l|}{Cybernetica \cite{ESORICS08:BLW08}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Tetali \\ et al.\ \cite{Tetali:2013:MSA:2544173.2509554}\end{tabular}} & \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Schroepfer\\  et al.\ \cite{Schroepfer:2011:DSC:2046707.2093509}\end{tabular}} & \multicolumn{1}{l|}{Thesis work} \\ \hline
+Client-server architecture                                                    & $\times$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\sim$                               & $\checkmark$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
+Cloud computation                                                             & $\checkmark$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\checkmark$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
+Real-world application                                                        & $\checkmark$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\times$                                                                             & $\checkmark$                                                                                 & $\checkmark$                                \\ \hline
+Secure computation                                                            & $\checkmark$                                                                             & $\checkmark$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\checkmark$                                                                             & $\checkmark$                                                                                 & $\checkmark$                                \\ \hline
+\begin{tabular}[c]{@{}l@{}}Homomorphic addition \\ support\end{tabular}       & $\checkmark$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\times$                                & $\times$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
+\begin{tabular}[c]{@{}l@{}}Homomorphic multiplication \\ support\end{tabular} & $\checkmark$                                                                             & $\times$                                                                             & $\times$                                                                            & $\times$                                & $\times$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
+No 3rd party trust                                                       & $\times$                                                                             & $\checkmark$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\checkmark$                                                                             & $\times$                                                                                 & $\checkmark$                                \\ \hline
+Key exchange support                                                          & $\checkmark$                                                                             & $\checkmark$                                                                             & $\checkmark$                                                                            & $\times$                                & $\times$                                                                             & $\checkmark$                                                                                 & $\times$                                \\ \hline
+Web-based                                                                     & $\times$                                                                             & $\times$                                                                             & $\checkmark$                                                                            & $\checkmark$                                & $\times$                                                                             & $\checkmark$                                                                                 & $\times$                                \\ \hline
+\end{tabular}%
+}
+\end{table}
+\vspace*{-5mm} 
+
+\begin{table}[]
+\centering
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|l|l|l|}
+\hline
+{\it $\checkmark$ has the characteristic} & {\it $\sim$ partially has the characteristic} & {\it $\times$ does not have the characteristic} \\ \hline
+\end{tabular}%
+}
+\end{table}
+\end{frame}
+%------------------------------------------------------------
+
 \section{Conclusions}
 \begin{frame}
 \frametitle{Conclusions}
 
-In essense, a client-server archictecture was established and it made use of homomorphic encryption successfully. It was found that the factors that pose a challenge to deem applications of homomorphic encryption as inefficient were mainly: key generation time, key size, ciphertext size, and encryption and decryption times. \\~\\
+In essense, a client-server archictecture was established and it made use of homomorphic encryption successfully. \\~\\
+
+Factors that pose a challenge for implementation: key generation time, key size, ciphertext size, and encryption and decryption times. \\~\\
 
 It was chosen to experiment on the value of the security parameter $k$. Data regarding the execution times and size of the key and ciphertext were collected. \\~\\
 
-The results showed that key generation took the most amount of time, ranging between 9 and 13 seconds. The size of the public key ranged between 35 and 165 megabytes. Despite the long time and large size, these were not considered to be obstacles to the feasibility of the system. 
-
+The results showed that key generation ranged between 9 and 13 seconds, while the size of the public key ranged between 35 and 165 megabytes.
 \end{frame}
 %------------------------------------------------
 \begin{frame}
@@ -538,16 +544,12 @@ The results showed that key generation took the most amount of time, ranging bet
 
 %------------------------------------------------
 
-%\begin{frame}
+\begin{frame}[allowframebreaks]{References}
 %\frametitle{References}
-%\footnotesize{
-%\begin{thebibliography}{99} % Beamer does not support BibTeX so references must be inserted manually as below
-%\bibitem[Smith, 2012]{p1} John Smith (2012)
-%\newblock Title of the publication
-%\newblock \emph{Journal Name} 12(3), 45 -- 678.
-%\end{thebibliography}
-%}
-%\end{frame}
+\def\newblock{}
+\bibliographystyle{abbrv}
+\bibliography{bibliografia}
+\end{frame}
 
 %------------------------------------------------
 
