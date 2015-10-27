@@ -1,0 +1,111 @@
+\documentclass[landscape, a0paper, debug]{baposter}
+
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{tikz}
+
+\begin{document}
+
+\definecolor{silver}{cmyk}{0,0,0,0.3}
+\definecolor{yellow}{cmyk}{0,0,0.9,0.0}
+\definecolor{reddishyellow}{cmyk}{0,0.22,1.0,0.0}
+\definecolor{black}{cmyk}{0,0,0.0,1.0}
+\definecolor{darkYellow}{cmyk}{0,0,1.0,0.5}
+\definecolor{darkSilver}{cmyk}{0,0,0,0.1}
+
+\definecolor{lightyellow}{cmyk}{0,0,0.3,0.0}
+\definecolor{lighteryellow}{cmyk}{0,0,0.1,0.0}
+\definecolor{lighteryellow}{cmyk}{0,0,0.1,0.0}
+\definecolor{lightestyellow}{cmyk}{0,0,0.05,0.0}
+
+
+\begin{poster}{
+    grid=false,
+    colspacing=1em,
+    columns=3,
+    % color style
+    bgColorOne=lighteryellow,
+    bgColorTwo=lightestyellow,
+    headerColorOne=yellow,
+    headerFontColor=black,
+    boxColorOne=lightyellow,
+    boxColorTwo=lighteryellow,
+    % format of textbox
+    textborder=roundedleft,
+    % format of the header
+    eyecatcher=false,
+    headerborder=open,
+    headerheight=0.08\textheight,
+    headershape=roundedright,
+    headershade=plain,
+    headerfont=\Large\textsf,
+    boxshade=plain,
+    %background=shade-tb,
+    background=plain,
+    linewidth=2pt
+  }
+  % eyecatcher section
+  {} 
+  {
+    \sf Applying Homomorphic Encryption in the Cloud
+  }
+  {
+    \sf Jes\'{u}s Antonio Soto Vel\'{a}zquez\hspace{3em}
+    jesus.antoniosv@gmail.com\hspace{3em}
+    Universidad Aut\'{o}noma de Nuevo Le\'{o}n, M\'{e}xico
+  }
+  {{
+      \begin{minipage}{16em}
+        \hfill
+        \includegraphics[height=2em]{fime}
+    \end{minipage}}
+  }
+
+  \headerbox{Contribution}{name=contribution,column=0,row=0}{
+    ehehehhe   
+  }
+
+  \headerbox{Objectives}{name=objectives,column=0,below=contribution}{
+    \begin{itemize}
+    \item Uno
+    \item Dos
+    \item Tres
+    \end{itemize}
+  }
+
+  \headerbox{Case Study}{name=casestudy,column=0,below=objectives}{
+
+  }
+
+  \headerbox{Methodology}{name=methodology,column=0,below=casestudy}{
+
+  }
+
+  \headerbox{Operation Flow}{name=flow,column=1, row=0}{
+
+  }
+
+  \headerbox{Experimentation}{name=experimentation,column=1,below=flow}{
+
+  }
+  
+  \headerbox{Results}{name=results,column=1,below=experimentation}{
+
+  }
+
+  \headerbox{Conclusions}{name=conclusions,column=1,below=results}{
+
+  }
+
+  \headerbox{Acknowledgements}{name=ack,column=1,below=conclusions}{
+    
+    
+  }
+
+  \headerbox{Source Code}{name=code,column=1,below=ack}{
+    https://github.com/antoniosv/homomorphic-counter  
+  }
+  
+\end{poster}
+
+\end{document}
