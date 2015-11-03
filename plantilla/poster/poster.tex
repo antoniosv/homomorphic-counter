@@ -1,6 +1,7 @@
 \documentclass[landscape, a0paper, debug]{baposter}
 
 \usepackage{graphicx}
+\usepackage{epstopdf}
 \usepackage{multirow}
 \usepackage{tikz}
 
@@ -21,7 +22,7 @@
 
 \begin{poster}{
     grid=false,
-    colspacing=1em,
+    colspacing=2em,
     columns=3,
     % color style
     bgColorOne=lighteryellow,
@@ -42,7 +43,7 @@
     boxshade=plain,
     %background=shade-tb,
     background=plain,
-    linewidth=2pt
+    linewidth=2.5pt
   }
   % eyecatcher section
   {} 
@@ -55,54 +56,71 @@
     Universidad Aut\'{o}noma de Nuevo Le\'{o}n, M\'{e}xico
   }
   {{
-      \begin{minipage}{16em}
+      \begin{minipage}{20em}
         \hfill
-        \includegraphics[height=2em]{fime}
+        \includegraphics[height=4em]{fime}
+        \hspace{35pt}
+        \includegraphics[height=4em]{logo_uanl}
     \end{minipage}}
   }
 
   \headerbox{Contribution}{name=contribution,column=0,row=0}{
-    ehehehhe   
+    This work proposes an implementation of a client-server architecture based software that uses HElib to enable homomorphic encryption and perform computations on encrypted data. \\
+    The software is used to address the situation in the presented case study.
   }
 
   \headerbox{Objectives}{name=objectives,column=0,below=contribution}{
     \begin{itemize}
-    \item Uno
-    \item Dos
-    \item Tres
+    \item Establish a client-server architecture where homomorphic encryption can be applied.
+   \item Identify which factors pose a challenge to apply homomorphic encryption in the cloud.
+    \item Collect performance data on the use of homomorphic encryption.
     \end{itemize}
   }
 
   \headerbox{Case Study}{name=casestudy,column=0,below=objectives}{
+    \begin{flushleft}Consider a scenario where a household has an expected pattern of activity, so that the resident seeks to ascertain the number of people inside at any time. \\
+      As the resident chooses to store the value of the counter in the cloud, he quickly realizes he does not want others to learn of this value, not even the cloud service itself, as to prevent  potential burglars to break in when the household is empty.
+    \end{flushleft}
+    
+    \noindent{\centering\fcolorbox{black}{white}{\includegraphics[width=0.65\linewidth]{casestudy}}\\}
 
   }
 
-  \headerbox{Methodology}{name=methodology,column=0,below=casestudy}{
-
+  \headerbox{Methodology}{name=methodology,column=1, row=0}{
+    \begin{flushleft}A client-server architecture was designed and implemented in C++ to address a solution for the presented case study. Homomorphic encryption is enabled by using HElib [INSERTAR CITA]. Relevant tasks were divided between client and server.
+    \end{flushleft}
+    \noindent{\centering\fcolorbox{black}{white}{\includegraphics[width=0.65\linewidth]{architecture}}\\}
+      
   }
 
-  \headerbox{Operation Flow}{name=flow,column=1, row=0}{
-
-  }
-
-  \headerbox{Experimentation}{name=experimentation,column=1,below=flow}{
+  \headerbox{Operation Flow}{name=flow,column=1, below=methodology }{
+    \noindent{\centering\fcolorbox{black}{white}{\includegraphics[width=0.95\linewidth]{counter}}\\}
 
   }
   
-  \headerbox{Results}{name=results,column=1,below=experimentation}{
+  \headerbox{Experimentation \& Results}{name=results,column=2,row=0}{
+    \begin{flushleft}The performance of the system was evaluated by running 20 iterations with distinct values of a security parameter \emph{k} needed for the homomorphic encryption scheme. \\
+      The system was evaluated in terms of ciphertext and key size, as well as the time needed for key generation and processing (addition, decryption, encryption).
+    \end{flushleft}
+    \noindent{\centering\fcolorbox{black}{white}{\includegraphics[width=0.95\linewidth]{proc}}\\}
+
 
   }
 
-  \headerbox{Conclusions}{name=conclusions,column=1,below=results}{
+  \headerbox{Conclusions}{name=conclusions,column=2,below=results}{
 
   }
 
-  \headerbox{Acknowledgements}{name=ack,column=1,below=conclusions}{
+  \headerbox{References}{name=ref,column=2,below=conclusions}{    
     
+  }
+
+
+  \headerbox{Acknowledgements}{name=ack,column=2,below=ref}{    
     
   }
 
-  \headerbox{Source Code}{name=code,column=1,below=ack}{
+  \headerbox{Source Code}{name=code,column=2, below=ack}{
     https://github.com/antoniosv/homomorphic-counter  
   }
   
